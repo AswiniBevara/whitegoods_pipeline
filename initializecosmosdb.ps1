@@ -10,6 +10,7 @@ param(
 [string] $datapacketUri = "$4",
 [string] $deviceManagementUri = "$5"
 )
+
 function Get-AccessTokenAPI{
     Write-Host "`nRequesting access token.." -ForegroundColor Green
 
@@ -43,8 +44,6 @@ param([string]$apiBaseURL,[string]$accessToken)
         return $false;  
     }
 }
-        $datapacketUri="https://datapacketdqdpoolvbrlfs.azurewebsites.net"					#Input to this powershell									#Update this Value
-		$deviceManagementUri="https://devicemanagementdqdpoolvbrlfs.azurewebsites.net"		#Input to this powershell										#Update this Value
         $datapacketUriOIDC=$datapacketUri+"/signin-oidc"      
         $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
         $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC);  
