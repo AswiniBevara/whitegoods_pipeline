@@ -8,9 +8,6 @@
         "apiVersions": {
             "type": "object"
         },
-        "cosmosDbprimaryMasterKey": {
-            "type": "string"
-        },
         "iotHubHostName": {
             "type": "string"
         },
@@ -120,7 +117,7 @@
                         "IotHub:HostName": "[parameters('iotHubHostName')]",
                         "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubHostName'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
                         "CosmosDb:Endpoint": "[reference(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName)).documentEndpoint]",                                                
-                        "CosmosDb:AuthKey": "[parameters('cosmosDbprimaryMasterKey')]",
+                        "CosmosDb:AuthKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]", 
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
                         "CosmosDb:Collections:Templates": "[parameters('webSiteSettings').cosmosDbColTemplateName]",
                         "CosmosDb:Collections:Messages": "[parameters('webSiteSettings').cosmosDbColMessagesName]",
@@ -186,7 +183,7 @@
                         "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubHostName'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
                         "IotHub:CacheRefreshMinutes": "1",
                         "CosmosDb:Endpoint": "[reference(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName)).documentEndpoint]",                        
-                        "CosmosDb:AuthKey": "[parameters('cosmosDbprimaryMasterKey')]",
+                        "CosmosDb:AuthKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
                         "NotificationHub:ConnectionString": "[parameters('notificationHubConnectionString')]"
                     }
