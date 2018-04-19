@@ -24,7 +24,7 @@
             "type": "string"
         },
         "omsSettings": {
-            "type": "string"
+            "type": "object"
         }
     },
     "variables": {},
