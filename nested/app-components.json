@@ -22,6 +22,9 @@
         },
         "notificationHubConnectionString": {
             "type": "string"
+        },
+        "omsSettings": {
+            "type": "string"
         }
     },
     "variables": {},
@@ -130,6 +133,28 @@
                         "CosmosDb:Collections:Groups": "[parameters('webSiteSettings').cosmosDbColGroupsName]",
                         "CosmosDb:TemplatesBase": "https://msiotsolutiondev.blob.core.windows.net/cosmosdbtemplates/"
                     }
+                },
+                {
+                    "name": "Microsoft.Insights/service",
+                    "type": "providers/diagnosticSettings",
+                    "apiVersion": "2015-07-01",
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]",
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/extensions/MSDeploy')]"
+                    ],
+                    "properties": {
+                        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
+                        "metrics": [
+                            {
+                                "timeGrain": "PT1M",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "enabled": false,
+                                    "days": 0
+                                }
+                            }
+                        ]
+                    }
                 }
             ]
         },
@@ -192,6 +217,28 @@
                         "CosmosDb:AuthKey": "[parameters('cosmosDBAccountKey')]",
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
                         "NotificationHub:ConnectionString": "[parameters('notificationHubConnectionString')]"
+                    }
+                },
+                {
+                    "name": "Microsoft.Insights/service",
+                    "type": "providers/diagnosticSettings",
+                    "apiVersion": "2015-07-01",
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]",
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/extensions/MSDeploy')]"
+                    ],
+                    "properties": {
+                        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
+                        "metrics": [
+                            {
+                                "timeGrain": "PT1M",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "enabled": false,
+                                    "days": 0
+                                }
+                            }
+                        ]
                     }
                 }
             ]
