@@ -35,7 +35,7 @@
                 {
                     "name": "Microsoft.Insights/service",
                     "type": "providers/diagnosticSettings",
-                    "apiVersion": "2015-07-01",
+                    "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
                     "dependsOn": [
                         "[concat('Microsoft.Devices/IotHubs/', parameters('iotHubSettings').iotHubName)]"
                     ],
