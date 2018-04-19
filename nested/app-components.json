@@ -13,6 +13,15 @@
         },
         "iotHubPrimaryKey": {
             "type": "string"
+        },
+        "cosmosDBAccountEndPoint": {
+            "type": "string"
+        },
+        "cosmosDBAccountKey": {
+            "type": "string"
+        },
+        "notificationHubConnectionString": {
+            "type": "string"
         }
     },
     "variables": {},
@@ -113,8 +122,8 @@
                         "AzureAd:CallbackPath": "/signin-oidc",
                         "IotHub:HostName": "[parameters('iotHubEndPoint')]",
                         "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubEndPoint'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
-                        "CosmosDb:Endpoint": "[reference(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName)).documentEndpoint]",
-                        "CosmosDb:AuthKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
+                        "CosmosDb:Endpoint": "[parameters('cosmosDBAccountEndPoint')]",
+                        "CosmosDb:AuthKey": "[parameters('cosmosDBAccountKey')]",
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
                         "CosmosDb:Collections:Templates": "[parameters('webSiteSettings').cosmosDbColTemplateName]",
                         "CosmosDb:Collections:Messages": "[parameters('webSiteSettings').cosmosDbColMessagesName]",
@@ -179,10 +188,10 @@
                         "IotHub:HostName": "[parameters('iotHubEndPoint')]",
                         "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubEndPoint'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
                         "IotHub:CacheRefreshMinutes": "1",
-                        "CosmosDb:Endpoint": "[reference(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName)).documentEndpoint]",
-                        "CosmosDb:AuthKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
+                        "CosmosDb:Endpoint": "[parameters('cosmosDBAccountEndPoint')]",
+                        "CosmosDb:AuthKey": "[parameters('cosmosDBAccountKey')]",
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
-                        "NotificationHub:ConnectionString": "[listKeys(resourceId('Microsoft.NotificationHubs/namespaces/notificationHubs/authorizationRules', parameters('webSiteSettings').notificationHubNamespaceName, parameters('webSiteSettings').notificationHubName, 'DefaultFullSharedAccessSignature'), providers('Microsoft.NotificationHubs', 'namespaces/notificationHubs').apiVersions[0]).primaryConnectionString]"
+                        "NotificationHub:ConnectionString": "[parameters('notificationHubConnectionString')]"
                     }
                 }
             ]
