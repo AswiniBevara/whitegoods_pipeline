@@ -1,0 +1,211 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webSiteSettings": {
+            "type": "object"
+        },
+        "apiVersions": {
+            "type": "object"
+        },
+        "documentDbEndpoint": {
+            "type": "string"
+        },
+        "cosmosDbprimaryMasterKey": {
+            "type": "string"
+        },
+        "iotHubHostName": {
+            "type": "string"
+        },
+        "iotHubPrimaryKey": {
+            "type": "string"
+        },
+        "notificationHubConnectionString": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "[parameters('apiVersions').appInsightsApiVersion]",
+            "name": "[parameters('webSiteSettings').dataPacketAppInsights]",
+            "type": "Microsoft.Insights/components",
+            "location": "[parameters('webSiteSettings').appInsightsLocation]",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]": "Resource",
+                "displayName": "AppInsightsComponent"
+            },
+            "properties": {
+                "applicationId": "[parameters('webSiteSettings').dataPacketAppInsights]"
+            }
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').appInsightsApiVersion]",
+            "name": "[parameters('webSiteSettings').deviceManagementAppInsights]",
+            "type": "Microsoft.Insights/components",
+            "location": "[parameters('webSiteSettings').appInsightsLocation]",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]": "Resource",
+                "displayName": "AppInsightsComponent"
+            },
+            "properties": {
+                "applicationId": "parameters('webSiteSettings').deviceManagementAppInsights]"
+            }
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+            "name": "[parameters('webSiteSettings').webAppHostingPlanName]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('webSiteSettings').location]",
+            "tags": {
+                "displayName": "HostingPlan"
+            },
+            "sku": {
+                "name": "[parameters('webSiteSettings').webAppSkuName]",
+                "capacity": "1"
+            },
+            "properties": {
+                "name": "[parameters('webSiteSettings').webAppHostingPlanName]"
+            }
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+            "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
+            "type": "Microsoft.Web/sites",
+            "location": "[parameters('webSiteSettings').location]",
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]": "Resource",
+                "displayName": "Website"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",
+                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').dataPacketAppInsights)]"
+            ],
+            "properties": {
+                "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('webSiteSettings').webAppHostingPlanName)]"
+            },
+            "resources": [
+                {
+                    "name": "MSDeploy",
+                    "type": "extensions",
+                    "location": "[parameters('webSiteSettings').location]",
+                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteName)]"
+                    ],
+                    "tags": {
+                        "displayName": "WebPackageDeploy"
+                    },
+                    "properties": {
+                        "packageUri": "[parameters('webSiteSettings').dataPacketPackageuri]",
+                        "dbType": "None",
+                        "connectionString": "",
+                        "setParameters": {
+                            "IIS Web Application Name": "[parameters('webSiteSettings').dataPacketWebSiteName]"
+                        }
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "name": "Appsettings",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/Extensions/MSDeploy')]"
+                    ],
+                    "properties": {
+                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('webSiteSettings').dataPacketAppInsights)).InstrumentationKey]",
+                        "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
+                        "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
+                        "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
+                        "AzureAd:CallbackPath": "/signin-oidc",
+                        "IotHub:HostName": "[parameters('iotHubHostName')]",
+                        "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubHostName'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
+                        "CosmosDb:Endpoint": "[parameters('documentDbEndpoint')]",
+                        "CosmosDb:AuthKey": "[parameters('cosmosDbprimaryMasterKey')]",
+                        "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
+                        "CosmosDb:Collections:Templates": "[parameters('webSiteSettings').cosmosDbColTemplateName]",
+                        "CosmosDb:Collections:Messages": "[parameters('webSiteSettings').cosmosDbColMessagesName]",
+                        "CosmosDb:Collections:Groups": "[parameters('webSiteSettings').cosmosDbColGroupsName]",
+                        "CosmosDb:TemplatesBase": "https://msiotsolutiondev.blob.core.windows.net/cosmosdbtemplates/"
+                    }
+                }
+            ]
+        },
+        {
+            "apiVersion": "[parameters('webSiteSettings').webAppApiVersion]",
+            "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]",
+            "type": "Microsoft.Web/sites",
+            "location": "[parameters('webSiteSettings').location]",
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]": "Resource",
+                "displayName": "Website"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",
+                
+                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)]"
+            ],
+            "properties": {
+                "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('webSiteSettings').webAppHostingPlanName)]"
+            },
+            "resources": [
+                {
+                    "name": "MSDeploy",
+                    "type": "extensions",
+                    "location": "[parameters('webSiteSettings').location]",
+                    "apiVersion": "[parameters('webSiteSettings').webAppApiVersion]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]"
+                    ],
+                    "tags": {
+                        "displayName": "WebPackageDeploy"
+                    },
+                    "properties": {
+                        "packageUri": "[parameters('webSiteSettings').deviceManagementPortalPackageuri]",
+                        "dbType": "None",
+                        "connectionString": "",
+                        "setParameters": {
+                            "IIS Web Application Name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]"
+                        }
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('webSiteSettings').webAppApiVersion]",
+                    "name": "Appsettings",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/Extensions/MSDeploy')]"
+                    ],
+                    "properties": {
+                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)).InstrumentationKey]",
+                        "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
+                        "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
+                        "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
+                        "AzureAd:CallbackPath": "/signin-oidc",
+                        "IotHub:HostName": "[parameters('iotHubHostName')]",
+                        "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubHostName'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
+                        "IotHub:CacheRefreshMinutes": "1",
+                        "CosmosDb:Endpoint": "[parameters('documentDbEndpoint')]",
+                        "CosmosDb:AuthKey": "[parameters('cosmosDbprimaryMasterKey')]",
+                        "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
+                        "NotificationHub:ConnectionString": "[parameters('notificationHubConnectionString')]"
+                    }
+                }
+            ]
+        }
+    ],
+    "outputs": {
+        "dataPacketDesignerUrl": {
+            "type": "string",
+            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+        },
+        "deviceManagementPortalUrl": {
+            "type": "string",
+            "value": "[concat('https://', parameters('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+        }
+    }
+}
