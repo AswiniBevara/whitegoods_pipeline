@@ -144,6 +144,18 @@
                 "description": "specify the region for oms workspace, if you have selected solution type as without monitoring this is optional"
             }
         },
+        "omsLogAnalyticsSku": {
+            "type": "string",
+            "defaultValue": "free",
+            "allowedValues": [
+                "free",
+                "standalone",
+                "pernode"
+            ],
+            "metadata": {
+                "description": "specify the oms automation account sku type, if you have selected solution type as without monitoring this is optional"
+            }
+        },
         "omsAutomationRegion": {
             "type": "string",
             "defaultValue": "eastus2",
@@ -184,7 +196,8 @@
             "webAppApiVersion": "2015-08-01",
             "omsApiVersion": "2015-03-20",
             "omsDataApiVersion": "2015-11-01-preview",
-            "trafficManagerApiVersion": "2017-05-01"
+            "trafficManagerApiVersion": "2017-05-01",
+            "omsEnableApiVersion": "2015-07-01"
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
@@ -203,6 +216,8 @@
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('webSiteplan', variables('suffix'))]",
             "webAppSkuName": "F1",
+            "iotHubName": "[variables('iotHubSettings').iotHubName]",
+            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
             "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
             "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
             "dataPacketWebSiteNameDr": "[concat('datapacketDr', variables('suffix'))]",
@@ -212,6 +227,8 @@
             "cosmosDbColTemplateName": "Templates",
             "cosmosDbColMessagesName": "Messages",
             "cosmosDbColGroupsName": "Groups",
+            "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
+            "notificationHubName": "[variables('notificationHub').notificationHubName]",
             "appInsightsLocation": "[parameters('appInsightsLocation')]",
             "dataPacketAppInsights": "[concat('dataPackAppInsights', variables('suffix'))]",
             "deviceManagementAppInsights": "[concat('devMngAppInsights', variables('suffix'))]"
@@ -227,6 +244,7 @@
             "omsWorkspaceName": "[concat('omsws', variables('suffix'))]",
             "omsWorkspaceRegion": "[parameters('omsWorkspaceRegion')]",
             "omsAutomationRegion": "[parameters('omsAutomationRegion')]",
+            "omsLogAnalyticsSku": "[parameters('omsLogAnalyticsSku')]",
             "omsAutomationAccountName": "[concat('autoupdate', variables('suffix'))]",
             "dataRetention": "[parameters('dataRetention')]"
         },
@@ -254,7 +272,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeMzIs1YaxF4zcLdxe1-C9pr2z2m1ks5a4X75wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeMVR6Fq4AiDmDIl3ffdCKHvhbKqDks5a4akowA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -295,11 +313,13 @@
             "type": "Microsoft.Resources/deployments",
             "name": "DocumentDB",
             "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [],
+            "dependsOn": [
+                "OMSWorkSpace"
+            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeCL7SHVIJB-7hg3C2EWP_oZZOuHOks5a4X3awA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeOm-vjn1mh-ecXbAJ4ZjPZe-A2Raks5a4cmOwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -308,6 +328,9 @@
                     },
                     "apiVersions": {
                         "value": "[variables('apiVersions')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
                     }
                 }
             }
@@ -345,7 +368,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeBr7r_7NMh8HFkjL2FTG3Mmxhl1Yks5a4X2BwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeDLrS5Efv-9QsAMTtVt76Nxhu8nnks5a4cvzwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -355,20 +378,23 @@
                     "webSiteSettings": {
                         "value": "[variables('webSiteSettings')]"
                     },
-                    "documentDbEndpoint": {
-                        "type": "[reference('DocumentDB').outputs.cosmosDBAccountEndPoint.value]"
-                    },
-                    "cosmosDbprimaryMasterKey": {
-                        "type": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
-                    },
-                    "iotHubHostName": {
-                        "type": "[reference('IotHub').outputs.iotHubHostName.value]"
+                    "iotHubEndPoint": {
+                        "value": "[reference('IotHub').outputs.iotHubEndPoint.value]"
                     },
                     "iotHubPrimaryKey": {
-                        "type": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
+                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
+                    },
+                    "cosmosDBAccountEndPoint": {
+                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountEndPoint.value]"
+                    },
+                    "cosmosDBAccountKey": {
+                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
                     },
                     "notificationHubConnectionString": {
-                        "type": "[reference('NotificataionHub').outputs.notificationHubConnectionString.value]"
+                        "value": "[reference('NotificataionHub').outputs.notificationHubConnectionString.value]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
                     }
                 }
             }
