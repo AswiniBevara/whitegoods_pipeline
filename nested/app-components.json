@@ -119,7 +119,7 @@
             ]
         },
         {
-            "apiVersion": "[parameters('webSiteSettings').webAppApiVersion]",
+            "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
             "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('webSiteSettings').location]",
@@ -140,7 +140,7 @@
                     "name": "MSDeploy",
                     "type": "extensions",
                     "location": "[parameters('webSiteSettings').location]",
-                    "apiVersion": "[parameters('webSiteSettings').webAppApiVersion]",
+                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]"
                     ],
@@ -157,7 +157,7 @@
                     }
                 },
                 {
-                    "apiVersion": "[parameters('webSiteSettings').webAppApiVersion]",
+                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "name": "Appsettings",
                     "type": "config",
                     "dependsOn": [
