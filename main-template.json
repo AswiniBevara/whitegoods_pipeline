@@ -98,6 +98,7 @@
         },
         "readRegionLocation": {
             "type": "string",
+            "defaultValue": "",
             "metadata": {
               "description": "The location of the read region of the cosmos database account. For Azure Gov, China, and Germany, the allowed values are different."
             },
@@ -240,7 +241,7 @@
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "deploymentApiVersion": "2016-02-01",
-        "baseUrl": "https://projectiot.blob.core.windows.net/emsstacks/"
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/staging/"
     },
     "resources": [
         {
@@ -253,7 +254,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeBQ12gs9w4I1zksCayBiodaGbdFuks5a4X3cwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeMzIs1YaxF4zcLdxe1-C9pr2z2m1ks5a4X75wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
