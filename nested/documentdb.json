@@ -33,9 +33,6 @@
                     }
                 ]
             },
-            "tags": {
-                "defaultExperience": "DocumentDB"
-            },
             "resources": [
                 {
                     "name": "Microsoft.Insights/service",
@@ -77,8 +74,11 @@
                         ]
                     }
                 }
-            ]
-        }
+            ],    
+            "tags": {
+                "defaultExperience": "DocumentDB"
+            }
+        }   
     ],
     "outputs": {
         "cosmosDBAccountName": {
