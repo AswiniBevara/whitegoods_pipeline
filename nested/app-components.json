@@ -7,9 +7,6 @@
         },
         "apiVersions": {
             "type": "object"
-        },
-        "notificationHubConnectionString": {
-            "type": "string"
         }
     },
     "variables": {},
