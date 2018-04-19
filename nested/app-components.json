@@ -8,9 +8,6 @@
         "apiVersions": {
             "type": "object"
         },
-        "documentDbEndpoint": {
-            "type": "string"
-        },
         "cosmosDbprimaryMasterKey": {
             "type": "string"
         },
@@ -122,7 +119,7 @@
                         "AzureAd:CallbackPath": "/signin-oidc",
                         "IotHub:HostName": "[parameters('iotHubHostName')]",
                         "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubHostName'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
-                        "CosmosDb:Endpoint": "[parameters('documentDbEndpoint')]",
+                        "CosmosDb:Endpoint": "[reference(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName)).documentEndpoint]",                                                
                         "CosmosDb:AuthKey": "[parameters('cosmosDbprimaryMasterKey')]",
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
                         "CosmosDb:Collections:Templates": "[parameters('webSiteSettings').cosmosDbColTemplateName]",
@@ -143,8 +140,7 @@
                 "displayName": "Website"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",
-                
+                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",    
                 "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)]"
             ],
             "properties": {
@@ -189,7 +185,7 @@
                         "IotHub:HostName": "[parameters('iotHubHostName')]",
                         "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubHostName'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
                         "IotHub:CacheRefreshMinutes": "1",
-                        "CosmosDb:Endpoint": "[parameters('documentDbEndpoint')]",
+                        "CosmosDb:Endpoint": "[reference(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('webSiteSettings').cosmosDbAccountName)).documentEndpoint]",                        
                         "CosmosDb:AuthKey": "[parameters('cosmosDbprimaryMasterKey')]",
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
                         "NotificationHub:ConnectionString": "[parameters('notificationHubConnectionString')]"
