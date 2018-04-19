@@ -39,7 +39,7 @@
                     "type": "providers/diagnosticSettings",
                     "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
                     "dependsOn": [
-                        "[concat('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName)]"
+                        "[concat('Microsoft.DocumentDb/databaseAccounts/', parameters('documentDbSettings').cosmosDbAccountName)]"
                     ],
                     "properties": {
                         "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
