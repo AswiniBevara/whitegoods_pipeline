@@ -35,7 +35,7 @@
             "type": "Microsoft.Insights/components",
             "location": "[parameters('webSiteSettings').appInsightsLocation]",
             "tags": {
-                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]": "Resource",
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]": "Resource",
                 "displayName": "AppInsightsComponent"
             },
             "properties": {
