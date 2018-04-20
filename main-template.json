@@ -11,6 +11,13 @@
         "clientSecret": {
             "type": "string"
         },
+        "locationDr": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "specify the region for webapps desaster recovary it should be different of resource group region"
+            }
+        },
         "iotHubSkuName": {
             "type": "string",
             "defaultValue": "F1",
@@ -185,6 +192,19 @@
             "metadata": {
                 "description": "specify the oms retention period in days, if you have selected solution type as without monitoring this is optional"
             }
+        },
+        "trafficRoutingMethod": {
+            "type": "string",
+            "defaultValue": "Priority",
+            "allowedValues": [
+                "Performance",
+                "Weighted",
+                "Geographic",
+                "Priority"
+            ],
+            "metadata": {
+                "description": "specify the traffic routing method for traffic manager"
+            }
         }
     },
     "variables": {
@@ -208,13 +228,14 @@
         },
         "webSiteSettings": {
             "location": "[variables('location')]",
-            "locationDr": "[variables('location')]",
+            "locationDr": "[parameters('locationDr')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
             "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('webSiteplan', variables('suffix'))]",
+            "webAppHostingPlanNameDr": "[concat('webSiteplanDr', variables('suffix'))]",
             "webAppSkuName": "F1",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
@@ -230,7 +251,9 @@
             "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
             "notificationHubName": "[variables('notificationHub').notificationHubName]",
             "appInsightsLocation": "[parameters('appInsightsLocation')]",
+            "dataPacketAppInsightsDr": "[concat('dataPackAppInsightsDr', variables('suffix'))]", 
             "dataPacketAppInsights": "[concat('dataPackAppInsights', variables('suffix'))]",
+            "deviceManagementAppInsightsDr": "[concat('devMngAppInsightsDr', variables('suffix'))]",
             "deviceManagementAppInsights": "[concat('devMngAppInsights', variables('suffix'))]"
         },
         "notificationHub": {
@@ -247,6 +270,11 @@
             "omsLogAnalyticsSku": "[parameters('omsLogAnalyticsSku')]",
             "omsAutomationAccountName": "[concat('autoupdate', variables('suffix'))]",
             "dataRetention": "[parameters('dataRetention')]"
+        },
+        "trafficManagerSettings": {
+            "trafficManagerName": "[concat('datapacket', variables('suffix'))]",
+            "trafficManagerName1": "[concat('devicemanagement', variables('suffix'))]",
+            "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]"
         },
         "iotHubSettings": {
             "location": "[variables('location')]",
@@ -368,7 +396,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeDLrS5Efv-9QsAMTtVt76Nxhu8nnks5a4cvzwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeP0q_CqI2M7kiU5b2DjbpjEXwh0pks5a4reIwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -395,6 +423,76 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "AppComponentsDr",
+            "apiVersion": "[variables('deploymentApiVersion')]",
+            "dependsOn": [
+                "IotHub",
+                "DocumentDB",
+                "NotificataionHub"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeLyYI10HJtzlIWkTnIzllyZHxHgnks5a4reKwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    },
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "iotHubEndPoint": {
+                        "value": "[reference('IotHub').outputs.iotHubEndPoint.value]"
+                    },
+                    "iotHubPrimaryKey": {
+                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
+                    },
+                    "cosmosDBAccountEndPoint": {
+                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountEndPoint.value]"
+                    },
+                    "cosmosDBAccountKey": {
+                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
+                    },
+                    "notificationHubConnectionString": {
+                        "value": "[reference('NotificataionHub').outputs.notificationHubConnectionString.value]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "TrafficManagerApps",
+            "apiVersion": "[variables('deploymentApiVersion')]",
+            "dependsOn": [
+                "AppComponents",
+                "AppComponentsDr"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-managerapps.json','?token=AYpAeILijnnbhKS09Hq6jjXzrtgQP18sks5a4reNwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    },
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
                     }
                 }
             }
