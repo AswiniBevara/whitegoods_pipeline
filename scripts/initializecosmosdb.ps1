@@ -1,4 +1,4 @@
-workflow container {
+workflow Start-AzureAutomationRunbook{
     param(
        
         [Parameter(Mandatory=$true)]
@@ -22,7 +22,7 @@ workflow container {
         $deviceManagementUri
       
     )
-    InlineScript{
+    
         $tenantId = $Using:tenantId
         $clientId = $Using:clientId
         $clientSecret = $Using:clientSecret
@@ -83,5 +83,5 @@ workflow container {
             # This templates will be loaded in the data packet designer
             #####################################################################
             $cosmosDBInitResult=CosmosDbInit $datapacketUri $accessToken  
-    }    
+      
 }
