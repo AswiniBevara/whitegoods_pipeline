@@ -1,4 +1,4 @@
-workflow sampletest{
+workflow  Start-AzureAutomationRunbook{
     param(
        
         [Parameter(Mandatory=$true)]
@@ -31,7 +31,7 @@ workflow sampletest{
         $datapacketUri = $Using:datapacketUri
         $deviceManagementUri = $Using:deviceManagementUri
 
-        Set-ExecutionPolicy -ExecutionPolicy Unrestricted  -Force
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
         $azureAccountName ="komalio@sysgaininc.onmicrosoft.com"
         $azurePassword = ConvertTo-SecureString "kom@limc@15" -AsPlainText -Force
         $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
