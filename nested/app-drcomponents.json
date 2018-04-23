@@ -140,6 +140,7 @@
                     "apiVersion": "2015-07-01",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
                     ],
                     "properties": {
@@ -169,7 +170,10 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanNameDr)]",
-                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsightsDr)]"
+                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsightsDr)]",
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]",
@@ -225,6 +229,7 @@
                     "apiVersion": "2015-07-01",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]",
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/config/appsettings')]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/extensions/MSDeploy')]"
                     ],
                     "properties": {
