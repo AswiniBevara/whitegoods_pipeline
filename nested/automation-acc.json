@@ -1,0 +1,74 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automationSettings": {
+            "type": "object"
+        },
+        "apiVersions": {
+            "type": "object"
+        },
+        "datapacketUri": {
+            "type": "string"
+        },
+        "deviceManagementUri": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('automationSettings').automationAccountName]",
+            "type": "Microsoft.Automation/automationAccounts",
+            "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+            "location": "[parameters('automationSettings').automationLocation]",
+            "properties": {
+                "sku": {
+                    "name": "[parameters('automationSettings').automationSku]"
+                }
+            },
+            "resources": [
+                {
+                    "name": "[parameters('automationSettings').runbookName]",
+                    "type": "runbooks",
+                    "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+                    "location": "[parameters('automationSettings').automationLocation]",
+                    "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('automationSettings').automationAccountName)]"
+                    ],
+                    "properties": {
+                        "runbookType": "Script",
+                        "logProgress": "false",
+                        "logVerbose": "false",
+                        "description": null,
+                        "publishContentLink": {
+                            "uri": "[parameters('automationSettings').runbookUri]",
+                            "version": "1.0.0.0"
+                        }
+                    }
+                },
+                {
+                    "name": "[concat(parameters('automationSettings').automationAccountName, '/', parameters('automationSettings').sessionId)]",
+                    "type": "Microsoft.Automation/automationAccounts/jobs",
+                    "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+                    "location": "[parameters('automationSettings').automationLocation]",
+                    "properties": {
+                        "runbook": {
+                            "name": "[parameters('automationSettings').runbookName]"
+                        },
+                        "parameters": {
+                            "tenantId": "[parameters('automationSettings').tenantId]",
+                            "clientId": "[parameters('automationSettings').clientId]",
+                            "clientSecret": "[parameters('automationSettings').clientSecret]",
+                            "datapacketUri": "[parameters('datapacketUri')]",
+                            "deviceManagementUri": "[parameters('deviceManagementUri')]"
+                        }
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('automationSettings').automationAccountName)]"
+                    ]
+                }
+            ]
+        }
+    ]
+}
