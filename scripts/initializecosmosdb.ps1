@@ -1,32 +1,50 @@
-#$tenantId="dcf9e4d3-f44a-4c28-be12-8245c0d35668"                
-#$clientId="c79013a9-b1d8-4877-9f21-4a454ca5d128"                
-#$clientSecret="jZaJXWgABo2PV7E/eADDe/SyI3jgJ3/jCi1np4M/LWs="   
-#datapacketUri="https://datapacketdqdpoolvbrlfs.azurewebsites.net"														#Update this Value
-#deviceManagementUri="https://devicemanagementdqdpoolvbrlfs.azurewebsites.net"											#Update this Value
-param(
-    [string] $tenantId = "$1",
-    [string] $clientId = "$2",
-    [string] $clientSecret = "$3",
-    [string] $datapacketUri = "$4",
-    [string] $deviceManagementUri = "$5"
+workflow container {
+    param(
+       
+        [Parameter(Mandatory=$true)]
+        [string]
+        $tenantId,
+
+        [Parameter(Mandatory=$true)]
+        [string]
+        $clientId,
+
+        [Parameter(Mandatory=$true)]
+        [string]
+        $clientSecret,
+
+        [Parameter(Mandatory=$true)]
+        [string]
+        $datapacketUri,
+
+        [Parameter(Mandatory=$true)]
+        [string]
+        $deviceManagementUri
+      
     )
-    Install-Module AzureRM -Force
-    Import-Module AzureRM 
-    Install-Module AzureADPreview -Force
-    Import-Module AzureADPreview 
-    Login-AzureRmAccount 
-    Select-AzureRmSubscription -SubscriptionName "Sysgain-Backup" -TenantID $tenantId
+    InlineScript{
+        $tenantId = $Using:tenantId
+        $clientId = $Using:clientId
+        $clientSecret = $Using:clientSecret
+        $datapacketUri = $Using:datapacketUri
+        $deviceManagementUri = $Using:deviceManagementUri
+
+        Set-ExecutionPolicy -ExecutionPolicy Unrestricted  -Force
+        $azureAccountName ="komalio@sysgaininc.onmicrosoft.com"
+        $azurePassword = ConvertTo-SecureString "kom@limc@15" -AsPlainText -Force
+        $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
+        Login-AzureRmAccount -Credential $psCred 
+        Select-AzureRmSubscription -SubscriptionName "Sysgain-Backup" -TenantID $tenantId
     function Get-AccessTokenAPI{
         Write-Host "`nRequesting access token.." -ForegroundColor Green
     
         $tokenParams = @{
           client_id=$clientId;
-            client_secret=$clientSecret;
+          client_secret=$clientSecret;
           resource=$clientId;
           grant_type='client_credentials';
           scope='openid'
         }
-    
         $baseUri="https://login.microsoftonline.com/"+$tenantId+"/oauth2/token"
         $response=Invoke-RestMethod -Uri $baseUri -Method POST -Body $tokenParams
      
@@ -65,3 +83,5 @@ param(
             # This templates will be loaded in the data packet designer
             #####################################################################
             $cosmosDBInitResult=CosmosDbInit $datapacketUri $accessToken  
+    }    
+}
