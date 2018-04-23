@@ -289,7 +289,8 @@
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "suiteType": "RemoteMonitoring",
             "telemetryCGName": "telemetrycg",
-            "iotHubKeyName": "iothubowner"
+            "iotHubKeyName": "iothubowner",
+            "cosmosDBMessageCollectionName": "Messages"
         },
         "trafficManagerSettings": {
             "trafficManagerName": "[concat('datapacket', variables('suffix'))]",
