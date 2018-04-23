@@ -160,7 +160,7 @@
         },
         {
             "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
-            "name": "[parameters('webSiteSettings').dataPacketWebSiteNameDr]",
+            "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('webSiteSettings').locationDr]",
             "tags": {
@@ -172,7 +172,7 @@
                 "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)]"
             ],
             "properties": {
-                "name": "[parameters('webSiteSettings').dataPacketWebSiteNameDr]",
+                "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('webSiteSettings').webAppHostingPlanNameDr)]"
             },
             "resources": [
@@ -182,7 +182,7 @@
                     "location": "[parameters('webSiteSettings').locationDr]",
                     "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteNameDr)]"
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]"
                     ],
                     "tags": {
                         "displayName": "WebPackageDeploy"
@@ -192,7 +192,7 @@
                         "dbType": "None",
                         "connectionString": "",
                         "setParameters": {
-                            "IIS Web Application Name": "[parameters('webSiteSettings').dataPacketWebSiteNameDr]"
+                            "IIS Web Application Name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]"
                         }
                     }
                 },
@@ -201,8 +201,8 @@
                     "name": "Appsettings",
                     "type": "config",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/Extensions/MSDeploy')]"
+                        "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
                         "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)).InstrumentationKey]",
@@ -224,8 +224,8 @@
                     "type": "providers/diagnosticSettings",
                     "apiVersion": "2015-07-01",
                     "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]",
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/extensions/MSDeploy')]"
                     ],
                     "properties": {
                         "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
@@ -247,11 +247,11 @@
     "outputs": {
         "dataPacketDesignerUrl": {
             "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteNameDrDr,'.azurewebsites.net')]"
+            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+            "value": "[concat('https://', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr,'.azurewebsites.net')]"
         }
     }
 }
