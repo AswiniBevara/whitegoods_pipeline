@@ -82,7 +82,7 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanNameDr)]",
-                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').dataPacketAppInsights)]"
+                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').dataPacketAppInsightsDr)]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').dataPacketWebSiteNameDr]",
@@ -169,7 +169,7 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanNameDr)]",
-                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)]"
+                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsightsDr)]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]",
