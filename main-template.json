@@ -226,7 +226,8 @@
             "omsDataApiVersion": "2015-11-01-preview",
             "trafficManagerApiVersion": "2017-05-01",
             "omsEnableApiVersion": "2015-07-01",
-            "automationApiVersion": "2015-10-31"
+            "automationApiVersion": "2015-10-31",
+            "streamAnalyticsApiVersion": "2015-10-01"
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
@@ -279,6 +280,16 @@
             "omsLogAnalyticsSku": "[parameters('omsLogAnalyticsSku')]",
             "omsAutomationAccountName": "[concat('autoupdate', variables('suffix'))]",
             "dataRetention": "[parameters('dataRetention')]"
+        },
+        "streamAnalytics": {
+            "location": "[variables('location')]",
+            "streamAnalyticsjobname": "[concat('stremanalyticsjob', variables('suffix'))]",
+            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
+            "cosmosDbName": "MSIoT",
+            "iotHubName": "[variables('iotHubSettings').iotHubName]",
+            "suiteType": "RemoteMonitoring",
+            "telemetryCGName": "telemetrycg",
+            "iotHubKeyName": "iothubowner"
         },
         "trafficManagerSettings": {
             "trafficManagerName": "[concat('datapacket', variables('suffix'))]",
@@ -367,7 +378,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAePdlMaHs_1hKmtDMRGUsuDcgJ26Zks5a5wWawA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeBmaFM5NW5wNE5TMD212wM-gOA2oks5a5xt-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -382,6 +393,35 @@
                     },
                     "deviceManagementUri": {
                         "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "StreamAnalytics",
+            "apiVersion": "[variables('deploymentApiVersion')]",
+            "dependsOn": [
+                 "RunBook"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeNSeOTl9Zw18qb5mbKdfy1PgIio-ks5a5xRtwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "streamAnalytics": {
+                        "value": "[variables('streamAnalytics')]"
+                    },
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    },
+                    "iotHubPrimaryKey": {
+                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
+                    },
+                    "cosmosDBAccountKey": {
+                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
                     }
                 }
             }
