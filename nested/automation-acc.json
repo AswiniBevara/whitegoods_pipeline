@@ -65,7 +65,8 @@
                         }
                     },
                     "dependsOn": [
-                        "[concat('Microsoft.Automation/automationAccounts/', parameters('automationSettings').automationAccountName)]"
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('automationSettings').automationAccountName)]",
+                        "[concat('Microsoft.Automation/automationAccounts/',parameters('automationSettings').automationAccountName, '/runbooks/', parameters('automationSettings').runbookName)]"
                     ]
                 }
             ]
