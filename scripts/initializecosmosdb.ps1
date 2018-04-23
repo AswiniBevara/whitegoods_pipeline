@@ -22,6 +22,8 @@ workflow sampletest{
         $deviceManagementUri
       
     )
+
+    InlineScript{
     
         $tenantId = $Using:tenantId
         $clientId = $Using:clientId
@@ -83,5 +85,5 @@ workflow sampletest{
             # This templates will be loaded in the data packet designer
             #####################################################################
             $cosmosDBInitResult=CosmosDbInit $datapacketUri $accessToken  
-      
+    }
 }
