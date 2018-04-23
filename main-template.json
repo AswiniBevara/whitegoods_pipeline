@@ -30,6 +30,14 @@
                 "description": "One of the supported SKUs: F1, S1 or S2"
             }
         },
+        "sessionId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "type": "sessionid",
+                "description": "provide the guid prefix for the runbook job to be created"
+            }
+        },
         "capacityUnits": {
             "type": "int",
             "minValue": 1,
@@ -217,7 +225,8 @@
             "omsApiVersion": "2015-03-20",
             "omsDataApiVersion": "2015-11-01-preview",
             "trafficManagerApiVersion": "2017-05-01",
-            "omsEnableApiVersion": "2015-07-01"
+            "omsEnableApiVersion": "2015-07-01",
+            "automationApiVersion": "2015-10-31"
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
@@ -275,6 +284,17 @@
             "trafficManagerName": "[concat('datapacket', variables('suffix'))]",
             "trafficManagerName1": "[concat('devicemanagement', variables('suffix'))]",
             "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]"
+        },
+        "automationSettings": {
+            "automationAccountName": "[concat('collectionscreate', variables('suffix'))]",
+            "automationLocation": "eastus2",
+            "automationSku": "Free",
+            "runbookName": "container",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeLWAKS-B4zFsUCTvYEGTaWvsUQUzks5a5v5gwA%3D%3D')]",
+            "sessionId": "[parameters('sessionId')]",
+            "tenantId": "[parameters('tenantId')]",
+            "clientId": "[parameters('clientId')]",
+            "clientSecret": "[parameters('clientSecret')]"
         },
         "iotHubSettings": {
             "location": "[variables('location')]",
@@ -339,6 +359,35 @@
         },
         {
             "type": "Microsoft.Resources/deployments",
+            "name": "RunBook",
+            "apiVersion": "[variables('deploymentApiVersion')]",
+            "dependsOn": [
+                "AppComponents"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAePdlMaHs_1hKmtDMRGUsuDcgJ26Zks5a5wWawA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "automationSettings": {
+                        "value": "[variables('automationSettings')]"
+                    },
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    },
+                    "datapacketUri": {
+                        "value": "[reference('AppComponents').outputs.dataPacketDesignerUrl.value]"
+                    },
+                    "deviceManagementUri": {
+                        "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
             "name": "DocumentDB",
             "apiVersion": "[variables('deploymentApiVersion')]",
             "dependsOn": [
@@ -396,7 +445,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeP0q_CqI2M7kiU5b2DjbpjEXwh0pks5a4reIwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeBQCzxAAG-ZZnjciSVQ22sdM9SMPks5a5uqiwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -439,7 +488,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeLyYI10HJtzlIWkTnIzllyZHxHgnks5a4reKwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeKo9uNncsckawDHiG0yRiUvJXmGHks5a5wS4wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -481,7 +530,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-managerapps.json','?token=AYpAeILijnnbhKS09Hq6jjXzrtgQP18sks5a4reNwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeILijnnbhKS09Hq6jjXzrtgQP18sks5a4reNwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
