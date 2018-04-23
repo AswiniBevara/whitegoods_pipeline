@@ -1,4 +1,4 @@
-workflow Start-AzureAutomationRunbook{
+workflow sampletest{
     param(
        
         [Parameter(Mandatory=$true)]
