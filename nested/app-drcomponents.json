@@ -173,7 +173,8 @@
                 "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsightsDr)]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]",
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/providers/diagnosticSettings','/Microsoft.Insights/service')]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]",
