@@ -115,35 +115,35 @@
             "type": "string",
             "defaultValue": "",
             "metadata": {
-              "description": "The location of the read region of the cosmos database account. For Azure Gov, China, and Germany, the allowed values are different."
+                "description": "The location of the read region of the cosmos database account. For Azure Gov, China, and Germany, the allowed values are different."
             },
             "allowedValues": [
-              "eastasia",
-              "southeastasia",
-              "centralus",
-              "eastus",
-              "eastus2",
-              "westus",
-              "northcentralus",
-              "southcentralus",
-              "northeurope",
-              "westeurope",
-              "japanwest",
-              "japaneast",
-              "brazilsouth",
-              "australiaeast",
-              "australiasoutheast",
-              "southindia",
-              "centralindia",
-              "westindia",
-              "canadacentral",
-              "canadaeast",
-              "uksouth",
-              "ukwest",
-              "westcentralus",
-              "westus2",
-              "koreacentral",
-              "koreasouth"
+                "eastasia",
+                "southeastasia",
+                "centralus",
+                "eastus",
+                "eastus2",
+                "westus",
+                "northcentralus",
+                "southcentralus",
+                "northeurope",
+                "westeurope",
+                "japanwest",
+                "japaneast",
+                "brazilsouth",
+                "australiaeast",
+                "australiasoutheast",
+                "southindia",
+                "centralindia",
+                "westindia",
+                "canadacentral",
+                "canadaeast",
+                "uksouth",
+                "ukwest",
+                "westcentralus",
+                "westus2",
+                "koreacentral",
+                "koreasouth"
             ]
         },
         "omsWorkspaceRegion": {
@@ -156,7 +156,7 @@
                 "australiasoutheast"
             ],
             "metadata": {
-                "description": "specify the region for oms workspace, if you have selected solution type as without monitoring this is optional"
+                "description": "specify the region for oms workspace"
             }
         },
         "omsLogAnalyticsSku": {
@@ -168,7 +168,7 @@
                 "pernode"
             ],
             "metadata": {
-                "description": "specify the oms automation account sku type, if you have selected solution type as without monitoring this is optional"
+                "description": "specify the oms automation account sku type"
             }
         },
         "omsAutomationRegion": {
@@ -213,6 +213,18 @@
             "metadata": {
                 "description": "specify the traffic routing method for traffic manager"
             }
+        },
+        "timeSeriesInsightslocation": {
+            "type": "string",
+            "defaultValue": "East US",
+            "allowedValues": [
+                "East US",
+                "East US2",
+                "North Europe",
+                "West Europe",
+                "West US"
+            ],
+            "metadata": "specify the region for time series insights"
         }
     },
     "variables": {
@@ -227,7 +239,8 @@
             "trafficManagerApiVersion": "2017-05-01",
             "omsEnableApiVersion": "2015-07-01",
             "automationApiVersion": "2015-10-31",
-            "streamAnalyticsApiVersion": "2015-10-01"
+            "streamAnalyticsApiVersion": "2015-10-01",
+            "timeSeriesInsightsApiVersion": "2017-11-15"
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
@@ -261,7 +274,7 @@
             "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
             "notificationHubName": "[variables('notificationHub').notificationHubName]",
             "appInsightsLocation": "[parameters('appInsightsLocation')]",
-            "dataPacketAppInsightsDr": "[concat('dataPackAppInsightsDr', variables('suffix'))]", 
+            "dataPacketAppInsightsDr": "[concat('dataPackAppInsightsDr', variables('suffix'))]",
             "dataPacketAppInsights": "[concat('dataPackAppInsights', variables('suffix'))]",
             "deviceManagementAppInsightsDr": "[concat('devMngAppInsightsDr', variables('suffix'))]",
             "deviceManagementAppInsights": "[concat('devMngAppInsights', variables('suffix'))]"
@@ -280,6 +293,18 @@
             "omsLogAnalyticsSku": "[parameters('omsLogAnalyticsSku')]",
             "omsAutomationAccountName": "[concat('autoupdate', variables('suffix'))]",
             "dataRetention": "[parameters('dataRetention')]"
+        },
+        "timeSeriesInsights": {
+            "timeSeriesInsightslocation": "[parameters('timeSeriesInsightslocation')]",
+            "timeSeriesInsightsName": "[concat('timeseries', variables('suffix'))]",
+            "dataRetentionTime": "P31D",
+            "iotHubName": "[variables('iotHubSettings').iotHubName]",
+            "keyName": "iothubowner",
+            "skuCapacity": 1,
+            "skuSize": "S1",
+            "skuTier": "Standard",
+            "skuName": "S1",
+            "consumerGroupName": "$Default"
         },
         "streamAnalytics": {
             "location": "[variables('location')]",
@@ -403,7 +428,7 @@
             "name": "StreamAnalytics",
             "apiVersion": "[variables('deploymentApiVersion')]",
             "dependsOn": [
-                 "RunBook"
+                "RunBook"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -529,7 +554,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeKo9uNncsckawDHiG0yRiUvJXmGHks5a5wS4wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeApyNB7FqLAYhJEs70-kh0YFGh22ks5a6ZWawA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -583,6 +608,32 @@
                     },
                     "trafficManagerSettings": {
                         "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "TimeSeriesInsights",
+            "apiVersion": "[variables('deploymentApiVersion')]",
+            "dependsOn": [
+                "IotHub"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeOCDebvaOgs9WwNZkHzKdKqxypqYks5a6YmTwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "omsSettingstimeSeriesInsights": {
+                        "value": "[variables('timeSeriesInsights')]"
+                    },
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    },
+                    "iotHubPrimaryKey": {
+                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
                     }
                 }
             }
