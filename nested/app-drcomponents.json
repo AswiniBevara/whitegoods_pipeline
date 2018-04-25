@@ -135,7 +135,7 @@
                     }
                 },
                 {
-                    "name": "Insightsservice",
+                    "name": "Microsoft.Insights/service",
                     "type": "providers/diagnosticSettings",
                     "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
                     "dependsOn": [
