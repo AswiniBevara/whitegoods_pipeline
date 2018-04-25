@@ -90,12 +90,32 @@
             },
             "resources": [
                 {
+                    "apiVersion": "[parameters('apiVersions').webApiVersion]",
+                    "name": "web",
+                    "type": "config",
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]"
+                    ],
+                    "tags": {
+                        "displayName": "WebConfig"
+                    },
+                    "properties": {
+                        "phpVersion": "5.6",
+                        "netFrameworkVersion": "v4.5.2",
+                        "use32BitWorkerProcess": true,
+                        "webSocketsEnabled": true,
+                        "remoteDebuggingEnabled": true,
+                        "remoteDebuggingVersion": "VS2015"
+                    }
+                },
+                {
                     "name": "MSDeploy",
                     "type": "extensions",
                     "location": "[parameters('webSiteSettings').locationDr]",
                     "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteNameDr)]"
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/web')]"
                     ],
                     "tags": {
                         "displayName": "WebPackageDeploy"
@@ -135,14 +155,12 @@
                     }
                 },
                 {
-                    "name": "Microsoft.Insights/service",
+                    "name": "Insightsservice",
                     "type": "providers/diagnosticSettings",
                     "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/Extensions/MSDeploy')]"
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
                     ],
                     "properties": {
                         "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
@@ -171,7 +189,7 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanNameDr)]",
-                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsightsDr)]",
+                "[resourceId('Microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsightsDr)]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
