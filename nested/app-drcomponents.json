@@ -135,9 +135,9 @@
                     }
                 },
                 {
-                    "name": "Microsoft.Insights/service",
+                    "name": "Insightsservice",
                     "type": "providers/diagnosticSettings",
-                    "apiVersion": "2015-07-01",
+                    "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
@@ -174,7 +174,7 @@
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/providers/diagnosticSettings','/Microsoft.Insights/service')]"
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/providers/diagnosticSettings/Insightsservice')]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]",
@@ -227,7 +227,7 @@
                 {
                     "name": "Microsoft.Insights/service",
                     "type": "providers/diagnosticSettings",
-                    "apiVersion": "2015-07-01",
+                    "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/config/appsettings')]",
