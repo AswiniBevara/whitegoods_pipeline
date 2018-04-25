@@ -90,7 +90,7 @@
             },
             "resources": [
                 {
-                    "apiVersion": "[parameters('apiVersions').webApiVersion]",
+                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "name": "web",
                     "type": "config",
                     "dependsOn": [
