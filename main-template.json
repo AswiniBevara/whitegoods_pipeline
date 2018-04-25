@@ -554,7 +554,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeJBub3Tc9cVBYZ84MVY5FPURqBiDks5a6azRwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeL56AgnYKoRG426aJwd6j6O5EcsGks5a6cHEwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
