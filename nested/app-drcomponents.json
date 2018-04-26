@@ -115,7 +115,7 @@
                     "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
-                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/web')]"
+                        "[resourceId('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/web')]"
                     ],
                     "tags": {
                         "displayName": "WebPackageDeploy"
