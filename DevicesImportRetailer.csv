@@ -1,0 +1,6 @@
+DeviceId,ProductFamily,ProductName,ManufacturedDate,RetailerName,ShippedDate,RetailerRegion
+CoffeeMaker1,CoffeeMaker,Smart Coffee Maker1,9/28/2017,BestBuy,10/10/2017,Illinois
+CoffeeMaker2,CoffeeMaker,Smart Coffee Maker2,9/28/2017,BestBuy,10/10/2017,Illinois
+CoffeeMaker3,CoffeeMaker,Smart Coffee Maker3,9/28/2017,BestBuy,10/10/2017,Texas
+CoffeeMaker4,CoffeeMaker,Smart Coffee Maker4,9/28/2017,BestBuy,10/10/2017,Texas
+CoffeeMaker5,CoffeeMaker,Smart Coffee Maker5,9/28/2017,BestBuy,10/10/2017,Illinois
