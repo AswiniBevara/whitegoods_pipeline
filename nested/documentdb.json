@@ -2,7 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "documentDB": {
+        "apiVersions": {
+            "type": "object"
+        },
+        "documentDbSettings": {
             "type": "object"
         },
         "omsSettings": {
@@ -12,34 +15,31 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2015-04-08",
-            "kind": "GlobalDocumentDB",
-            "type": "Microsoft.DocumentDB/databaseAccounts",
-            "name": "[parameters('documentDB').DocDBAccountName]",
-            "location": "[parameters('documentDB').location]",
+            "apiVersion": "[parameters('apiVersions').documentDbApiVersion]",
+            "kind": "[parameters('documentDbSettings').kind]",
+            "type": "Microsoft.DocumentDb/databaseAccounts",
+            "name": "[parameters('documentDbSettings').cosmosDbAccountName]",
+            "location": "[parameters('documentDbSettings').location]",
             "properties": {
-                "name": "[parameters('documentDB').DocDBAccountName]",
-                "databaseAccountOfferType": "[parameters('documentDB').offerType]",
+                "databaseAccountOfferType": "[parameters('documentDbSettings').databaseAccountOfferType]",
                 "locations": [
                     {
-                        "locationName": "[parameters('documentDB').location]",
-                        "failoverPriority": 0,
-                        "id": "[concat(parameters('documentDB').DocDBAccountName, '-', parameters('documentDB').location)]"
+                        "locationName": "[parameters('documentDbSettings').location]",
+                        "failoverPriority": 0
                     },
                     {
-                        "locationName": "[parameters('documentDB').readRegionLocation]",
+                        "locationName": "[parameters('documentDbSettings').readRegionLocation]",
                         "failoverPriority": 1
                     }
-
                 ]
             },
             "resources": [
                 {
                     "name": "Microsoft.Insights/service",
                     "type": "providers/diagnosticSettings",
-                    "apiVersion": "[parameters('omsSettings').omsEnableApiVersion]",
+                    "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
                     "dependsOn": [
-                        "[concat('Microsoft.DocumentDb/databaseAccounts/', parameters('documentDB').DocDBAccountName)]"
+                        "[concat('Microsoft.DocumentDb/databaseAccounts/', parameters('documentDbSettings').cosmosDbAccountName)]"
                     ],
                     "properties": {
                         "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
@@ -78,12 +78,20 @@
             "tags": {
                 "defaultExperience": "DocumentDB"
             }
-        }
+        }   
     ],
     "outputs": {
-        "documentDBEndpoint":{
+        "cosmosDBAccountName": {
             "type": "string",
-            "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('documentDB').DocDBAccountName)).documentEndpoint]"
+            "value": "[parameters('documentDbSettings').cosmosDbAccountName]"
+        },
+        "cosmosDBAccountEndPoint": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName)).documentEndpoint]"
+        },
+        "cosmosDBAccountKey": {
+            "type": "string",
+            "value": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]"
         }
     }
 }
