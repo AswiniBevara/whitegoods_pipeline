@@ -327,7 +327,7 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeLWAKS-B4zFsUCTvYEGTaWvsUQUzks5a5v5gwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeOvphuzohkqjiWCcMlCnF5jRuaXSks5bBPeswA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -357,7 +357,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeMVR6Fq4AiDmDIl3ffdCKHvhbKqDks5a4akowA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeP-N85HsiNTIJJD07w6N4X98TkEfks5bBPYHwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -381,7 +381,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeCV80yrwg11AqZVr0BCoIVicmFFLks5a4X5HwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeOZuwXPI8Y_sT_mljtn50LJ5QqCtks5bBPYKwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -404,7 +404,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeBmaFM5NW5wNE5TMD212wM-gOA2oks5a5xt-wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeN4s52D0CGuJ_Cy5ond6jrjhAN7rks5bBPYEwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -433,7 +433,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeNSeOTl9Zw18qb5mbKdfy1PgIio-ks5a5xRtwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeCYLmLWtjaMgTtL6vr8WdJQVL-Cqks5bBPYMwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -462,7 +462,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeOm-vjn1mh-ecXbAJ4ZjPZe-A2Raks5a4cmOwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeKxTceoei7iJxampEQuenXsMXPUsks5bBPYGwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -486,7 +486,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeJsy4eCMTonlmVxnWG-XwSoNBTD3ks5a4X4pwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeC4TOB3NLG4ItWrhYyN0wpeAt0xsks5bBPYJwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -511,7 +511,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeBQCzxAAG-ZZnjciSVQ22sdM9SMPks5a5uqiwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeLNX2fZYLkdcCmeKhDAr5GFQ_cOmks5bBPX_wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -554,7 +554,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeOxc7U2yNSSdjEXj-3OiaQkJ9j-vks5a6oi_wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeNDA2slbz5mHrFmbu8yp_Qh4N7Vhks5bBPYCwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -596,7 +596,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeILijnnbhKS09Hq6jjXzrtgQP18sks5a4reNwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeNzC6QnwR50w_K_xJg8okWJIxhIgks5bBPYRwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -622,7 +622,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeOCDebvaOgs9WwNZkHzKdKqxypqYks5a6YmTwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeP_U-DsASY9kaxtQ_sJ1AG3OYJZYks5bBPYPwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -658,11 +658,11 @@
         },
         "dataPacketDesignerUrl": {
             "type": "string",
-            "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+            "value": "[concat('http://', variables('webSiteSettings').dataPacketWebSiteName,'.trafficmanager.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
-            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+            "value": "[concat('http://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.trafficmanager.net')]"
         }
     }
 }
