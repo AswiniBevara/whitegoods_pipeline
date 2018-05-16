@@ -208,7 +208,7 @@
                     "name": "web",
                     "type": "config",
                     "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalPackageuri)]"
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]"
                     ],
                     "tags": {
                         "displayName": "WebAppConfig"
