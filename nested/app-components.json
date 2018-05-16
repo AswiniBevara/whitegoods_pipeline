@@ -90,12 +90,33 @@
             },
             "resources": [
                 {
+                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "name": "web",
+                    "type": "config",
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]"
+                    ],
+                    "tags": {
+                        "displayName": "WebAppConfig"
+                    },
+                    "properties": {
+                        "phpVersion": "5.6",
+                        "netFrameworkVersion": "v4.6",
+                        "use32BitWorkerProcess": false,
+                        "webSocketsEnabled": true,
+                        "alwaysOn": true,
+                        "remoteDebuggingEnabled": true,
+                        "remoteDebuggingVersion": "VS2015"
+                    }
+                },
+                {
                     "name": "MSDeploy",
                     "type": "extensions",
                     "location": "[parameters('webSiteSettings').location]",
                     "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteName)]"
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]"
                     ],
                     "tags": {
                         "displayName": "WebPackageDeploy"
@@ -115,6 +136,7 @@
                     "type": "config",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]",
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
@@ -140,6 +162,7 @@
                     "apiVersion": "2015-07-01",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/appsettings')]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/extensions/MSDeploy')]"
                     ],
@@ -181,12 +204,33 @@
             },
             "resources": [
                 {
+                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "name": "web",
+                    "type": "config",
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]"
+                    ],
+                    "tags": {
+                        "displayName": "WebAppConfig"
+                    },
+                    "properties": {
+                        "phpVersion": "5.6",
+                        "netFrameworkVersion": "v4.6",
+                        "use32BitWorkerProcess": false,
+                        "webSocketsEnabled": true,
+                        "alwaysOn": true,
+                        "remoteDebuggingEnabled": true,
+                        "remoteDebuggingVersion": "VS2015"
+                    }
+                },
+                {
                     "name": "MSDeploy",
                     "type": "extensions",
                     "location": "[parameters('webSiteSettings').location]",
                     "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]"
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/config/web')]"
                     ],
                     "tags": {
                         "displayName": "WebPackageDeploy"
@@ -206,6 +250,7 @@
                     "type": "config",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/config/web')]",
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
@@ -229,6 +274,7 @@
                     "apiVersion": "2015-07-01",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/config/web')]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/config/appsettings')]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/extensions/MSDeploy')]"
                     ],
