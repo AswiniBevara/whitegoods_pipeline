@@ -32,8 +32,8 @@ workflow  container{
         $deviceManagementUri = $Using:deviceManagementUri
 
         Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
-        $azureAccountName ="kbhimanavarjula@sysgaininc.onmicrosoft.com"
-        $azurePassword = ConvertTo-SecureString "Murali@123" -AsPlainText -Force
+        $azureAccountName ="komali@sysgaininc.onmicrosoft.com"
+        $azurePassword = ConvertTo-SecureString "kom@limc@15" -AsPlainText -Force
         $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
         Login-AzureRmAccount -Credential $psCred 
         Select-AzureRmSubscription -SubscriptionName "Sysgain-Backup" -TenantID $tenantId
