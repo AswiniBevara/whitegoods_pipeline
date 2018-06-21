@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-         "tenantId": {
+        "tenantId": {
             "type": "string",
             "metadata": {
                 "description": "tenantId of the created Azure active directory application"
@@ -14,8 +14,14 @@
                 "description": "applicationID of the created Azure active directory application"
             }
         },
-        "clientSecret": {
+        "objectId": {
             "type": "string",
+            "metadata": {
+                "description": "objectId of the created Azure active directory application"
+            }
+        },
+        "clientSecret": {
+            "type": "securestring",
             "metadata": {
                 "description": "clientSecret of the created Azure active directory application"
             }
@@ -28,7 +34,7 @@
             }
         },
         "azurePassword": {
-            "type": "string",
+            "type": "securestring",
             "defaultValue": "",
             "metadata": {
                 "description": "azure portal login password"
@@ -350,11 +356,14 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
+            "moduleName": "AzureADPreview",
+            "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
             "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeLx8INVwLOl0tGtI_N72Z6160Kcvks5bNMwMwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
+            "objectId": "[parameters('objectId')]",
             "azureAccountName": "[parameters('azureAccountName')]",
             "azurePassword": "[parameters('azurePassword')]"
         },
