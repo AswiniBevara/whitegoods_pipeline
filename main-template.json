@@ -3,13 +3,36 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "tenantId": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "tenantId of the created Azure active directory application"
+            }
         },
         "clientId": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "applicationID of the created Azure active directory application"
+            }
         },
         "clientSecret": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "clientSecret of the created Azure active directory application"
+            }
+        },
+        "azureAccountName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "azure portal login username"
+            }
+        },
+        "azurePassword": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "azure portal login password"
+            }
         },
         "iotHubSkuName": {
             "type": "string",
@@ -27,7 +50,6 @@
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "type": "sessionid",
                 "description": "provide the guid prefix for the runbook job to be created"
             }
         },
@@ -173,11 +195,13 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeElHjkZiVEfReg2B0h48Ub6kZUoUks5bNHMjwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeBDh6aUXCaXBgqlowk0XLPsV3cLCks5bNIknwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
-            "clientSecret": "[parameters('clientSecret')]"
+            "clientSecret": "[parameters('clientSecret')]",
+            "azureAccountName": "[parameters('azureAccountName')]",
+            "azurePassword": "[parameters('azurePassword')]"
         },
         "iotHubSettings": {
             "location": "[variables('location')]",
@@ -224,7 +248,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeHxU5OHD0bmTPdHeXtJjAUAztU5zks5bNHLzwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeEDKu12bsHIO6fog7Sk0QSTlw2ssks5bNIjywA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -280,7 +304,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeP16I8_TIB7xz5m_6VGrGSHNc0oIks5bMilqwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeNpbfha5dWl2R1RNHM0GcHRkfl1Nks5bNIzZwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
