@@ -21,7 +21,7 @@
             }
         },
         "clientSecret": {
-            "type": "string",
+            "type": "securestring",
             "metadata": {
                 "description": "clientSecret of the created Azure active directory application"
             }
@@ -34,7 +34,7 @@
             }
         },
         "azurePassword": {
-            "type": "string",
+            "type": "securestring",
             "defaultValue": "",
             "metadata": {
                 "description": "azure portal login password"
