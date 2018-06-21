@@ -48,6 +48,21 @@
                     }
                 },
                 {
+                    "name": "[concat(parameters('automationSettings').automationAccountName, '/', parameters('automationSettings').moduleName)]",
+                    "type": "Microsoft.Automation/automationAccounts/modules",
+                    "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+                    "scale": null,
+                    "properties": {
+                        "contentLink": { 
+                            "uri": "[parameters('automationSettings').azureAdPreviewModuleUri]"
+                        }
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('automationSettings').automationAccountName)]",
+                        "[resourceId('Microsoft.Automation/automationAccounts/runbooks', parameters('automationSettings').automationAccountName, parameters('automationSettings').runbookName)]"
+                    ]
+                },
+                {
                     "name": "[concat(parameters('automationSettings').automationAccountName, '/', parameters('automationSettings').sessionId)]",
                     "type": "Microsoft.Automation/automationAccounts/jobs",
                     "apiVersion": "[parameters('apiVersions').automationApiVersion]",
@@ -69,7 +84,8 @@
                     },
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', parameters('automationSettings').automationAccountName)]",
-                        "[concat('Microsoft.Automation/automationAccounts/',parameters('automationSettings').automationAccountName, '/runbooks/', parameters('automationSettings').runbookName)]"
+                        "[concat('Microsoft.Automation/automationAccounts/',parameters('automationSettings').automationAccountName, '/runbooks/', parameters('automationSettings').runbookName)]",
+                        "[resourceId('Microsoft.Automation/automationAccounts/modules', parameters('automationSettings').automationAccountName, parameters('automationSettings').moduleName)]"
                     ]
                 }
             ]
