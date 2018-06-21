@@ -27,7 +27,11 @@ workflow  container{
 
         [Parameter(Mandatory=$true)]
         [string]
-        $azurePassword
+        $azurePassword,
+
+        [Parameter(Mandatory=$true)]
+        [string]
+        $objectId
     )
 
     InlineScript{
@@ -39,6 +43,7 @@ workflow  container{
         $deviceManagementUri = $Using:deviceManagementUri
         $azureAccountName = $Using:azureAccountName
         $azurePassword = $Using:azurePassword
+        $objectId = $Using:objectId
         Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
         $password = ConvertTo-SecureString $azurePassword -AsPlainText -Force
         $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $password)
@@ -75,10 +80,15 @@ workflow  container{
             return $false;  
         }
     }
+            #####################################################################
+            # Update Azure AD applications reply urls
+            #####################################################################
+            Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
             $datapacketUriOIDC=$datapacketUri+"/signin-oidc"      
             $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
             $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC);  
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
+            Set-AzureADApplication -ObjectId $objectId -HomePage $datapacketUri -ReplyUrls $replyURLList -Verbose
             #####################################################################
             # Get Access token for calling API
             #####################################################################
