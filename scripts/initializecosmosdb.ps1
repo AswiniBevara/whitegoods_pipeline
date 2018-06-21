@@ -75,10 +75,14 @@ workflow  container{
             return $false;  
         }
     }
+            #####################################################################
+            # Update Azure AD applications reply url
+            #####################################################################
             $datapacketUriOIDC=$datapacketUri+"/signin-oidc"      
             $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
             $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC);  
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
+            Set-AzureRmADApplication -ApplicationId $clientId -HomePage $datapacketUri -ReplyUrls $replyURLList -Verbose
             #####################################################################
             # Get Access token for calling API
             #####################################################################
