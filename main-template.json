@@ -2,14 +2,37 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "tenantId": {
-            "type": "string"
+         "tenantId": {
+            "type": "string",
+            "metadata": {
+                "description": "tenantId of the created Azure active directory application"
+            }
         },
         "clientId": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "applicationID of the created Azure active directory application"
+            }
         },
         "clientSecret": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "clientSecret of the created Azure active directory application"
+            }
+        },
+        "azureAccountName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "azure portal login username"
+            }
+        },
+        "azurePassword": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "azure portal login password"
+            }
         },
         "locationDr": {
             "type": "string",
@@ -327,11 +350,13 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeGKhJgQSuKAQOpKtRyqM1_UuIYsKks5bMikdwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeIi7bU3lCmxr1ZWYVb0DXJLZgrKZks5bNKEawA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
-            "clientSecret": "[parameters('clientSecret')]"
+            "clientSecret": "[parameters('clientSecret')]",
+            "azureAccountName": "[parameters('azureAccountName')]",
+            "azurePassword": "[parameters('azurePassword')]"
         },
         "iotHubSettings": {
             "location": "[variables('location')]",
