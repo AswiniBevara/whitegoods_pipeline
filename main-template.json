@@ -11,13 +11,6 @@
         "clientSecret": {
             "type": "string"
         },
-        "locationDr": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "specify the region for webapps desaster recovary it should be different of resource group region"
-            }
-        },
         "iotHubSkuName": {
             "type": "string",
             "defaultValue": "F1",
@@ -110,121 +103,6 @@
             "metadata": {
                 "description": "specify the region for application insights"
             }
-        },
-        "readRegionLocation": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The location of the read region of the cosmos database account. For Azure Gov, China, and Germany, the allowed values are different."
-            },
-            "allowedValues": [
-                "eastasia",
-                "southeastasia",
-                "centralus",
-                "eastus",
-                "eastus2",
-                "westus",
-                "northcentralus",
-                "southcentralus",
-                "northeurope",
-                "westeurope",
-                "japanwest",
-                "japaneast",
-                "brazilsouth",
-                "australiaeast",
-                "australiasoutheast",
-                "southindia",
-                "centralindia",
-                "westindia",
-                "canadacentral",
-                "canadaeast",
-                "uksouth",
-                "ukwest",
-                "westcentralus",
-                "westus2",
-                "koreacentral",
-                "koreasouth"
-            ]
-        },
-        "omsWorkspaceRegion": {
-            "type": "string",
-            "defaultValue": "eastus",
-            "allowedValues": [
-                "eastus",
-                "westeurope",
-                "southeastasia",
-                "australiasoutheast"
-            ],
-            "metadata": {
-                "description": "specify the region for oms workspace"
-            }
-        },
-        "omsLogAnalyticsSku": {
-            "type": "string",
-            "defaultValue": "free",
-            "allowedValues": [
-                "free",
-                "standalone",
-                "pernode"
-            ],
-            "metadata": {
-                "description": "specify the oms automation account sku type"
-            }
-        },
-        "omsAutomationRegion": {
-            "type": "string",
-            "defaultValue": "eastus2",
-            "allowedValues": [
-                "westeurope",
-                "southeastasia",
-                "eastus2",
-                "southcentralus",
-                "japaneast",
-                "southeastasia",
-                "southcentralus",
-                "northeurope",
-                "canadacentral",
-                "australiasoutheast",
-                "centralindia",
-                "japaneast"
-            ],
-            "metadata": {
-                "description": "specify the region for oms automation account, if you have selected solution type as without monitoring this is optional"
-            }
-        },
-        "dataRetention": {
-            "type": "int",
-            "defaultValue": 7,
-            "minValue": 7,
-            "maxValue": 730,
-            "metadata": {
-                "description": "specify the oms retention period in days, if you have selected solution type as without monitoring this is optional"
-            }
-        },
-        "trafficRoutingMethod": {
-            "type": "string",
-            "defaultValue": "Priority",
-            "allowedValues": [
-                "Performance",
-                "Weighted",
-                "Geographic",
-                "Priority"
-            ],
-            "metadata": {
-                "description": "specify the traffic routing method for traffic manager"
-            }
-        },
-        "timeSeriesInsightslocation": {
-            "type": "string",
-            "defaultValue": "East US",
-            "allowedValues": [
-                "East US",
-                "East US2",
-                "North Europe",
-                "West Europe",
-                "West US"
-            ],
-            "metadata": "specify the region for time series insights"
         }
     },
     "variables": {
@@ -246,26 +124,21 @@
             "location": "[variables('location')]",
             "cosmosDbAccountName": "[concat('cosmosdb', variables('suffix'))]",
             "kind": "GlobalDocumentDB",
-            "databaseAccountOfferType": "Standard",
-            "readRegionLocation": "[parameters('readRegionLocation')]"
+            "databaseAccountOfferType": "Standard"
         },
         "webSiteSettings": {
             "location": "[variables('location')]",
-            "locationDr": "[parameters('locationDr')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
             "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('webSiteplan', variables('suffix'))]",
-            "webAppHostingPlanNameDr": "[concat('webSiteplanDr', variables('suffix'))]",
             "webAppSkuName": "S1",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
             "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
             "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
-            "dataPacketWebSiteNameDr": "[concat('datapacketDr', variables('suffix'))]",
-            "deviceManagementPortalWebSiteNameDr": "[concat('devicemanagementDr', variables('suffix'))]",
             "iotHubKeyName": "iothubowner",
             "cosmosDbName": "MSIoT",
             "cosmosDbColTemplateName": "Templates",
@@ -274,9 +147,7 @@
             "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
             "notificationHubName": "[variables('notificationHub').notificationHubName]",
             "appInsightsLocation": "[parameters('appInsightsLocation')]",
-            "dataPacketAppInsightsDr": "[concat('dataPackAppInsightsDr', variables('suffix'))]",
             "dataPacketAppInsights": "[concat('dataPackAppInsights', variables('suffix'))]",
-            "deviceManagementAppInsightsDr": "[concat('devMngAppInsightsDr', variables('suffix'))]",
             "deviceManagementAppInsights": "[concat('devMngAppInsights', variables('suffix'))]"
         },
         "notificationHub": {
@@ -285,26 +156,6 @@
             "namespaceType": "NotificationHub",
             "notificationHubNamespaceName": "[concat('hubns', variables('suffix'))]",
             "notificationHubName": "[concat('hunname', variables('suffix'))]"
-        },
-        "omsSettings": {
-            "omsWorkspaceName": "[concat('omsws', variables('suffix'))]",
-            "omsWorkspaceRegion": "[parameters('omsWorkspaceRegion')]",
-            "omsAutomationRegion": "[parameters('omsAutomationRegion')]",
-            "omsLogAnalyticsSku": "[parameters('omsLogAnalyticsSku')]",
-            "omsAutomationAccountName": "[concat('autoupdate', variables('suffix'))]",
-            "dataRetention": "[parameters('dataRetention')]"
-        },
-        "timeSeriesInsights": {
-            "timeSeriesInsightslocation": "[parameters('timeSeriesInsightslocation')]",
-            "timeSeriesInsightsName": "[concat('timeseries', variables('suffix'))]",
-            "dataRetentionTime": "P31D",
-            "iotHubName": "[variables('iotHubSettings').iotHubName]",
-            "keyName": "iothubowner",
-            "skuCapacity": 1,
-            "skuSize": "S1",
-            "skuTier": "Standard",
-            "skuName": "S1",
-            "consumerGroupName": "$Default"
         },
         "streamAnalytics": {
             "location": "[variables('location')]",
@@ -317,17 +168,12 @@
             "iotHubKeyName": "iothubowner",
             "cosmosDBMessageCollectionName": "Messages"
         },
-        "trafficManagerSettings": {
-            "trafficManagerName": "[concat('datapacket', variables('suffix'))]",
-            "trafficManagerName1": "[concat('devicemanagement', variables('suffix'))]",
-            "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]"
-        },
         "automationSettings": {
             "automationAccountName": "[concat('collectionscreate', variables('suffix'))]",
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeGKhJgQSuKAQOpKtRyqM1_UuIYsKks5bMikdwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeElHjkZiVEfReg2B0h48Ub6kZUoUks5bNHMjwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -344,49 +190,23 @@
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "deploymentApiVersion": "2016-02-01",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/staging/"
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/core/"
     },
     "resources": [
         {
             "type": "Microsoft.Resources/deployments",
             "name": "IotHub",
             "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [
-                "OMSWorkSpace"
-            ],
+            "dependsOn": [],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeJEhtYY44BfLlzk51_eNiBaBuHwqks5bMin7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeGR6NBL-c_KzY6D5uz-MNiYCqjAGks5bNHPSwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
                     "iotHubSettings": {
                         "value": "[variables('iotHubSettings')]"
-                    },
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "OMSWorkSpace",
-            "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeIleiamk5zjiu-jNWkjZRXoTEQSyks5bMiqvwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
                     },
                     "apiVersions": {
                         "value": "[variables('apiVersions')]"
@@ -404,7 +224,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeFDhvXgK_M4fe36w1-8BrF24Eeq_ks5bMilmwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeHxU5OHD0bmTPdHeXtJjAUAztU5zks5bNHLzwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -433,7 +253,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeD_KyhmqACwFIH3Cf98lGXWlWr_Bks5bMirVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeNCSA0lMlSRiIDzsEKsm3xOHadkhks5bNHMNwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -456,9 +276,7 @@
             "type": "Microsoft.Resources/deployments",
             "name": "DocumentDB",
             "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [
-                "OMSWorkSpace"
-            ],
+            "dependsOn": [],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -471,9 +289,6 @@
                     },
                     "apiVersions": {
                         "value": "[variables('apiVersions')]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
                     }
                 }
             }
@@ -486,7 +301,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeO_TW5epDpRCwWTlB07RhTvfXgcXks5bMiokwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeLknvfn6We9z8cXObVDHRcn09HNAks5bNHMBwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -511,7 +326,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAePzNsdOO1c8AcMu3giSQrkyG7Aj_ks5bMilhwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeJTiTAURKcR18W4HOhRLcgZOCVmJks5bNHL3wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -535,105 +350,6 @@
                     },
                     "notificationHubConnectionString": {
                         "value": "[reference('NotificataionHub').outputs.notificationHubConnectionString.value]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "AppComponentsDr",
-            "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [
-                "IotHub",
-                "DocumentDB",
-                "NotificataionHub"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeK2X84qlImM6XKgRF_v2V7n1NCKuks5bMiljwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
-                    },
-                    "iotHubEndPoint": {
-                        "value": "[reference('IotHub').outputs.iotHubEndPoint.value]"
-                    },
-                    "iotHubPrimaryKey": {
-                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
-                    },
-                    "cosmosDBAccountEndPoint": {
-                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountEndPoint.value]"
-                    },
-                    "cosmosDBAccountKey": {
-                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
-                    },
-                    "notificationHubConnectionString": {
-                        "value": "[reference('NotificataionHub').outputs.notificationHubConnectionString.value]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "TrafficManagerApps",
-            "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [
-                "AppComponents",
-                "AppComponentsDr"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeI-w_FzQv_pbW0YfBwsiY014qT6Oks5bMir1wA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
-                    },
-                    "trafficManagerSettings": {
-                        "value": "[variables('trafficManagerSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "TimeSeriesInsights",
-            "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [
-                "IotHub"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeLd7vFJPZxa8PAqkypqSZX39SDp2ks5bMisgwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "timeSeriesInsights": {
-                        "value": "[variables('timeSeriesInsights')]"
-                    },
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
-                    "iotHubPrimaryKey": {
-                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
                     }
                 }
             }
@@ -658,11 +374,11 @@
         },
         "dataPacketDesignerUrl": {
             "type": "string",
-            "value": "[concat('http://', variables('webSiteSettings').dataPacketWebSiteName,'.trafficmanager.net')]"
+            "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
-            "value": "[concat('http://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.trafficmanager.net')]"
+            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
         }
     }
 }
