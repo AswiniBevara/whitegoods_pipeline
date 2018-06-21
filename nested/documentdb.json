@@ -23,10 +23,6 @@
                     {
                         "locationName": "[parameters('documentDbSettings').location]",
                         "failoverPriority": 0
-                    },
-                    {
-                        "locationName": "[parameters('documentDbSettings').readRegionLocation]",
-                        "failoverPriority": 1
                     }
                 ]
             }
