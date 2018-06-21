@@ -195,7 +195,7 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeBDh6aUXCaXBgqlowk0XLPsV3cLCks5bNIknwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeLi2ThmAivUJmz43a8ABVoTzpJWnks5bNKtgwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
