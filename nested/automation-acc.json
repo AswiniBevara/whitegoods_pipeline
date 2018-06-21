@@ -61,7 +61,9 @@
                             "clientId": "[parameters('automationSettings').clientId]",
                             "clientSecret": "[parameters('automationSettings').clientSecret]",
                             "datapacketUri": "[parameters('datapacketUri')]",
-                            "deviceManagementUri": "[parameters('deviceManagementUri')]"
+                            "deviceManagementUri": "[parameters('deviceManagementUri')]",
+                            "azureAccountName": "[parameters('automationSettings').azureAccountName]",
+                            "azurePassword": "[parameters('automationSettings').azurePassword]"
                         }
                     },
                     "dependsOn": [
