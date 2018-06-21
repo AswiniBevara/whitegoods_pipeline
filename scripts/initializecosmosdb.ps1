@@ -19,8 +19,15 @@ workflow  container{
 
         [Parameter(Mandatory=$true)]
         [string]
-        $deviceManagementUri
-      
+        $deviceManagementUri,
+        
+        [Parameter(Mandatory=$true)]
+        [string]
+        $azureAccountName,
+
+        [Parameter(Mandatory=$true)]
+        [string]
+        $azurePassword
     )
 
     InlineScript{
@@ -30,13 +37,12 @@ workflow  container{
         $clientSecret = $Using:clientSecret
         $datapacketUri = $Using:datapacketUri
         $deviceManagementUri = $Using:deviceManagementUri
-
+        $azureAccountName = $Using:azureAccountName
+        $azurePassword = $Using:azurePassword
         Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
-        $azureAccountName ="komali@sysgaininc.onmicrosoft.com"
-        $azurePassword = ConvertTo-SecureString "kom@limc@15" -AsPlainText -Force
-        $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
+        $password = ConvertTo-SecureString $azurePassword -AsPlainText -Force
+        $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $password)
         Login-AzureRmAccount -Credential $psCred 
-        Select-AzureRmSubscription -SubscriptionName "Sysgain-Backup" -TenantID $tenantId
     function Get-AccessTokenAPI{
         Write-Host "`nRequesting access token.." -ForegroundColor Green
     
