@@ -14,6 +14,12 @@
                 "description": "applicationID of the created Azure active directory application"
             }
         },
+        "objectId":  {
+            "type": "string",
+            "metadata": {
+                "description": "objectId of the created Azure active directory application"
+            }
+        },
         "clientSecret": {
             "type": "string",
             "metadata": {
@@ -195,11 +201,14 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
+            "moduleName": "AzureADPreview",
+            "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
             "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeLi2ThmAivUJmz43a8ABVoTzpJWnks5bNKtgwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
+            "objectId": "[parameters('objectId')]",
             "azureAccountName": "[parameters('azureAccountName')]",
             "azurePassword": "[parameters('azurePassword')]"
         },
@@ -248,7 +257,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeEDKu12bsHIO6fog7Sk0QSTlw2ssks5bNIjywA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeGD1TrPD1e80Tb6Ih983St6sCdJkks5bNMTpwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
