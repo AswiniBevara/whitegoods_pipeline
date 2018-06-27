@@ -47,6 +47,17 @@
                 "description": "specify the region for webapps desaster recovary it should be different of resource group region"
             }
         },
+        "timeSeriesInsights": {
+            "type": "string",
+            "defaultValue": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "if need time series insights for monitoring of iot hub select Yes otherwise select No"
+            }
+        },
         "iotHubSkuName": {
             "type": "string",
             "defaultValue": "F1",
@@ -285,9 +296,12 @@
         "omsSettings": {
             "omsWorkspaceName": "[concat('omsws', variables('suffix'))]",
             "omsWorkspaceRegion": "[parameters('omsWorkspaceRegion')]",
-            "omsAutomationRegion": "[parameters('omsAutomationRegion')]",
             "omsLogAnalyticsSku": "standalone",
             "dataRetention": "[parameters('dataRetention')]"
+        },
+        "appInsights": {
+            "location": "[parameters('appInsightsLocation')]",
+            "appInsightResourceName": "[concat('AppInsights', uniquestring(resourceGroup().id))]"
         },
         "timeSeriesInsights": {
             "timeSeriesInsightslocation": "[parameters('timeSeriesInsightslocation')]",
@@ -324,7 +338,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeLx8INVwLOl0tGtI_N72Z6160Kcvks5bNMwMwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeDUXyeOZsGgm9WC0bsr7lVBp4i9yks5bPKUXwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -344,7 +358,9 @@
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "deploymentApiVersion": "2016-02-01",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/staging/"
+        "subId": "[subscription().subscriptionId]",
+        "rgName": "[resourceGroup().name]",
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/hardeningMonitoring/"
     },
     "resources": [
         {
@@ -357,7 +373,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeJEhtYY44BfLlzk51_eNiBaBuHwqks5bMin7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeG29yy2Nb-acG-uxJcDRdsgCfEgKks5bPJUcwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -381,12 +397,33 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeIleiamk5zjiu-jNWkjZRXoTEQSyks5bMiqvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeIBz1VCJbiboo5fkzL23_ybCvOexks5bPJUgwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
+                    },
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "appInsights",
+            "apiVersion": "[variables('deploymentApiVersion')]",
+            "dependsOn": [],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json','?token=AYpAePSZSZ13tHU_DBenxbGCAZ3--EXfks5bPIpowA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
                     },
                     "apiVersions": {
                         "value": "[variables('apiVersions')]"
@@ -404,7 +441,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeBtaveFkIZPoW3rqwwVuPSnfyuqGks5bNMl7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeJYc5sEh-2zNPDh0PEJVD9fwy_YVks5bPJUZwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -433,7 +470,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeD_KyhmqACwFIH3Cf98lGXWlWr_Bks5bMirVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeIpfZ0-lwvRKdBA8SMGTYiiZXxGRks5bPJUiwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -462,7 +499,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeP16I8_TIB7xz5m_6VGrGSHNc0oIks5bMilqwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeMBbQyi6TYV7LOI0LrELknuDqeMYks5bPJUbwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -486,7 +523,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeO_TW5epDpRCwWTlB07RhTvfXgcXks5bMiokwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeGO7iX7PCXuNlbrfie2q0Jji2Ckpks5bPJUewA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -506,12 +543,13 @@
             "dependsOn": [
                 "IotHub",
                 "DocumentDB",
-                "NotificataionHub"
+                "NotificataionHub",
+                "appInsights"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAePzNsdOO1c8AcMu3giSQrkyG7Aj_ks5bMilhwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeLEa-q1d_C6ANj8WkBv6MPoeszFuks5bPKVMwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -538,6 +576,9 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
                     }
                 }
             }
@@ -549,12 +590,13 @@
             "dependsOn": [
                 "IotHub",
                 "DocumentDB",
-                "NotificataionHub"
+                "NotificataionHub",
+                "appInsights"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeK2X84qlImM6XKgRF_v2V7n1NCKuks5bMiljwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeJrQbW6a78P4bHBcYQf2yM32IvGGks5bPKVNwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -581,6 +623,9 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
                     }
                 }
             }
@@ -596,7 +641,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeI-w_FzQv_pbW0YfBwsiY014qT6Oks5bMir1wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeFGESCUSCl7FJHuzO9rbE-IQ8sG9ks5bPJl9wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -615,6 +660,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "name": "TimeSeriesInsights",
+            "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
             "apiVersion": "[variables('deploymentApiVersion')]",
             "dependsOn": [
                 "IotHub"
@@ -622,7 +668,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeLd7vFJPZxa8PAqkypqSZX39SDp2ks5bMisgwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeHz_nPGInqHGlhAoju8rGOskhefIks5bPJUlwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -663,6 +709,14 @@
         "deviceManagementPortalUrl": {
             "type": "string",
             "value": "[concat('http://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.trafficmanager.net')]"
+        },
+        "omsLogAnalyticsUrl": {
+            "type": "string",
+            "value": "[concat('https://',variables('omsSettings').omsWorkspaceName,'.portal.mms.microsoft.com/')]"
+        },
+        "appInsightsUrl": {
+            "type": "string",
+            "value": "[concat('https://analytics.applicationinsights.io/subscriptions/',variables('subId'),'/resourcegroups/',variables('rgName'),'/components/',variables('appInsights').appInsightResourceName,'#/')]"
         }
     }
 }
