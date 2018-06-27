@@ -157,18 +157,6 @@
                 "description": "specify the region for oms workspace"
             }
         },
-        "omsLogAnalyticsSku": {
-            "type": "string",
-            "defaultValue": "free",
-            "allowedValues": [
-                "free",
-                "standalone",
-                "pernode"
-            ],
-            "metadata": {
-                "description": "specify the oms automation account sku type"
-            }
-        },
         "dataRetention": {
             "type": "int",
             "defaultValue": 7,
@@ -248,7 +236,7 @@
         "omsSettings": {
             "omsWorkspaceName": "[concat('omsws', variables('suffix'))]",
             "omsWorkspaceRegion": "[parameters('omsWorkspaceRegion')]",
-            "omsLogAnalyticsSku": "[parameters('omsLogAnalyticsSku')]",
+            "omsLogAnalyticsSku": "standalone",
             "dataRetention": "[parameters('dataRetention')]"
         },
         "timeSeriesInsights": {
@@ -518,6 +506,9 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
                     }
                 }
             }
