@@ -14,7 +14,7 @@
                 "description": "applicationID of the created Azure active directory application"
             }
         },
-        "objectId":  {
+        "objectId": {
             "type": "string",
             "metadata": {
                 "description": "objectId of the created Azure active directory application"
@@ -116,21 +116,6 @@
             "metadata": {
                 "description": "Number of desired partitions for device-to-cloud event ingestion.Restricted to 1 unit for F1"
             }
-        },
-        "appInsightsLocation": {
-            "type": "string",
-            "defaultValue": "eastus",
-            "allowedValues": [
-                "eastus",
-                "northeurope",
-                "southcentralus",
-                "southeastasia",
-                "westeurope",
-                "westus2"
-            ],
-            "metadata": {
-                "description": "specify the region for application insights"
-            }
         }
     },
     "variables": {
@@ -138,15 +123,9 @@
             "documentDbApiVersion": "2015-04-08",
             "iotHubApiversion": "2016-02-03",
             "notificationHubApiVersion": "2014-09-01",
-            "appInsightsApiVersion": "2014-04-01",
             "webAppApiVersion": "2015-08-01",
-            "omsApiVersion": "2015-03-20",
-            "omsDataApiVersion": "2015-11-01-preview",
-            "trafficManagerApiVersion": "2017-05-01",
-            "omsEnableApiVersion": "2015-07-01",
             "automationApiVersion": "2015-10-31",
-            "streamAnalyticsApiVersion": "2015-10-01",
-            "timeSeriesInsightsApiVersion": "2017-11-15"
+            "streamAnalyticsApiVersion": "2015-10-01"
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
@@ -173,10 +152,7 @@
             "cosmosDbColMessagesName": "Messages",
             "cosmosDbColGroupsName": "Groups",
             "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
-            "notificationHubName": "[variables('notificationHub').notificationHubName]",
-            "appInsightsLocation": "[parameters('appInsightsLocation')]",
-            "dataPacketAppInsights": "[concat('dataPackAppInsights', variables('suffix'))]",
-            "deviceManagementAppInsights": "[concat('devMngAppInsights', variables('suffix'))]"
+            "notificationHubName": "[variables('notificationHub').notificationHubName]"
         },
         "notificationHub": {
             "location": "[variables('location')]",
