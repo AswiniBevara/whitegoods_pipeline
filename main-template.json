@@ -188,39 +188,6 @@
                 "description": "specify the region for oms workspace"
             }
         },
-        "omsLogAnalyticsSku": {
-            "type": "string",
-            "defaultValue": "free",
-            "allowedValues": [
-                "free",
-                "standalone",
-                "pernode"
-            ],
-            "metadata": {
-                "description": "specify the oms automation account sku type"
-            }
-        },
-        "omsAutomationRegion": {
-            "type": "string",
-            "defaultValue": "eastus2",
-            "allowedValues": [
-                "westeurope",
-                "southeastasia",
-                "eastus2",
-                "southcentralus",
-                "japaneast",
-                "southeastasia",
-                "southcentralus",
-                "northeurope",
-                "canadacentral",
-                "australiasoutheast",
-                "centralindia",
-                "japaneast"
-            ],
-            "metadata": {
-                "description": "specify the region for oms automation account, if you have selected solution type as without monitoring this is optional"
-            }
-        },
         "dataRetention": {
             "type": "int",
             "defaultValue": 7,
@@ -319,8 +286,7 @@
             "omsWorkspaceName": "[concat('omsws', variables('suffix'))]",
             "omsWorkspaceRegion": "[parameters('omsWorkspaceRegion')]",
             "omsAutomationRegion": "[parameters('omsAutomationRegion')]",
-            "omsLogAnalyticsSku": "[parameters('omsLogAnalyticsSku')]",
-            "omsAutomationAccountName": "[concat('autoupdate', variables('suffix'))]",
+            "omsLogAnalyticsSku": "standalone",
             "dataRetention": "[parameters('dataRetention')]"
         },
         "timeSeriesInsights": {
