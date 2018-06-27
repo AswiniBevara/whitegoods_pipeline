@@ -339,7 +339,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeJEhtYY44BfLlzk51_eNiBaBuHwqks5bMin7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json','?token=AYpAeKrLtNVuN6SqUICe3RRT3-0AK4pxks5bPIpuwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -363,7 +363,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'app-insights.json')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json','?token=AYpAePSZSZ13tHU_DBenxbGCAZ3--EXfks5bPIpowA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -384,7 +384,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeIleiamk5zjiu-jNWkjZRXoTEQSyks5bMiqvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeHzjX19fXDdYupxlvIH7KaZZIpgFks5bPIpzwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -407,7 +407,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeBtaveFkIZPoW3rqwwVuPSnfyuqGks5bNMl7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeOjwa6VmOcnHLAkkbQivGNOU9l21ks5bPIpqwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -436,7 +436,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeD_KyhmqACwFIH3Cf98lGXWlWr_Bks5bMirVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeKfEqqnnvDH4L_p4S3d0BF_V95uOks5bPIp-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -465,7 +465,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeP16I8_TIB7xz5m_6VGrGSHNc0oIks5bMilqwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json','?token=AYpAeDeINpHjoYW3t2iAQUan0aZ0ZYUbks5bPIpswA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -489,7 +489,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeO_TW5epDpRCwWTlB07RhTvfXgcXks5bMiokwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeFCM2WrVQwYhQRnyUWmna_T3DYOoks5bPIpwwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -514,50 +514,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAePzNsdOO1c8AcMu3giSQrkyG7Aj_ks5bMilhwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
-                    },
-                    "iotHubEndPoint": {
-                        "value": "[reference('IotHub').outputs.iotHubEndPoint.value]"
-                    },
-                    "iotHubPrimaryKey": {
-                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
-                    },
-                    "cosmosDBAccountEndPoint": {
-                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountEndPoint.value]"
-                    },
-                    "cosmosDBAccountKey": {
-                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
-                    },
-                    "notificationHubConnectionString": {
-                        "value": "[reference('NotificataionHub').outputs.notificationHubConnectionString.value]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "AppComponentsDr",
-            "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [
-                "IotHub",
-                "DocumentDB",
-                "NotificataionHub"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeK2X84qlImM6XKgRF_v2V7n1NCKuks5bMiljwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeHb7acxDf4-5fXDBN1_mIrAu-etGks5bPIplwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -599,7 +556,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeLd7vFJPZxa8PAqkypqSZX39SDp2ks5bMisgwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json','?token=AYpAeBPf6dFqS1WMVTpdT2C6iOUeq6Yzks5bPIqAwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
