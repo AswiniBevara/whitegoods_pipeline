@@ -26,8 +26,8 @@
                     "ttl": "100"
                 },
                 "monitorConfig": {
-                    "protocol": "https",
-                    "port": "443",
+                    "protocol": "tcp",
+                    "port": "20",
                     "path": "/"
                 },
                 "endpoints": [
@@ -68,8 +68,8 @@
                     "ttl": "100"
                 },
                 "monitorConfig": {
-                    "protocol": "https",
-                    "port": "443",
+                    "protocol": "tcp",
+                    "port": "20",
                     "path": "/"
                 },
                 "endpoints": [
