@@ -1,0 +1,16 @@
+﻿<mahapps:MetroWindow x:Class="VirtualSales.Wpf.Agent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpf="clr-namespace:VirtualSales.Wpf;assembly=VirtualSales.Wpf.Common"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="WhiteBrand Virtual Sales - Agent"
+        Height="768"
+        Width="1024">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Opacity=".5" TileMode="None" Stretch="Fill" ImageSource="pack://application:,,,/VirtualSales.Wpf.Common;component/ImageAssets/splash_landscape@2x.png"></ImageBrush>
+        </Grid.Background>
+        <wpf:NavigationControl NavigationService="{Binding NavigationService, Source={StaticResource Locator}}">
+        </wpf:NavigationControl>
+    </Grid>
+</mahapps:MetroWindow>
