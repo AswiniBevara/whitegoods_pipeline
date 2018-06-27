@@ -27,32 +27,6 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').appInsightsApiVersion]",
-            "name": "[parameters('webSiteSettings').dataPacketAppInsights]",
-            "type": "Microsoft.Insights/components",
-            "location": "[parameters('webSiteSettings').appInsightsLocation]",
-            "tags": {
-                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]": "Resource",
-                "displayName": "AppInsightsComponent"
-            },
-            "properties": {
-                "applicationId": "[parameters('webSiteSettings').dataPacketAppInsights]"
-            }
-        },
-        {
-            "apiVersion": "[parameters('apiVersions').appInsightsApiVersion]",
-            "name": "[parameters('webSiteSettings').deviceManagementAppInsights]",
-            "type": "Microsoft.Insights/components",
-            "location": "[parameters('webSiteSettings').appInsightsLocation]",
-            "tags": {
-                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]": "Resource",
-                "displayName": "AppInsightsComponent"
-            },
-            "properties": {
-                "applicationId": "parameters('webSiteSettings').deviceManagementAppInsights]"
-            }
-        },
-        {
             "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
             "name": "[parameters('webSiteSettings').webAppHostingPlanName]",
             "type": "Microsoft.Web/serverfarms",
@@ -78,8 +52,7 @@
                 "displayName": "Website"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",
-                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').dataPacketAppInsights)]"
+                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
@@ -137,7 +110,6 @@
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
-                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('webSiteSettings').dataPacketAppInsights)).InstrumentationKey]",
                         "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
                         "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
                         "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
@@ -166,7 +138,6 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",
-                "[resourceId('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/appsettings')]",
                 "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/extensions/MSDeploy')]"
@@ -227,7 +198,6 @@
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
-                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('webSiteSettings').deviceManagementAppInsights)).InstrumentationKey]",
                         "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
                         "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
                         "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
