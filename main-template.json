@@ -474,7 +474,8 @@
             "dependsOn": [
                 "IotHub",
                 "DocumentDB",
-                "NotificataionHub"
+                "NotificataionHub",
+                "appInsights"
             ],
             "properties": {
                 "mode": "Incremental",
