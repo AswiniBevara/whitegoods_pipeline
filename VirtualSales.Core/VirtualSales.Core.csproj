@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C6ACD8AE-C56D-4D5F-B510-350AEA4CE5F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VirtualSales.Core</RootNamespace>
+    <AssemblyName>VirtualSales.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AppServices\ClientMainService.cs" />
+    <Compile Include="AppServices\IPlatformServices.cs" />
+    <Compile Include="AppServices\IScreenViewModel.cs" />
+    <Compile Include="Infrastructure\ObservableStack.cs" />
+    <Compile Include="Models\Annotations\AnnotationBuilder.cs" />
+    <Compile Include="Models\Annotations\AnnotationModel.cs" />
+    <Compile Include="Models\Annotations\AnnotationSurfaceSize.cs" />
+    <Compile Include="Models\Annotations\AnnotationPointTransformer.cs" />
+    <Compile Include="ViewModels\Annotations\AgentAnnotationViewModel.cs" />
+    <Compile Include="ViewModels\AgentMeetingViewModel.cs" />
+    <Compile Include="ViewModels\Annotations\AnnotationToolViewModel.cs" />
+    <Compile Include="ViewModels\Annotations\AnnotationViewModel.cs" />
+    <Compile Include="ViewModels\Annotations\ClientAnnotationViewModel.cs" />
+    <Compile Include="ViewModels\ClientMeetingViewModel.cs" />
+    <Compile Include="AppServices\IMainService.cs" />
+    <Compile Include="AppServices\INavigationService.cs" />
+    <Compile Include="AppServices\ISettings.cs" />
+    <Compile Include="AppServices\ISharedDataService.cs" />
+    <Compile Include="AppServices\AgentMainService.cs" />
+    <Compile Include="AppServices\NavigationService.cs" />
+    <Compile Include="Infrastructure\RxUiLogger.cs" />
+    <Compile Include="Infrastructure\RxUiViewLocator.cs" />
+    <Compile Include="Models\MeetingStateModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="SignalR\AgentConnection.cs" />
+    <Compile Include="SignalR\ClientConnection.cs" />
+    <Compile Include="SignalR\ISignalRClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalR\PropertyChangedReceiver.cs" />
+    <Compile Include="SignalR\PropertyChangedTransmitter.cs" />
+    <Compile Include="ViewModels\ClientInfoViewModel.cs" />
+    <Compile Include="ViewModels\ClientLobbyViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MeetingListViewModel.cs" />
+    <Compile Include="ViewModels\MeetingViewModel.cs" />
+    <Compile Include="SignalR\SignalRClient.cs" />
+    <Compile Include="SignalRx\DisposableAction.cs" />
+    <Compile Include="SignalRx\RxExtensions.cs" />
+    <Compile Include="SignalRx\Hubservable.cs" />
+    <Compile Include="SignalRx\ObservableConnection.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModels\NavigationPaneViewModel.cs" />
+    <Compile Include="ViewModels\ScreenViewModel.cs" />
+    <Compile Include="ViewModels\Tools\BasicInformationToolViewModel.cs" />
+    <Compile Include="ViewModels\Tools\DividendInterestRatesViewModel.cs" />
+    <Compile Include="ViewModels\Tools\IToolPage.cs" />
+    <Compile Include="ViewModels\Tools\IToolViewModel.cs" />
+    <Compile Include="ViewModels\Tools\AnotherSampleToolViewModel.cs" />
+    <Compile Include="ViewModels\Tools\LifetimeEconomicValueViewModel.cs" />
+    <Compile Include="ViewModels\Tools\SampleToolViewModel.cs" />
+    <Compile Include="ViewModels\Tools\ToolPage.cs" />
+    <Compile Include="ViewModels\Tools\ToolViewModel.cs" />
+    <Compile Include="ViewModels\Annotations\UserAnnotationViewModel.cs" />
+    <Compile Include="ViewModels\Tools\TypesOfInsuranceViewModel.cs" />
+    <Compile Include="ViewModels\VideoConfViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualSales.Models\VirtualSales.Models.csproj">
+      <Project>{f54fdbab-15ab-443c-9c86-998ccb96b98d}</Project>
+      <Name>VirtualSales.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Client">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.0.1\lib\portable-net45+sl5+netcore45+wp8\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\packages\Nito.AsyncEx.2.1.3\lib\portable-net45+win8+MonoTouch+MonoAndroid\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent">
+      <HintPath>..\packages\Nito.AsyncEx.2.1.3\lib\portable-net45+win8+MonoTouch+MonoAndroid\Nito.AsyncEx.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI">
+      <HintPath>..\packages\reactiveui-core.5.99.2-beta\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.1.1.1\lib\Portable-Net45+WinRT45+WP8\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net45+win8\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net45+win8\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.2.2\lib\portable-windows8+net45+wp8\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.2.2\lib\portable-windows8+net45+wp8\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.2.2\lib\portable-windows8+net45+wp8\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.2\lib\portable-windows8+net45+wp8\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
