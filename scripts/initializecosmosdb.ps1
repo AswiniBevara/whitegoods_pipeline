@@ -81,6 +81,7 @@ workflow  container{
         }
     }
             # Update Azure AD applications reply urls
+            start-Sleep -s 40
             Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
             $datapacketUriOIDC=$datapacketUri+"/signin-oidc"      
             $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
