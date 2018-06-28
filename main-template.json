@@ -140,7 +140,7 @@
             "clientSecret": "[parameters('clientSecret')]",
             "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
-            "webAppHostingPlanName": "[concat('webSiteplan', variables('suffix'))]",
+            "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
             "webAppSkuName": "S1",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
@@ -158,12 +158,12 @@
             "location": "[variables('location')]",
             "skuName": "free",
             "namespaceType": "NotificationHub",
-            "notificationHubNamespaceName": "[concat('hubns', variables('suffix'))]",
-            "notificationHubName": "[concat('hunname', variables('suffix'))]"
+            "notificationHubNamespaceName": "[concat('NotificationHubNS', variables('suffix'))]",
+            "notificationHubName": "[concat('NotificationHub', variables('suffix'))]"
         },
         "streamAnalytics": {
             "location": "[variables('location')]",
-            "streamAnalyticsjobname": "[concat('stremanalyticsjob', variables('suffix'))]",
+            "streamAnalyticsjobname": "[concat('StremanAlytics', variables('suffix'))]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
             "cosmosDbName": "MSIoT",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
@@ -173,7 +173,7 @@
             "cosmosDBMessageCollectionName": "Messages"
         },
         "automationSettings": {
-            "automationAccountName": "[concat('collectionscreate', variables('suffix'))]",
+            "automationAccountName": "[concat('AutomationAc', variables('suffix'))]",
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
@@ -190,7 +190,7 @@
         },
         "iotHubSettings": {
             "location": "[variables('location')]",
-            "iotHubName": "[concat('iothub', variables('suffix'))]",
+            "iotHubName": "[concat('IoTHubWG', variables('suffix'))]",
             "skuName": "[parameters('iotHubSkuName')]",
             "capacityUnits": "[parameters('capacityUnits')]",
             "d2cMessageRetentionInDaysPeriod": "[parameters('d2cMessageRetentionInDaysPeriod')]",
@@ -365,9 +365,9 @@
         }
     ],
     "outputs": {
-        "iotHubName": {
+        "iotHubEndPoint": {
             "type": "string",
-            "value": "[variables('iotHubSettings').iotHubName]"
+            "value": "[reference('IotHub').outputs.iotHubEndPoint.value]"
         },
         "cosmosDBAccountName": {
             "type": "string",
