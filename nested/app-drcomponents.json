@@ -23,10 +23,7 @@
         "notificationHubConnectionString": {
             "type": "string"
         },
-        "omsSettings": {
-            "type": "object"
-        },
-        "appInsights": {
+        "trafficManagerSettings": {
             "type": "object"
         }
     },
@@ -116,7 +113,6 @@
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
-                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsights').appInsightResourceName), '2014-04-01').InstrumentationKey]",
                         "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
                         "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
                         "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
@@ -130,30 +126,6 @@
                         "CosmosDb:Collections:Messages": "[parameters('webSiteSettings').cosmosDbColMessagesName]",
                         "CosmosDb:Collections:Groups": "[parameters('webSiteSettings').cosmosDbColGroupsName]",
                         "CosmosDb:TemplatesBase": "https://msiotsolutiondev.blob.core.windows.net/cosmosdbtemplates/"
-                    }
-                },
-                {
-                    "name": "Microsoft.Insights/service",
-                    "type": "providers/diagnosticSettings",
-                    "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
-                    "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/web')]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/Appsettings')]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
-                    ],
-                    "properties": {
-                        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
-                        "metrics": [
-                            {
-                                "timeGrain": "PT1M",
-                                "enabled": true,
-                                "retentionPolicy": {
-                                    "enabled": false,
-                                    "days": 0
-                                }
-                            }
-                        ]
                     }
                 }
             ]
@@ -229,7 +201,6 @@
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
-                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsights').appInsightResourceName), '2014-04-01').InstrumentationKey]",
                         "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
                         "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
                         "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
@@ -242,30 +213,6 @@
                         "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
                         "NotificationHub:ConnectionString": "[parameters('notificationHubConnectionString')]"
                     }
-                },
-                {
-                    "name": "Microsoft.Insights/service",
-                    "type": "providers/diagnosticSettings",
-                    "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
-                    "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/config/web')]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/config/appsettings')]",
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/extensions/MSDeploy')]"
-                    ],
-                    "properties": {
-                        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
-                        "metrics": [
-                            {
-                                "timeGrain": "PT1M",
-                                "enabled": true,
-                                "retentionPolicy": {
-                                    "enabled": false,
-                                    "days": 0
-                                }
-                            }
-                        ]
-                    }
                 }
             ]
         }
@@ -273,11 +220,11 @@
     "outputs": {
         "dataPacketDesignerUrl": {
             "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr,'.azurewebsites.net')]"
+            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
         }
     }
 }
