@@ -646,7 +646,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeOcn26X50H7QxsenzRC0Fp0xgJQfks5bPecHwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeEzFlCDERg7arsLvS3Uvsgt0eUZtks5bPe3TwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
