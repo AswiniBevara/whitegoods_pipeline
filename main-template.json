@@ -264,8 +264,8 @@
             "clientSecret": "[parameters('clientSecret')]",
             "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
-            "webAppHostingPlanName": "[concat('webSiteplan', variables('suffix'))]",
-            "webAppHostingPlanNameDr": "[concat('webSiteplanDr', variables('suffix'))]",
+            "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
+            "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
             "webAppSkuName": "S1",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
@@ -290,11 +290,11 @@
             "location": "[variables('location')]",
             "skuName": "free",
             "namespaceType": "NotificationHub",
-            "notificationHubNamespaceName": "[concat('hubns', variables('suffix'))]",
-            "notificationHubName": "[concat('hunname', variables('suffix'))]"
+            "notificationHubNamespaceName": "[concat('NotificationHubNS', variables('suffix'))]",
+            "notificationHubName": "[concat('NotificationHub', variables('suffix'))]"
         },
         "omsSettings": {
-            "omsWorkspaceName": "[concat('omsws', variables('suffix'))]",
+            "omsWorkspaceName": "[concat('omsworkspace', variables('suffix'))]",
             "omsWorkspaceRegion": "[parameters('omsWorkspaceRegion')]",
             "omsLogAnalyticsSku": "standalone",
             "dataRetention": "[parameters('dataRetention')]"
@@ -305,7 +305,7 @@
         },
         "timeSeriesInsights": {
             "timeSeriesInsightslocation": "[parameters('timeSeriesInsightslocation')]",
-            "timeSeriesInsightsName": "[concat('timeseries', variables('suffix'))]",
+            "timeSeriesInsightsName": "[concat('timeseriesinsights', variables('suffix'))]",
             "dataRetentionTime": "P31D",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "keyName": "iothubowner",
@@ -317,7 +317,7 @@
         },
         "streamAnalytics": {
             "location": "[variables('location')]",
-            "streamAnalyticsjobname": "[concat('stremanalyticsjob', variables('suffix'))]",
+            "streamAnalyticsjobname": "[concat('stremanalytics', variables('suffix'))]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
             "cosmosDbName": "MSIoT",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
@@ -327,12 +327,12 @@
             "cosmosDBMessageCollectionName": "Messages"
         },
         "trafficManagerSettings": {
-            "trafficManagerName": "[concat('datapacket', variables('suffix'))]",
-            "trafficManagerName1": "[concat('devicemanagement', variables('suffix'))]",
+         
+            "trafficManagerName1": "[concat('devicemanagetm', variables('suffix'))]",
             "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]"
         },
         "automationSettings": {
-            "automationAccountName": "[concat('collectionscreate', variables('suffix'))]",
+            "automationAccountName": "[concat('AutomationAc', variables('suffix'))]",
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
@@ -349,7 +349,7 @@
         },
         "iotHubSettings": {
             "location": "[variables('location')]",
-            "iotHubName": "[concat('iothub', variables('suffix'))]",
+            "iotHubName": "[concat('IoTHubWG', variables('suffix'))]",
             "skuName": "[parameters('iotHubSkuName')]",
             "capacityUnits": "[parameters('capacityUnits')]",
             "d2cMessageRetentionInDaysPeriod": "[parameters('d2cMessageRetentionInDaysPeriod')]",
@@ -689,9 +689,9 @@
         }
     ],
     "outputs": {
-        "iotHubName": {
+        "iotHubEndPoint": {
             "type": "string",
-            "value": "[variables('iotHubSettings').iotHubName]"
+            "value": "[reference('IotHub').outputs.iotHubEndPoint.value]"
         },
         "cosmosDBAccountName": {
             "type": "string",
