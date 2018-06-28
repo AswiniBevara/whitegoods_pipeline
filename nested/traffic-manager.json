@@ -27,7 +27,7 @@
                 },
                 "monitorConfig": {
                     "protocol": "tcp",
-                    "port": "20",
+                    "port": "80",
                     "path": null
                 },
                 "endpoints": [
