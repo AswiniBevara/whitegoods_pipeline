@@ -220,7 +220,7 @@
     "outputs": {
         "dataPacketDesignerUrl": {
             "type": "string",
-            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
