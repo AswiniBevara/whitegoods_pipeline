@@ -599,7 +599,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeJrQbW6a78P4bHBcYQf2yM32IvGGks5bPKVNwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAeC8eXkH8A9xZwXIigUBxMz_3M_pVks5bPeVGwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -629,6 +629,9 @@
                     },
                     "appInsights": {
                         "value": "[variables('appInsights')]"
+                    },
+                     "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
                     }
                 }
             }
