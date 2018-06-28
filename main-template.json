@@ -186,7 +186,7 @@
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
-            "cosmosDbAccountName": "[concat('CosmosDB', variables('suffix'))]",
+            "cosmosDbAccountName": "[concat('cosmosdb', variables('suffix'))]",
             "kind": "GlobalDocumentDB",
             "databaseAccountOfferType": "Standard",
             "readRegionLocation": "[parameters('readRegionLocation')]"
@@ -235,7 +235,7 @@
             "cosmosDBMessageCollectionName": "Messages"
         },
         "trafficManagerSettings": {
-            "trafficManagerName1": "[concat('DeviceManageTM', variables('suffix'))]",
+            "trafficManagerName1": "[concat('deviceManagetm', variables('suffix'))]",
             "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]"
         },
         "automationSettings": {
