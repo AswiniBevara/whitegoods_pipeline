@@ -436,7 +436,7 @@
             "name": "RunBook",
             "apiVersion": "[variables('deploymentApiVersion')]",
             "dependsOn": [
-                "AppComponents"
+                "TrafficManagerApps"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -549,7 +549,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeLEa-q1d_C6ANj8WkBv6MPoeszFuks5bPKVMwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeDzpuRSd8Gx6Tti22nvpWo60ui_Cks5bPaYwwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -579,6 +579,9 @@
                     },
                     "appInsights": {
                         "value": "[variables('appInsights')]"
+                    },
+                     "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
                     }
                 }
             }
