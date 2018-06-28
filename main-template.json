@@ -141,7 +141,7 @@
             "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
-            "webAppSkuName": "S1",
+            "webAppSkuName": "B1",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
             "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
