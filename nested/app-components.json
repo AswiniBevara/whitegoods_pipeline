@@ -28,6 +28,9 @@
         },
         "appInsights": {
             "type": "object"
+        },
+        "trafficManagerSettings": {
+            "type": "object"
         }
     },
     "variables": {},
@@ -275,11 +278,11 @@
     "outputs": {
         "dataPacketDesignerUrl": {
             "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
         }
     }
 }
