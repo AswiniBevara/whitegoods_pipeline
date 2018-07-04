@@ -5,9 +5,6 @@
         "iotHubSettings": {
             "type": "object"
         },
-        "apiVersions": {
-            "type": "object"
-        },
         "omsSettings": {
             "type": "object"
         }
@@ -15,7 +12,7 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').iotHubApiversion]",
+            "apiVersion": "2016-02-03",
             "type": "Microsoft.Devices/IotHubs",
             "location": "[parameters('iotHubSettings').location]",
             "name": "[parameters('iotHubSettings').iotHubName]",
@@ -35,7 +32,7 @@
                 {
                     "name": "Microsoft.Insights/service",
                     "type": "providers/diagnosticSettings",
-                    "apiVersion": "[parameters('apiVersions').omsEnableApiVersion]",
+                    "apiVersion": "2015-07-01",
                     "dependsOn": [
                         "[concat('Microsoft.Devices/IotHubs/', parameters('iotHubSettings').iotHubName)]"
                     ],

@@ -2,9 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "apiVersions": {
-            "type": "object"
-        },
         "documentDbSettings": {
             "type": "object"
         }
@@ -12,7 +9,7 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').documentDbApiVersion]",
+            "apiVersion": "2015-04-08",
             "kind": "[parameters('documentDbSettings').kind]",
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "name": "[parameters('documentDbSettings').cosmosDbAccountName]",

@@ -4,15 +4,12 @@
     "parameters": {
         "iotHubSettings": {
             "type": "object"
-        },
-        "apiVersions": {
-            "type": "object"
         }
     },
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').iotHubApiversion]",
+            "apiVersion": "2016-02-03",
             "type": "Microsoft.Devices/IotHubs",
             "location": "[parameters('iotHubSettings').location]",
             "name": "[parameters('iotHubSettings').iotHubName]",
