@@ -19,6 +19,10 @@ workflow  container{
 
         [Parameter(Mandatory=$true)]
         [string]
+        $datapacketUriDr,
+
+        [Parameter(Mandatory=$true)]
+        [string]
         $deviceManagementUri,
         
         [Parameter(Mandatory=$true)]
@@ -40,6 +44,7 @@ workflow  container{
         $clientId = $Using:clientId
         $clientSecret = $Using:clientSecret
         $datapacketUri = $Using:datapacketUri
+        $datapacketUriDr = $Using:datapacketUriDr
         $deviceManagementUri = $Using:deviceManagementUri
         $azureAccountName = $Using:azureAccountName
         $azurePassword = $Using:azurePassword
@@ -83,8 +88,9 @@ workflow  container{
             # Update Azure AD applications reply urls
             Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
             $datapacketUriOIDC=$datapacketUri+"/signin-oidc"      
-            $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
-            $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC);  
+            $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"
+            $deviceManagementUriDrOIDC=$deviceManagementUriDr+"/signin-oidc"
+            $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC,$deviceManagementUriDrOIDC);  
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
             Set-AzureADApplication -ObjectId $objectId -HomePage $datapacketUri -ReplyUrls $replyURLList -Verbose
             # Get Access token for calling API
