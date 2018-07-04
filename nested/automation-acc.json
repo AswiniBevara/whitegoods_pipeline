@@ -11,6 +11,9 @@
         "datapacketUri": {
             "type": "string"
         },
+        "datapacketUriDr": {
+            "type": "string"
+        },
         "deviceManagementUri": {
             "type": "string"
         }
@@ -76,6 +79,7 @@
                             "clientId": "[parameters('automationSettings').clientId]",
                             "clientSecret": "[parameters('automationSettings').clientSecret]",
                             "datapacketUri": "[parameters('datapacketUri')]",
+                            "datapacketUriDr": "[parameters('datapacketUriDr')]",
                             "deviceManagementUri": "[parameters('deviceManagementUri')]",
                             "azureAccountName": "[parameters('automationSettings').azureAccountName]",
                             "azurePassword": "[parameters('automationSettings').azurePassword]",
