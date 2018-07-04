@@ -89,8 +89,8 @@ workflow  container{
             Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
             $datapacketUriOIDC=$datapacketUri+"/signin-oidc"      
             $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"
-            $deviceManagementUriDrOIDC=$deviceManagementUriDr+"/signin-oidc"
-            $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC,$deviceManagementUriDrOIDC);  
+            $datapacketUriDrOIDC=$datapacketUriDr+"/signin-oidc"
+            $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC,$datapacketUriDrOIDC);  
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
             Set-AzureADApplication -ObjectId $objectId -HomePage $datapacketUri -ReplyUrls $replyURLList -Verbose
             # Get Access token for calling API
