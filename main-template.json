@@ -337,7 +337,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeG9UYIxR78hsYmS2ECBVmt3q9zTrks5bPNhXwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeIT9zO-Kuk-aR11ayCtY7hDAHQj0ks5bRauZwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -440,7 +440,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeJYc5sEh-2zNPDh0PEJVD9fwy_YVks5bPJUZwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAePt0RprjTK8VtXIIQa7catc2t-2Eks5bRauLwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -452,6 +452,9 @@
                     },
                     "datapacketUri": {
                         "value": "[reference('AppComponents').outputs.dataPacketDesignerUrl.value]"
+                    },
+                     "datapacketUriDr": {
+                        "value": "[reference('AppComponentsDr').outputs.dataPacketDesignerUrl.value]"
                     },
                     "deviceManagementUri": {
                         "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
