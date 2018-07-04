@@ -299,7 +299,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeJRvAoAddkShd59kOrRpiCYRNg2bks5bPa8awA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeDHwFSunE2iL4ykDYiQUkSPzZzNJks5bRaoNwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -311,6 +311,9 @@
                     },
                     "datapacketUri": {
                         "value": "[reference('AppComponents').outputs.dataPacketDesignerUrl.value]"
+                    },
+                    "datapacketUriDr": {
+                        "value": "[reference('AppComponentsDr').outputs.dataPacketDesignerUrl.value]"
                     },
                     "deviceManagementUri": {
                         "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
