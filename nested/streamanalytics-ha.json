@@ -1,0 +1,90 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "apiVersions": {
+            "type": "object"
+        },
+        "streamAnalytics": {
+            "type": "object"
+        },
+        "cosmosDBAccountKey": {
+            "type": "string"
+        },
+        "iotHubPrimaryKey": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "[parameters('apiVersions').streamAnalyticsApiVersion]",
+            "type": "Microsoft.StreamAnalytics/streamingjobs",
+            "name": "[parameters('streamAnalytics').streamAnalyticsjobname]",
+            "location": "[parameters('streamAnalytics').location]",
+            "dependsOn": [],
+            "tags": {
+                "IotSuiteType": "[parameters('streamAnalytics').suiteType]"
+            },
+            "properties": {
+                "sku": {
+                    "name": "standard"
+                },
+                "OutputStartMode": "JobStartTime",
+                "EventsOutOfOrderMaxDelayInSeconds": 10,
+                "EventsOutOfOrderPolicy": "adjust",
+                "Inputs": [
+                    {
+                        "Name": "IoTHubStream",
+                        "Properties": {
+                            "DataSource": {
+                                "Properties": {
+                                    "iotHubNamespace": "[parameters('streamAnalytics').iotHubName]",
+                                    "sharedAccessPolicyKey": "[parameters('iotHubPrimaryKey')]",
+                                    "sharedAccessPolicyName": "[parameters('streamAnalytics').iotHubKeyName]"
+                                },
+                                "Type": "Microsoft.Devices/IotHubs"
+                            },
+                            "Serialization": {
+                                "Properties": {
+                                    "Encoding": "UTF8"
+                                },
+                                "Type": "Json"
+                            },
+                            "Type": "Stream"
+                        }
+                    }
+                ],
+                "Outputs": [
+                    {
+                        "Name": "CosmosDBOutput",
+                        "Properties": {
+                            "DataSource": {
+                                "Properties": {
+                                    "accountId": "[parameters('streamAnalytics').cosmosDbAccountName]",
+                                    "accountKey": "[parameters('cosmosDBAccountKey')]",
+                                    "database": "[parameters('streamAnalytics').cosmosDbName]",
+                                    "collectionNamePattern": "[parameters('streamAnalytics').cosmosDBMessageCollectionName]"
+                                },
+                                "Type": "Microsoft.Storage/DocumentDB"
+                            }
+                        }
+                    }
+                ],
+                "Transformation": {
+                    "Name": "AllToCosmosDB",
+                    "Properties": {
+                        "Query": "\r\n    SELECT\r\n        *\r\n INTO [CosmosDBOutput] \r\n  FROM [IoTHubStream]",
+                        "StreamingUnits": 1
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "streamAnalyticsName": {
+            "type": "string",
+            "value": "[parameters('streamAnalytics').streamAnalyticsjobname]"
+        }
+    }
+}

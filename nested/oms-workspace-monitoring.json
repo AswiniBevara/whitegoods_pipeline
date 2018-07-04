@@ -1,0 +1,415 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "omsSettings": {
+            "type": "object"
+        },
+        "apiVersions": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "batch1": {
+            "solutions": [
+                {
+                    "name": "[concat('AzureSQLAnalytics', '(', parameters('omsSettings').omsWorkspaceName, ')')]",
+                    "marketplaceName": "AzureSQLAnalytics"
+                },
+                {
+                    "name": "[concat('AzureWebAppsAnalytics', '(', parameters('omsSettings').omsWorkspaceName, ')')]",
+                    "marketplaceName": "AzureWebAppsAnalytics"
+                }
+            ]
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "[parameters('apiVersions').omsApiVersion]",
+            "location": "[parameters('omsSettings').omsWorkspaceRegion]",
+            "name": "[parameters('omsSettings').omsWorkspaceName]",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "comments": "Log Analytics workspace",
+            "properties": {
+                "sku": {
+                    "name": "[parameters('omsSettings').omsLogAnalyticsSku]"
+                }
+            },
+            "resources": [
+                {
+                    "name": "[concat(parameters('omsSettings').omsWorkspaceName, '/', 'Network1')]",
+                    "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+                    "apiVersion": "[parameters('apiVersions').omsApiVersion]",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "tags": {},
+                    "properties": {
+                        "ETag": "*",
+                        "query": "Type=Event EventID=4202 Source=\"TCPIP\" EventLog=\"System\" TimeGenerated>NOW-24HOURS | Measure Count() By Computer",
+                        "displayName": "A Network adatper was disconnected from the network",
+                        "category": "Networking"
+                    }
+                },
+                {
+                    "name": "[concat(parameters('omsSettings').omsWorkspaceName, '/', 'Network2')]",
+                    "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+                    "apiVersion": "[parameters('apiVersions').omsApiVersion]",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "tags": {},
+                    "properties": {
+                        "ETag": "*",
+                        "query": "Type=Event EventID=4198 OR EventID=4199 Source=\"TCPIP\" EventLog=\"System\" TimeGenerated>NOW-24HOURS",
+                        "displayName": "Duplicate IP address has been detected",
+                        "category": "Networking"
+                    }
+                },
+                {
+                    "name": "[concat(parameters('omsSettings').omsWorkspaceName, '/', 'NTFS1')]",
+                    "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+                    "apiVersion": "[parameters('apiVersions').omsApiVersion]",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "tags": {},
+                    "properties": {
+                        "ETag": "*",
+                        "query": "Type=Event EventID=98 Source=\"Microsoft-Windows-Ntfs\" EventLog=\"System\" TimeGenerated>NOW-24HOURS | Measure Count() By Computer",
+                        "displayName": "NTFS File System Corruption",
+                        "category": "NTFS"
+                    }
+                },
+                {
+                    "name": "[concat(parameters('omsSettings').omsWorkspaceName, '/', 'NTFS2')]",
+                    "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+                    "apiVersion": "[parameters('apiVersions').omsApiVersion]",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "tags": {},
+                    "properties": {
+                        "ETag": "*",
+                        "query": "Type=Event EventID=40 OR EventID=36\ufffd Source=\"DISK\" EventLog=\"System\" TimeGenerated>NOW-24HOURS | Measure Count() By Compute",
+                        "displayName": "NTFS Quouta treshold limit reached",
+                        "category": "NTFS"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk1",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Avg Disk sec/Read"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk2",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Avg Disk sec/Write"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk3",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Current Disk Queue Lenght"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk4",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Disk Reads/sec"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk5",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Disk Transfers/sec"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk6",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Disk Writes/sec"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk7",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Free Megabytes"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "LogicalDisk8",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "LogicalDisk",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "% Free Space"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "Memory1",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "Memory",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Available MBytes"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "Memory2",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "Memory",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "% Committed Bytes In Use"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "Network1",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "Network Adapter",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Bytes Received/sec"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "Network2",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "Network Adapter",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Bytes Sent/sec"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "Network3",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "Network Adapter",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Bytes Total/sec"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "CPU1",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "Processor",
+                        "instanceName": "_Total",
+                        "intervalSeconds": 10,
+                        "counterName": "% Processor Time"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "CPU2",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsPerformanceCounter",
+                    "properties": {
+                        "objectName": "System",
+                        "instanceName": "*",
+                        "intervalSeconds": 10,
+                        "counterName": "Processor Queue Lenght"
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "System",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsEvent",
+                    "properties": {
+                        "eventLogName": "System",
+                        "eventTypes": [
+                            {
+                                "eventType": "Error"
+                            },
+                            {
+                                "eventType": "Warning"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "Application",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "WindowsEvent",
+                    "properties": {
+                        "eventLogName": "Application",
+                        "eventTypes": [
+                            {
+                                "eventType": "Error"
+                            },
+                            {
+                                "eventType": "Warning"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+                    "type": "datasources",
+                    "name": "IISLog",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+                    ],
+                    "kind": "IISLogs",
+                    "properties": {
+                        "state": "OnPremiseEnabled"
+                    }
+                }
+            ]
+        },
+        {
+            "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+            "type": "Microsoft.OperationsManagement/solutions",
+            "name": "[concat(variables('batch1').solutions[copyIndex()].Name)]",
+            "location": "[parameters('omsSettings').omsWorkspaceRegion]",
+            "dependsOn": [
+                "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]"
+            ],
+            "copy": {
+                "name": "solutionCopy",
+                "count": "[length(variables('batch1').solutions)]"
+            },
+            "properties": {
+                "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('omsSettings').omsWorkspaceName)]"
+            },
+            "plan": {
+                "name": "[variables('batch1').solutions[copyIndex()].name]",
+                "product": "[concat('OMSGallery/', variables('batch1').solutions[copyIndex()].marketplaceName)]",
+                "promotionCode": "",
+                "publisher": "Microsoft"
+            }
+        }
+    ],
+    "outputs": {
+        "workspaceCustomerId": {
+            "value": "[reference(concat('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName), '2015-11-01-preview').customerId]",
+            "type": "string"
+        },
+        "workspacePrimarySharedKey": {
+            "value": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', parameters('omsSettings').omsWorkspaceName), '2015-11-01-preview').primarySharedKey]",
+            "type": "string"
+        },
+        "workspaceSecondarySharedKey": {
+            "value": "[listKeys(parameters('omsSettings').omsWorkspaceName, parameters('apiVersions').omsDataApiVersion).secondarySharedKey]",
+            "type": "securestring"
+        }
+    }
+}
