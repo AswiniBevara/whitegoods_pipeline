@@ -5,9 +5,6 @@
         "timeSeriesInsights": {
             "type": "object"
         },
-        "apiVersions": {
-            "type": "object"
-        },
         "iotHubPrimaryKey": {
             "type": "string"
         }
@@ -15,7 +12,7 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').timeSeriesInsightsApiVersion]",
+            "apiVersion": "2017-11-15",
             "name": "[parameters('timeSeriesInsights').timeSeriesInsightsName]",
             "location": "[parameters('timeSeriesInsights').timeSeriesInsightslocation]",
             "scale": null,
@@ -34,7 +31,7 @@
             "type": "Microsoft.TimeSeriesInsights/environments/eventsources",
             "kind": "Microsoft.IoTHub",
             "name": "[concat(parameters('timeSeriesInsights').timeSeriesInsightsName, '/', parameters('timeSeriesInsights').iotHubName)]",
-            "apiVersion": "[parameters('apiVersions').timeSeriesInsightsApiVersion]",
+            "apiVersion": "2017-11-15",
             "location": "[parameters('timeSeriesInsights').timeSeriesInsightslocation]",
             "scale": null,
             "properties": {

@@ -5,9 +5,6 @@
         "webSiteSettings": {
             "type": "object"
         },
-        "apiVersions": {
-            "type": "object"
-        },
         "iotHubEndPoint": {
             "type": "string"
         },
@@ -27,7 +24,7 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+            "apiVersion": "2015-08-01",
             "name": "[parameters('webSiteSettings').webAppHostingPlanName]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[parameters('webSiteSettings').location]",
@@ -43,7 +40,7 @@
             }
         },
         {
-            "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+            "apiVersion":"2015-08-01",
             "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('webSiteSettings').location]",
@@ -60,7 +57,7 @@
             },
             "resources": [
                 {
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "apiVersion": "2015-08-01",
                     "name": "web",
                     "type": "config",
                     "dependsOn": [
@@ -83,7 +80,7 @@
                     "name": "MSDeploy",
                     "type": "extensions",
                     "location": "[parameters('webSiteSettings').location]",
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "apiVersion": "2015-08-01",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]"
@@ -101,7 +98,7 @@
                     }
                 },
                 {
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "apiVersion": "2015-08-01",
                     "name": "Appsettings",
                     "type": "config",
                     "dependsOn": [
@@ -128,7 +125,7 @@
             ]
         },
         {
-            "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+            "apiVersion": "2015-08-01",
             "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('webSiteSettings').location]",
@@ -148,7 +145,7 @@
             },
             "resources": [
                 {
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "apiVersion": "2015-08-01",
                     "name": "web",
                     "type": "config",
                     "dependsOn": [
@@ -171,7 +168,7 @@
                     "name": "MSDeploy",
                     "type": "extensions",
                     "location": "[parameters('webSiteSettings').location]",
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "apiVersion":"2015-08-01",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]",
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/config/web')]"
@@ -189,7 +186,7 @@
                     }
                 },
                 {
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
+                    "apiVersion": "2015-08-01",
                     "name": "Appsettings",
                     "type": "config",
                     "dependsOn": [
