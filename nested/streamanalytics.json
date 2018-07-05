@@ -2,9 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "apiVersions": {
-            "type": "object"
-        },
         "streamAnalytics": {
             "type": "object"
         },
@@ -18,7 +15,7 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').streamAnalyticsApiVersion]",
+            "apiVersion": "2015-10-01",
             "type": "Microsoft.StreamAnalytics/streamingjobs",
             "name": "[parameters('streamAnalytics').streamAnalyticsjobname]",
             "location": "[parameters('streamAnalytics').location]",
@@ -28,7 +25,7 @@
             },
             "properties": {
                 "sku": {
-                    "name": "standard"
+                    "name": "[parameters('streamAnalytics').sku]"
                 },
                 "OutputStartMode": "JobStartTime",
                 "EventsOutOfOrderMaxDelayInSeconds": 10,

@@ -4,15 +4,12 @@
     "parameters": {
         "notificationHub": {
             "type": "object"
-        },
-        "apiVersions": {
-            "type": "object"
         }
     },
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').notificationHubApiVersion]",
+            "apiVersion": "2014-09-01",
             "name": "[parameters('notificationHub').notificationHubNamespaceName]",
             "type": "Microsoft.NotificationHubs/namespaces",
             "location": "[parameters('notificationHub').location]",
@@ -25,7 +22,7 @@
             },
             "resources": [
                 {
-                    "apiVersion": "[parameters('apiVersions').notificationHubApiVersion]",
+                    "apiVersion":"2014-09-01",
                     "name": "[concat(parameters('notificationHub').notificationHubNamespaceName,'/',parameters('notificationHub').notificationHubName)]",
                     "type": "Microsoft.NotificationHubs/namespaces/notificationHubs",
                     "location": "[parameters('notificationHub').location]",

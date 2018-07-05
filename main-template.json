@@ -67,6 +67,21 @@
                 "koreasouth"
             ]
         },
+        "appInsightsLocation": {
+            "type": "string",
+            "defaultValue": "eastus",
+            "allowedValues": [
+                "eastus",
+                "northeurope",
+                "southcentralus",
+                "southeastasia",
+                "westeurope",
+                "westus2"
+            ],
+            "metadata": {
+                "description": "specify the region for application insights"
+            }
+        },
 
 
 
@@ -119,8 +134,6 @@
     },
     "variables": {
         "apiVersions": {
-            "notificationHubApiVersion": "2014-09-01",
-            "appInsightsApiVersion": "2014-04-01",
             "webAppApiVersion": "2015-08-01",
             "automationApiVersion": "2015-10-31",
             "streamAnalyticsApiVersion": "2015-10-01",
@@ -132,34 +145,21 @@
             "omsLogAnalyticsSku": "standalone",
             "dataRetention": 7
         },
+        "iotHubSettings": {
+            "location": "[variables('location')]",
+            "iotHubName": "[concat('IoTHub', variables('suffix'))]",
+            "skuName": "B1",
+            "skuName1":"S1",
+            "capacityUnits": 1,
+            "d2cMessageRetentionInDaysPeriod": 1,
+            "d2cPartitionCount": 2
+        },
         "documentDbSettings": {
             "location": "[variables('location')]",
             "cosmosDbAccountName": "[concat('cosmosdb', variables('suffix'))]",
             "kind": "GlobalDocumentDB",
             "databaseAccountOfferType": "Standard",
             "readRegionLocation": "[parameters('readRegionLocation')]"
-
-        },
-        "webSiteSettings": {
-            "location": "[variables('location')]",
-            "tenantId": "[parameters('tenantId')]",
-            "clientId": "[parameters('clientId')]",
-            "clientSecret": "[parameters('clientSecret')]",
-            "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
-            "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
-            "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
-            "webAppSkuName": "B1",
-            "iotHubName": "[variables('iotHubSettings').iotHubName]",
-            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
-            "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
-            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
-            "iotHubKeyName": "iothubowner",
-            "cosmosDbName": "MSIoT",
-            "cosmosDbColTemplateName": "Templates",
-            "cosmosDbColMessagesName": "Messages",
-            "cosmosDbColGroupsName": "Groups",
-            "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
-            "notificationHubName": "[variables('notificationHub').notificationHubName]"
         },
         "notificationHub": {
             "location": "[variables('location')]",
@@ -168,19 +168,12 @@
             "notificationHubNamespaceName": "[concat('NotificationHubNS', variables('suffix'))]",
             "notificationHubName": "[concat('NotificationHub', variables('suffix'))]"
         },
-        "streamAnalytics": {
-            "location": "[variables('location')]",
-            "streamAnalyticsjobname": "[concat('StremanAlytics', variables('suffix'))]",
-            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
-            "cosmosDbName": "MSIoT",
-            "iotHubName": "[variables('iotHubSettings').iotHubName]",
-            "suiteType": "RemoteMonitoring",
-            "telemetryCGName": "telemetrycg",
-            "iotHubKeyName": "iothubowner",
-            "cosmosDBMessageCollectionName": "Messages"
+        "appInsights": {
+            "location": "[parameters('appInsightsLocation')]",
+            "appInsightResourceName": "[concat('AppInsights', uniquestring(resourceGroup().id))]"
         },
         "automationSettings": {
-            "automationAccountName": "[concat('AutomationAc', variables('suffix'))]",
+            "automationAccountName": "[concat('AutomationAcc', variables('suffix'))]",
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
@@ -195,14 +188,52 @@
             "azureAccountName": "[parameters('azureAccountName')]",
             "azurePassword": "[parameters('azurePassword')]"
         },
-        "iotHubSettings": {
-            "location": "[variables('location')]",
-            "iotHubName": "[concat('IoTHub', variables('suffix'))]",
-            "skuName": "F1",
-            "capacityUnits": 1,
-            "d2cMessageRetentionInDaysPeriod": 1,
-            "d2cPartitionCount": 2
+        "trafficManagerSettings": {
+            "trafficManagerName1": "[concat('devicemanagetm', variables('suffix'))]",
+            "trafficRoutingMethod": "Priority"
         },
+        "streamAnalytics": {
+            "location": "[variables('location')]",
+            "streamAnalyticsjobname": "[concat('StreamAnalytics', variables('suffix'))]",
+            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
+            "cosmosDbName": "MSIoT",
+            "sku":"Standard",
+            "iotHubName": "[variables('iotHubSettings').iotHubName]",
+            "suiteType": "RemoteMonitoring",
+            "telemetryCGName": "telemetrycg",
+            "iotHubKeyName": "iothubowner",
+            "cosmosDBMessageCollectionName": "Messages"
+        },
+
+
+
+
+
+        "webSiteSettings": {
+            "location": "[variables('location')]",
+            "tenantId": "[parameters('tenantId')]",
+            "clientId": "[parameters('clientId')]",
+            "clientSecret": "[parameters('clientSecret')]",
+            "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
+            "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
+            "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
+            "webAppSkuName": "B1",
+            "iotHubName": "[variables('iotHubSettings').iotHubName]",
+            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
+            #"dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
+           # "dataPacketWebSiteNameDr": "[concat('DatapacketDr', variables('suffix'))]",
+           # "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
+            "iotHubKeyName": "iothubowner",
+            "cosmosDbName": "MSIoT",
+            "cosmosDbColTemplateName": "Templates",
+            "cosmosDbColMessagesName": "Messages",
+            "cosmosDbColGroupsName": "Groups",
+            "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
+            "notificationHubName": "[variables('notificationHub').notificationHubName]"
+        },
+        
+       
+       
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "deploymentApiVersion": "2016-02-01",
@@ -402,17 +433,68 @@
                 }
             }
         },
-
-
-
-
-
-
-
         {
+            "name": "NotificationHubCoreHa",
             "type": "Microsoft.Resources/deployments",
-            "name": "RunBook",
-            "apiVersion": "[variables('deploymentApiVersion')]",
+            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-hardening'))]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeACn0ns2CtvTMbkap1blO9G8CF9_ks5bREQHwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "NotificationHubWmHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeACn0ns2CtvTMbkap1blO9G8CF9_ks5bREQHwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "appInsights",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json','?token=AYpAePSZSZ13tHU_DBenxbGCAZ3--EXfks5bPIpowA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "RunBookCoreWm",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "AppComponents"
             ],
@@ -426,24 +508,53 @@
                     "automationSettings": {
                         "value": "[variables('automationSettings')]"
                     },
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
                     "datapacketUri": {
-                        "value": "[reference('AppComponents').outputs.dataPacketDesignerUrl.value]"
+                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
-                        "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
+                        "value":"[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+                    }
+                }
+            } 
+           
+        },
+        {
+            "name": "RunBookWmHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'), 'core-with-monitoring-hardening'))]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "TrafficManagerApps"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeDHwFSunE2iL4ykDYiQUkSPzZzNJks5bRaoNwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "automationSettings": {
+                        "value": "[variables('automationSettings')]"
+                    },
+                    "datapacketUri": {
+                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                    },
+                    "datapacketUriDr": {
+                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+                    },
+                    "deviceManagementUri": {
+                        "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
                     }
                 }
             }
         },
         {
+            "name": "StreamAnalyticsCoreWm",
             "type": "Microsoft.Resources/deployments",
-            "name": "StreamAnalytics",
-            "apiVersion": "[variables('deploymentApiVersion')]",
+            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
+            "apiVersion":  "2016-02-01",
             "dependsOn": [
-                "RunBook"
+                "RunBookCoreWm"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -455,39 +566,51 @@
                     "streamAnalytics": {
                         "value": "[variables('streamAnalytics')]"
                     },
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
                     "iotHubPrimaryKey": {
-                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
+                        "value": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
                     },
                     "cosmosDBAccountKey": {
-                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
+                        "value": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]"
                     }
                 }
             }
         },
         {
+            "name": "StreamAnalyticsWmHa",
             "type": "Microsoft.Resources/deployments",
-            "name": "NotificataionHub",
-            "apiVersion": "[variables('deploymentApiVersion')]",
-            "dependsOn": [],
+            "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'), 'core-with-monitoring-hardening'))]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "RunBookWmHa"
+            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json','?token=AYpAeACn0ns2CtvTMbkap1blO9G8CF9_ks5bREQHwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeBMv9xMeo4umQMIFUrZyrgRsZW5Qks5bREP7wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
+                    "streamAnalytics": {
+                        "value": "[variables('streamAnalytics')]"
                     },
-                    "notificationHub": {
-                        "value": "[variables('notificationHub')]"
+                    "iotHubPrimaryKey": {
+                        "value": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
+                    },
+                    "cosmosDBAccountKey": {
+                        "value": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]"
                     }
                 }
             }
         },
+
+
+
+
+
+
+
+      
+        
         {
             "type": "Microsoft.Resources/deployments",
             "name": "AppComponents",

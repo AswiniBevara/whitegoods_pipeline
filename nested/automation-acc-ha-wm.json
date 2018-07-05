@@ -5,9 +5,6 @@
         "automationSettings": {
             "type": "object"
         },
-        "apiVersions": {
-            "type": "object"
-        },
         "datapacketUri": {
             "type": "string"
         },
@@ -23,7 +20,7 @@
         {
             "name": "[parameters('automationSettings').automationAccountName]",
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+            "apiVersion":"2015-10-31",
             "location": "[parameters('automationSettings').automationLocation]",
             "properties": {
                 "sku": {
@@ -34,7 +31,7 @@
                 {
                     "name": "[parameters('automationSettings').runbookName]",
                     "type": "runbooks",
-                    "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+                    "apiVersion":"2015-10-31",
                     "location": "[parameters('automationSettings').automationLocation]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', parameters('automationSettings').automationAccountName)]"
@@ -53,7 +50,7 @@
                 {
                     "name": "[concat(parameters('automationSettings').automationAccountName, '/', parameters('automationSettings').moduleName)]",
                     "type": "Microsoft.Automation/automationAccounts/modules",
-                    "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+                    "apiVersion": "2015-10-31",
                     "scale": null,
                     "properties": {
                         "contentLink": { 
@@ -68,7 +65,7 @@
                 {
                     "name": "[concat(parameters('automationSettings').automationAccountName, '/', parameters('automationSettings').sessionId)]",
                     "type": "Microsoft.Automation/automationAccounts/jobs",
-                    "apiVersion": "[parameters('apiVersions').automationApiVersion]",
+                    "apiVersion":"2015-10-31",
                     "location": "[parameters('automationSettings').automationLocation]",
                     "properties": {
                         "runbook": {
