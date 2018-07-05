@@ -396,7 +396,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeIBz1VCJbiboo5fkzL23_ybCvOexks5bPJUgwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/oms-workspace.json','?token=AYpAeMlQNDwE_MNWe5Otnu1rc6kpF98Mks5bRyj1wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
