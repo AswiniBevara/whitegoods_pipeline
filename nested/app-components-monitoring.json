@@ -99,7 +99,7 @@
                 },
                 {
                     "apiVersion": "2015-08-01",
-                    "name": "Appsettings",
+                    "name": "appsettings",
                     "type": "config",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
@@ -212,7 +212,7 @@
                 },
                 {
                     "apiVersion": "2015-08-01",
-                    "name": "Appsettings",
+                    "name": "appsettings",
                     "type": "config",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').deviceManagementPortalWebSiteName)]",

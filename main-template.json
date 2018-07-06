@@ -155,9 +155,7 @@
     },
     "variables": {
         "apiVersions": {
-            "webAppApiVersion": "2015-08-01",
-            "automationApiVersion": "2015-10-31",
-            "streamAnalyticsApiVersion": "2015-10-01"
+            "webAppApiVersion": "2015-08-01"
         },
         "omsSettings": {
             "omsWorkspaceName": "[concat('omsworkspace', variables('suffix'))]",
@@ -244,9 +242,9 @@
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
             "webAppSkuName": "B1",
-            #"dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
-           # "dataPacketWebSiteNameDr": "[concat('DatapacketDr', variables('suffix'))]",
-           # "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]"
+            "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
+           "dataPacketWebSiteNameDr": "[concat('DatapacketDr', variables('suffix'))]",
+           "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]"
         },
         
        
@@ -558,7 +556,7 @@
             "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                #"AppComponents"
+             "AppComponents"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -586,7 +584,7 @@
             "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'), 'core-with-monitoring-hardening'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-               # "TrafficManagerApps"
+               "TrafficManagerApps"
             ],
             "properties": {
                 "mode": "Incremental",
