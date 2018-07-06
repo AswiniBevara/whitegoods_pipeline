@@ -82,6 +82,21 @@
                 "description": "specify the region for application insights"
             }
         },
+        "locationDr": {
+            "type": "string",
+            "defaultValue": "",
+            "allowedValues": [
+                "eastus",
+                "northeurope",
+                "southcentralus",
+                "southeastasia",
+                "westeurope",
+                "westus2"
+            ],
+            "metadata": {
+                "description": "Choose location for DR resources and make sure that it should be different from resource group region"
+            }
+        },
         "tenantId": {
             "type": "string",
             "metadata": {
@@ -235,16 +250,20 @@
         },
         "webSiteSettings": {
             "location": "[variables('location')]",
+            "locationDr": "[parameters('locationDr')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
             "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
+            "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
             "webAppSkuName": "B1",
+            "webAppSkuName1": "S1",
             "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
-           "dataPacketWebSiteNameDr": "[concat('DatapacketDr', variables('suffix'))]",
-           "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]"
+           "dataPacketWebSiteNameDr": "[concat('recoverydatapacket', variables('suffix'))]",
+           "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
+           "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },     
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
@@ -659,7 +678,7 @@
             }
         },
         {
-            "name": "AppComponentsCore",
+            "name": "WebAppCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion":  "2016-02-01",
@@ -691,7 +710,7 @@
             }
         },
         {
-            "name": "AppComponentsWm",
+            "name": "WebAppWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
             "apiVersion":  "2016-02-01",
@@ -727,7 +746,216 @@
                     }
                 }
             }
+        },
+        {
+            "name": "WebAppHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "IotHubHa",
+                "DocumentDBHa",
+                "NotificationHubHAWmHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeKLUgri3owQEPRCYr_jgg0pQ52igks5bPbUowA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    },
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "RecoveryWebAppHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "IotHubHa",
+                "DocumentDBHa",
+                "NotificationHubHAWmHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAePeaYEMYybKfEMbGYXY2djUHmOjNks5bPbTJwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    },
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "WebAppWmHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "IotHubWmHa",
+                "DocumentDBWmHA",
+                "NotificationHubHAWmHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeKLUgri3owQEPRCYr_jgg0pQ52igks5bPbUowA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    },
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "RecoveryWebAppWmHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "IotHubWmHa",
+                "DocumentDBWmHA",
+                "NotificationHubHAWmHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents.json','?token=AYpAePeaYEMYybKfEMbGYXY2djUHmOjNks5bPbTJwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    },
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "TrafficManagerAppsHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "WebAppHa",
+                "RecoveryWebAppHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeAR7ob5cPt7H9Gk6ZfSrpmFjdbTdks5bPe0pwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    },
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "TrafficManagerAppsWmHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "WebAppWmHa",
+                "RecoveryWebAppWmHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json','?token=AYpAeAR7ob5cPt7H9Gk6ZfSrpmFjdbTdks5bPe0pwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "apiVersions": {
+                        "value": "[variables('apiVersions')]"
+                    },
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
         }
+
 
 
 
