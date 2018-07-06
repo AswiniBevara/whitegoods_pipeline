@@ -5,8 +5,8 @@
         "timeSeriesInsights": {
             "type": "object"
         },
-        "iotHubPrimaryKey": {
-            "type": "string"
+        "iotHubSettings": {
+            "type": "object"
         }
     },
     "variables": {},
@@ -35,11 +35,11 @@
             "location": "[parameters('timeSeriesInsights').timeSeriesInsightslocation]",
             "scale": null,
             "properties": {
-                "iotHubName": "[parameters('timeSeriesInsights').iotHubName]",
-                "keyName": "[parameters('timeSeriesInsights').keyName]",
-                "consumerGroupName": "[parameters('timeSeriesInsights').consumerGroupName]",
+                "iotHubName": "[parameters('iotHubSettings').iotHubName]",
+                "keyName": "[parameters('iotHubSettings').keyName]",
+                "consumerGroupName": "[parameters('iotHubSettings').consumerGroupName]",
                 "eventSourceResourceId": "[resourceId('Microsoft.Devices/IotHubs', parameters('timeSeriesInsights').iotHubName)]",
-                "sharedAccessKey": "[parameters('iotHubPrimaryKey')]"
+                "sharedAccessKey": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',parameters('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.TimeSeriesInsights/environments', parameters('timeSeriesInsights').timeSeriesInsightsName)]"

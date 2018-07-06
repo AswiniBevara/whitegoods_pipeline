@@ -157,8 +157,7 @@
         "apiVersions": {
             "webAppApiVersion": "2015-08-01",
             "automationApiVersion": "2015-10-31",
-            "streamAnalyticsApiVersion": "2015-10-01",
-            "timeSeriesInsightsApiVersion": "2017-11-15"
+            "streamAnalyticsApiVersion": "2015-10-01"
         },
         "omsSettings": {
             "omsWorkspaceName": "[concat('omsworkspace', variables('suffix'))]",
@@ -168,19 +167,26 @@
         },
         "iotHubSettings": {
             "location": "[variables('location')]",
-            "iotHubName": "[concat('IoTHub', variables('suffix'))]",
+            "iotHubName": "[concat('IoTHub',variables('suffix'))]",
+            "keyName": "iothubowner",
             "skuName": "B1",
             "skuName1":"S1",
             "capacityUnits": 1,
             "d2cMessageRetentionInDaysPeriod": 1,
-            "d2cPartitionCount": 2
+            "d2cPartitionCount": 2,
+            "consumerGroupName": "$Default"
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
             "cosmosDbAccountName": "[concat('cosmosdb', variables('suffix'))]",
             "kind": "GlobalDocumentDB",
+            "cosmosDbName": "MSIoT",
+            "cosmosDBMessageCollectionName": "Messages",
             "databaseAccountOfferType": "Standard",
-            "readRegionLocation": "[parameters('readRegionLocation')]"
+            "readRegionLocation": "[parameters('readRegionLocation')]",
+            "cosmosDbColTemplateName": "Templates",
+            "cosmosDbColMessagesName": "Messages",
+            "cosmosDbColGroupsName": "Groups"
         },
         "notificationHub": {
             "location": "[variables('location')]",
@@ -215,31 +221,20 @@
         },
         "streamAnalytics": {
             "location": "[variables('location')]",
-            "streamAnalyticsjobname": "[concat('StreamAnalytics', variables('suffix'))]",
-            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
-            "cosmosDbName": "MSIoT",
+            "streamAnalyticsjobname": "[concat('StreamAnalytics', variables('suffix'))]",        
             "sku":"Standard",
-            "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "suiteType": "RemoteMonitoring",
-            "telemetryCGName": "telemetrycg",
-            "iotHubKeyName": "iothubowner",
-            "cosmosDBMessageCollectionName": "Messages"
+            "telemetryCGName": "telemetrycg"        
         },
         "timeSeriesInsights": {
             "timeSeriesInsightslocation": "[parameters('timeSeriesInsightslocation')]",
             "timeSeriesInsightsName": "[concat('timeseriesinsights', variables('suffix'))]",
             "dataRetentionTime": "P31D",
-            "iotHubName": "[variables('iotHubSettings').iotHubName]",
-            "keyName": "iothubowner",
             "skuCapacity": 1,
             "skuSize": "S1",
             "skuTier": "Standard",
-            "skuName": "S1",
-            "consumerGroupName": "$Default"
-
+            "skuName": "S1"    
         },
-
-
         "webSiteSettings": {
             "location": "[variables('location')]",
             "tenantId": "[parameters('tenantId')]",
@@ -249,18 +244,9 @@
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
             "webAppSkuName": "B1",
-            "iotHubName": "[variables('iotHubSettings').iotHubName]",
-            "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
             #"dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
            # "dataPacketWebSiteNameDr": "[concat('DatapacketDr', variables('suffix'))]",
-           # "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
-            "iotHubKeyName": "iothubowner",
-            "cosmosDbName": "MSIoT",
-            "cosmosDbColTemplateName": "Templates",
-            "cosmosDbColMessagesName": "Messages",
-            "cosmosDbColGroupsName": "Groups",
-            "notificationHubNamespaceName": "[variables('notificationHub').notificationHubNamespaceName]",
-            "notificationHubName": "[variables('notificationHub').notificationHubName]"
+           # "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]"
         },
         
        
@@ -290,7 +276,7 @@
             }
         },
         {
-            "name": "IotHub",
+            "name": "IotHubCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion": "2016-02-01",
@@ -378,7 +364,7 @@
         {
             "name": "TimeSeriesInsightsWm",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
+            "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring'),equals(parameters('timeSeriesInsights'),'Yes'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubWm"
@@ -393,8 +379,8 @@
                     "timeSeriesInsights": {
                         "value": "[variables('timeSeriesInsights')]"
                     },
-                    "iotHubPrimaryKey": {
-                        "value": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
                     }
                 }
             }
@@ -402,7 +388,7 @@
         {
             "name": "TimeSeriesInsightsWmHa",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
+            "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring-hardening'),equals(parameters('timeSeriesInsights'),'Yes'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubWmHa"
@@ -417,14 +403,14 @@
                     "timeSeriesInsights": {
                         "value": "[variables('timeSeriesInsights')]"
                     },
-                    "iotHubPrimaryKey": {
-                        "value": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
                     }
                 }
             }
         },
         {
-            "name": "DocumentDB",
+            "name": "DocumentDBCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion":"2016-02-01",
@@ -438,17 +424,14 @@
                 "parameters": {
                     "documentDbSettings": {
                         "value": "[variables('documentDbSettings')]"
-                    },
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
                     }
                 }
             }
         },
         {
+            "name": "DocumentDBWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "name": "DocumentDBWm",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "OMSWorkSpace"
@@ -470,9 +453,9 @@
             }
         },
         {
+            "name": "DocumentDBHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "name": "DocumentDBHa",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -489,9 +472,9 @@
             }
         },
         {
+            "name": "DocumentDBWmHA",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
-            "name": "DocumentDBWmHA",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
                 "OMSWorkSpace"
@@ -513,9 +496,9 @@
             }
         },
         {
-            "name": "NotificationHubCoreHa",
+            "name": "NotificationHubCoreWm",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-hardening'))]",
+            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -532,9 +515,9 @@
             }
         },
         {
-            "name": "NotificationHubWmHa",
+            "name": "NotificationHubHAWmHa",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
+            "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -551,7 +534,7 @@
             }
         },
         {
-            "name": "appInsights",
+            "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
             "apiVersion":  "2016-02-01",
@@ -598,7 +581,7 @@
            
         },
         {
-            "name": "RunBookWmHa",
+            "name": "RunBookHaWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'), 'core-with-monitoring-hardening'))]",
             "apiVersion": "2016-02-01",
@@ -645,22 +628,22 @@
                     "streamAnalytics": {
                         "value": "[variables('streamAnalytics')]"
                     },
-                    "iotHubPrimaryKey": {
-                        "value": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
                     },
-                    "cosmosDBAccountKey": {
-                        "value": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]"
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
         },
         {
-            "name": "StreamAnalyticsWmHa",
+            "name": "StreamAnalyticsHaWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'), 'core-with-monitoring-hardening'))]",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
-                "RunBookWmHa"
+                "RunBookHaWmHa"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -672,24 +655,24 @@
                     "streamAnalytics": {
                         "value": "[variables('streamAnalytics')]"
                     },
-                    "iotHubPrimaryKey": {
-                        "value": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
                     },
-                    "cosmosDBAccountKey": {
-                        "value": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]"
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
         },
         {
-            "name": "AppComponents",
+            "name": "AppComponentsCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion": "[variables('deploymentApiVersion')]",
+            "apiVersion":  "2016-02-01",
             "dependsOn": [
-                "IotHub",
-                "DocumentDB",
-                "NotificationHubCoreHa"
+                "IotHubCore",
+                "DocumentDBCore",
+                "NotificationHubCoreWm"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -698,26 +681,55 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
                     "webSiteSettings": {
                         "value": "[variables('webSiteSettings')]"
                     },
-                    "iotHubEndPoint": {
-                        "value": "[reference(resourceId('Microsoft.Devices/IoTHubs',variables('iotHubSettings').iotHubName)).hostName]",
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
                     },
-                    "iotHubPrimaryKey": {
-                        "value": "[reference('IotHub').outputs.iotHubPrimaryKey.value]"
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
                     },
-                    "cosmosDBAccountEndPoint": {
-                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountEndPoint.value]"
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "AppComponentsWm",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "IotHubWm",
+                "DocumentDBWm",
+                "NotificationHubCoreWm"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAePglTJMgJG6S-G5eDzuaHELaF8mQks5bREP9wA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
                     },
-                    "cosmosDBAccountKey": {
-                        "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
                     },
-                    "notificationHubConnectionString": {
-                        "value": "[reference('NotificataionHub').outputs.notificationHubConnectionString.value]"
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    },
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
                     }
                 }
             }

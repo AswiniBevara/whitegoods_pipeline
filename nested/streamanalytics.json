@@ -5,11 +5,11 @@
         "streamAnalytics": {
             "type": "object"
         },
-        "cosmosDBAccountKey": {
+        "documentDbSettings": {
             "type": "string"
         },
-        "iotHubPrimaryKey": {
-            "type": "string"
+        "iotHubSettings": {
+            "type": "object"
         }
     },
     "variables": {},
@@ -36,9 +36,9 @@
                         "Properties": {
                             "DataSource": {
                                 "Properties": {
-                                    "iotHubNamespace": "[parameters('streamAnalytics').iotHubName]",
-                                    "sharedAccessPolicyKey": "[parameters('iotHubPrimaryKey')]",
-                                    "sharedAccessPolicyName": "[parameters('streamAnalytics').iotHubKeyName]"
+                                    "iotHubNamespace": "[parameters('iotHubSettings').iotHubName]",
+                                    "sharedAccessPolicyKey": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',parameters('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]",
+                                    "sharedAccessPolicyName": "[parameters('iotHubSettings').keyName]"
                                 },
                                 "Type": "Microsoft.Devices/IotHubs"
                             },
@@ -58,10 +58,10 @@
                         "Properties": {
                             "DataSource": {
                                 "Properties": {
-                                    "accountId": "[parameters('streamAnalytics').cosmosDbAccountName]",
-                                    "accountKey": "[parameters('cosmosDBAccountKey')]",
-                                    "database": "[parameters('streamAnalytics').cosmosDbName]",
-                                    "collectionNamePattern": "[parameters('streamAnalytics').cosmosDBMessageCollectionName]"
+                                    "accountId": "[parameters('documentDbSettings').cosmosDbAccountName]",
+                                    "accountKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
+                                    "database": "[parameters('documentDbSettings').cosmosDbName]",
+                                    "collectionNamePattern": "[parameters('documentDbSettings').cosmosDBMessageCollectionName]"
                                 },
                                 "Type": "Microsoft.Storage/DocumentDB"
                             }
