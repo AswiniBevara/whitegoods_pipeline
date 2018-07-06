@@ -5,9 +5,6 @@
         "trafficManagerSettings": {
             "type": "object"
         },
-        "apiVersions": {
-            "type": "object"
-        },
         "webSiteSettings": {
             "type": "object"
         }
@@ -15,7 +12,7 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').trafficManagerApiVersion]",
+            "apiVersion": "2017-05-01",
             "type": "Microsoft.Network/trafficmanagerprofiles",
             "name": "[parameters('trafficManagerSettings').trafficManagerName1]",
             "location": "global",

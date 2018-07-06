@@ -169,9 +169,6 @@
         }
     },
     "variables": {
-        "apiVersions": {
-            "webAppApiVersion": "2015-08-01"
-        },
         "omsSettings": {
             "omsWorkspaceName": "[concat('omsworkspace', variables('suffix'))]",
             "omsWorkspaceRegion": "[parameters('omsWorkspaceRegion')]",
@@ -566,12 +563,12 @@
             }
         },
         {
-            "name": "RunBookCoreWm",
+            "name": "RunBookCore",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
+            "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-             "AppComponents"
+             "WebAppCore"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -594,12 +591,40 @@
            
         },
         {
-            "name": "RunBookHaWmHa",
+            "name": "RunBookWm",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'), 'core-with-monitoring-hardening'))]",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-               "TrafficManagerApps"
+             "WebAppWm"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeD62xSzIcyL70dI6OgY5qXMJddkwks5bREP_wA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "automationSettings": {
+                        "value": "[variables('automationSettings')]"
+                    },
+                    "datapacketUri": {
+                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                    },
+                    "deviceManagementUri": {
+                        "value":"[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+                    }
+                }
+            } 
+           
+        },
+        {
+            "name": "RunBookHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+               "TrafficManagerAppsHa"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -624,12 +649,42 @@
             }
         },
         {
-            "name": "StreamAnalyticsCoreWm",
+            "name": "RunBookWmHa",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+               "TrafficManagerAppsWmHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeDHwFSunE2iL4ykDYiQUkSPzZzNJks5bRaoNwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "automationSettings": {
+                        "value": "[variables('automationSettings')]"
+                    },
+                    "datapacketUri": {
+                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                    },
+                    "datapacketUriDr": {
+                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+                    },
+                    "deviceManagementUri": {
+                        "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "StreamAnalyticsCore",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
-                "RunBookCoreWm"
+                "RunBookCore"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -651,12 +706,12 @@
             }
         },
         {
-            "name": "StreamAnalyticsHaWmHa",
+            "name": "StreamAnalyticsWm",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'), 'core-with-monitoring-hardening'))]",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
-                "RunBookHaWmHa"
+                "RunBookWm"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -677,6 +732,61 @@
                 }
             }
         },
+        {
+            "name": "StreamAnalyticsHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "RunBookHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeBMv9xMeo4umQMIFUrZyrgRsZW5Qks5bREP7wA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "streamAnalytics": {
+                        "value": "[variables('streamAnalytics')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "StreamAnalyticsHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "RunBookWmHa"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json','?token=AYpAeBMv9xMeo4umQMIFUrZyrgRsZW5Qks5bREP7wA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "streamAnalytics": {
+                        "value": "[variables('streamAnalytics')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    }
+                }
+            }
+        },
+        
         {
             "name": "WebAppCore",
             "type": "Microsoft.Resources/deployments",
@@ -915,9 +1025,6 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
                     "webSiteSettings": {
                         "value": "[variables('webSiteSettings')]"
                     },
@@ -943,9 +1050,6 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "apiVersions": {
-                        "value": "[variables('apiVersions')]"
-                    },
                     "webSiteSettings": {
                         "value": "[variables('webSiteSettings')]"
                     },
