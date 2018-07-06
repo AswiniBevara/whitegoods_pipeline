@@ -245,13 +245,9 @@
             "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
            "dataPacketWebSiteNameDr": "[concat('DatapacketDr', variables('suffix'))]",
            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]"
-        },
-        
-       
-       
+        },     
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
-        "deploymentApiVersion": "2016-02-01",
         "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/core/"
     },
     "resources": [
