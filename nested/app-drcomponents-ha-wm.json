@@ -35,7 +35,7 @@
                 "displayName": "HostingPlan"
             },
             "sku": {
-                "name": "[parameters('webSiteSettings').webAppSkuName]",
+                "name": "[parameters('webSiteSettings').webAppSkuName2]",
                 "capacity": "1"
             },
             "properties": {

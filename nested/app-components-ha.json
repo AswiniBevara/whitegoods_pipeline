@@ -29,7 +29,7 @@
                 "displayName": "HostingPlan"
             },
             "sku": {
-                "name": "[parameters('webSiteSettings').webAppSkuName1]",
+                "name": "[parameters('webSiteSettings').webAppSkuName2]",
                 "capacity": "1"
             },
             "properties": {

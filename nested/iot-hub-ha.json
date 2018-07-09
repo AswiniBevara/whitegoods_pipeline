@@ -14,7 +14,7 @@
             "location": "[parameters('iotHubSettings').location]",
             "name": "[parameters('iotHubSettings').iotHubName]",
             "sku": {
-                "name": "[parameters('iotHubSettings').skuName1]",
+                "name": "[parameters('iotHubSettings').skuName2]",
                 "capacity": "[parameters('iotHubSettings').capacityUnits]"
             },
             "properties": {

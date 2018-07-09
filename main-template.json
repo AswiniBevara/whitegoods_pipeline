@@ -179,8 +179,9 @@
             "location": "[variables('location')]",
             "iotHubName": "[concat('IoTHub',variables('suffix'))]",
             "keyName": "iothubowner",
-            "skuName": "B1",
-            "skuName1":"S1",
+            "skuName": "F1",
+            "skuName1": "B1",
+            "skuName2":"S1",
             "capacityUnits": 1,
             "d2cMessageRetentionInDaysPeriod": 1,
             "d2cPartitionCount": 2,
@@ -255,8 +256,9 @@
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
             "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
-            "webAppSkuName": "B1",
-            "webAppSkuName1": "S1",
+            "webAppSkuName": "F1",
+            "webAppSkuName1": "B1",
+            "webAppSkuName2": "S1",
             "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
            "dataPacketWebSiteNameDr": "[concat('recoverydatapacket', variables('suffix'))]",
            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
@@ -267,7 +269,7 @@
         "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/core/"
     },
     "resources": [
-        {
+       {
             "name": "OmsWorkSpace",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
@@ -285,7 +287,7 @@
                 }
             }
         },
-        {
+     {
             "name": "IotHubCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
@@ -304,7 +306,7 @@
                 }
             }
         },
-        {
+       {
             "name": "IotHubWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
@@ -328,7 +330,7 @@
                 }
             }
         },
-        {
+      {
             "name": "IotHubHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -347,7 +349,7 @@
                 }
             }
         },
-        {
+    {
             "name": "IotHubWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -371,7 +373,7 @@
                 }
             }
         },
-        {
+     {
             "name": "TimeSeriesInsightsWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring'),equals(parameters('timeSeriesInsights'),'Yes'))]",
@@ -395,7 +397,7 @@
                 }
             }
         },
-        {
+     {
             "name": "TimeSeriesInsightsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring-hardening'),equals(parameters('timeSeriesInsights'),'Yes'))]",
@@ -419,7 +421,7 @@
                 }
             }
         },
-        {
+    {
             "name": "DocumentDBCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
@@ -438,7 +440,7 @@
                 }
             }
         },
-        {
+     {
             "name": "DocumentDBWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
@@ -481,7 +483,7 @@
                 }
             }
         },
-        {
+      {
             "name": "DocumentDBWmHA",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -505,7 +507,7 @@
                 }
             }
         },
-        {
+    {
             "name": "NotificationHubCoreWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
@@ -524,7 +526,7 @@
                 }
             }
         },
-        {
+      {
             "name": "NotificationHubHAWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
@@ -543,7 +545,7 @@
                 }
             }
         },
-        {
+      {
             "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
@@ -562,7 +564,7 @@
                 }
             }
         },
-        {
+      {
             "name": "RunBookCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
@@ -618,7 +620,7 @@
             } 
            
         },
-        {
+      {
             "name": "RunBookHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -648,7 +650,7 @@
                 }
             }
         },
-        {
+      {
             "name": "RunBookWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -705,7 +707,7 @@
                 }
             }
         },
-        {
+       {
             "name": "StreamAnalyticsWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
@@ -732,7 +734,7 @@
                 }
             }
         },
-        {
+       {
             "name": "StreamAnalyticsHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -759,8 +761,8 @@
                 }
             }
         },
-        {
-            "name": "StreamAnalyticsHa",
+      {
+            "name": "StreamAnalyticsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion":  "2016-02-01",
@@ -786,7 +788,6 @@
                 }
             }
         },
-        
         {
             "name": "WebAppCore",
             "type": "Microsoft.Resources/deployments",
@@ -819,7 +820,7 @@
                 }
             }
         },
-        {
+      {
             "name": "WebAppWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
@@ -827,6 +828,7 @@
             "dependsOn": [
                 "IotHubWm",
                 "DocumentDBWm",
+                "AppInsights",
                 "NotificationHubCoreWm"
             ],
             "properties": {
@@ -857,7 +859,7 @@
                 }
             }
         },
-        {
+       {
             "name": "WebAppHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -892,7 +894,7 @@
                 }
             }
         },
-        {
+      {
             "name": "RecoveryWebAppHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -927,7 +929,7 @@
                 }
             }
         },
-        {
+      {
             "name": "WebAppWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -935,7 +937,8 @@
             "dependsOn": [
                 "IotHubWmHa",
                 "DocumentDBWmHA",
-                "NotificationHubHAWmHa"
+                "NotificationHubHAWmHa",
+                "AppInsights"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -968,7 +971,7 @@
                 }
             }
         },
-        {
+      {
             "name": "RecoveryWebAppWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -976,7 +979,9 @@
             "dependsOn": [
                 "IotHubWmHa",
                 "DocumentDBWmHA",
-                "NotificationHubHAWmHa"
+                "NotificationHubHAWmHa",
+                "AppInsights"
+
             ],
             "properties": {
                 "mode": "Incremental",
@@ -1009,7 +1014,7 @@
                 }
             }
         },
-        {
+       {
             "name": "TrafficManagerAppsHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -1034,7 +1039,7 @@
                 }
             }
         },
-        {
+       {
             "name": "TrafficManagerAppsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -1058,18 +1063,7 @@
                     }
                 }
             }
-        }
-
-
-
-
-
-
-
-
-
-      
-        
+        }      
        
     ],
     "outputs": {
