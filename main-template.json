@@ -192,7 +192,6 @@
             "cosmosDbAccountName": "[concat('cosmosdb', variables('suffix'))]",
             "kind": "GlobalDocumentDB",
             "cosmosDbName": "MSIoT",
-            "cosmosDBMessageCollectionName": "Messages",
             "databaseAccountOfferType": "Standard",
             "readRegionLocation": "[parameters('readRegionLocation')]",
             "cosmosDbColTemplateName": "Templates",
@@ -217,8 +216,8 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZrYgmmye4eOhysZe6EimKkJhIRT1ks5bTGHmwA%3D%3D')]",
-            "runbookUri1": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZly78aL5KCZ0sYVUjrNwgIRZiuSEks5bTGIFwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdbcorewm.ps1?token=AT3nZkVTEDnhTN5MzpouPRB9BnVVgZMUks5bTGM0wA%3D%3D')]",
+            "runbookUri1": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZgDpBr5fbfiqs5HRPStWYgGrQdi5ks5bTGMVwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -576,7 +575,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZtDW5IDieT9u7zTQT27xOCpLuqXcks5bTEptwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZgSNirlG9FbzKj_-BHmKkLbOXbjfks5bTGLgwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -604,7 +603,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZtDW5IDieT9u7zTQT27xOCpLuqXcks5bTEptwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZgSNirlG9FbzKj_-BHmKkLbOXbjfks5bTGLgwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -632,7 +631,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-ha-wm.json?token=AT3nZgPFIXJ79j9Eai3qrMMNTTrgcI_2ks5bTEqfwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-wm-ha.json?token=AT3nZtqcS276OiUaV_qATbCpb0xrQ8Kxks5bTGJ8wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -662,7 +661,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-ha-wm.json?token=AT3nZgPFIXJ79j9Eai3qrMMNTTrgcI_2ks5bTEqfwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-wm-ha.json?token=AT3nZtqcS276OiUaV_qATbCpb0xrQ8Kxks5bTGJ8wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -1068,22 +1067,6 @@
        
     ],
     "outputs": {
-        "iotHubEndPoint": {
-            "type": "string",
-            "value": "[reference('IotHub').outputs.iotHubEndPoint.value]"
-        },
-        "cosmosDBAccountName": {
-            "type": "string",
-            "value": "[reference('DocumentDB').outputs.cosmosDBAccountName.value]"
-        },
-        "cosmosDBAccountEndPoint": {
-            "type": "string",
-            "value": "[reference('DocumentDB').outputs.cosmosDBAccountEndPoint.value]"
-        },
-        "cosmosDBAccountKey": {
-            "type": "string",
-            "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
-        },
         "dataPacketDesignerUrl": {
             "type": "string",
             "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
@@ -1091,6 +1074,14 @@
         "deviceManagementPortalUrl": {
             "type": "string",
             "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+        },
+        "recoveryDataPacketDesignerUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+        },
+        "recoveryDeviceManagementPortalUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteNameDr,'.azurewebsites.net')]"
         }
     }
 }

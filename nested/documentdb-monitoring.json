@@ -13,7 +13,7 @@
     "resources": [
         {
             "apiVersion": "2015-04-08",
-            "kind": "[parameters('documentDbSettings').kind]",
+            "kind": "GlobalDocumentDB",
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "name": "[parameters('documentDbSettings').cosmosDbAccountName]",
             "location": "[parameters('documentDbSettings').location]",

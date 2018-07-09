@@ -61,7 +61,7 @@
                                     "accountId": "[parameters('documentDbSettings').cosmosDbAccountName]",
                                     "accountKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
                                     "database": "[parameters('documentDbSettings').cosmosDbName]",
-                                    "collectionNamePattern": "[parameters('documentDbSettings').cosmosDBMessageCollectionName]"
+                                    "collectionNamePattern": "[parameters('documentDbSettings').cosmosDbColMessagesName]"
                                 },
                                 "Type": "Microsoft.Storage/DocumentDB"
                             }
