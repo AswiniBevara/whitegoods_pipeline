@@ -189,8 +189,7 @@
         },
         "documentDbSettings": {
             "location": "[variables('location')]",
-            "cosmosDbAccountName": "[concat('cosmosdb', variables('suffix'))]",
-            "kind": "GlobalDocumentDB",
+            "cosmosDbAccountName": "[concat('cosmosdb',variables('suffix'))]",
             "cosmosDbName": "MSIoT",
             "databaseAccountOfferType": "Standard",
             "readRegionLocation": "[parameters('readRegionLocation')]",
@@ -421,7 +420,7 @@
                 }
             }
         },
-    {
+  {
             "name": "DocumentDBCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
@@ -430,7 +429,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT3nZs5O0sf9oefR9tyAGakxczPFchdFks5bTEk3wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT3nZpGliG6XlwLI5bIlNafhLRoA1o1lks5bTHSuwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -451,7 +450,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZjrEoKec6myUvT0gZKrWOrzb8tQ3ks5bTElpwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZizjPowOgzzzFWcJylNBJ1xdxqX0ks5bTHTNwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -473,7 +472,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha.json?token=AT3nZvlweHHEZczYr-Hw11wfqus8HSHRks5bTEmfwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha.json?token=AT3nZpOElIT4DkLhVXavH62gaOB8g0TJks5bTHTrwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -494,7 +493,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AT3nZmK3weeQta0q5zvnuUvAEnyA2zJJks5bTEm9wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AT3nZiryCsWjXMIwEvOtswYhCrQnll28ks5bTHUAwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -691,7 +690,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZuMbOQX81gJeSRgUuDiMTDIgiKwnks5bTEruwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZo9yBI0vKM2uJvEbeDvIke2L1hngks5bTHUywA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -718,7 +717,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZuMbOQX81gJeSRgUuDiMTDIgiKwnks5bTEruwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZo9yBI0vKM2uJvEbeDvIke2L1hngks5bTHUywA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
