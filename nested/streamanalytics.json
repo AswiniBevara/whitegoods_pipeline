@@ -6,7 +6,7 @@
             "type": "object"
         },
         "documentDbSettings": {
-            "type": "string"
+            "type": "object"
         },
         "iotHubSettings": {
             "type": "object"
