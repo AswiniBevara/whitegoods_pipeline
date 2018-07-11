@@ -10,9 +10,6 @@
         },
         "iotHubSettings": {
             "type": "object"
-        },
-        "authkey":{
-            "type": "string"
         }
     },
     "variables": {},
@@ -62,7 +59,7 @@
                             "DataSource": {
                                 "Properties": {
                                     "accountId": "[parameters('documentDbSettings').cosmosDbAccountName]",
-                                    "accountKey": "[parameters('authkey')]",
+                                    "accountKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
                                     "database": "[parameters('documentDbSettings').cosmosDbName]",
                                     "collectionNamePattern": "[parameters('documentDbSettings').cosmosDbColMessagesName]"
                                 },

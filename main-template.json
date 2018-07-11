@@ -690,7 +690,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZo9yBI0vKM2uJvEbeDvIke2L1hngks5bTHUywA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZmwSQEn8pY2Pt64aZ6-NtYRzc6Tvks5bTt5jwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -702,9 +702,6 @@
                     },
                     "documentDbSettings": {
                         "value": "[variables('documentDbSettings')]"
-                    },
-                    "authKey":{
-                        "value":"[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
                 }
             }
@@ -803,7 +800,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZtbv8TGyeXvW9LdKfaN6Ij4kiXf9ks5bTEtSwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZg_oR_sMBNToP7CFECH5cKAJgPg-ks5bTtb5wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -818,9 +815,6 @@
                     },
                     "notificationHub": {
                         "value": "[variables('notificationHub')]"
-                    },
-                    "authKey":{
-                        "value":"[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
                                     }
             }
