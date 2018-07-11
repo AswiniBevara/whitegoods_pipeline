@@ -702,6 +702,9 @@
                     },
                     "documentDbSettings": {
                         "value": "[variables('documentDbSettings')]"
+                    },
+                    "authKey":{
+                        "value":"[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
                 }
             }
@@ -815,8 +818,11 @@
                     },
                     "notificationHub": {
                         "value": "[variables('notificationHub')]"
+                    },
+                    "authKey":{
+                        "value":"[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
-                }
+                                    }
             }
         },
       {
