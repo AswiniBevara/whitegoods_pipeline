@@ -316,7 +316,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-monitoring.json?token=AT3nZj3U5sd_zXMp4_30vi1OGyc4xmI7ks5bTEhmwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-monitoring.json?token=AT3nZnUFjBSfZ4p3nGRd-UKWBbYejTiTks5bTyO6wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -451,7 +451,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZizjPowOgzzzFWcJylNBJ1xdxqX0ks5bTHTNwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZuCJbubC9s26bL-s2dn8KVQy7XLwks5bTyG-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -779,8 +779,10 @@
             "apiVersion":  "2016-02-01",
             "dependsOn": [
                 "IotHubWm",
+                "DocumentDBCore",
                 "DocumentDBWm",
                 "AppInsights",
+                "OMSWorkSpace",
                 "NotificationHubCoreWm"
             ],
             "properties": {
@@ -807,6 +809,9 @@
                     },
                     "appInsights": {
                         "value": "[variables('appInsights')]"
+                    },
+                    "authkey":{
+                        "value": "[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
                 }
             }
