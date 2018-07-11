@@ -423,7 +423,7 @@
   {
             "name": "DocumentDBCore",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
+            "condition":  "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
             "apiVersion":"2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -442,9 +442,10 @@
      {
             "name": "DocumentDBWm",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
+            "condition":  "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
+                "DocumentDBCore",
                 "OMSWorkSpace"
             ],
             "properties": {
@@ -564,39 +565,12 @@
             }
         },
       {
-            "name": "RunBookCore",
+            "name": "RunBookCoreWm",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
+            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-             "WebAppCore"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZgSNirlG9FbzKj_-BHmKkLbOXbjfks5bTGLgwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "automationSettings": {
-                        "value": "[variables('automationSettings')]"
-                    },
-                    "datapacketUri": {
-                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
-                    },
-                    "deviceManagementUri": {
-                        "value":"[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
-                    }
-                }
-            } 
-           
-        },
-        {
-            "name": "RunBookWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
+             "WebAppCore",
              "WebAppWm"
             ],
             "properties": {
@@ -682,10 +656,10 @@
         {
             "name": "StreamAnalyticsCore",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
+            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
-                "RunBookCore"
+                "RunBookCoreWm"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -705,33 +679,6 @@
                     },
                     "authkey":{
                         "value": "[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
-                    }
-                }
-            }
-        },
-       {
-            "name": "StreamAnalyticsWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion":  "2016-02-01",
-            "dependsOn": [
-                "RunBookWm"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZo9yBI0vKM2uJvEbeDvIke2L1hngks5bTHUywA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "streamAnalytics": {
-                        "value": "[variables('streamAnalytics')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -818,6 +765,9 @@
                     },
                     "notificationHub": {
                         "value": "[variables('notificationHub')]"
+                    },
+                    "authkey":{
+                        "value": "[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
                                     }
             }
