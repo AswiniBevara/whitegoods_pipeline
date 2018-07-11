@@ -702,6 +702,9 @@
                     },
                     "documentDbSettings": {
                         "value": "[variables('documentDbSettings')]"
+                    },
+                    "authkey":{
+                        "value": "[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
                 }
             }
