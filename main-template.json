@@ -173,7 +173,7 @@
             "cosmosDBMessageCollectionName": "Messages"
         },
         "automationSettings": {
-            "automationAccountName": "[concat('AutomationAc', variables('suffix'))]",
+            "automationAccountName": "[concat('Automation', variables('suffix'))]",
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
