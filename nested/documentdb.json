@@ -18,6 +18,7 @@
                 "databaseAccountOfferType": "[parameters('documentDbSettings').databaseAccountOfferType]",
                 "locations": [
                     {
+                        "id": "[concat(parameters('documentDbSettings').cosmosDbAccountName, '-', parameters('documentDbSettings').location)]",
                         "locationName": "[parameters('documentDbSettings').location]",
                         "failoverPriority": 0
                     }
