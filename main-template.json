@@ -337,7 +337,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeBWA5xZ4zJYEuqqs6H1ylCX2KT6tks5bRcrUwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1','?token=AYpAeGq_tm3pfN81ScPnh2HDzo6WkbRCks5bUXnQwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -451,7 +451,7 @@
                         "value": "[variables('apiVersions')]"
                     },
                     "datapacketUri": {
-                        "value": "[reference('AppComponents').outputs.dataPacketDesignerUrl.value]"
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                      "datapacketUriDr": {
                         "value": "[reference('AppComponentsDr').outputs.dataPacketDesignerUrl.value]"
@@ -712,7 +712,7 @@
         },
         "dataPacketDesignerUrl": {
             "type": "string",
-            "value": "[concat('http://', variables('webSiteSettings').dataPacketWebSiteName,'.trafficmanager.net')]"
+            "value": "[concat('http://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
