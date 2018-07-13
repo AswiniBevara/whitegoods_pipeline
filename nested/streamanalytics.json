@@ -10,19 +10,15 @@
         },
         "iotHubSettings": {
             "type": "object"
-        },
-        "authkey":{
-            "type": "string"
         }
     },
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2015-10-01",
+            "apiVersion": "2016-03-01",
             "type": "Microsoft.StreamAnalytics/streamingjobs",
             "name": "[parameters('streamAnalytics').streamAnalyticsjobname]",
             "location": "[parameters('streamAnalytics').location]",
-            "dependsOn": [],
             "tags": {
                 "IotSuiteType": "[parameters('streamAnalytics').suiteType]"
             },
@@ -30,22 +26,23 @@
                 "sku": {
                     "name": "[parameters('streamAnalytics').sku]"
                 },
-                "OutputStartMode": "JobStartTime",
-                "EventsOutOfOrderMaxDelayInSeconds": 10,
-                "EventsOutOfOrderPolicy": "adjust",
-                "Inputs": [
+                "eventsOutOfOrderPolicy": "Adjust",
+                "outputStartMode": "JobStartTime",
+                "eventsOutOfOrderMaxDelayInSeconds": 10,
+                "inputs": [
                     {
-                        "Name": "IoTHubStream",
-                        "Properties": {
-                            "DataSource": {
+                        "name": "IoTHubStream",
+                        "properties": {
+                            "dataSource": {
                                 "Properties": {
                                     "iotHubNamespace": "[parameters('iotHubSettings').iotHubName]",
                                     "sharedAccessPolicyKey": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',parameters('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]",
-                                    "sharedAccessPolicyName": "[parameters('iotHubSettings').keyName]"
+                                    "sharedAccessPolicyName": "[parameters('iotHubSettings').keyName]" ,
+                                    "endpoint":"messages/events"                               
                                 },
                                 "Type": "Microsoft.Devices/IotHubs"
                             },
-                            "Serialization": {
+                            "serialization": {
                                 "Properties": {
                                     "Encoding": "UTF8"
                                 },
@@ -55,14 +52,14 @@
                         }
                     }
                 ],
-                "Outputs": [
+                "outputs": [
                     {
-                        "Name": "CosmosDBOutput",
-                        "Properties": {
+                        "name": "CosmosDBOutput",
+                        "properties": {
                             "DataSource": {
                                 "Properties": {
                                     "accountId": "[parameters('documentDbSettings').cosmosDbAccountName]",
-                                    "accountKey": "[parameters('authkey')]",
+                                    "accountKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
                                     "database": "[parameters('documentDbSettings').cosmosDbName]",
                                     "collectionNamePattern": "[parameters('documentDbSettings').cosmosDbColMessagesName]"
                                 },
@@ -71,11 +68,11 @@
                         }
                     }
                 ],
-                "Transformation": {
-                    "Name": "AllToCosmosDB",
-                    "Properties": {
-                        "Query": "\r\n    SELECT\r\n        *\r\n INTO [CosmosDBOutput] \r\n  FROM [IoTHubStream]",
-                        "StreamingUnits": 1
+                "transformation": {
+                    "name": "AllToCosmosDB",
+                    "properties": {
+                        "query": "\r\n    SELECT\r\n        *\r\n INTO [CosmosDBOutput] \r\n  FROM [IoTHubStream]",
+                        "streamingUnits": 1
                     }
                 }
             }

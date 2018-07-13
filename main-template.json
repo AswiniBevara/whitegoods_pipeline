@@ -420,16 +420,16 @@
                 }
             }
         },
-  {
+        {
             "name": "DocumentDBCore",
             "type": "Microsoft.Resources/deployments",
-            "condition":  "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
+            "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion":"2016-02-01",
             "dependsOn": [],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT3nZpGliG6XlwLI5bIlNafhLRoA1o1lks5bTHSuwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT3nZiySxauRd31xhLmG5fwJ-t1svlhtks5bTyoUwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -439,19 +439,18 @@
                 }
             }
         },
-     {
+        {
             "name": "DocumentDBWm",
             "type": "Microsoft.Resources/deployments",
-            "condition":  "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                "DocumentDBCore",
                 "OMSWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZuCJbubC9s26bL-s2dn8KVQy7XLwks5bTyG-wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZs5gTv1hqvBBtwAFUElcJ9I69ezxks5bTyotwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -564,19 +563,18 @@
                 }
             }
         },
-      {
-            "name": "RunBookCoreWm",
+        {
+            "name": "RunBookCore",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
+            "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-             "WebAppCore",
-             "WebAppWm"
+             "WebAppCore"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZgSNirlG9FbzKj_-BHmKkLbOXbjfks5bTGLgwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZucXiivXFEpQN5luW7awV6KQdfm_ks5bTyq7wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -584,7 +582,35 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "datapacketUri": {
-                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                    },
+                    "deviceManagementUri": {
+                        "value":"[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+                    }
+                }
+            } 
+           
+        },
+        {
+            "name": "RunBookWm",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+             "WebAppWm"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZucXiivXFEpQN5luW7awV6KQdfm_ks5bTyq7wA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "automationSettings": {
+                        "value": "[variables('automationSettings')]"
+                    },
+                    "datapacketUri": {
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
                         "value":"[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
@@ -612,10 +638,10 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "datapacketUri": {
-                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                        "value": "[concat( variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                     "datapacketUriDr": {
-                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
                         "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
@@ -642,10 +668,10 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "datapacketUri": {
-                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                     "datapacketUriDr": {
-                        "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
                         "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
@@ -656,15 +682,16 @@
         {
             "name": "StreamAnalyticsCore",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
+            "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
-                "RunBookCoreWm"
+                "DocumentDBCore",
+                "RunBookCore"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZuMgkGNDwmWDtUOjBOwNWFFDRLE6ks5bTuOhwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZnnz8Wy57lzUNQnS3mxeDfkDKKgcks5bUMVewA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -676,9 +703,34 @@
                     },
                     "documentDbSettings": {
                         "value": "[variables('documentDbSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "StreamAnalyticsWm",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
+            "apiVersion":  "2016-02-01",
+            "dependsOn": [
+                "DocumentDBWm",
+                "RunBookWm"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZnnz8Wy57lzUNQnS3mxeDfkDKKgcks5bUMVewA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "streamAnalytics": {
+                        "value": "[variables('streamAnalytics')]"
                     },
-                    "authkey":{
-                        "value": "[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -689,6 +741,7 @@
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
+                "DocumentDBHa",
                 "RunBookHa"
             ],
             "properties": {
@@ -716,6 +769,7 @@
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion":  "2016-02-01",
             "dependsOn": [
+                "DocumentDBWmHA",
                 "RunBookWmHa"
             ],
             "properties": {
@@ -765,11 +819,8 @@
                     },
                     "notificationHub": {
                         "value": "[variables('notificationHub')]"
-                    },
-                    "authkey":{
-                        "value": "[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
-                                    }
+                }
             }
         },
       {
@@ -779,7 +830,6 @@
             "apiVersion":  "2016-02-01",
             "dependsOn": [
                 "IotHubWm",
-                "DocumentDBCore",
                 "DocumentDBWm",
                 "AppInsights",
                 "OMSWorkSpace",
@@ -809,9 +859,6 @@
                     },
                     "appInsights": {
                         "value": "[variables('appInsights')]"
-                    },
-                    "authkey":{
-                        "value": "[reference('DocumentDBCore').outputs.cosmosDBAccountKey.value]"
                     }
                 }
             }
