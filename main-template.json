@@ -181,7 +181,7 @@
             "keyName": "iothubowner",
             "skuName": "F1",
             "skuName1": "B1",
-            "skuName2":"S1",
+            "skuName2": "S1",
             "capacityUnits": 1,
             "d2cMessageRetentionInDaysPeriod": 1,
             "d2cPartitionCount": 2,
@@ -231,10 +231,10 @@
         },
         "streamAnalytics": {
             "location": "[variables('location')]",
-            "streamAnalyticsjobname": "[concat('StreamAnalytics', variables('suffix'))]",        
-            "sku":"Standard",
+            "streamAnalyticsjobname": "[concat('StreamAnalytics', variables('suffix'))]",
+            "sku": "Standard",
             "suiteType": "RemoteMonitoring",
-            "telemetryCGName": "telemetrycg"        
+            "telemetryCGName": "telemetrycg"
         },
         "timeSeriesInsights": {
             "timeSeriesInsightslocation": "[parameters('timeSeriesInsightslocation')]",
@@ -243,7 +243,7 @@
             "skuCapacity": 1,
             "skuSize": "S1",
             "skuTier": "Standard",
-            "skuName": "S1"    
+            "skuName": "S1"
         },
         "webSiteSettings": {
             "location": "[variables('location')]",
@@ -259,16 +259,16 @@
             "webAppSkuName1": "B1",
             "webAppSkuName2": "S1",
             "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
-           "dataPacketWebSiteNameDr": "[concat('recoverydatapacket', variables('suffix'))]",
-           "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
-           "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
-        },     
+            "dataPacketWebSiteNameDr": "[concat('recoverydatapacket', variables('suffix'))]",
+            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
+            "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
+        },
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/costing-solution/"
     },
     "resources": [
-       {
+        {
             "name": "OmsWorkSpace",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
@@ -276,7 +276,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'),'nested/oms-workspace.json?token=AT3nZkttbh-Gx3oCzrHIoKKSagb9m2Fvks5bTEgSwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'),'nested/oms-workspace.json?token=AT3nZoTnMx__s2BP4iKeVf-en_oAQvNSks5bUYH6wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -286,7 +286,7 @@
                 }
             }
         },
-     {
+        {
             "name": "IotHubCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
@@ -295,7 +295,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json?token=AT3nZjRz1nNJPrcelbZgXAoJ3MjCHsPeks5bTEhBwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json?token=AT3nZqscV1I6Pua2xlEHSijlM8WdiDxBks5bUYG4wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -305,18 +305,18 @@
                 }
             }
         },
-       {
+        {
             "name": "IotHubWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion":"2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "OMSWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-monitoring.json?token=AT3nZnUFjBSfZ4p3nGRd-UKWBbYejTiTks5bTyO6wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-monitoring.json?token=AT3nZrMj4etd_fC-nJyHl6rUBFFWs0H6ks5bUYGHwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -329,7 +329,7 @@
                 }
             }
         },
-      {
+        {
             "name": "IotHubHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -338,7 +338,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha.json?token=AT3nZt8uonOFDZYa-BurOvVgYzPG-qmyks5bTEiSwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha.json?token=AT3nZtXbEtH8REucNxfxy1BU6kNSLgp_ks5bUYFjwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -348,7 +348,7 @@
                 }
             }
         },
-    {
+        {
             "name": "IotHubWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -359,7 +359,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZj7j9KI0hZAjKgzITz1TAZyg1-v8ks5bTEiuwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZpTe_qnuQB4UodC-m7h9eC1rLqMoks5bUYFBwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -372,7 +372,7 @@
                 }
             }
         },
-     {
+        {
             "name": "TimeSeriesInsightsWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring'),equals(parameters('timeSeriesInsights'),'Yes'))]",
@@ -383,7 +383,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZmqid3OmPSCsZBGwo-CgMVIBgVShks5bTEj6wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZhmg95hPHywHattxgRR3Kpjujd4Yks5bUYJPwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -396,7 +396,7 @@
                 }
             }
         },
-     {
+        {
             "name": "TimeSeriesInsightsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring-hardening'),equals(parameters('timeSeriesInsights'),'Yes'))]",
@@ -407,7 +407,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZmqid3OmPSCsZBGwo-CgMVIBgVShks5bTEj6wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZhmg95hPHywHattxgRR3Kpjujd4Yks5bUYJPwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -424,12 +424,12 @@
             "name": "DocumentDBCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion":"2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT3nZiySxauRd31xhLmG5fwJ-t1svlhtks5bTyoUwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT3nZsOYw4xuhSn8K_6rZmXqr9fJIoriks5bUYEiwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -450,7 +450,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZs5gTv1hqvBBtwAFUElcJ9I69ezxks5bTyotwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZgZTtRHiui2C0pqB0wc8L-B7fm8Aks5bUYEKwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -472,7 +472,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha.json?token=AT3nZpOElIT4DkLhVXavH62gaOB8g0TJks5bTHTrwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha.json?token=AT3nZhLbz7jZ8-0Ol-I7ThFnpjQVBpxuks5bUYDuwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -482,18 +482,18 @@
                 }
             }
         },
-      {
+        {
             "name": "DocumentDBWmHA",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "OMSWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AT3nZiryCsWjXMIwEvOtswYhCrQnll28ks5bTHUAwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AT3nZkkQNZ5NV54DlQguPprk4sljFwyeks5bUYDKwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -506,7 +506,7 @@
                 }
             }
         },
-    {
+        {
             "name": "NotificationHubCoreWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
@@ -515,7 +515,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZj3GnGJGOTKqX_byYMTTptQrLG7tks5bTEnxwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZsJrM_1hxdECzTwM9WxhPpRJPB45ks5bUYHRwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -525,7 +525,7 @@
                 }
             }
         },
-      {
+        {
             "name": "NotificationHubHAWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
@@ -534,7 +534,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZj3GnGJGOTKqX_byYMTTptQrLG7tks5bTEnxwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZsJrM_1hxdECzTwM9WxhPpRJPB45ks5bUYHRwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -544,16 +544,16 @@
                 }
             }
         },
-      {
+        {
             "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
             "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZvw9sdOWLfiKorRMehZulw73oZ4nks5bTEo4wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZpbip12uL4EXhlXt2Aw1lTOkyDLqks5bUYBLwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -569,12 +569,12 @@
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-             "WebAppCore"
+                "WebAppCore"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZucXiivXFEpQN5luW7awV6KQdfm_ks5bTyq7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZkcpEG1N9ZPfD4REbOUxwBj8t60mks5bUYB-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -585,11 +585,10 @@
                         "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
-                        "value":"[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+                        "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
                     }
                 }
-            } 
-           
+            }
         },
         {
             "name": "RunBookWm",
@@ -597,12 +596,12 @@
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-             "WebAppWm"
+                "WebAppWm"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZucXiivXFEpQN5luW7awV6KQdfm_ks5bTyq7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZkcpEG1N9ZPfD4REbOUxwBj8t60mks5bUYB-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -613,24 +612,23 @@
                         "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
-                        "value":"[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+                        "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
                     }
                 }
-            } 
-           
+            }
         },
-      {
+        {
             "name": "RunBookHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-               "TrafficManagerAppsHa"
+                "TrafficManagerAppsHa"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-wm-ha.json?token=AT3nZtqcS276OiUaV_qATbCpb0xrQ8Kxks5bTGJ8wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-wm-ha.json?token=AT3nZoDYIQIM2D2emYOuzy_4W-7jUSr4ks5bUYCmwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -649,18 +647,18 @@
                 }
             }
         },
-      {
+        {
             "name": "RunBookWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-               "TrafficManagerAppsWmHa"
+                "TrafficManagerAppsWmHa"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-wm-ha.json?token=AT3nZtqcS276OiUaV_qATbCpb0xrQ8Kxks5bTGJ8wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-wm-ha.json?token=AT3nZoDYIQIM2D2emYOuzy_4W-7jUSr4ks5bUYCmwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -683,7 +681,7 @@
             "name": "StreamAnalyticsCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBCore",
                 "RunBookCore"
@@ -691,7 +689,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZnnz8Wy57lzUNQnS3mxeDfkDKKgcks5bUMVewA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -711,7 +709,7 @@
             "name": "StreamAnalyticsWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBWm",
                 "RunBookWm"
@@ -719,7 +717,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZnnz8Wy57lzUNQnS3mxeDfkDKKgcks5bUMVewA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -735,11 +733,11 @@
                 }
             }
         },
-       {
+        {
             "name": "StreamAnalyticsHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBHa",
                 "RunBookHa"
@@ -747,7 +745,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZuMbOQX81gJeSRgUuDiMTDIgiKwnks5bTEruwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -763,11 +761,11 @@
                 }
             }
         },
-      {
+        {
             "name": "StreamAnalyticsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBWmHA",
                 "RunBookWmHa"
@@ -775,7 +773,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZuMbOQX81gJeSRgUuDiMTDIgiKwnks5bTEruwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -795,7 +793,7 @@
             "name": "WebAppCore",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubCore",
                 "DocumentDBCore",
@@ -804,7 +802,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZrESydbLfO7TbDzxtwjujHKnRCxXks5bTuOBwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZitGj-dzEeIrNcm5RttW1jizcaVcks5bUX_twA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -823,11 +821,11 @@
                 }
             }
         },
-      {
+        {
             "name": "WebAppWm",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubWm",
                 "DocumentDBWm",
@@ -838,7 +836,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-monitoring.json?token=AT3nZso-Ix0_vn0TNRlTvTNBu1eyGsxyks5bTEtvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-monitoring.json?token=AT3nZhXuTGVsfwAW0Fwd6pMPS6fsPSmAks5bUX_BwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -863,11 +861,11 @@
                 }
             }
         },
-       {
+        {
             "name": "WebAppHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubHa",
                 "DocumentDBHa",
@@ -876,7 +874,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-ha.json?token=AT3nZpEtJ61VHQYEMmoYz1wqP3CmOtS2ks5bTEuewA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-ha.json?token=AT3nZiXnWkDZSon3ItvDBMaf3SefN5Z3ks5bUX-mwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -898,11 +896,11 @@
                 }
             }
         },
-      {
+        {
             "name": "RecoveryWebAppHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubHa",
                 "DocumentDBHa",
@@ -911,7 +909,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha.json?token=AT3nZu62aN90FDhUcswxYG1pYjES1vcAks5bTEu9wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha.json?token=AT3nZntFHpc5RS9ZzqnU_lecbTxE-SyLks5bUYAtwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -933,11 +931,11 @@
                 }
             }
         },
-      {
+        {
             "name": "WebAppWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubWmHa",
                 "DocumentDBWmHA",
@@ -947,7 +945,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-ha-wm.json?token=AT3nZj-k-RP-Y-zh0TJgcXyun-4lhM0_ks5bTEwIwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-ha-wm.json?token=AT3nZlU7kNr5_4FakHNc-x5P_e7aup7qks5bUX96wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -975,22 +973,21 @@
                 }
             }
         },
-      {
+        {
             "name": "RecoveryWebAppWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
-            "apiVersion":  "2016-02-01",
+            "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubWmHa",
                 "DocumentDBWmHA",
                 "NotificationHubHAWmHa",
                 "AppInsights"
-
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha-wm.json?token=AT3nZhCqKAqSsXGVXjmXu63-xaa5Bewjks5bTEw5wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha-wm.json?token=AT3nZhCvfx45KqLjks0eulBFYrl8u9EOks5bUYAHwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -1018,7 +1015,7 @@
                 }
             }
         },
-       {
+        {
             "name": "TrafficManagerAppsHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
@@ -1030,7 +1027,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json?token=AT3nZheALQUmuIX0qdM3LMem7MRolAh9ks5bTExZwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json?token=AT3nZjKF_a7gLeASoYgYZQrpvNOHAgy8ks5bUYJwwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -1043,7 +1040,7 @@
                 }
             }
         },
-       {
+        {
             "name": "TrafficManagerAppsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -1055,7 +1052,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json?token=AT3nZheALQUmuIX0qdM3LMem7MRolAh9ks5bTExZwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json?token=AT3nZjKF_a7gLeASoYgYZQrpvNOHAgy8ks5bUYJwwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -1067,8 +1064,7 @@
                     }
                 }
             }
-        }      
-       
+        }
     ],
     "outputs": {
         "dataPacketDesignerUrl": {
