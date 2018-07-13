@@ -10,6 +10,9 @@
         },
         "iotHubSettings": {
             "type": "object"
+        },
+        "omsSettings": {
+            "type": "object"
         }
     },
     "variables": {},
@@ -33,8 +36,8 @@
                     {
                         "name": "IoTHubStream",
                         "properties": {
-                            "dataSource": {
-                                "Properties": {
+                            "DataSource": {
+                                "properties": {
                                     "iotHubNamespace": "[parameters('iotHubSettings').iotHubName]",
                                     "sharedAccessPolicyKey": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',parameters('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]",
                                     "sharedAccessPolicyName": "[parameters('iotHubSettings').keyName]" ,
@@ -43,12 +46,12 @@
                                 "Type": "Microsoft.Devices/IotHubs"
                             },
                             "serialization": {
-                                "Properties": {
-                                    "Encoding": "UTF8"
+                                "properties": {
+                                    "encoding": "UTF8"
                                 },
-                                "Type": "Json"
+                                "type": "Json"
                             },
-                            "Type": "Stream"
+                            "type": "Stream"
                         }
                     }
                 ],
@@ -57,7 +60,7 @@
                         "name": "CosmosDBOutput",
                         "properties": {
                             "DataSource": {
-                                "Properties": {
+                                "properties": {
                                     "accountId": "[parameters('documentDbSettings').cosmosDbAccountName]",
                                     "accountKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
                                     "database": "[parameters('documentDbSettings').cosmosDbName]",
@@ -75,7 +78,49 @@
                         "streamingUnits": 1
                     }
                 }
-            }
+            },
+            "resources": [
+                {
+                    "name": "Microsoft.Insights/service",
+                    "type": "providers/diagnosticSettings",
+                    "apiVersion": "2015-07-01",
+                    "dependsOn": [
+                        "[concat('Microsoft.StreamAnalytics/StreamingJobs/', parameters('streamAnalytics').streamAnalyticsjobname)]"
+                    ],
+                    "properties": {
+                        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsSettings').omsWorkspaceName)]",
+                        "logs": [
+                            {
+                                "category": "Execution",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            },
+                            {
+                                "category": "Authoring",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "days": 0,
+                                    "enabled": false
+                                }
+                            }
+                        ],
+                        "metrics": [
+                            {
+                                "timeGrain": "AllMetrics",
+                                "category": "AllMetrics",
+                                "enabled": true,
+                                "retentionPolicy": {
+                                    "enabled": false,
+                                    "days": 0
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     ],
     "outputs": {
