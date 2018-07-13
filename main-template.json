@@ -244,7 +244,7 @@
                         "value": "[variables('apiVersions')]"
                     },
                     "datapacketUri": {
-                        "value": "[reference('AppComponents').outputs.dataPacketDesignerUrl.value]"
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
                         "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
