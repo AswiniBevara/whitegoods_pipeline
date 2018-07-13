@@ -87,7 +87,7 @@ workflow  container{
     }
             # Update Azure AD applications reply urls
             Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
-            $datapacketUriOIDC=$datapacketUri+"/signin-oidc"      
+            $datapacketUriOIDC="https://"+$datapacketUri+"/signin-oidc"      
             $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"
             $datapacketUriDrOIDC=$datapacketUriDr+"/signin-oidc"
             $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC,$datapacketUriDrOIDC);  
