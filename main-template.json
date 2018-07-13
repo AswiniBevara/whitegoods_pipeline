@@ -689,7 +689,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-core-ha.json?token=AT3nZn_K094gKdoNqvXhSSiXbEPKriZyks5bUYlZwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -717,7 +717,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZg_54yQUXz82uzDE6ea3NHElHYF_ks5bUYl9wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -745,7 +745,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-core-ha.json?token=AT3nZn_K094gKdoNqvXhSSiXbEPKriZyks5bUYlZwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -773,7 +773,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZotF47YbUR7LDk7Ha4E8WcmFJHZIks5bUYIVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZg_54yQUXz82uzDE6ea3NHElHYF_ks5bUYl9wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {

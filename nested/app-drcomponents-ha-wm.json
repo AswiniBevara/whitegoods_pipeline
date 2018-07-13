@@ -129,7 +129,7 @@
                 {
                     "name": "Microsoft.Insights/service",
                     "type": "providers/diagnosticSettings",
-                    "apiVersion": "2015-08-01",
+                    "apiVersion": "2015-07-01",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/web')]",
@@ -240,7 +240,7 @@
                 {
                     "name": "Microsoft.Insights/service",
                     "type": "providers/diagnosticSettings",
-                    "apiVersion": "2015-08-01",
+                    "apiVersion": "2015-07-01",
                     "dependsOn": [
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]",
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/config/web')]",
