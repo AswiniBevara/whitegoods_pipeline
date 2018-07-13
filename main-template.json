@@ -85,14 +85,6 @@
         "locationDr": {
             "type": "string",
             "defaultValue": "",
-            "allowedValues": [
-                "eastus",
-                "northeurope",
-                "southcentralus",
-                "southeastasia",
-                "westeurope",
-                "westus2"
-            ],
             "metadata": {
                 "description": "Choose location for DR resources and make sure that it should be different from resource group region"
             }
@@ -712,7 +704,8 @@
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBWm",
-                "RunBookWm"
+                "RunBookWm",
+                "OMSWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -729,6 +722,9 @@
                     },
                     "documentDbSettings": {
                         "value": "[variables('documentDbSettings')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
                     }
                 }
             }
@@ -768,7 +764,8 @@
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBWmHA",
-                "RunBookWmHa"
+                "RunBookWmHa",
+                "OMSWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -785,6 +782,9 @@
                     },
                     "documentDbSettings": {
                         "value": "[variables('documentDbSettings')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
                     }
                 }
             }
@@ -940,7 +940,8 @@
                 "IotHubWmHa",
                 "DocumentDBWmHA",
                 "NotificationHubHAWmHa",
-                "AppInsights"
+                "AppInsights",
+                "OMSWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -982,12 +983,13 @@
                 "IotHubWmHa",
                 "DocumentDBWmHA",
                 "NotificationHubHAWmHa",
+                "OMSWorkSpace",
                 "AppInsights"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha-wm.json?token=AT3nZhCvfx45KqLjks0eulBFYrl8u9EOks5bUYAHwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha-wm.json?token=AT3nZqEe1uw01ASbiL3nl6au7TNEFqYcks5bUbcawA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {

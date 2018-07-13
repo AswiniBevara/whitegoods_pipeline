@@ -107,7 +107,7 @@
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
                         "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/web')]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/Extensions/MSDeploy')]"
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
                     ],
                     "properties": {
                         "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsights').appInsightResourceName), '2014-04-01').InstrumentationKey]",
@@ -220,7 +220,7 @@
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr)]",
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/config/web')]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/Extensions/MSDeploy')]"
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr, '/extensions/MSDeploy')]"
                     ],
                     "properties": {
                         "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsights').appInsightResourceName), '2014-04-01').InstrumentationKey]",
