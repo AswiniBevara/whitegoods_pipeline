@@ -40,8 +40,7 @@
                                 "properties": {
                                     "iotHubNamespace": "[parameters('iotHubSettings').iotHubName]",
                                     "sharedAccessPolicyKey": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',parameters('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]",
-                                    "sharedAccessPolicyName": "[parameters('iotHubSettings').keyName]" ,
-                                    "endpoint":"messages/events"                               
+                                    "sharedAccessPolicyName": "[parameters('iotHubSettings').keyName]"                           
                                 },
                                 "Type": "Microsoft.Devices/IotHubs"
                             },
