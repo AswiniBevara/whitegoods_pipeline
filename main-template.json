@@ -710,7 +710,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZrMqedcO35OyCrDj5ey-iNbwo1Swks5bVgHWwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZgu6O9AqnV9VT8npqKs3Qz6PB2zhks5bVhdtwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -770,7 +770,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZrMqedcO35OyCrDj5ey-iNbwo1Swks5bVgHWwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZgu6O9AqnV9VT8npqKs3Qz6PB2zhks5bVhdtwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
