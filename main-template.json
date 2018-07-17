@@ -177,7 +177,8 @@
             "capacityUnits": 1,
             "d2cMessageRetentionInDaysPeriod": 1,
             "d2cPartitionCount": 2,
-            "consumerGroupName": "$Default"
+            "consumerGroupName": "$Default",
+            "d2cConsumerGroupName":"consumergrp_"
         },
         "documentDbSettings": {
             "location": "[variables('location')]",

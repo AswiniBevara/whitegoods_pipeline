@@ -37,7 +37,7 @@
             "properties": {
                 "iotHubName": "[parameters('iotHubSettings').iotHubName]",
                 "keyName": "[parameters('iotHubSettings').keyName]",
-                "consumerGroupName": "[parameters('iotHubSettings').consumerGroupName]",
+                "consumerGroupName": "[parameters('iotHubSettings').d2cConsumerGroupName]",
                 "eventSourceResourceId": "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubSettings').iotHubName)]",
                 "sharedAccessKey": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',parameters('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]"
             },
