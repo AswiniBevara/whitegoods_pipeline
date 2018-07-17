@@ -773,7 +773,7 @@
             "dependsOn": [
                 "IotHubWmHa",
                 "DocumentDBWmHA",
-                "NotificationHubHAWmHa",
+                "NotificationHubWmHa",
                 "AppInsights",
                 "OMSWorkSpace"
             ],
@@ -816,7 +816,7 @@
             "dependsOn": [
                 "IotHubWmHa",
                 "DocumentDBWmHA",
-                "NotificationHubHAWmHa",
+                "NotificationHubWmHa",
                 "OMSWorkSpace",
                 "AppInsights"
             ],
