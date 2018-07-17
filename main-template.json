@@ -309,7 +309,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-monitoring.json?token=AT3nZrMj4etd_fC-nJyHl6rUBFFWs0H6ks5bUYGHwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-monitoring.json?token=AT3nZg3uBRoDoMzvEuNRdTN4trSnE_AJks5bVwIYwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -352,7 +352,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZpTe_qnuQB4UodC-m7h9eC1rLqMoks5bUYFBwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZgeLUOIo6FcGlK6i7eIGtTcN6VFEks5bVwH-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -376,7 +376,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZo9IU0Fv3qI5dmDdLBkubRU9jdAeks5bUb5qwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZmF4PIPb5IoPgDfYMhRfiNGU8B-3ks5bVwI3wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -400,7 +400,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZo9IU0Fv3qI5dmDdLBkubRU9jdAeks5bUb5qwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZmF4PIPb5IoPgDfYMhRfiNGU8B-3ks5bVwI3wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
