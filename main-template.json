@@ -8,7 +8,6 @@
             "allowedValues": [
                 "core-solution",
                 "core-with-monitoring",
-                "core-with-hardening",
                 "core-with-monitoring-hardening"
             ],
             "metadata": {
@@ -323,25 +322,6 @@
             }
         },
         {
-            "name": "IotHubHa",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha.json?token=AT3nZtXbEtH8REucNxfxy1BU6kNSLgp_ks5bUYFjwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    }
-                }
-            }
-        },
-        {
             "name": "IotHubWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -457,25 +437,6 @@
             }
         },
         {
-            "name": "DocumentDBHa",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha.json?token=AT3nZhLbz7jZ8-0Ol-I7ThFnpjQVBpxuks5bUYDuwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    }
-                }
-            }
-        },
-        {
             "name": "DocumentDBWmHA",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -519,9 +480,9 @@
             }
         },
         {
-            "name": "NotificationHubHAWmHa",
+            "name": "NotificationHubWmHa",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-with-hardening'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -606,36 +567,6 @@
                     },
                     "deviceManagementUri": {
                         "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "RunBookHa",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "TrafficManagerAppsHa"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-wm-ha.json?token=AT3nZoDYIQIM2D2emYOuzy_4W-7jUSr4ks5bUYCmwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "automationSettings": {
-                        "value": "[variables('automationSettings')]"
-                    },
-                    "datapacketUri": {
-                        "value": "[concat( variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
-                    },
-                    "datapacketUriDr": {
-                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
-                    },
-                    "deviceManagementUri": {
-                        "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
                     }
                 }
             }
@@ -726,34 +657,6 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "StreamAnalyticsHa",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "DocumentDBHa",
-                "RunBookHa"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-core-ha.json?token=AT3nZn_K094gKdoNqvXhSSiXbEPKriZyks5bUYlZwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "streamAnalytics": {
-                        "value": "[variables('streamAnalytics')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -862,77 +765,7 @@
                 }
             }
         },
-        {
-            "name": "WebAppHa",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "IotHubHa",
-                "DocumentDBHa",
-                "NotificationHubHAWmHa"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-ha.json?token=AT3nZiXnWkDZSon3ItvDBMaf3SefN5Z3ks5bUX-mwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    },
-                    "notificationHub": {
-                        "value": "[variables('notificationHub')]"
-                    },
-                    "trafficManagerSettings": {
-                        "value": "[variables('trafficManagerSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "RecoveryWebAppHa",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "IotHubHa",
-                "DocumentDBHa",
-                "NotificationHubHAWmHa"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha.json?token=AT3nZntFHpc5RS9ZzqnU_lecbTxE-SyLks5bUYAtwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    },
-                    "notificationHub": {
-                        "value": "[variables('notificationHub')]"
-                    },
-                    "trafficManagerSettings": {
-                        "value": "[variables('trafficManagerSettings')]"
-                    }
-                }
-            }
-        },
-        {
+               {
             "name": "WebAppWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -1011,31 +844,6 @@
                     },
                     "appInsights": {
                         "value": "[variables('appInsights')]"
-                    },
-                    "trafficManagerSettings": {
-                        "value": "[variables('trafficManagerSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "TrafficManagerAppsHa",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-hardening')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "WebAppHa",
-                "RecoveryWebAppHa"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager.json?token=AT3nZjKF_a7gLeASoYgYZQrpvNOHAgy8ks5bUYJwwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
                     },
                     "trafficManagerSettings": {
                         "value": "[variables('trafficManagerSettings')]"
