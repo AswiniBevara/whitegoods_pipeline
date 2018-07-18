@@ -84,6 +84,14 @@
         "locationDr": {
             "type": "string",
             "defaultValue": "",
+            "allowedValues": [
+                "eastus",
+                "northeurope",
+                "southcentralus",
+                "southeastasia",
+                "westeurope",
+                "westus2"
+            ],
             "metadata": {
                 "description": "Choose location for DR resources and make sure that it should be different from resource group region"
             }
