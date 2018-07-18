@@ -116,7 +116,7 @@
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
-                        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsights').appInsightResourceName), '2014-04-01').InstrumentationKey]",
+                        "ApplicationInsights:InstrumentationKey": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsights').appInsightResourceName), '2014-04-01').InstrumentationKey]",
                         "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
                         "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
                         "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
