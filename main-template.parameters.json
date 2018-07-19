@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "solution type": {
+            "value": ""
+        },
+        "omsWorkspaceRegion": {
+            "value": "eastus"
+        },
+        "readRegionLocation": {
+            "value":  "southcentralus"
+        },
+        "appInsightsLocation": {
+            "value": "eastus"
+        },
+        "locationDr": {
+            "value": "southcentralus"
+        },
+        "tenantId": {
+            "value": ""
+        },
+        "clientId": {
+            "value": ""
+        },
+        "objectId": {
+            "value": ""
+        },
+        "clientSecret": {
+            "value": ""
+        },
+        "azureAccountName": {
+            "value": ""
+        },
+        "azurePassword": {
+            "value": ""
+        },
+        "sessionId": {
+            "value": ""
+        },
+        "timeSeriesInsights": {
+            "value": "No"
+        },
+        "timeSeriesInsightslocation": {
+            "value": "East US"
+        }
+    }
+}
