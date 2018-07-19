@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tenantId": {
+            "value": ""
+        },
+        "clientId": {
+            "value": ""
+        },
+        "objectId": {
+            "value": ""
+        },
+        "clientSecret": {
+            "value": ""
+        },
+        "azureAccountName": {
+            "value": ""
+        },
+        "azurePassword": {
+            "value": ""
+        },
+        "iotHubSkuName": {
+            "value": "F1"
+        },
+        "sessionId": {
+            "value": "6bd85a32-9b48-4961-a9fb-c9029a103c3d"
+        },
+        "capacityUnits": {
+            "value": 1
+        },
+        "d2cMessageRetentionInDaysPeriod": {
+            "value": 1
+        },
+        "d2cPartitionCount": {
+            "value": 2
+        }
+    }
+   
+}
