@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tenantId": {
+            "value": ""
+        },
+        "clientId": {
+            "value": ""
+        },
+        "objectId": {
+            "value": ""
+        },
+        "clientSecret": {
+            "value": ""
+        },
+        "azureAccountName": {
+            "value": ""
+        },
+        "azurePassword": {
+            "value": ""
+        },
+        "timeSeriesInsights": {
+            "value": "No"
+        },
+        "iotHubSkuName": {
+            "value": "F1"
+        },
+        "sessionId": {
+            "value": ""
+        },
+        "capacityUnits": {
+            "value": 1
+        },
+        "d2cMessageRetentionInDaysPeriod": {
+            "value": 1
+        },
+        "d2cPartitionCount": {
+            "value": 2
+        },
+        "appInsightsLocation": {
+            "value": "eastus"
+        },
+        "omsWorkspaceRegion": {
+            "value": "eastus"
+        },
+        "dataRetention": {
+            "value": 7
+        },
+        "timeSeriesInsightslocation": {
+            "value": "East US"
+        }
+    }
+}
