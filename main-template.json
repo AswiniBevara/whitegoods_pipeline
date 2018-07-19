@@ -18,6 +18,7 @@
             "type": "string",
             "defaultValue": "eastus",
             "allowedValues": [
+                "notapplicable",
                 "australiasoutheast",
                 "canadacentral",
                 "centralindia",
@@ -38,6 +39,7 @@
                 "description": "The location of the read region of the cosmos database account.If you select core-with-monitoring-hardening specify the disaster recovery region for CosmosDB,Choose location for DR resources and make sure that it should be different from resource group region .For Azure Gov, China, and Germany, the allowed values are different."
             },
             "allowedValues": [
+                "notapplicable",
                 "eastasia",
                 "southeastasia",
                 "centralus",
@@ -70,6 +72,7 @@
             "type": "string",
             "defaultValue": "eastus",
             "allowedValues": [
+                "notapplicable",
                 "eastus",
                 "northeurope",
                 "southcentralus",
@@ -85,6 +88,7 @@
             "type": "string",
             "defaultValue": "southcentralus",
             "allowedValues": [
+                "notapplicable",
                 "eastus",
                 "northeurope",
                 "southcentralus",
@@ -156,6 +160,7 @@
             "type": "string",
             "defaultValue": "East US",
             "allowedValues": [
+                "notapplicable",
                 "East US",
                 "East US2",
                 "North Europe",
