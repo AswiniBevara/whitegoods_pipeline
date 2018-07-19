@@ -1,0 +1,234 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tenantId": {
+            "value":""
+        },
+        "clientId": {
+            "type": "string",
+            "metadata": {
+                "description": "applicationID of the created Azure active directory application"
+            }
+        },
+        "objectId": {
+            "type": "string",
+            "metadata": {
+                "description": "objectId of the created Azure active directory application"
+            }
+        },
+        "clientSecret": {
+            "type": "securestring",
+            "metadata": {
+                "description": "clientSecret of the created Azure active directory application"
+            }
+        },
+        "azureAccountName": {
+            "type": "string",
+            "value": "",
+            "metadata": {
+                "description": "azure portal login username"
+            }
+        },
+        "azurePassword": {
+            "type": "securestring",
+            "value": "",
+            "metadata": {
+                "description": "azure portal login password"
+            }
+        },
+        "locationDr": {
+            "type": "string",
+            "value": "",
+            "metadata": {
+                "description": "specify the region for webapps desaster recovary it should be different of resource group region"
+            }
+        },
+        "timeSeriesInsights": {
+            "type": "string",
+            "value": "No",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "metadata": {
+                "description": "if need time series insights for monitoring of iot hub select Yes otherwise select No"
+            }
+        },
+        "iotHubSkuName": {
+            "type": "string",
+            "value": "F1",
+            "allowedValues": [
+                "F1",
+                "S1",
+                "S2"
+            ],
+            "metadata": {
+                "description": "One of the supported SKUs: F1, S1 or S2"
+            }
+        },
+        "sessionId": {
+            "type": "string",
+            "value": "",
+            "metadata": {
+                "type": "sessionid",
+                "description": "provide the guid prefix for the runbook job to be created"
+            }
+        },
+        "capacityUnits": {
+            "type": "int",
+            "minValue": 1,
+            "value": 1,
+            "metadata": {
+                "description": "Number of desired IoT Hub units. Restricted to 1 unit for F1. Can be set up to maximum number allowed for subscription."
+            }
+        },
+        "d2cMessageRetentionInDaysPeriod": {
+            "type": "int",
+            "minValue": 1,
+            "maxValue": 7,
+            "value": 1,
+            "metadata": {
+                "description": "Retention time in days for device-to-cloud messages."
+            }
+        },
+        "d2cPartitionCount": {
+            "type": "int",
+            "minValue": 2,
+            "value": 2,
+            "allowedValues": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+            ],
+            "metadata": {
+                "description": "Number of desired partitions for device-to-cloud event ingestion.Restricted to 1 unit for F1"
+            }
+        },
+        "appInsightsLocation": {
+            "type": "string",
+            "value": "eastus",
+            "allowedValues": [
+                "eastus",
+                "northeurope",
+                "southcentralus",
+                "southeastasia",
+                "westeurope",
+                "westus2"
+            ],
+            "metadata": {
+                "description": "specify the region for application insights"
+            }
+        },
+        "readRegionLocation": {
+            "type": "string",
+            "value": "",
+            "metadata": {
+                "description": "The location of the read region of the cosmos database account. For Azure Gov, China, and Germany, the allowed values are different."
+            },
+            "allowedValues": [
+                "eastasia",
+                "southeastasia",
+                "centralus",
+                "eastus",
+                "eastus2",
+                "westus",
+                "northcentralus",
+                "southcentralus",
+                "northeurope",
+                "westeurope",
+                "japanwest",
+                "japaneast",
+                "brazilsouth",
+                "australiaeast",
+                "australiasoutheast",
+                "southindia",
+                "centralindia",
+                "westindia",
+                "canadacentral",
+                "canadaeast",
+                "uksouth",
+                "ukwest",
+                "westcentralus",
+                "westus2",
+                "koreacentral",
+                "koreasouth"
+            ]
+        },
+        "omsWorkspaceRegion": {
+            "type": "string",
+            "value": "eastus",
+            "allowedValues": [
+                "eastus",
+                "westeurope",
+                "southeastasia",
+                "australiasoutheast"
+            ],
+            "metadata": {
+                "description": "specify the region for oms workspace"
+            }
+        },
+        "dataRetention": {
+            "type": "int",
+            "value": 7,
+            "minValue": 7,
+            "maxValue": 730,
+            "metadata": {
+                "description": "specify the oms retention period in days, if you have selected solution type as without monitoring this is optional"
+            }
+        },
+        "trafficRoutingMethod": {
+            "type": "string",
+            "value": "Priority",
+            "allowedValues": [
+                "Performance",
+                "Weighted",
+                "Geographic",
+                "Priority"
+            ],
+            "metadata": {
+                "description": "specify the traffic routing method for traffic manager"
+            }
+        },
+        "timeSeriesInsightslocation": {
+            "type": "string",
+            "value": "East US",
+            "allowedValues": [
+                "East US",
+                "East US2",
+                "North Europe",
+                "West Europe",
+                "West US"
+            ],
+            "metadata": "specify the region for time series insights"
+        }
+    }
+}
