@@ -33,9 +33,9 @@
         },
         "readRegionLocation": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue":  "southcentralus",
             "metadata": {
-                "description": "The location of the read region of the cosmos database account. For Azure Gov, China, and Germany, the allowed values are different."
+                "description": "The location of the read region of the cosmos database account.If you select core-with-monitoring-hardening specify the disaster recovery region for CosmosDB,Choose location for DR resources and make sure that it should be different from resource group region .For Azure Gov, China, and Germany, the allowed values are different."
             },
             "allowedValues": [
                 "eastasia",
@@ -83,7 +83,7 @@
         },
         "locationDr": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "southcentralus",
             "allowedValues": [
                 "eastus",
                 "northeurope",
@@ -93,7 +93,7 @@
                 "westus2"
             ],
             "metadata": {
-                "description": "Choose location for DR resources and make sure that it should be different from resource group region"
+                "description":"If you select core-with-monitoring-hardening specify the disaster recovery region for webapps,Choose location for DR resources and make sure that it should be different from resource group region"
             }
         },
         "tenantId": {
