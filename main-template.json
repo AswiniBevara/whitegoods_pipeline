@@ -29,7 +29,7 @@
                 "westeurope"
             ],
             "metadata": {
-                "description": "Choose location for OMS Log Analytics"
+                "description": "Choose location for OMS Log Analytics to deploy"
             }
         },
         "readRegionLocation": {
@@ -103,25 +103,26 @@
         "tenantId": {
             "type": "string",
             "metadata": {
-                "description": "tenantId of the created Azure active directory application"
+                "description": "tenantId of the created Azure active directory application. For informationon how to get it https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id"
+                
             }
         },
         "clientId": {
             "type": "string",
             "metadata": {
-                "description": "applicationID of the created Azure active directory application"
+                "description": "applicationID of the created Azure active directory application.For information on how to get application ID https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key"
             }
         },
         "objectId": {
             "type": "string",
             "metadata": {
-                "description": "objectId of the created Azure active directory application"
+                "description": "objectId of the created Azure active directory application."
             }
         },
         "clientSecret": {
             "type": "securestring",
             "metadata": {
-                "description": "clientSecret of the created Azure active directory application"
+                "description": "clientSecret of the created Azure active directory application.For information on how to get application ID https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key"
             }
         },
         "azureAccountName": {
@@ -142,7 +143,7 @@
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "provide the guid prefix for the runbook job to be created"
+                "description": "Provide the guid prefix for the runbook job to be created. Generate using https://www.guidgenerator.com/online-guid-generator.aspx"
             }
         },
         "timeSeriesInsights": {
