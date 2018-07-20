@@ -29,7 +29,7 @@
                 "westeurope"
             ],
             "metadata": {
-                "description": "Choose location for OMS Log Analytics to deploy"
+                "description": "Choose location for OMS Log Analytics to deploy. For more information, see https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview"
             }
         },
         "readRegionLocation": {
@@ -103,26 +103,26 @@
         "tenantId": {
             "type": "string",
             "metadata": {
-                "description": "tenantId of the created Azure active directory application. For informationon how to get it https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id"
+                "description": "TenantId of the created Azure active directory application. For instructions, see  https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-howto-tenant in the Microsoft documentation"
                 
             }
         },
         "clientId": {
             "type": "string",
             "metadata": {
-                "description": "applicationID of the created Azure active directory application.For information on how to get application ID https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key"
+                "description": "ApplicationID of the created Azure active directory application. For information, see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications in the Microsoft documentation."
             }
         },
         "objectId": {
             "type": "string",
             "metadata": {
-                "description": "objectId of the created Azure active directory application."
-            }
+                "description": "ObjectId of the created Azure active directory application."
+            } 
         },
         "clientSecret": {
             "type": "securestring",
             "metadata": {
-                "description": "clientSecret of the created Azure active directory application.For information on how to get application ID https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key"
+                "description": "clientSecret of the created Azure active directory application.For instructions, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key in the Microsoft documentation."
             }
         },
         "azureAccountName": {
@@ -154,7 +154,7 @@
                 "No"
             ],
             "metadata": {
-                "description": "if need time series insights for monitoring of iot hub select Yes otherwise select No"
+                "description": "if need time series insights for monitoring of iot hub select Yes otherwise select No.To explore, see https://docs.microsoft.com/en-in/azure/time-series-insights/time-series-quickstart"
             }
         },
         "timeSeriesInsightslocation": {
@@ -169,7 +169,7 @@
                 "West US"
             ],
             "metadata": {
-                "description": "specify the region for time series insights"
+                "description": "specify the region for time series insights."
             }
         }
     },
