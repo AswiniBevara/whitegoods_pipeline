@@ -480,7 +480,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeDUh66DoKb6W9CpD5MOJbxyr3M1qks5bWw8xwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeIQYaoKMkjCO2J2i1jxIkPJyzwBAks5bWxDBwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
