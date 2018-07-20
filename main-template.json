@@ -207,7 +207,7 @@
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
             "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
-            "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/newcode/DeviceManagementPortalAI.zip",
+            "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/appinsights/DeviceManagementPortalAI.zip",
             "webAppHostingPlanName": "[concat('webSiteplan', variables('suffix'))]",
             "webAppSkuName": "B1",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
@@ -480,7 +480,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeMb3BdN-DxNNGhkUMyDBCAvnt2AVks5bWHikwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json','?token=AYpAeDUh66DoKb6W9CpD5MOJbxyr3M1qks5bWw8xwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
