@@ -211,12 +211,7 @@
                         "displayName": "WebPackageDeploy"
                     },
                     "properties": {
-                        "packageUri": "[parameters('webSiteSettings').deviceManagementPortalPackageuri]",
-                        "dbType": "None",
-                        "connectionString": "",
-                        "setParameters": {
-                            "IIS Web Application Name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]"
-                        }
+                        "packageUri": "[parameters('webSiteSettings').deviceManagementPortalPackageuri]"
                     }
                 },
                 {
