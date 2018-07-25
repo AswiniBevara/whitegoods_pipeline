@@ -900,6 +900,14 @@
             "type": "string",
             "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
         },
+         "deviceManagementPortalUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+        },
+         "recoveryDeviceManagementPortalUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteNameDr,'.azurewebsites.net')]"
+        }
         "deviceManagement_trafficmanagerUrl":{  
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
