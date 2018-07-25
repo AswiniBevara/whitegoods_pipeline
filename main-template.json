@@ -233,7 +233,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json?','?token=AYpAeKHwlJX84aZcZ6VVyKiANBj3m3cPks5bYU2twA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json','?token=AYpAeKHwlJX84aZcZ6VVyKiANBj3m3cPks5bYU2twA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
