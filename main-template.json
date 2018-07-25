@@ -907,7 +907,7 @@
          "recoveryDeviceManagementPortalUrl": {
             "type": "string",
             "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteNameDr,'.azurewebsites.net')]"
-        }
+        },
         "deviceManagement_trafficmanagerUrl":{  
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
