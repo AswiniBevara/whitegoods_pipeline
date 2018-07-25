@@ -231,7 +231,7 @@
             "azurePassword": "[parameters('azurePassword')]"
         },
         "trafficManagerSettings": {
-            "trafficManagerName1": "[concat('devicemanagetm', variables('suffix'))]",
+            "trafficManagerName1": "[concat('devicemanagement', variables('suffix'))]",
             "trafficRoutingMethod": "Priority"
         },
         "streamAnalytics": {
