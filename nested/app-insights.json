@@ -4,16 +4,13 @@
     "parameters": {
         "appInsights": {
           "type": "object"
-        },
-        "apiVersions": {
-           "type": "object"
         }
     },
     "variables": {},
     "resources": [
         { 
-            "apiVersion": "[parameters('apiVersions').appInsightsApiVersion]",
             "name": "[parameters('appInsights').appInsightResourceName]",
+            "apiVersion": "2014-04-01",
             "type": "Microsoft.Insights/components",
             "location": "[parameters('appInsights').location]",
             "dependsOn": [],

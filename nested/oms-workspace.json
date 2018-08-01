@@ -4,9 +4,6 @@
     "parameters": {
         "omsSettings": {
             "type": "object"
-        },
-        "apiVersions": {
-            "type": "object"
         }
     },
     "variables": {
@@ -21,7 +18,7 @@
     },
     "resources": [
         {
-            "apiVersion": "[parameters('apiVersions').omsApiVersion]",
+            "apiVersion": "2015-03-20",
             "location": "[parameters('omsSettings').omsWorkspaceRegion]",
             "name": "[parameters('omsSettings').omsWorkspaceName]",
             "type": "Microsoft.OperationalInsights/workspaces",
@@ -33,7 +30,7 @@
             }
         },
         {
-            "apiVersion": "[parameters('apiVersions').omsDataApiVersion]",
+            "apiVersion": "2015-11-01-preview",
             "type": "Microsoft.OperationsManagement/solutions",
             "name": "[concat(variables('batch1').solutions[copyIndex()].Name)]",
             "location": "[parameters('omsSettings').omsWorkspaceRegion]",
@@ -65,7 +62,7 @@
             "type": "string"
         },
         "workspaceSecondarySharedKey": {
-            "value": "[listKeys(parameters('omsSettings').omsWorkspaceName, parameters('apiVersions').omsDataApiVersion).secondarySharedKey]",
+            "value": "[listKeys(parameters('omsSettings').omsWorkspaceName, '2015-11-01-preview').secondarySharedKey]",
             "type": "securestring"
         }
     }
