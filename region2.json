@@ -2,6 +2,17 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "solution type": {
+            "type": "string",
+            "defaultValue": "",
+            "allowedValues": [
+                "core-with-monitoring",
+                "core-with-monitoring-hardening"
+            ],
+            "metadata": {
+                "description": "choose your solution type to deploy"
+            }
+        },
         "omsWorkspaceRegion": {
             "type": "string",
             "defaultValue": "eastus",
@@ -70,6 +81,22 @@
             ],
             "metadata": {
                 "description": "specify the region for application insights"
+            }
+        },
+        "locationDr": {
+            "type": "string",
+            "defaultValue": "southcentralus",
+            "allowedValues": [
+                "notapplicable",
+                "eastus",
+                "northeurope",
+                "southcentralus",
+                "southeastasia",
+                "westeurope",
+                "westus2"
+            ],
+            "metadata": {
+                "description": "If you select core-with-monitoring-hardening specify the disaster recovery region for webapps,Choose location for DR resources and make sure that it should be different from resource group region"
             }
         },
         "tenantId": {
@@ -155,7 +182,9 @@
             "location": "[variables('location')]",
             "iotHubName": "[concat('IoTHub',variables('suffix'))]",
             "keyName": "iothubowner",
-            "skuName": "S1",
+            "skuName": "F1",
+            "skuName1": "B1",
+            "skuName2": "S1",
             "capacityUnits": 1,
             "d2cMessageRetentionInDaysPeriod": 1,
             "d2cPartitionCount": 2,
@@ -222,14 +251,22 @@
         },
         "webSiteSettings": {
             "location": "[variables('location')]",
+            "locationDr": "[parameters('locationDr')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
+            "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "deviceManagementPortalPackageuriWm": "https://projectiot.blob.core.windows.net/whitegoods/appinsights/DeviceManagementPortalAI.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
-            "webAppSkuName": "S1",
-            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]"
+            "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
+            "webAppSkuName": "F1",
+            "webAppSkuName1": "B1",
+            "webAppSkuName2": "S1",
+            "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
+            "dataPacketWebSiteNameDr": "[concat('recoverydatapacket', variables('suffix'))]",
+            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
+            "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
@@ -239,6 +276,7 @@
         {
             "name": "OmsWorkSpace",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "properties": {
                 "mode": "Incremental",
@@ -256,6 +294,7 @@
         {
             "name": "IotHubWmHa",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "OMSWorkSpace"
@@ -277,9 +316,33 @@
             }
         },
         {
+            "name": "TimeSeriesInsightsWm",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring'),equals(parameters('timeSeriesInsights'),'Yes'))]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "IotHubWm"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZvVND_IngY7OfT3GhPCeRaGYuin4ks5bXqZ2wA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "timeSeriesInsights": {
+                        "value": "[variables('timeSeriesInsights')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    }
+                }
+            }
+        },
+        {
             "name": "TimeSeriesInsightsWmHa",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
+            "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring-hardening'),equals(parameters('timeSeriesInsights'),'Yes'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubWmHa"
@@ -303,6 +366,7 @@
         {
             "name": "DocumentDBWmHA",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "OMSWorkSpace"
@@ -326,6 +390,7 @@
         {
             "name": "NotificationHubWmHa",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -344,6 +409,7 @@
         {
             "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -362,6 +428,7 @@
         {
             "name": "RunBookWmHa",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "TrafficManagerAppsWmHa"
@@ -376,6 +443,12 @@
                     "automationSettings": {
                         "value": "[variables('automationSettings')]"
                     },
+                    "datapacketUri": {
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                    },
+                    "datapacketUriDr": {
+                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+                    },
                     "deviceManagementUri": {
                         "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
                     }
@@ -385,6 +458,7 @@
         {
             "name": "StreamAnalyticsWmHa",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBWmHA",
@@ -416,6 +490,7 @@
         {
             "name": "WebAppWmHa",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubWmHa",
@@ -456,8 +531,52 @@
             }
         },
         {
+            "name": "RecoveryWebAppWmHa",
+            "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "IotHubWmHa",
+                "DocumentDBWmHA",
+                "NotificationHubWmHa",
+                "OMSWorkSpace",
+                "AppInsights"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-drcomponents-ha-wm.json?token=AT3nZuYFN0ZiuxFxgiiYHO-E9qptksMCks5bXqSpwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    },
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
             "name": "TrafficManagerAppsWmHa",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "WebAppWmHa",
@@ -481,7 +600,15 @@
         }
     ],
     "outputs": {
-        "deviceManagement_trafficmanagerUrl": {
+        "dataPacketDesignerUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+        },
+        "recoveryDataPacketDesignerUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
+        },
+        "deviceManagement_trafficmanagerUrl":{  
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
         }

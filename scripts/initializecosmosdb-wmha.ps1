@@ -15,14 +15,6 @@ workflow  container{
 
         [Parameter(Mandatory=$true)]
         [string]
-        $datapacketUri,
-
-        [Parameter(Mandatory=$true)]
-        [string]
-        $datapacketUriDr,
-
-        [Parameter(Mandatory=$true)]
-        [string]
         $deviceManagementUri,
         
         [Parameter(Mandatory=$true)]
@@ -43,8 +35,6 @@ workflow  container{
         $tenantId = $Using:tenantId
         $clientId = $Using:clientId
         $clientSecret = $Using:clientSecret
-        $datapacketUri = $Using:datapacketUri
-        $datapacketUriDr = $Using:datapacketUriDr
         $deviceManagementUri = $Using:deviceManagementUri
         $azureAccountName = $Using:azureAccountName
         $azurePassword = $Using:azurePassword
@@ -87,12 +77,10 @@ workflow  container{
     }
             # Update Azure AD applications reply urls
             Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
-            $datapacketUriOIDC="https://"+$datapacketUri+"/signin-oidc"      
             $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"
-            $datapacketUriDrOIDC="https://"+$datapacketUriDr+"/signin-oidc"
-            $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC,$datapacketUriDrOIDC);  
+            $replyURLList = @($deviceManagementUriOIDC);  
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
-            Set-AzureADApplication -ObjectId $objectId -HomePage $datapacketUri -ReplyUrls $replyURLList -Verbose
+            Set-AzureADApplication -ObjectId $objectId -ReplyUrls $replyURLList -Verbose
             # Get Access token for calling API
             $accessToken=Get-AccessTokenAPI $tenantId $clientId $clientSecret
             Write-Host "Access token is " $accessToken -ForegroundColor Magenta
@@ -100,6 +88,6 @@ workflow  container{
             Start-Sleep -s 10
             # Call API to initialize cosmos DB with default starter IoT templates
             # This templates will be loaded in the data packet designer
-            $cosmosDBInitResult=CosmosDbInit $datapacketUri $accessToken  
+            $cosmosDBInitResult=CosmosDbInit $accessToken  
     }
 }
