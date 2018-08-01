@@ -190,8 +190,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdbcorewm.ps1?token=AT3nZmmE3CRbEGhG1kGWv6A_J3ApGGJ9ks5bXqPJwA%3D%3D')]",
-            "runbookUri1": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZjyduxFJN5ySHwTz2OoR1xJVod_3ks5bXqOswA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZjyduxFJN5ySHwTz2OoR1xJVod_3ks5bXqOswA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -225,7 +224,6 @@
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
-            "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "deviceManagementPortalPackageuriWm": "https://projectiot.blob.core.windows.net/whitegoods/appinsights/DeviceManagementPortalAI.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
             "webAppSkuName": "S1",
@@ -360,7 +358,7 @@
             }
         },
         {
-            "name": "RunBookWmHa",
+            "name": "AutomationAccount",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
@@ -388,7 +386,7 @@
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "DocumentDBWmHA",
-                "RunBookWmHa",
+                "AutomationAccount",
                 "OMSWorkSpace"
             ],
             "properties": {
@@ -460,8 +458,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                "WebAppWmHa",
-                "RecoveryWebAppWmHa"
+                "WebAppWmHa"
             ],
             "properties": {
                 "mode": "Incremental",

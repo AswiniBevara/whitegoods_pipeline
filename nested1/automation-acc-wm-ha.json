@@ -36,7 +36,7 @@
                         "logVerbose": "false",
                         "description": null,
                         "publishContentLink": {
-                            "uri": "[parameters('automationSettings').runbookUri1]",
+                            "uri": "[parameters('automationSettings').runbookUri]",
                             "version": "1.0.0.0"
                         }
                     }
