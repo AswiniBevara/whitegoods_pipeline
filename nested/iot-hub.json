@@ -1,0 +1,44 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "iotHubSettings": {
+            "type": "object"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2016-02-03",
+            "type": "Microsoft.Devices/IotHubs",
+            "location": "[parameters('iotHubSettings').location]",
+            "name": "[parameters('iotHubSettings').iotHubName]",
+            "sku": {
+                "name": "[parameters('iotHubSettings').skuName]",
+                "capacity": "[parameters('iotHubSettings').capacityUnits]"
+            },
+            "properties": {
+                "eventHubEndpoints": {
+                    "events": {
+                        "retentionTimeInDays": "[parameters('iotHubSettings').d2cMessageRetentionInDaysPeriod]",
+                        "partitionCount": "[parameters('iotHubSettings').d2cPartitionCount]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "iotHubName": {
+            "type": "string",
+            "value": "[parameters('iotHubSettings').iotHubName]"
+        },
+        "iotHubEndPoint": {
+            "value": "[reference(resourceId('Microsoft.Devices/IoTHubs',parameters('iotHubSettings').iotHubName)).hostName]",
+            "type": "string"
+        },
+        "iotHubPrimaryKey": {
+            "value": "[listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',parameters('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey]",
+            "type": "string"
+        }
+    }
+}
