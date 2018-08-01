@@ -190,7 +190,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZjyduxFJN5ySHwTz2OoR1xJVod_3ks5bXqOswA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZhv3jNXnnK3JgdU2u-aXK11fgmwQks5basjmwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -375,7 +375,7 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "deviceManagementUri": {
-                        "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
+                        "value": "[concat(variables('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
                     }
                 }
             }
@@ -425,7 +425,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested1/app-components-ha-wm.json?token=AT3nZnt2VPD-dYk79hU-WmvCwkek4IVrks5basHHwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested1/app-components-ha-wm.json?token=AT3nZudKpe1WiB5w0wEIXcwE6VRreBuLks5basUvwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
