@@ -14,12 +14,12 @@
         {
             "apiVersion": "2017-05-01",
             "type": "Microsoft.Network/trafficmanagerprofiles",
-            "name": "[parameters('trafficManagerSettings').trafficManagerName1]",
+            "name": "[parameters('trafficManagerSettings').trafficManagerName]",
             "location": "global",
             "properties": {
                 "trafficRoutingMethod": "[parameters('trafficManagerSettings').trafficRoutingMethod]",
                 "dnsConfig": {
-                    "relativeName": "[parameters('trafficManagerSettings').trafficManagerName1]",
+                    "relativeName": "[parameters('trafficManagerSettings').trafficManagerName]",
                     "ttl": "100"
                 },
                 "monitorConfig": {

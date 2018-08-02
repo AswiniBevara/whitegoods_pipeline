@@ -6,7 +6,6 @@
             "type": "string",
             "defaultValue": "eastus",
             "allowedValues": [
-                "notapplicable",
                 "australiasoutheast",
                 "canadacentral",
                 "centralindia",
@@ -24,7 +23,6 @@
             "type": "string",
             "defaultValue": "Not Applicable",
             "allowedValues": [
-                "Not Applicable",
                 "EastUS2",
                 "CentralUS",
                 "WestUS2",
@@ -52,7 +50,6 @@
             "type": "string",
             "defaultValue": "eastus",
             "allowedValues": [
-                "notapplicable",
                 "eastus",
                 "northeurope",
                 "southcentralus",
@@ -124,7 +121,6 @@
             "type": "string",
             "defaultValue": "East US",
             "allowedValues": [
-                "notapplicable",
                 "East US",
                 "East US2",
                 "North Europe",
