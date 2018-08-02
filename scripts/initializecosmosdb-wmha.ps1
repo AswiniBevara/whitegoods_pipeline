@@ -77,7 +77,7 @@ workflow  container{
     }
             # Update Azure AD applications reply urls
             Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
-            $deviceManagementUriOIDC="http://"+$deviceManagementUri+"/signin-oidc"
+            $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"
             $replyURLList = @($deviceManagementUriOIDC);  
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
             Set-AzureADApplication -ObjectId $objectId -ReplyUrls $replyURLList -Verbose

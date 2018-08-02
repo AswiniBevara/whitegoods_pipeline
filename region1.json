@@ -382,7 +382,7 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "deviceManagementUri": {
-                        "value": "[concat(variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+                        "value": "[concat('http://',variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
                     }
                 }
             }
@@ -432,7 +432,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested1/app-components-ha-wm.json?token=AT3nZudKpe1WiB5w0wEIXcwE6VRreBuLks5basUvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested1/app-components-ha-wm.json?token=AT3nZs5ZLqOsLVa0WTG8gp-2N2iWafXeks5ba--KwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -470,7 +470,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested1/traffic-manager.json?token=AT3nZlkDfiz2BkEFgVXFM1wToxm7Vzc1ks5basLYwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested1/traffic-manager.json?token=AT3nZuldasRQo_bgfkob_a-QIYidoT25ks5ba-wiwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
