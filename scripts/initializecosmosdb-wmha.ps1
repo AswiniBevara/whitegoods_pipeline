@@ -77,10 +77,10 @@ workflow  container{
     }
             # Update Azure AD applications reply urls
             Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
-            $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"
+            $deviceManagementUriOIDC="http://"+$deviceManagementUri+"/signin-oidc"
             $replyURLList = @($deviceManagementUriOIDC);  
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
-            Set-AzureADApplication -ObjectId $objectId -ReplyUrls $replyURLList -Verbose
+            Set-AzureADApplication -ObjectId $objectId -HomePage $deviceManagementUri -ReplyUrls $replyURLList -Verbose
             # Get Access token for calling API
             $accessToken=Get-AccessTokenAPI $tenantId $clientId $clientSecret
             Write-Host "Access token is " $accessToken -ForegroundColor Magenta
@@ -88,6 +88,6 @@ workflow  container{
             Start-Sleep -s 10
             # Call API to initialize cosmos DB with default starter IoT templates
             # This templates will be loaded in the data packet designer
-            $cosmosDBInitResult=CosmosDbInit $accessToken  
+            $cosmosDBInitResult=CosmosDbInit $deviceManagementUri $accessToken  
     }
 }
