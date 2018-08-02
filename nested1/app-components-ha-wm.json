@@ -150,7 +150,7 @@
     "outputs": {
         "deviceManagementPortalUrl": {
             "type": "string",
-            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
+            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         }
     }
 }

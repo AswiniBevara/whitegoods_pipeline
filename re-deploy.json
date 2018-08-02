@@ -83,7 +83,7 @@
         },
        "documentDbSettings": {
         "location": "[parameters('geo-paired-region')]",
-            "cosmosDbAccountNameDr": "[concat('cosmosdbDr',variables('suffix'))]",
+            "cosmosDbAccountName": "[concat('cosmosdb',variables('suffix'))]",
             "cosmosDbName": "MSIoT",
             "databaseAccountOfferType": "Standard",
             "readRegionLocation": "[variables('readRegionLocation')]",
