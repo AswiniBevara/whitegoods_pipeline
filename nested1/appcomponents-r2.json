@@ -35,7 +35,7 @@
                 "displayName": "HostingPlan"
             },
             "sku": {
-                "name": "[parameters('webSiteSettings').webAppSkuName2]",
+                "name": "[parameters('webSiteSettings').webAppSkuName]",
                 "capacity": "1"
             },
             "properties": {
@@ -52,10 +52,7 @@
                 "displayName": "Website"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanNameDr)]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr)]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr,'/config/appsettings')]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteNameDr, '/extensions/MSDeploy')]"
+                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanNameDr)]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteNameDr]",
@@ -150,13 +147,9 @@
         }
     ],
     "outputs": {
-        "dataPacketDesignerUrl": {
-            "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteNameDr,'.azurewebsites.net')]"
-        },
         "deviceManagementPortalUrl": {
             "type": "string",
-            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName1,'.trafficmanager.net')]"
+            "value": "[concat('http://', parameters('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         }
     }
 }
