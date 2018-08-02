@@ -117,11 +117,7 @@
                         "CosmosDb:Endpoint":"[concat('https://',parameters('documentDbSettings').cosmosDbAccountName,'.documents.azure.com:443/')]",
                         "CosmosDb:AuthKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
                         "CosmosDb:Database": "[parameters('documentDbSettings').cosmosDbName]",
-                        "NotificationHub:ConnectionString": "[listKeys(resourceId('Microsoft.NotificationHubs/namespaces/notificationHubs/authorizationRules', parameters('notificationHub').notificationHubNamespaceName, parameters('notificationHub').notificationHubName, 'DefaultFullSharedAccessSignature'), providers('Microsoft.NotificationHubs', 'namespaces/notificationHubs').apiVersions[0]).primaryConnectionString]",
-                        "CosmosDb:Collections:Templates": "[parameters('documentDbSettings').cosmosDbColTemplateName]",
-                        "CosmosDb:Collections:Messages": "[parameters('documentDbSettings').cosmosDbColMessagesName]",
-                        "CosmosDb:Collections:Groups": "[parameters('documentDbSettings').cosmosDbColGroupsName]",
-                        "CosmosDb:TemplatesBase": "https://msiotsolutiondev.blob.core.windows.net/cosmosdbtemplates/"
+                        "NotificationHub:ConnectionString": "[listKeys(resourceId('Microsoft.NotificationHubs/namespaces/notificationHubs/authorizationRules', parameters('notificationHub').notificationHubNamespaceName, parameters('notificationHub').notificationHubName, 'DefaultFullSharedAccessSignature'), providers('Microsoft.NotificationHubs', 'namespaces/notificationHubs').apiVersions[0]).primaryConnectionString]"
                     }
                 },
                 {
