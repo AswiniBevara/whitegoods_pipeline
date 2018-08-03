@@ -245,13 +245,13 @@
     },
     "resources": [
         {
-            "name": "OmsWorkSpaceR1",
+            "name": "OmsWorkSpace",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'),'nested2/oms-workspace.json?token=AT3nZn167AKh9HmNwoG9NLxjhgUcKN3qks5basKFwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'),'nested2/oms-workspace.json?token=AT3nZlg0HwdNp-OXHwnGwieMDvOwTDRkks5bbUJuwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -266,12 +266,12 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                "OmsWorkSpaceR1"
+                "OmsWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/iot-hub-ha-wm.json?token=AT3nZiD7sCkO9W7oM7GJ3oOCARLxd4xKks5basJvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/iot-hub-ha-wm.json?token=AT3nZqVe7iA6n-a_7kKDAJoj30_j-H08ks5bbUHewA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -285,7 +285,7 @@
             }
         },
         {
-            "name": "TimeSeriesInsightsR1",
+            "name": "TimeSeriesInsights",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
             "apiVersion": "2016-02-01",
@@ -295,7 +295,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/timeseriesinsights.json?token=AT3nZo5gbTND4lpE17GgksJV-ycshd4cks5basK5wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/timeseriesinsights.json?token=AT3nZjA7ur5fPFPAFIcNyF3P1b0YD0I0ks5bbULAwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -313,12 +313,12 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                "OmsWorkSpaceR1"
+                "OmsWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/documentdb-ha-wm.json?token=AT3nZvUoFrSei64KrjSml9vp21qZnAFXks5basJZwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/documentdb-ha-wm.json?token=AT3nZkuDYn2fv4wfTBeTBZIyO8BTL-T0ks5bbUFRwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -339,7 +339,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/notification-hub.json?token=AT3nZs0ZE5TRcS0MEOv338ivh7b0hyGGks5basOEwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/notification-hub.json?token=AT3nZoC_TulWezMbQ7HO8iBgVpsichB5ks5bbUH1wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -357,7 +357,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/notification-hub.json?token=AT3nZgD4Z6NkeOHkzta31ugIHqs6jBKOks5bXqXnwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/notificationhub-r2.json?token=AT3nZvcshRq0N4Qh7Wm_huoILjYXlD57ks5bbUJawA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -375,7 +375,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/app-insights.json?token=AT3nZmG4_9zwmf4vyJ2dulgXn4Pi0j8yks5basIIwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/app-insights.json?token=AT3nZvZfqhwuJOu5KCtoLZBdGIyb7gkaks5bbUBuwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -395,7 +395,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/automation-acc-wm-ha.json?token=AT3nZhYzE2abkAjZXaXQz-QUcqC-0ALSks5basI1wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/automation-acc-wm-ha.json?token=AT3nZo_mTYnbw_bsadUq45DBsdggqh3Qks5bbUETwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -415,12 +415,12 @@
             "dependsOn": [
                 "DocumentDBR1",
                 "AutomationAccount",
-                "OmsWorkSpaceR1"
+                "OmsWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/streamanalytics-ha-wm.json?token=AT3nZhwR1dsgNptG0dfKdTb4Oxj1BeWXks5basKfwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/streamanalytics-ha-wm.json?token=AT3nZhFwo7CKuPt8S5VC8DOVtVKvpnkSks5bbUKFwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -443,11 +443,13 @@
             "name": "StreamAnalyticsR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "dependsOn": [],
+            "dependsOn": [
+                "OmsWorkSpace"
+            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZh7TDrZOMgGpL-ADx6wkUZVjySTNks5bXqZUwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/streamanalytics-r2.json?token=AT3nZhuN87yP2Yh0UgIy93FH3Xd1otURks5bbUKjwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -475,12 +477,52 @@
                 "DocumentDBR1",
                 "NotificationHubR1",
                 "AppInsights",
-                "OmsWorkSpaceR1"
+                "OmsWorkSpace"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/app-components-ha-wm.json?token=AT3nZtQpSraQTs6iW6PboZP4G_rXhC4Sks5bbAcLwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/app-components-ha-wm.json?token=AT3nZt14Q6PihEEZ4e0kdyogdWG3mZy1ks5bbUBCwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "webSiteSettings": {
+                        "value": "[variables('webSiteSettings')]"
+                    },
+                    "iotHubSettings": {
+                        "value": "[variables('iotHubSettings')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
+                    },
+                    "notificationHub": {
+                        "value": "[variables('notificationHub')]"
+                    },
+                    "omsSettings": {
+                        "value": "[variables('omsSettings')]"
+                    },
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
+                    },
+                    "trafficManagerSettings": {
+                        "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "WebAppR2",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [
+                "NotificationHubR2",
+                "AppInsights",
+                "OmsWorkSpace"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested2/appcomponents-r2.json?token=AT3nZhIvqRRudOD-qOqk9YaewOGSNQGPks5bbUCwwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -513,12 +555,13 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                "WebAppR1"
+                "WebAppR1",
+                "WebAppR2"
             ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested2/traffic-manager.json?token=AT3nZuldasRQo_bgfkob_a-QIYidoT25ks5ba-wiwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested2/traffic-manager.json?token=AT3nZkh8vk3LeNUoyA_UVpgd93emvOvUks5bbULjwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
