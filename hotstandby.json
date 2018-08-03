@@ -266,7 +266,7 @@
                 }
             }
         },
-        {
+ #       {
             "name": "IotHubR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -289,7 +289,7 @@
                 }
             }
         },
-        {
+ #       {
             "name": "TimeSeriesInsights",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
@@ -313,7 +313,7 @@
                 }
             }
         },
-        {
+  #      {
             "name": "DocumentDBR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -336,7 +336,7 @@
                 }
             }
         },
-        {
+ #       {
             "name": "NotificationHubR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -354,7 +354,7 @@
                 }
             }
         },
-        {
+ #       {
             "name": "NotificationHubR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -372,7 +372,7 @@
                 }
             }
         },
-        {
+  #      {
             "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -390,7 +390,7 @@
                 }
             }
         },
-        {
+  #      {
             "name": "AutomationAccount",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -413,7 +413,7 @@
                 }
             }
         },
-        {
+  #      {
             "name": "StreamAnalyticsR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -444,7 +444,7 @@
                 }
             }
         },
-        {
+ #       {
             "name": "StreamAnalyticsR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
