@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "geo-paired-region":{
+        "geo-paired-region": {
             "type": "string",
             "defaultValue": "",
             "allowedValues": [
@@ -24,7 +24,6 @@
                 "KoreaSouth",
                 "UKSouth",
                 "UKWest"
-                
             ],
             "metadata": {
                 "description": "Choose location for geo-paired-region, for more information about the geo-paired-region navigate to section 6 in the Readme.md(https://github.com/sysgain/Oil-Gas/blob/costing-models/README.md)"
@@ -64,14 +63,14 @@
                 "description": "clientSecret of the created Azure active directory application.For instructions, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key in the Microsoft documentation."
             }
         }
-           },
+    },
     "variables": {
         "omsSettings": {
             "omsWorkspaceName": "[concat('omsworkspace', variables('suffix'))]",
             "dataRetention": 7
         },
-       "iotHubSettings": {
-        "location": "[parameters('geo-paired-region')]",
+        "iotHubSettings": {
+            "location": "[parameters('geo-paired-region')]",
             "iotHubName": "[concat('IoTHub',variables('suffix'))]",
             "keyName": "iothubowner",
             "skuName": "S1",
@@ -81,8 +80,8 @@
             "consumerGroupName": "$Default",
             "d2cConsumerGroupName": "consumergrp_"
         },
-       "documentDbSettings": {
-        "location": "[parameters('geo-paired-region')]",
+        "documentDbSettings": {
+            "location": "[parameters('geo-paired-region')]",
             "cosmosDbAccountName": "[concat('cosmosdb',variables('suffix'))]",
             "cosmosDbName": "MSIoT",
             "databaseAccountOfferType": "Standard",
@@ -91,8 +90,8 @@
             "cosmosDbColMessagesName": "Messages",
             "cosmosDbColGroupsName": "Groups"
         },
-       "notificationHub": {
-        "locationDr": "[variables('locationDr')]",
+        "notificationHub": {
+            "locationDr": "[variables('locationDr')]",
             "skuName": "free",
             "namespaceType": "NotificationHub",
             "notificationHubNamespaceNameDr": "[concat('NotificationHubNSDr', variables('suffix'))]",
@@ -144,10 +143,9 @@
         "UKSouth": "UKWest",
         "UKWest": "UKSouth",
         "locationDr": "[variables(parameters('geo-paired-region'))]",
-        "readRegionLocation":"[variables('locationDr')]"
+        "readRegionLocation": "[variables('locationDr')]"
     },
     "resources": [
-           
         {
             "name": "NotificationHubR2",
             "type": "Microsoft.Resources/deployments",
@@ -199,7 +197,7 @@
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "NotificationHubR2"
-                        ],
+            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -233,7 +231,7 @@
         }
     ],
     "outputs": {
-        "deviceManagement_trafficmanagerUrl":{  
+        "deviceManagement_trafficmanagerUrl": {
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         }
