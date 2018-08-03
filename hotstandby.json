@@ -166,7 +166,9 @@
             "skuName": "free",
             "namespaceType": "NotificationHub",
             "notificationHubNamespaceName": "[concat('NotificationHubNS', variables('suffix'))]",
-            "notificationHubName": "[concat('NotificationHub', variables('suffix'))]"
+            "notificationHubName": "[concat('NotificationHub', variables('suffix'))]",
+            "notificationHubNamespaceNameDr": "[concat('NotificationHubNSDr', variables('suffix'))]",
+            "notificationHubNameDr": "[concat('NotificationHubDr', variables('suffix'))]"
         },
         "appInsights": {
             "location": "[parameters('appInsightsLocation')]",
@@ -196,6 +198,7 @@
             "location": "[parameters('geo-paired-region')]",
             "locationDr": "[variables('locationDr')]",
             "streamAnalyticsjobname": "[concat('StreamAnalytics', variables('suffix'))]",
+            "streamAnalyticsjobnameDr": "[concat('StreamAnalyticsDr', variables('suffix'))]",
             "sku": "Standard",
             "suiteType": "RemoteMonitoring",
             "telemetryCGName": "telemetrycg"
@@ -217,8 +220,10 @@
             "clientSecret": "[parameters('clientSecret')]",
             "deviceManagementPortalPackageuriWm": "https://projectiot.blob.core.windows.net/whitegoods/appinsights/DeviceManagementPortalAI.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
+            "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
             "webAppSkuName": "S1",
-            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]"
+            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
+            "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/test/",
@@ -413,7 +418,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                "DocumentDBR1",
+                "IotHubR1",
                 "AutomationAccount",
                 "OmsWorkSpace"
             ],
@@ -444,7 +449,9 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
-                "OmsWorkSpace"
+                "OmsWorkSpace",
+                "IotHubR1",
+                "AutomationAccount"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -515,6 +522,8 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "dependsOn": [
+                "IotHubR1",
+                 "DocumentDBR1",
                 "NotificationHubR2",
                 "AppInsights",
                 "OmsWorkSpace"
