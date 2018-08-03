@@ -6,7 +6,7 @@
             "type": "string",
             "defaultValue": "",
             "allowedValues": [
-                "core-solution",
+               
                 "core-with-monitoring",
                 "core-with-monitoring-hardening"
             ],
@@ -277,7 +277,7 @@
         {
             "name": "OmsWorkSpace",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "properties": {
                 "mode": "Incremental",
@@ -286,49 +286,6 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "IotHubCore",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json?token=AT3nZpBSHzeX10QiBFsF4oEKKVlsuFkkks5bXqXMwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "IotHubWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "OMSWorkSpace"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-monitoring.json?token=AT3nZt2W-2VdVTGGviURSg_RmZ4aqs-3ks5bXqWxwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
                     }
@@ -360,30 +317,6 @@
             }
         },
         {
-            "name": "TimeSeriesInsightsWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring'),equals(parameters('timeSeriesInsights'),'Yes'))]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "IotHubWm"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZvVND_IngY7OfT3GhPCeRaGYuin4ks5bXqZ2wA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "timeSeriesInsights": {
-                        "value": "[variables('timeSeriesInsights')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    }
-                }
-            }
-        },
-        {
             "name": "TimeSeriesInsightsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[and(equals(parameters('solution Type'),'core-with-monitoring-hardening'),equals(parameters('timeSeriesInsights'),'Yes'))]",
@@ -403,49 +336,6 @@
                     },
                     "iotHubSettings": {
                         "value": "[variables('iotHubSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "DocumentDBCore",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT3nZr3aFiMMSXuPQD_fCMicv1qMBgHNks5bXqV6wA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "DocumentDBWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "OMSWorkSpace"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-monitoring.json?token=AT3nZge9EjIwkExxGzuCGyGuz8sE8hKXks5bXqVkwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
                     }
                 }
             }
@@ -475,25 +365,6 @@
             }
         },
         {
-            "name": "NotificationHubCoreWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-solution'), equals(parameters('solution Type'),'core-with-monitoring'))]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZgD4Z6NkeOHkzta31ugIHqs6jBKOks5bXqXnwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "notificationHub": {
-                        "value": "[variables('notificationHub')]"
-                    }
-                }
-            }
-        },
-        {
             "name": "NotificationHubWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -515,7 +386,7 @@
         {
             "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
-            "condition": "[or(equals(parameters('solution Type'),'core-with-monitoring'), equals(parameters('solution Type'),'core-with-monitoring-hardening'))]",
+            "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -527,60 +398,6 @@
                 "parameters": {
                     "appInsights": {
                         "value": "[variables('appInsights')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "RunBookCore",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "WebAppCore"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZuCtNfBc7YxNVKOaANSrRbhoWDH1ks5bXqTswA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "automationSettings": {
-                        "value": "[variables('automationSettings')]"
-                    },
-                    "datapacketUri": {
-                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
-                    },
-                    "deviceManagementUri": {
-                        "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "RunBookWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "WebAppWm"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc-corewm.json?token=AT3nZuCtNfBc7YxNVKOaANSrRbhoWDH1ks5bXqTswA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "automationSettings": {
-                        "value": "[variables('automationSettings')]"
-                    },
-                    "datapacketUri": {
-                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
-                    },
-                    "deviceManagementUri": {
-                        "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
                     }
                 }
             }
@@ -616,66 +433,6 @@
             }
         },
         {
-            "name": "StreamAnalyticsCore",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "DocumentDBCore",
-                "RunBookCore"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-core-ha.json?token=AT3nZn1H3tYA7mLvwPxHtI9S687WwAxWks5bXqY2wA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "streamAnalytics": {
-                        "value": "[variables('streamAnalytics')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "StreamAnalyticsWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "DocumentDBWm",
-                "RunBookWm",
-                "OMSWorkSpace"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-ha-wm.json?token=AT3nZh7TDrZOMgGpL-ADx6wkUZVjySTNks5bXqZUwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "streamAnalytics": {
-                        "value": "[variables('streamAnalytics')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
             "name": "StreamAnalyticsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'core-with-monitoring-hardening')]",
@@ -703,78 +460,6 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "WebAppCore",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-solution')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "IotHubCore",
-                "DocumentDBCore",
-                "NotificationHubCoreWm"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZrsCSdcWqexUfCyn4g6dDCqav29Uks5bXqR0wA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    },
-                    "notificationHub": {
-                        "value": "[variables('notificationHub')]"
-                    }
-                }
-            }
-        },
-        {
-            "name": "WebAppWm",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('solution Type'),'core-with-monitoring')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "IotHubWm",
-                "DocumentDBWm",
-                "AppInsights",
-                "OMSWorkSpace",
-                "NotificationHubCoreWm"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-monitoring.json?token=AT3nZiTxL6B2km6ke91mEaWFciZnrBxlks5bXqRRwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "webSiteSettings": {
-                        "value": "[variables('webSiteSettings')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
-                    },
-                    "notificationHub": {
-                        "value": "[variables('notificationHub')]"
-                    },
-                    "omsSettings": {
-                        "value": "[variables('omsSettings')]"
-                    },
-                    "appInsights": {
-                        "value": "[variables('appInsights')]"
                     }
                 }
             }
