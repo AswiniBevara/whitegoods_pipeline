@@ -258,7 +258,7 @@
                 }
             }
         },
-   #     {
+        {
             "name": "IotHubR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -281,7 +281,7 @@
                 }
             }
         },
-  #      {
+        {
             "name": "TimeSeriesInsightsWmHa",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
@@ -305,7 +305,7 @@
                 }
             }
         },
- #       {
+       {
             "name": "DocumentDBWmHA",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -328,7 +328,7 @@
                 }
             }
         },
- #       {
+        {
             "name": "NotificationHubWmHa",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -346,7 +346,7 @@
                 }
             }
         },
-  #      {
+        {
             "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -364,7 +364,7 @@
                 }
             }
         },
- #       {
+        {
             "name": "AutomationAccount",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -387,7 +387,7 @@
                 }
             }
         },
-  #      {
+        {
             "name": "StreamAnalyticsWmHa",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
