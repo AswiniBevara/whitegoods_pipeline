@@ -198,7 +198,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZjyduxFJN5ySHwTz2OoR1xJVod_3ks5bXqOswA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZnlGNgG2AxshIlgqYoysfKzLlSyjks5bcBFSwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -367,7 +367,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-basic.json?token=AT3nZoCBzvbvDHuvOByhHMCTZhmTJehGks5bb_VEwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-basic.json?token=AT3nZh64cTQZQnyxNbUeDFXheAI_r7uZks5bcA3xwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
