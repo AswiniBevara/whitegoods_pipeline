@@ -198,8 +198,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdbcorewm.ps1?token=AT3nZmmE3CRbEGhG1kGWv6A_J3ApGGJ9ks5bXqPJwA%3D%3D')]",
-            "runbookUri1": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZjyduxFJN5ySHwTz2OoR1xJVod_3ks5bXqOswA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZjyduxFJN5ySHwTz2OoR1xJVod_3ks5bXqOswA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -320,7 +319,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZg9Tnfjp7rtlQX_BCi3Uq9A7ZNzcks5bb_bUwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZgTOIiqkLOx7hIi0D0yJKXcI_8cXks5bcAUpwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -778,7 +777,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZo13XsCOyvegTVekVem3-j3W8Ybiks5bb_TQwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZhG4-o-QL1yJRpr_ZGN33t2XBZvLks5bcATwwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {

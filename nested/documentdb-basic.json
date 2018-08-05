@@ -12,16 +12,15 @@
     "variables": {},
     "resources": [
         {
+            "name": "[parameters('documentDbSettings').cosmosDbAccountName]",
             "apiVersion": "2015-04-08",
             "kind": "GlobalDocumentDB",
             "type": "Microsoft.DocumentDb/databaseAccounts",
-            "name": "[parameters('documentDbSettings').cosmosDbAccountName]",
             "location": "[parameters('documentDbSettings').location]",
             "properties": {
                 "databaseAccountOfferType": "[parameters('documentDbSettings').databaseAccountOfferType]",
                 "locations": [
                     {
-                        "id": "[concat(parameters('documentDbSettings').cosmosDbAccountName, '-', parameters('documentDbSettings').location)]",
                         "locationName": "[parameters('documentDbSettings').location]",
                         "failoverPriority": 0
                     }
