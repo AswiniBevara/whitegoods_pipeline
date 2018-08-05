@@ -238,7 +238,7 @@
         "UKSouth": "UKWest",
         "UKWest": "UKSouth",
         "locationDr": "[variables(parameters('geo-paired-region'))]",
-        "readRegionLocation":"[variables('locationDr')]"
+        "readRegionLocation": "[variables('locationDr')]"
     },
     "resources": [
         {
@@ -305,7 +305,7 @@
                 }
             }
         },
-       {
+        {
             "name": "DocumentDBWmHA",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",

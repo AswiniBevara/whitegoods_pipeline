@@ -266,7 +266,7 @@
                 }
             }
         },
-       {
+        {
             "name": "IotHubR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -336,7 +336,7 @@
                 }
             }
         },
-       {
+        {
             "name": "NotificationHubR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -390,7 +390,7 @@
                 }
             }
         },
-       {
+        {
             "name": "AutomationAccount",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -523,7 +523,7 @@
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "IotHubR1",
-                 "DocumentDBR1",
+                "DocumentDBR1",
                 "NotificationHubR2",
                 "AppInsights",
                 "OmsWorkSpace"
