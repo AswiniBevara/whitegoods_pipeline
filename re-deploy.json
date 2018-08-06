@@ -119,11 +119,11 @@
             "clientSecret": "[parameters('clientSecret')]",
             "deviceManagementPortalPackageuriWm": "https://projectiot.blob.core.windows.net/whitegoods/appinsights/DeviceManagementPortalAI.zip",
             "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
-            "webAppSkuName": "S1",
+            "webAppSkuName2": "S1",
             "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/costing-solution/",
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/cold-hot/",
         "EastUS2": "CentralUS",
         "CentralUS": "EastUS2",
         "WestUS2": "West Central US",
@@ -229,11 +229,5 @@
                 }
             }
         }
-    ],
-    "outputs": {
-        "deviceManagement_trafficmanagerUrl": {
-            "type": "string",
-            "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
-        }
-    }
+    ]
 }
