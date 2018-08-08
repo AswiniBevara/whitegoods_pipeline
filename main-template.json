@@ -93,6 +93,12 @@
                 "description": "ObjectId of the created Azure active directory application."
             }
         },
+        "subscriptionId": {
+            "type": "string",
+            "metadata": {
+                "description": "subscriptionId."
+            }
+        },
         "clientSecret": {
             "type": "securestring",
             "metadata": {
@@ -196,13 +202,17 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
-            "moduleName": "AzureADPreview",
+            "moduleName": "CosmosDB",
+            "moduleName1": "AzureADPreview",
+            "cosmosdbModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/cosmos.zip",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
             "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb-wmha.ps1?token=AT3nZnlGNgG2AxshIlgqYoysfKzLlSyjks5bcBFSwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
+            "subscriptionId": "[parameters('subscriptionId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
+            
             "objectId": "[parameters('objectId')]",
             "azureAccountName": "[parameters('azureAccountName')]",
             "azurePassword": "[parameters('azurePassword')]"
@@ -498,7 +508,10 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "deviceManagementUri": {
-                        "value": "[concat(variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+                        "value": "[concat('https://',variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -522,7 +535,10 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "deviceManagementUri": {
-                        "value": "[concat(variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+                        "value": "[concat('http://',variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -546,7 +562,10 @@
                         "value": "[variables('automationSettings')]"
                     },
                     "deviceManagementUri": {
-                        "value": "[concat(variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+                        "value": "[concat('http://',variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+                    },
+                    "documentDbSettings": {
+                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -855,5 +874,14 @@
             }
         }
     ],
-    "outputs": { }
+    "outputs": {
+        "deviceManagementPortalUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+        },
+        "deviceManagement_trafficmanagerUrl": {
+            "type": "string",
+            "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+        }
+     }
 }
