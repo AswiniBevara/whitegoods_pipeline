@@ -27,10 +27,6 @@ workflow  container{
 
         [Parameter(Mandatory=$true)]
         [string]
-        $subscriptionId,
-
-        [Parameter(Mandatory=$true)]
-        [string]
         $cosmosDBAccountKey,
 
         [Parameter(Mandatory=$true)]
@@ -54,7 +50,6 @@ workflow  container{
         $deviceManagementUri = $Using:deviceManagementUri
         $azureAccountName = $Using:azureAccountName
         $azurePassword = $Using:azurePassword
-        $subscriptionId = $Using:subscriptionId
         $cosmosDBAccountKey = $Using:cosmosDBAccountKey
         $cosmosDbAccountName = $Using:cosmosDbAccountName
         $cosmosDbName = $Using:cosmosDbName
@@ -64,7 +59,7 @@ workflow  container{
     $password = ConvertTo-SecureString $azurePassword -AsPlainText -Force
     $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $password)
     start-Sleep -s 20
-    Login-AzureRmAccount -TenantId $tenantId -SubscriptionID $subscriptionId -Credential $psCred 
+    Login-AzureRmAccount -TenantId $tenantId -Credential $psCred 
     start-Sleep -s 20
 
     $primaryKey = ConvertTo-SecureString -String $cosmosDBAccountKey -AsPlainText -Force

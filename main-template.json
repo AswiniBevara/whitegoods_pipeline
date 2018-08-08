@@ -93,12 +93,6 @@
                 "description": "ObjectId of the created Azure active directory application."
             }
         },
-        "subscriptionId": {
-            "type": "string",
-            "metadata": {
-                "description": "subscriptionId."
-            }
-        },
         "clientSecret": {
             "type": "securestring",
             "metadata": {
@@ -209,7 +203,6 @@
             "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZmp6cPaiq-jSAJuP5vGbsQ20F7jZks5bc_eMwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
-            "subscriptionId": "[parameters('subscriptionId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
             "objectId": "[parameters('objectId')]",
@@ -499,7 +492,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZtorzbEUubUHw1uWH8ggGsiq0v7Vks5bc_cwwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZu2EbE3hORkCRe5LRe_E6GGP0YX3ks5bc_0-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -526,7 +519,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZtorzbEUubUHw1uWH8ggGsiq0v7Vks5bc_cwwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZu2EbE3hORkCRe5LRe_E6GGP0YX3ks5bc_0-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -553,7 +546,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZtorzbEUubUHw1uWH8ggGsiq0v7Vks5bc_cwwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZu2EbE3hORkCRe5LRe_E6GGP0YX3ks5bc_0-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
