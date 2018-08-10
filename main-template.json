@@ -568,6 +568,7 @@
             "condition": "[equals(parameters('solution Type'),'Basic')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
+                "IotHubBasic",
                 "DocumentDBBasic",
                 "AutomationAccountBasic",
                 "OMSWorkSpace"

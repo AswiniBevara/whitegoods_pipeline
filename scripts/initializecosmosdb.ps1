@@ -76,7 +76,7 @@ workflow  container{
     New-CosmosDbCollection -Context $cosmosDbContext -Id 'Templates' -OfferThroughput 400
     start-Sleep -s 20
     New-CosmosDbCollection -Context $cosmosDbContext -Id 'Groups' -OfferThroughput 400
-
+    start-Sleep -s 30
 
     #Update Azure AD applications reply urls
     Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
