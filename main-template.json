@@ -16,7 +16,7 @@
         },
         "geo-paired-region": {
             "type": "string",
-            "defaultValue": "Not Applicable",
+            "defaultValue": "EastUS2",
             "allowedValues": [
                 "EastUS2",
                 "CentralUS",
@@ -38,7 +38,7 @@
                 "UKWest"
             ],
             "metadata": {
-                "description": "If chhoose solution type as standard and premium Choose location for geo-paired-region, for more information about the geo-paired-region navigate to section 6 in the Readme.md(https://github.com/sysgain/Oil-Gas/blob/costing-models/README.md)"
+                "description": "If choose solution type as standard and premium Choose location for geo-paired-region, for more information about the geo-paired-region navigate to section 6 in the Readme.md(https://github.com/sysgain/Oil-Gas/blob/costing-models/README.md)"
             }
         },
         "omsWorkspaceRegion": {
