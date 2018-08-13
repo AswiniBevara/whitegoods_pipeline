@@ -508,7 +508,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights-r2.json?token=AT3nZphEga_mAoNh9gzc_NUz0-nCNZ1iks5bel16wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights-r2.json?token=AT3nZivDIQXzkZ6abWxyYNgjhOUq4j8hks5beoJDwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -743,7 +743,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZnsXmQKhuUus39ji4MYwdGefiFYWks5bel1gwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZgq46OiTyrBHO_I48h-zvjhxP4wMks5benLKwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -783,7 +783,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-r1.json?token=AT3nZjU84HZk1Ejt9mU3wZnRIiIPvLspks5bel0swA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-r1.json?token=AT3nZg0pgLeDwbq5Fapf5sm3vRzIDqsRks5benJWwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -826,7 +826,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZjMIVnSexBo6qmmYgkzeHFLJ5sK-ks5bel31wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZg7wZjSuiyzwAl-47VgSKz2CzrxWks5benIlwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
