@@ -217,7 +217,7 @@
             "moduleName1": "AzureADPreview",
             "cosmosdbModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/cosmos.zip",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZnsKdmaj3vc5G2ppFPtfyJEvstRoks5beluwwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZjKWJw4aA3W6_6HL-RLDWl1FM8Waks5bemRvwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -263,7 +263,7 @@
             "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/cold-hot/",
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/costing-models/",
         "EastUS2": "CentralUS",
         "CentralUS": "EastUS2",
         "WestUS2": "West Central US",
@@ -502,7 +502,7 @@
        {
             "name": "AppInsightsR2",
             "type": "Microsoft.Resources/deployments",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition":  "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -777,7 +777,7 @@
                 "IotHubR1",
                 "DocumentDBR1",
                 "NotificationHubR1",
-                "AppInsights",
+                "AppInsightsR2",
                 "OMSWorkSpace"
             ],
             "properties": {
@@ -820,7 +820,7 @@
                 "IotHubR1",
                  "DocumentDBR1",
                 "NotificationHubR2",
-                "AppInsights",
+                "AppInsightsR2",
                 "OmsWorkSpace"
             ],
             "properties": {

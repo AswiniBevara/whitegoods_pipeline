@@ -15,7 +15,7 @@
             "location": "[parameters('appInsights').locationDr]",
             "dependsOn": [],
             "tags": {
-                "displayName": "AppInsightsComponent"
+                "displayName": "AppInsightsComponentDr"
             },
             "properties": {
                 "ApplicationId": "[parameters('appInsights').appInsightResourceNameDr]"

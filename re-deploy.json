@@ -122,7 +122,7 @@
             "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/cold-hot/",
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/costing-models/",
         "EastUS2": "CentralUS",
         "CentralUS": "EastUS2",
         "WestUS2": "West Central US",
