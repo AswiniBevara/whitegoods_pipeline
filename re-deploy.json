@@ -41,7 +41,7 @@
                 "westus2"
             ],
             "metadata": {
-                "description": "specify the region for application insights"
+                "description": "If solution type is choosen as premium, enter location for application insights for disaster recovery"
             }
         },
         "tenantId": {
@@ -153,7 +153,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AT3nZoYWcwKi9ySOjQE5INdu-r1YBKw8ks5bb_c0wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AT3nZq_22k73revJMuF8jpHDRsDVl1Teks5bemG-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -171,7 +171,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AT3nZlMnsYCTdoDawtcdxSosirqDzkKWks5bb_d_wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AT3nZrgLRrDKDgX_CTPAqKJRGXr0Kdlqks5bel_dwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -200,7 +200,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZlrKb5e3hjfwQGWitOmmadhzfgvaks5bcR1RwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZjMIVnSexBo6qmmYgkzeHFLJ5sK-ks5bel31wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -236,7 +236,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZhcOPYP3OChqUU1GAO3Qr9QA_PuYks5bb_RvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights-r2.json?token=AT3nZphEga_mAoNh9gzc_NUz0-nCNZ1iks5bel16wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {

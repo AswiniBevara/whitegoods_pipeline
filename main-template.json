@@ -38,7 +38,7 @@
                 "UKWest"
             ],
             "metadata": {
-                "description": "If chhoose solution type as standard and premium Choose location for geo-paired-region, for more information about the geo-paired-region navigate to section 6 in the Readme.md(https://github.com/sysgain/Oil-Gas/blob/costing-models/README.md)"
+                "description": "If solution type is choosen as standard and premium, enter location for geo-paired-region, for more information about the geo-paired-region navigate to section 6 in the Readme.md(https://github.com/sysgain/Oil-Gas/blob/costing-models/README.md)"
             }
         },
         "omsWorkspaceRegion": {
@@ -73,6 +73,21 @@
             ],
             "metadata": {
                 "description": "specify the region for application insights"
+            }
+        },
+        "appInsightsLocationDr": {
+            "type": "string",
+            "defaultValue": "westus2",
+            "allowedValues": [
+                "eastus",
+                "northeurope",
+                "southcentralus",
+                "southeastasia",
+                "westeurope",
+                "westus2"
+            ],
+            "metadata": {
+                "description": "If solution type is choosen as premium, enter location for application insights for disaster recovery"
             }
         },
         "tenantId": {
@@ -189,7 +204,9 @@
         },
         "appInsights": {
             "location": "[parameters('appInsightsLocation')]",
-            "appInsightResourceName": "[concat('AppInsights', uniquestring(resourceGroup().id))]"
+            "appInsightResourceName": "[concat('AppInsights', uniquestring(resourceGroup().id))]",
+            "locationDr": "[parameters('appInsightsLocationDr')]",
+            "appInsightResourceNameDr": "[concat('AppInsightsDr', uniquestring(resourceGroup().id))]"
         },
         "automationSettings": {
             "automationAccountName": "[concat('AutomationAcc', variables('suffix'))]",
@@ -200,7 +217,7 @@
             "moduleName1": "AzureADPreview",
             "cosmosdbModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/cosmos.zip",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZsjiFr9EE2IIpOsl6gRP0ihkdbRmks5bdnE-wA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZnsKdmaj3vc5G2ppFPtfyJEvstRoks5beluwwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -269,14 +286,14 @@
         "readRegionLocation":"[variables('locationDr')]"
     },
     "resources": [
-       {
+      {
             "name": "OmsWorkSpace",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'),'nested/oms-workspace.json?token=AT3nZl95crPrRjfJPDXF6I8QbvPNWFqWks5bb_dZwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'),'nested/oms-workspace.json?token=AT3nZqbofGujb2GrVB2QBiKq41CzSoGXks5bel_CwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -297,7 +314,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-basic.json?token=AT3nZjYEqqvLoSX_Piv7UFnTu4_6rihEks5bdnEGwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-basic.json?token=AT3nZvzQZk5uRdB-_gGxt_qH46D4UThtks5bel7fwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -321,7 +338,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZgTOIiqkLOx7hIi0D0yJKXcI_8cXks5bcAUpwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZsa8zQt34f-oLEWPJTKf_hiN-Lj9ks5bel78wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -345,7 +362,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZlujeoQQiKAsvaqk2EXCuNpoXObtks5bb_gewA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZl5Ji1Ed9ODgYHyuFziwu9mvdfGqks5bemBtwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -369,7 +386,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-basic.json?token=AT3nZh64cTQZQnyxNbUeDFXheAI_r7uZks5bcA3xwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-basic.json?token=AT3nZim4gG3kyqf7yczHxh1m7VWHCUtAks5bel6KwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -382,7 +399,7 @@
                 }
             }
         },
-        {
+       {
             "name": "DocumentDBR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -393,7 +410,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AT3nZo9LvczW9bCIhItrSJWh4tfSka7Qks5bb_Y6wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AT3nZqVuKr_9omsn7gGWBT01ZENxe3iFks5bel6ywA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -406,7 +423,7 @@
                 }
             }
         },
-        {
+       {
             "name": "NotificationHubBasic",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'Basic')]",
@@ -415,7 +432,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZhCv42u0OcCsAWWDTUaKEAKOy-E7ks5bb_b7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZiG2YXE0oMLRkGrqzGO67I91aRkvks5bel8wwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -434,7 +451,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZhCv42u0OcCsAWWDTUaKEAKOy-E7ks5bb_b7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT3nZiG2YXE0oMLRkGrqzGO67I91aRkvks5bel8wwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -444,7 +461,7 @@
                 }
             }
         },
- {
+         {
             "name": "NotificationHubR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -453,7 +470,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AT3nZoYWcwKi9ySOjQE5INdu-r1YBKw8ks5bb_c0wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AT3nZhLgAipCIU8ik2KewseiAsBv14jJks5bel99wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -472,7 +489,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZhcOPYP3OChqUU1GAO3Qr9QA_PuYks5bb_RvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZh8nXQsfveF7zKx3Z9kxZ6rZ5VeTks5bel3UwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -482,7 +499,7 @@
                 }
             }
         },
-        {
+       {
             "name": "AppInsightsR2",
             "type": "Microsoft.Resources/deployments",
             "condition":  "[equals(parameters('solution Type'),'Premium')]",
@@ -491,7 +508,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZhcOPYP3OChqUU1GAO3Qr9QA_PuYks5bb_RvwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights-r2.json?token=AT3nZphEga_mAoNh9gzc_NUz0-nCNZ1iks5bel16wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -501,7 +518,7 @@
                 }
             }
         },
-        {
+      {
             "name": "AutomationAccountBasic",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'Basic')]",
@@ -512,7 +529,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZvBIW7Efo8K4bABLEE4mJHZed_ZIks5bdAQrwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZqxss_GgBwSzXbqR53lP128Wx73dks5bel4-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -528,7 +545,7 @@
                 }
             }
         },
-        {
+       {
             "name": "AutomationAccountR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -539,7 +556,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZvBIW7Efo8K4bABLEE4mJHZed_ZIks5bdAQrwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZqxss_GgBwSzXbqR53lP128Wx73dks5bel4-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -555,7 +572,7 @@
                 }
             }
         },
-        {
+       {
             "name": "AutomationAccountR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -566,7 +583,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZvBIW7Efo8K4bABLEE4mJHZed_ZIks5bdAQrwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZqxss_GgBwSzXbqR53lP128Wx73dks5bel4-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -582,7 +599,7 @@
                 }
             }
         },
-        {
+       {
             "name": "StreamAnalyticsBasic",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'Basic')]",
@@ -596,7 +613,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZim8mP_LA6SfgSMoJDsjaBQOSbX9ks5bb_fUwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZpT4Fo38LLPOsY-jtPLj0jtFiS-rks5bemAHwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -615,7 +632,7 @@
                 }
             }
         },
-        {
+       {
             "name": "StreamAnalyticsCold",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -628,7 +645,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZim8mP_LA6SfgSMoJDsjaBQOSbX9ks5bb_fUwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZpT4Fo38LLPOsY-jtPLj0jtFiS-rks5bemAHwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -647,7 +664,7 @@
                 }
             }
         },
-        {
+       {
             "name": "StreamAnalyticsHot",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -660,7 +677,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZim8mP_LA6SfgSMoJDsjaBQOSbX9ks5bb_fUwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZpT4Fo38LLPOsY-jtPLj0jtFiS-rks5bemAHwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -692,7 +709,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AT3nZlMnsYCTdoDawtcdxSosirqDzkKWks5bb_d_wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AT3nZrgLRrDKDgX_CTPAqKJRGXr0Kdlqks5bel_dwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -726,7 +743,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZvV4lKHpYLTGcLPBGxJesVppfjxoks5bb_Q4wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZnsXmQKhuUus39ji4MYwdGefiFYWks5bel1gwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -766,7 +783,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-r1.json?token=AT3nZhU_2m1--JEK2niK3gNCVxZKnX74ks5bb_NswA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components-r1.json?token=AT3nZjU84HZk1Ejt9mU3wZnRIiIPvLspks5bel0swA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -809,7 +826,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZhG4-o-QL1yJRpr_ZGN33t2XBZvLks5bcATwwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZjMIVnSexBo6qmmYgkzeHFLJ5sK-ks5bel31wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -848,7 +865,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager-cold.json?token=AT3nZlQ9UzadYxgwPz0x5zUhUR-dXwfiks5bb_hQwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager-cold.json?token=AT3nZu4-PcdeyZ7f-YsWABv1IeqrfQQaks5bemCcwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -873,7 +890,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager-hot.json?token=AT3nZslRzmC8blgo8nGjMDe4T0qQ7EQUks5bb_imwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager-hot.json?token=AT3nZrew1wKXeIrS2ts9KQSEfcxDJibtks5bemD9wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
