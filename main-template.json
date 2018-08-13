@@ -777,7 +777,7 @@
                 "IotHubR1",
                 "DocumentDBR1",
                 "NotificationHubR1",
-                "AppInsightsR2",
+                "AppInsights",
                 "OMSWorkSpace"
             ],
             "properties": {
