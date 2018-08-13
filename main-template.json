@@ -466,6 +466,26 @@
         {
             "name": "AppInsights",
             "type": "Microsoft.Resources/deployments",
+            "condition": "[equals(parameters('solution Type'),'Basic')]",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZhcOPYP3OChqUU1GAO3Qr9QA_PuYks5bb_RvwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "AppInsightsR2",
+            "type": "Microsoft.Resources/deployments",
+            "condition":  "[equals(parameters('solution Type'),'Premium')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {

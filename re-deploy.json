@@ -29,11 +29,10 @@
                 "description": "Choose location for geo-paired-region, for more information about the geo-paired-region navigate to section 6 in the Readme.md(https://github.com/sysgain/Oil-Gas/blob/costing-models/README.md)"
             }
         },
-        "appInsightsLocation": {
+        "appInsightsLocationDr": {
             "type": "string",
-            "defaultValue": "eastus",
+            "defaultValue": "westus2",
             "allowedValues": [
-                "notapplicable",
                 "eastus",
                 "northeurope",
                 "southcentralus",
@@ -98,8 +97,8 @@
             "notificationHubNameDr": "[concat('NotificationHubDr', variables('suffix'))]"
         },
         "appInsights": {
-            "location": "[parameters('appInsightsLocation')]",
-            "appInsightResourceName": "[concat('AppInsights', uniquestring(resourceGroup().id))]"
+            "locationDr": "[parameters('appInsightsLocationDr')]",
+            "appInsightResourceNameDr": "[concat('AppInsightsDr', uniquestring(resourceGroup().id))]"
         },
         "trafficManagerSettings": {
             "trafficManagerName": "[concat('devicemanagetm', variables('suffix'))]",
@@ -225,6 +224,24 @@
                     },
                     "trafficManagerSettings": {
                         "value": "[variables('trafficManagerSettings')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "AppInsightsR2",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-02-01",
+            "dependsOn": [],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights.json?token=AT3nZhcOPYP3OChqUU1GAO3Qr9QA_PuYks5bb_RvwA%3D%3D')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "appInsights": {
+                        "value": "[variables('appInsights')]"
                     }
                 }
             }
