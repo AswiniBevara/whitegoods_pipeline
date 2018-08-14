@@ -198,15 +198,15 @@
             "namespaceType": "NotificationHub",
             "notificationHubNamespaceName": "[concat('NotificationHubNS', variables('suffix'))]",
             "notificationHubName": "[concat('NotificationHub', variables('suffix'))]",
-            "notificationHubNamespaceNameDr": "[concat('NotificationHubNSDr', variables('suffix'))]",
-            "notificationHubNameDr": "[concat('NotificationHubDr', variables('suffix'))]"
+            "notificationHubNamespaceNameDr": "[concat('RecoveryNotificationHubNS', variables('suffix'))]",
+            "notificationHubNameDr": "[concat('RecoveryNotificationHub', variables('suffix'))]"
             
         },
         "appInsights": {
             "location": "[parameters('appInsightsLocation')]",
             "appInsightResourceName": "[concat('AppInsights', uniquestring(resourceGroup().id))]",
             "locationDr": "[parameters('appInsightsLocationDr')]",
-            "appInsightResourceNameDr": "[concat('AppInsightsDr', uniquestring(resourceGroup().id))]"
+            "appInsightResourceNameDr": "[concat('RecoveryAppInsights', uniquestring(resourceGroup().id))]"
         },
         "automationSettings": {
             "automationAccountName": "[concat('AutomationAcc', variables('suffix'))]",
@@ -234,7 +234,7 @@
             "location": "[parameters('geo-paired-region')]",
             "locationDr": "[variables('locationDr')]",
             "streamAnalyticsjobname": "[concat('StreamAnalytics', variables('suffix'))]",
-            "streamAnalyticsjobnameDr": "[concat('StreamAnalyticsDr', variables('suffix'))]",
+            "streamAnalyticsjobnameDr": "[concat('RecoveryStreamAnalytics', variables('suffix'))]",
             "sku": "Standard",
             "suiteType": "RemoteMonitoring",
             "telemetryCGName": "telemetrycg"
