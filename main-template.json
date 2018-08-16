@@ -45,7 +45,6 @@
             "type": "string",
             "defaultValue": "eastus",
             "allowedValues": [
-                
                 "australiasoutheast",
                 "canadacentral",
                 "centralindia",
@@ -63,7 +62,6 @@
             "type": "string",
             "defaultValue": "eastus",
             "allowedValues": [
-                
                 "eastus",
                 "northeurope",
                 "southcentralus",
@@ -150,7 +148,6 @@
             "type": "string",
             "defaultValue": "East US",
             "allowedValues": [
-                
                 "East US",
                 "East US2",
                 "North Europe",
@@ -200,7 +197,6 @@
             "notificationHubName": "[concat('NotificationHub', variables('suffix'))]",
             "notificationHubNamespaceNameDr": "[concat('RecoveryNotificationHubNS', variables('suffix'))]",
             "notificationHubNameDr": "[concat('RecoveryNotificationHub', variables('suffix'))]"
-            
         },
         "appInsights": {
             "location": "[parameters('appInsightsLocation')]",
@@ -283,10 +279,10 @@
         "UKSouth": "UKWest",
         "UKWest": "UKSouth",
         "locationDr": "[variables(parameters('geo-paired-region'))]",
-        "readRegionLocation":"[variables('locationDr')]"
+        "readRegionLocation": "[variables('locationDr')]"
     },
     "resources": [
-      {
+        {
             "name": "OmsWorkSpace",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -330,7 +326,7 @@
         {
             "name": "IotHubR1",
             "type": "Microsoft.Resources/deployments",
-            "condition":  "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
+            "condition": "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
             "apiVersion": "2016-02-01",
             "dependsOn": [
                 "OMSWorkSpace"
@@ -399,11 +395,11 @@
                 }
             }
         },
-       {
+        {
             "name": "DocumentDBR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
+            "condition": "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
             "dependsOn": [
                 "OmsWorkSpace"
             ],
@@ -423,7 +419,7 @@
                 }
             }
         },
-       {
+        {
             "name": "NotificationHubBasic",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'Basic')]",
@@ -446,7 +442,7 @@
             "name": "NotificationHubR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
+            "condition": "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
             "dependsOn": [],
             "properties": {
                 "mode": "Incremental",
@@ -461,11 +457,11 @@
                 }
             }
         },
-         {
+        {
             "name": "NotificationHubR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition": "[equals(parameters('solution Type'),'Premium')]",
             "dependsOn": [],
             "properties": {
                 "mode": "Incremental",
@@ -493,15 +489,15 @@
                 },
                 "parameters": {
                     "appInsights": {
-                        "value": "[variables('appInsights')]" 
+                        "value": "[variables('appInsights')]"
                     }
                 }
             }
         },
-       {
+        {
             "name": "AppInsightsR2",
             "type": "Microsoft.Resources/deployments",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition": "[equals(parameters('solution Type'),'Premium')]",
             "apiVersion": "2016-02-01",
             "dependsOn": [],
             "properties": {
@@ -517,7 +513,7 @@
                 }
             }
         },
-      {
+        {
             "name": "AutomationAccountBasic",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'Basic')]",
@@ -544,11 +540,11 @@
                 }
             }
         },
-       {
+        {
             "name": "AutomationAccountR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Standard')]",
+            "condition": "[equals(parameters('solution Type'),'Standard')]",
             "dependsOn": [
                 "TrafficManagerCold"
             ],
@@ -571,11 +567,11 @@
                 }
             }
         },
-       {
+        {
             "name": "AutomationAccountR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition": "[equals(parameters('solution Type'),'Premium')]",
             "dependsOn": [
                 "TrafficManagerHot"
             ],
@@ -598,7 +594,7 @@
                 }
             }
         },
-       {
+        {
             "name": "StreamAnalyticsBasic",
             "type": "Microsoft.Resources/deployments",
             "condition": "[equals(parameters('solution Type'),'Basic')]",
@@ -631,14 +627,14 @@
                 }
             }
         },
-       {
+        {
             "name": "StreamAnalyticsCold",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Standard')]",
+            "condition": "[equals(parameters('solution Type'),'Standard')]",
             "dependsOn": [
                 "DocumentDBR1",
-            "AutomationAccountR1",
+                "AutomationAccountR1",
                 "OMSWorkSpace"
             ],
             "properties": {
@@ -663,11 +659,11 @@
                 }
             }
         },
-       {
+        {
             "name": "StreamAnalyticsHot",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition": "[equals(parameters('solution Type'),'Premium')]",
             "dependsOn": [
                 "DocumentDBR1",
                 "AutomationAccountR2",
@@ -699,7 +695,7 @@
             "name": "StreamAnalyticsR2Hot",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition": "[equals(parameters('solution Type'),'Premium')]",
             "dependsOn": [
                 "OmsWorkSpace",
                 "IotHubR1",
@@ -771,7 +767,7 @@
             "name": "WebAppR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
+            "condition": "[or(equals(parameters('solution Type'),'Standard'), equals(parameters('solution Type'),'Premium'))]",
             "dependsOn": [
                 "IotHubR1",
                 "DocumentDBR1",
@@ -810,14 +806,14 @@
                 }
             }
         },
-       {
+        {
             "name": "WebAppHot",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition": "[equals(parameters('solution Type'),'Premium')]",
             "dependsOn": [
                 "IotHubR1",
-                 "DocumentDBR1",
+                "DocumentDBR1",
                 "NotificationHubR2",
                 "AppInsightsR2",
                 "OmsWorkSpace"
@@ -857,7 +853,7 @@
             "name": "TrafficManagerCold",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Standard')]",
+            "condition": "[equals(parameters('solution Type'),'Standard')]",
             "dependsOn": [
                 "WebAppR1"
             ],
@@ -881,7 +877,7 @@
             "name": "TrafficManagerHot",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
-            "condition":  "[equals(parameters('solution Type'),'Premium')]",
+            "condition": "[equals(parameters('solution Type'),'Premium')]",
             "dependsOn": [
                 "WebAppR1",
                 "WebAppHot"
@@ -912,5 +908,5 @@
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         }
-     }
+    }
 }
