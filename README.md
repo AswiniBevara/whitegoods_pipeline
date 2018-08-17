@@ -217,7 +217,7 @@ Each Azure region is paired with another region within the same geography, toget
 
 **IoT Hub Manual Failover Support Geo-Paired Regions**
 
-| **S.No**      | **Geography**    | **Paired Regions**
+| **S.No**      | **Geography**    | **Paired Regions**    | **Paired Regions**  
 
 | --------      | -------------    | -------------------  | ------------------
 
@@ -238,7 +238,7 @@ Each Azure region is paired with another region within the same geography, toget
 | 15         | Korea       | Korea Central        | Korea South 
 | 16        | Korea   | Korea South   | Korea Central  
 | 17     | UK  | UK South    | UK West 
-| 18     | UK   | UK West   | UK South 
+| 18     | UK   | UK West   | UK South  
 
 ## 5 ARM Template Input Parameters
 
