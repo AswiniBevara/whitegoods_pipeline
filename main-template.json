@@ -132,31 +132,6 @@
             "metadata": {
                 "description": "Provide the guid prefix for the runbook job to be created. Generate using https://www.guidgenerator.com/online-guid-generator.aspx"
             }
-        },
-        "timeSeriesInsights": {
-            "type": "string",
-            "defaultValue": "No",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "metadata": {
-                "description": "select 'Yes' for deploying time series insights for monitoring of iot hub otherwise select 'No'.To explore, see https://docs.microsoft.com/en-in/azure/time-series-insights/time-series-quickstart"
-            }
-        },
-        "timeSeriesInsightslocation": {
-            "type": "string",
-            "defaultValue": "East US",
-            "allowedValues": [
-                "East US",
-                "East US2",
-                "North Europe",
-                "West Europe",
-                "West US"
-            ],
-            "metadata": {
-                "description": "specify the region for time series insights."
-            }
         }
     },
     "variables": {
@@ -234,15 +209,6 @@
             "sku": "Standard",
             "suiteType": "RemoteMonitoring",
             "telemetryCGName": "telemetrycg"
-        },
-        "timeSeriesInsights": {
-            "timeSeriesInsightslocation": "[parameters('timeSeriesInsightslocation')]",
-            "timeSeriesInsightsName": "[concat('timeseriesinsights', variables('suffix'))]",
-            "dataRetentionTime": "P31D",
-            "skuCapacity": 1,
-            "skuSize": "S1",
-            "skuTier": "Standard",
-            "skuName": "S1"
         },
         "webSiteSettings": {
             "location": "[parameters('geo-paired-region')]",
@@ -343,30 +309,6 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
-                    }
-                }
-            }
-        },
-    {
-            "name": "TimeSeriesInsights",
-            "type": "Microsoft.Resources/deployments",
-            "condition": "[equals(parameters('timeSeriesInsights'),'Yes')]",
-            "apiVersion": "2016-02-01",
-            "dependsOn": [
-                "IotHubBasic"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/timeseriesinsights.json?token=AT3nZljRoO6vJhM10IF-0nHz2WKPYKzJks5bf8nAwA%3D%3D')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "timeSeriesInsights": {
-                        "value": "[variables('timeSeriesInsights')]"
-                    },
-                    "iotHubSettings": {
-                        "value": "[variables('iotHubSettings')]"
                     }
                 }
             }
@@ -907,6 +849,10 @@
         "deviceManagement_trafficmanagerUrl": {
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+        },
+        "iotHubConnectionString":{
+            "type": "string",
+            "value": "[concat('HostName=', variables('iotHubSettings').iotHubName,'.azure-devices.net;SharedAccessKeyName=', variables('iotHubSettings').keyName, ';SharedAccessKey=', listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey)]"
         }
     }
 }
