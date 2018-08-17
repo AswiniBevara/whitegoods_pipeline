@@ -6,92 +6,43 @@
             "value": ""
         },
         "geo-paired-region": {
-           
-            "defaultValue": ""
+            "value": ""
         },
         "omsWorkspaceRegion": {
-          
-            "defaultValue": "eastus"
+            "value": "eastus"
         },
         "appInsightsLocation": {
-           
-            "defaultValue": "eastus"
-           
+            "value": "eastus"
         },
         "appInsightsLocationDr": {
-         
-            "defaultValue": "westus2",
-            
+            "value": "westus2"
         },
         "tenantId": {
-            "type": "string",
-            "metadata": {
-                "description": "TenantId of the created Azure active directory application. For instructions, see  https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-howto-tenant in the Microsoft documentation"
-            }
+            "value": "eastus"
         },
         "clientId": {
-            "type": "string",
-            "metadata": {
-                "description": "ApplicationID of the created Azure active directory application. For information, see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications in the Microsoft documentation."
-            }
+            "value": ""
         },
         "objectId": {
-            "type": "string",
-            "metadata": {
-                "description": "ObjectId of the created Azure active directory application."
-            }
+            "value": ""
         },
         "clientSecret": {
-            "type": "securestring",
-            "metadata": {
-                "description": "clientSecret of the created Azure active directory application.For instructions, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key in the Microsoft documentation."
-            }
+            "value": ""
         },
         "azureAccountName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "azure portal login username"
-            }
+            "value": ""
         },
         "azurePassword": {
-            "type": "securestring",
-            "defaultValue": "",
-            "metadata": {
-                "description": "azure portal login password"
-            }
+            "value": ""
         },
         "sessionId": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Provide the guid prefix for the runbook job to be created. Generate using https://www.guidgenerator.com/online-guid-generator.aspx"
-            }
+            "value": ""
         },
         "timeSeriesInsights": {
-            "type": "string",
-            "defaultValue": "No",
-            "allowedValues": [
-                "Yes",
-                "No"
-            ],
-            "metadata": {
-                "description": "select 'Yes' for deploying time series insights for monitoring of iot hub otherwise select 'No'.To explore, see https://docs.microsoft.com/en-in/azure/time-series-insights/time-series-quickstart"
-            }
+            "value": "No"
         },
         "timeSeriesInsightslocation": {
-            "type": "string",
-            "defaultValue": "East US",
-            "allowedValues": [
-                "East US",
-                "East US2",
-                "North Europe",
-                "West Europe",
-                "West US"
-            ],
-            "metadata": {
-                "description": "specify the region for time series insights."
-            }
+            "value": "East US"
         }
     }
 }
