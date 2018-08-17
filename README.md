@@ -243,3 +243,23 @@ Each Azure region is paired with another region within the same geography, toget
 ## 5 ARM Template Input Parameters
 
 In the parameters section of the template, specify which values you can input when deploying the resources. These parameter values enable you to customize the deployment by providing values that are tailored for an environment (such as dev, test, and production). You are limited to 255 parameters in a template. You can reduce the number of parameters by using objects that contain multiple properties.
+
+| **Parameter Name**  | **Description**     | **Allowed Values**    | **Default Values**                                                                                                               
+| -------------        | -------------      | -----------------    | ------------ 
+| **Solution Type**          | choose your solution type to deploy.     | Basic, Standard, Premium    | Core Solution
+| **geo-paired-region**   | If solution type is chosen as standard and premium, enter location for geo-paired-region.  | EastUS2, CentralUS,WestUS2, WestCentralUS, CanadaCentral, CanadaEast, AustraliaEast, AustraliaSouthEast, CentralIndia, SouthIndia, EastAsia, SouthEastAsia,JapanWest, JapanEast, KoreaCentral, KoreaSouth, UKSouth, UKWest  | 
+| **omsWorkspaceRegion**   | Choose location for OMS Log Analytics to deploy. For more information, see https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview.   | australiasoutheast, canadacentral, centralindia, eastus, japaneast, southeastasia, uksouth, westeurope    | eastus
+| **appInsightsLocation**   | specify the region for application insights.  | eastus, northeurope, southcentralus, southeastasia, westeurope,westus2    | eastus
+| **appInsightsLocationDr**    | If solution type is chosen as premium, enter location for application insights for disaster recovery. | eastus, northeurope, southcentralus, southeastasia, westeurope, westus2    | westus2
+| **tenantId**   | Tenant Id of the created Azure active directory application. For instructions, see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-howto-tenant in the Microsoft documentation   |  | 
+| **clientId**  | Application ID of the created Azure active directory application. For information, see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications in the Microsoft documentation.   |     | 
+| **objectId**  | Object Id of the created Azure active directory application.  |     | 
+| **clientSecret**  | clientSecret of the created Azure active directory application.For instructions, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key in the Microsoft documentation.  |   | 
+| **azureAccountName**   | azure portal login username.| Password@1234    | Password@1234
+| **azurePassword** | azure portal login password. |  | 
+| **sessionId** | Refer 5.1.5 section for getting provide the session ID.  |   |  
+| **timeSeriesInsights** | select 'Yes' for deploying time series insights for monitoring of iot hub otherwise select 'No'.To explore, see https://docs.microsoft.com/en-in/azure/time-series-insights/time-series-quickstart.  | Yes, No   | No
+| **timeSeriesInsightslocation** | specify the region for time series insights . | East US, East US2, North Europe, West Europe, West US 
+    | East US 
+  
+**Note**: Allowed Values are updated based on the availability of azure resources based on Region w.e.f Dt 24th July 2018. Microsoft may introduce availability of azure resources in future. More information can be found in **https://azure.microsoft.com/en-in/status/** 
