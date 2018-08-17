@@ -399,7 +399,7 @@
                 }
             }
         },
-  {
+        {
             "name": "NotificationHubR2",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -569,7 +569,7 @@
                 }
             }
         },
-       {
+        {
             "name": "StreamAnalyticsCold",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -705,7 +705,7 @@
                 }
             }
         },
-       {
+        {
             "name": "WebAppR1",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-02-01",
@@ -843,6 +843,7 @@
     ],
     "outputs": {
         "deviceManagementPortalUrl": {
+            "condition": "[equals(parameters('solution Type'),'Basic')]",
             "type": "string",
             "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
         },
@@ -850,9 +851,17 @@
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         },
-        "iotHubConnectionString":{
+        "iotHubConnectionString": {
             "type": "string",
             "value": "[concat('HostName=', variables('iotHubSettings').iotHubName,'.azure-devices.net;SharedAccessKeyName=', variables('iotHubSettings').keyName, ';SharedAccessKey=', listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey)]"
+        },
+        "iothubHostName": {
+            "type": "string",
+            "value": "[concat(variables('iotHubSettings').iotHubName,'.azure-devices.net')]"
+        },
+        "omsWorkspaceURI": {
+            "type": "string",
+            "value": "[concat('https://',variables('omsSettings').omsWorkspaceName,'.portal.mms.microsoft.com')]"
         }
     }
 }
