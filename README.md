@@ -219,7 +219,7 @@ Each Azure region is paired with another region within the same geography, toget
 
 | **S.No**      | **Geography**    | **Paired Regions**
 
-| --------      | -------------    | -------------------
+| --------      | -------------    | -------------------  | ------------------
 
 | 1         | North America      | East US 2        | Central US 
 | 2         | North America   | Central US   | East US 2 
@@ -238,7 +238,7 @@ Each Azure region is paired with another region within the same geography, toget
 | 15         | Korea       | Korea Central        | Korea South 
 | 16        | Korea   | Korea South   | Korea Central  
 | 17     | UK  | UK South    | UK West 
-| 18     | UK   | UK West   | UK South  
+| 18     | UK   | UK West   | UK South 
 
 ## 5 ARM Template Input Parameters
 
