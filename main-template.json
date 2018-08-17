@@ -843,7 +843,6 @@
     ],
     "outputs": {
         "deviceManagementPortalUrl": {
-            "condition": "[equals(parameters('solution Type'),'Basic')]",
             "type": "string",
             "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
         },
