@@ -119,6 +119,7 @@
             "deviceManagementPortalPackageuriWm": "https://projectiot.blob.core.windows.net/whitegoods/appinsights/DeviceManagementPortalAI.zip",
             "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
             "webAppSkuName2": "S1",
+            "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
             "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
@@ -246,5 +247,27 @@
                 }
             }
         }
-    ]
+    ],
+    "outputs": {
+        "deviceManagementPortalUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
+        },
+        "RecoverydeviceManagementPortalUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteNameDr,'.azurewebsites.net')]"
+        },
+        "deviceManagement_trafficmanagerUrl": {
+            "type": "string",
+            "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
+        },
+        "iothubHostName": {
+            "type": "string",
+            "value": "[concat(variables('iotHubSettings').iotHubName,'.azure-devices.net')]"
+        },
+        "omsWorkspaceURI": {
+            "type": "string",
+            "value": "[concat('https://',variables('omsSettings').omsWorkspaceName,'.portal.mms.microsoft.com')]"
+        }
+    }
 }
