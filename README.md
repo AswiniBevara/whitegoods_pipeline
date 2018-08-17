@@ -178,3 +178,68 @@ Below are the Costing details of each deployment type which explains SKU and Cos
 | **Application Insight**       | Basic, 1GB * $2.30 Region: East US first 5GB free per month       | PAYG                  | $2.30 
 | **Stream Analytics**   | Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US       | PAYG  | $80.30 
 |                     |                       | **Estimated monthly cost**          | **$360.55**
+
+### 4.2 Standard Costing details
+
+| **Resource Name**           | **Size**           | **Resource costing model**                 | **Azure Cost/month**                                                                                                                
+| -------------              | -------------       | --------------------                       | ------------                                                                                                             
+| **App Service Plan**       | S2:2 Cores(s), 3.5 GB RAM, 50GB Storage, US$ 0.200, 1 Instance      | PAYG         | $146.00  
+| **Cosmos DB**   | Standard, throughput 1000 RU/s (Request Units per second) 10x100 Rus(Throughput)- $58.40 10 GB storage – $2.50    | PAYG  | $60.90  
+| **IoT HUB**        | S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day           | PAYG                       | $25.00    
+| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US      | PAYG                          | $2.30   
+| **Time Series Insights**    | S1 ,10,00,000 messages/day, US$ 150.00/Month, 1 units * US$ 4.84   | PAYG        | $150.0
+| **Azure Automation Account**        | 2*Free      | PAYG                       | $0.00   
+| **Notification Hub**       | 2*Free                          | PAYG                      | $0.00 
+| **Application Insight**       | 2*Basic, 1GB * $2.30 Region: East US first 5GB free per month       | PAYG                  | $4.60 
+| **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US        | PAYG  | $160.60  
+|                     |                       | **Estimated monthly cost**          | **$549.40**
+           
+### 4.3 Premium Costing details
+
+| **Resource Name**           | **Size**           | **Resource costing model**                 | **Azure Cost/month**                                                                                                                
+| -------------              | -------------       | --------------------                       | ------------                                                                                                             
+| **App Service Plan**       | S2:2 Cores(s), 3.5 GB RAM, 50GB Storage, US$ 0.200, 1 Instance       | PAYG         | $146.0  
+| **Cosmos DB**   | Standard, throughput 1000 RU/s (Request Units per second) 10x100 Rus(Throughput)- $58.40 10 GB storage – $2.50     | PAYG  | $60.90  
+| **IoT HUB**        | S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day         | PAYG                       | $25.00    
+| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US       | PAYG                   | $2.30  
+| **Time Series Insights**    | S1 ,10,00,000 messages/day, US$ 150.00/Month, 1 units * US$ 4.84   | PAYG        | $150.0
+| **Azure Automation Account**        | 2*Free      | PAYG                       | $0.00   
+| **Notification Hub**       | 2*Free                          | PAYG                      | $0.00 
+| **Application Insight**       | 2 * Basic, 1GB * $2.30 Region: East US first 5GB free per month        | PAYG                  | $4.60 
+| **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US         | PAYG  | $160.60  
+|                     |                       | **Estimated monthly cost**          | **$549.40**
+                     
+## 5 What are paired regions? 
+
+Azure operates in multiple geographies around the world. An Azure geography is a defined area of the world that contains at least one Azure Region. An Azure region is an area within a geography, containing one or more datacenters. 
+
+Each Azure region is paired with another region within the same geography, together making a regional pair. The exception is Brazil South, which is paired with a region outside its geography. 
+
+**IoT Hub Manual Failover Support Geo-Paired Regions**
+
+| **S.No**      | **Geography**    | **Paired Regions**    | **Paired Regions**  |
+
+| --------      | -------------    | -------------------  | ------------------   |
+
+| 1         | North America      | East US 2        | Central US    |
+| 2         | North America   | Central US   | East US 2    |
+| 3      | North America  | West US 2   | West Central US     |
+| 4         | North America      | West Central US        | West US 2   | 
+| 5         | Canada   | Canada Central   | Canada East   |
+| 6      | Canada   | Canada East    | Canada Central    |
+| 7         | Australia      | Australia East        | Australia South East  |
+| 8        | Australia   | Australia South East    | Australia East    |
+| 9      | India  | Central India    | South India      |
+| 10         | India      | South India        | Central India    | 
+| 11        | Asia   | East Asia   | South East Asia    |
+| 12     | Asia  | South East Asia    | East Asia     |
+| 13        | Japan   | Japan West    | Japan East    |
+| 14     | Japan  | Japan East    | Japan West      |
+| 15         | Korea       | Korea Central        | Korea South     |
+| 16        | Korea   | Korea South   | Korea Central    |
+| 17     | UK  | UK South    | UK West   |
+| 18     | UK   | UK West   | UK South     |
+
+## 5 ARM Template Input Parameters
+
+In the parameters section of the template, specify which values you can input when deploying the resources. These parameter values enable you to customize the deployment by providing values that are tailored for an environment (such as dev, test, and production). You are limited to 255 parameters in a template. You can reduce the number of parameters by using objects that contain multiple properties.
