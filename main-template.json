@@ -850,10 +850,6 @@
             "type": "string",
             "value": "[concat('http://', variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
         },
-        "iotHubConnectionString": {
-            "type": "string",
-            "value": "[concat('HostName=', variables('iotHubSettings').iotHubName,'.azure-devices.net;SharedAccessKeyName=', variables('iotHubSettings').keyName, ';SharedAccessKey=', listkeys(resourceId('Microsoft.Devices/IotHubs/IotHubKeys',variables('iotHubSettings').iotHubName,'iothubowner'),'2016-02-03').primaryKey)]"
-        },
         "iothubHostName": {
             "type": "string",
             "value": "[concat(variables('iotHubSettings').iotHubName,'.azure-devices.net')]"
