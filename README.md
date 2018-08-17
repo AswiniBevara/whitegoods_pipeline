@@ -243,3 +243,329 @@ Each Azure region is paired with another region within the same geography, toget
 ## 5 ARM Template Input Parameters
 
 In the parameters section of the template, specify which values you can input when deploying the resources. These parameter values enable you to customize the deployment by providing values that are tailored for an environment (such as dev, test, and production). You are limited to 255 parameters in a template. You can reduce the number of parameters by using objects that contain multiple properties.
+
+| **Parameter Name**  | **Description**     | **Allowed Values**    | **Default Values**                                                                                                               
+| -------------        | -------------      | -----------------    | ------------ 
+| **Solution Type**          | choose your solution type to deploy.     | Basic, Standard, Premium    | Core Solution
+| **geo-paired-region**   | If solution type is chosen as standard and premium, enter location for geo-paired-region.  | EastUS2, CentralUS,WestUS2, WestCentralUS, CanadaCentral, CanadaEast, AustraliaEast, AustraliaSouthEast, CentralIndia, SouthIndia, EastAsia, SouthEastAsia,JapanWest, JapanEast, KoreaCentral, KoreaSouth, UKSouth, UKWest  | 
+| **omsWorkspaceRegion**   | Choose location for OMS Log Analytics to deploy. For more information, see https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview.   | australiasoutheast, canadacentral, centralindia, eastus, japaneast, southeastasia, uksouth, westeurope    | eastus
+| **appInsightsLocation**   | specify the region for application insights.  | eastus, northeurope, southcentralus, southeastasia, westeurope,westus2    | eastus
+| **appInsightsLocationDr**    | If solution type is chosen as premium, enter location for application insights for disaster recovery. | eastus, northeurope, southcentralus, southeastasia, westeurope, westus2    | westus2
+| **tenantId**   | Tenant Id of the created Azure active directory application. For instructions, see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-howto-tenant in the Microsoft documentation   |  | 
+| **clientId**  | Application ID of the created Azure active directory application. For information, see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications in the Microsoft documentation.   |     | 
+| **objectId**  | Object Id of the created Azure active directory application.  |     | 
+| **clientSecret**  | clientSecret of the created Azure active directory application.For instructions, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key in the Microsoft documentation.  |   | 
+| **azureAccountName**   | azure portal login username.       |    | 
+| **azurePassword** | azure portal login password.       |  | 
+| **sessionId** | Refer 5.1.5 section for getting provide the session ID.  |   |  
+| **timeSeriesInsights** | select 'Yes' for deploying time series insights for monitoring of iot hub otherwise select 'No'.To explore, see https://docs.microsoft.com/en-in/azure/time-series-insights/time-series-quickstart.  | Yes, No   | No
+| **timeSeriesInsightslocation** | specify the region for time series insights. | East US, East US2, North Europe, West Europe, West US | East US 
+  
+**Note**: Allowed Values are updated based on the availability of azure resources based on Region w.e.f Dt 24th July 2018. Microsoft may introduce availability of azure resources in future. More information can be found in **https://azure.microsoft.com/en-in/status/** 
+
+## 6 Getting started
+
+Azure Resource Manager allows you to provision your applications using a declarative template. In a single template, you can deploy multiple services along with their dependencies. The template consists of JSON and expressions that you can use to construct values for your deployment. You use the same template to repeatedly deploy your application during every stage of the application lifecycle.
+
+Resource Manager provides a consistent management layer to perform tasks through Azure PowerShell, Azure CLI, Azure portal, REST API, and client SDKs.
+
+* Deploy, manage, and monitor all the resources for your solution as a group, rather than handling these resources individually.
+* Repeatedly deploy your solution throughout the development lifecycle and have confidence your resources are deployed in a consistent state.
+* Manage your infrastructure through declarative templates rather than scripts.
+* Define the dependencies between resources so they're deployed in the correct order.
+* Apply access control to all services in your resource group because Role-Based Access Control (RBAC) is natively integrated into the management platform.
+* Apply tags to resources to logically organize all the resources in your subscription.
+
+### 6.1	 ARM Template Deployment
+
+1.	Browse to **Oil&Gas Git Hub Repository** on your Edge Browser.
+
+**https://github.com/sysgain/Oil-Gas/tree/master**
+
+2. Select **main-template.json** from **master** branch as shown in the following figure.
+ 
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/t1.png)
+
+3. Select **Raw** from the top right corner.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/t2.png)
+
+4. **Copy** the raw template and **paste** in your azure portal for template deployment.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/t3.png)
+
+To deploy a template for Azure Resource Manager, follow the below steps.
+
+1.	Go to **Azure portal**.
+
+2.	Navigate to **Create a resource (+)**, search for **Template deployment**.
+
+3.	Click Create button and click **Build your own Template in the editor** as shown in the following figure.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/8.png)
+
+4.	The **Edit template** page is displayed as shown in the following figure. 
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/9.png)
+
+5.	**Replace / paste** the template and click **Save** button.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/10.png)
+
+6.	The **Custom deployment** page is displayed as shown in the following.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b1.png)
+
+#### 6.1.1 Inputs
+
+These parameter values enable you to customize the deployment by providing values. There parameters allow to choose the solution type, region and credentials to authenticate SQL Database and Virtual Machines.
+
+7. If you choose **yes** for **Edge VM + Simulator VM** then Edge VM and Simulator VMs will be deployed with in the solution.
+
+8.	If you choose **No** then the **Edge VM and Simulator VM** will be not deployed with in the solution.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b2.png)
+
+9.	If you choose **yes** for **ML VM** then Pre-installed **docker** will be **deployed** with in the solution.
+
+10.	If you choose **No** for **ML VM** then Pre-installed **docker** will **not be deployed** with in the solution.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b3.png)
+
+**Parameters for core Solution**
+
+11.	Deploy the template by providing the parameters in custom deployment settings as shown in the following figure.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b4.png)
+
+**Parameters for core with monitoring**
+
+12.	If you want to deploy the core with monitoring you must enter the below parameters
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b5.png)
+
+**Parameters for core with hardening and monitoring**
+
+13.	If you want to deploy the core with Hardening and Monitoring you must enter the below parameters.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b6.png)
+
+14. Once all the parameters are entered, select the **terms and conditions** check box and click **Purchase**.
+
+15. After the successful deployment of the ARM template, the following **resources** are created in a **Resource Group**.
+
+16.	When you choose Costing model as **Core-with-monitoring-hardening** and the **Edge VM + Simulator VM** and **ML VM** as **Yes**, then the below components will be installed.
+
+* 3-Virtual machines (2 windows & 1 Linux)
+
+Windows VMS: 
+
+**Dyno card VM** which install pre-installed software's for dyno card VM.
+
+**ML VM** which install pre-installed docker.
+
+Linux VM:
+
+**Edge VM** is used to create IoT Edge device and installs modules in IoT Edge device
+
+* 2-Web App
+* 1-Application Insights
+* 1-Data Lake Storage
+* 1-IoT HUB
+* 1-Log analytics
+* 1-Logic app
+* 1-service bus namespace
+* 2-SQL database
+* 2-Storage account
+* 1-Stream Analytics job
+* 1-Traffic Manager
+* 1-Machine Learning Experiment Account
+* 1-Machine Learning Management Account
+
+17.	Once the solution is deployed successfully navigate to the resource group, select the created **resource group** to view the list of resources that are created in the Resource Group as shown in the following figure.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/17.png)
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/18.png)
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/19.png)
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/20.png)
+
+#### 6.1.2 Outputs
+
+The Outputs section consists of the values that are returned from deployment. The output values can be used for further steps in Solution Configuration.
+
+Go to **Resource group** -> click **deployments** -> select **Microsoft Template**.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/21.png)
+
+Click **outputs**.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/22.png)
+
+### 6.2 ARM Template Deployment Using Azure CLI
+
+Azure CLI is used to deploy your resources to Azure. The Resource Manager template you deploy, can either be a local file on your machine, or an external file that is in a repository like GitHub.  
+
+Azure Cloud Shell is an interactive, browser-accessible shell for managing Azure resources. Cloud Shell enables access to a browser-based command-line experience built with Azure management tasks in mind. 
+
+Deployment can proceed within the Azure Portal via Azure Cloud Shell. 
+
+#### 6.2.1 Customize main-template.parameters.json file 
+
+1. Log in to **Azure portal**. 
+
+2. Open the prompt. 
+ 
+3. Select **Bash (Linux)** environment as shown in the following figure. 
+
+4. Select your preferred **Subscription** from the dropdown list.  
+
+5. Click **Create Storage** button as shown in the following figure. 
+
+6. Copy **main-template.json** and **main-template.parameters.json** to your Cloud Shell before updating the parameters. 
+
+7. Create **main-template.json** using the below command. 
+
+    **vim main-template.json** 
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c1.png)
+
+8. Paste your **main-template.json** in editor as shown below and save the file. 
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c2.png)
+
+10.	Paste your **main-template.parameters.json** in editor. 
+
+11.	Update the following parameters in main-template.json file 
+
+* Solution Type 
+* Edge VM + Simulator VM
+* MLVM
+* dataLakelocation
+* machineLearningLocation
+* locationDR
+* oms-region
+* appInsightsLocation
+* sqlAdministratorLogin
+* sqlAdministratorLoginPassword
+* azureLogin
+* tenantId
+* vmsUsername
+* vmsPassword
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c3.png)
+
+#### 6.2.2 Create Resource Group for Oil&gas olution 
+
+Use the **az group create** command to create a **Resource Group** in your region.
+
+**Description:** To create a resource group, use **az group create** command, It uses the name parameter to specify the name for resource group (-n) and location parameter to specify the location (-l). 
+
+**Syntax**: **az group create -n <resource group name> -l <location>** 
+
+Ex: **az group create -n <****> -l <***>** 
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c4.png)
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c5.png)
+
+#### 6.2.3 Execute the template deployment 
+
+Use the **az group deployment create** command to deploy the ARM template.
+
+**Description**: To deploy the ARM Template, you require two files: 
+
+1. 	**main-template.json** – contains the resource & its dependency resources to be provisioned from the ARM template.
+
+2.	**main-template.parameters.json** –contains the input values that are required to provision respective SKU & Others details, for more details on the input parameter values navigate to Section 6 of this document. 
+
+**Syntax**:  **az group deployment create --template-file './<main-template.json filename>' --parameters '@./<main-template.parameters.json filename>' -g < provide resource group name that created in the section 6.2.2> -n deploy >> <provide the outputs filename>** 
+
+Ex: **az group deployment create --template-file './main-template.json' --parameters '@./main-template.parameters.json' -g oilandgas-iot -n deploy >> outputs.txt** 
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c6.png)
+
+Deployment may take between 15-20 minutes depending on deployment size. 
+
+After successful deployment you can see the deployment outputs as follows.
+
+![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+
+## 7. Post Deployment steps
+
+### 7.1. Verify Containers in EdgeVM and Azure Portal
+
+Go to **Resource Group** ->click **iotEdge** VM.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z1.png)
+
+**Copy** the **Public IP Address** of the iotEdge VM.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z2.png)
+
+**Login** to the VM through **putty**.
+
+**Paste** the **public ip** at Host Name (or IP address) and **click** on **open**.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z3.png)
+
+Enter credentials:
+
+Enter the login username as: **adminuser**
+
+Enter the Password as: **Password@1234**
+
+Once login successful the below welcome message is displayed.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z4.png)
+
+Here you can check the device and device modules in IoT Edge VM.
+
+**docker ps** 
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z5.png)
+
+Go to resource group -> click **iothub26hs3**
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z6.png)
+
+click **IoT Edge** under **Automatic Device Management**.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z7.png)
+
+Here we created and configured device from the IoT Edge VM. Click on **iot-dynocard-demo-device_1** device you can see the modules.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z8.png)
+
+We can see the created modules in device details 
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z9.png)
+
+### 7.2. Starting Stream Analytics job
+
+Go to **Resource group** -> click **StreamAnalytics26hs3**
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z10.png)
+
+After click on stream analytics job, you will have directed to screen like below.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z11.png)
+
+**Note**: Before **Start** the Stream analytic job, first you need to **Renew the authorization**of the output DataLake.
+
+Click on **Datalake** in the output section it will navigate the output details page.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z12.png)
+
+Click on **Renew authorization** button and click **save**.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z13.png)
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z14.png)
+
+Now, you can click the **start** button to start the Stream analytics job and you can see the **Starting Streaming job** message in notifications window.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z15.png)
+
+Now you can see the Stream analytics job is **Running**.
+
+![alt text](https://github.com/sysgain/Oil-Gas/blob/master/images/z16.png)
