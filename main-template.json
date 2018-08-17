@@ -550,7 +550,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZholwV0i8Q9J6zV-hKdLyWEP8zhVks5bf7NYwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZgZFMRrqt4RTOpBfUAgMow_4RdeKks5bf_7zwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -582,7 +582,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZholwV0i8Q9J6zV-hKdLyWEP8zhVks5bf7NYwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZgZFMRrqt4RTOpBfUAgMow_4RdeKks5bf_7zwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -614,7 +614,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZholwV0i8Q9J6zV-hKdLyWEP8zhVks5bf7NYwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT3nZgZFMRrqt4RTOpBfUAgMow_4RdeKks5bf_7zwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
