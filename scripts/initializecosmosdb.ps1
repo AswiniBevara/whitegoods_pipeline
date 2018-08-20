@@ -89,12 +89,12 @@ workflow  container{
             Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
             Set-AzureADApplication -ObjectId $objectId -HomePage $datapacketHomeUri -ReplyUrls $replyURLList -Verbose
             # Get Access token for calling API
-            $accessToken=Get-AccessTokenAPI $tenantId $clientId $clientSecret
-            Write-Host "Access token is " $accessToken -ForegroundColor Magenta
+            ##$accessToken=Get-AccessTokenAPI $tenantId $clientId $clientSecret
+            ##Write-Host "Access token is " $accessToken -ForegroundColor Magenta
             #add sleep inorder to have API startup successfully
-            Start-Sleep -s 10
+            ##Start-Sleep -s 10
             # Call API to initialize cosmos DB with default starter IoT templates
             # This templates will be loaded in the data packet designer
-            $cosmosDBInitResult=CosmosDbInit $datapacketUri $accessToken  
+            ##$cosmosDBInitResult=CosmosDbInit $datapacketUri $accessToken  
     }
 }
