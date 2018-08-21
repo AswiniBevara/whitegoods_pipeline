@@ -54,12 +54,6 @@ workflow  container{
 
     #Update Azure AD applications reply urls
     Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
-    $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"
-    $replyURLList = @($deviceManagementUriOIDC);  
-    Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
-    Set-AzureADApplication -ObjectId $objectId -HomePage $deviceManagementUri -ReplyUrls $replyURLList -Verbose
-
-    Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
     $datapacketUriOIDC="https://"+$datapacketUri+"/signin-oidc"      
     $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
     $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC);  
