@@ -67,7 +67,7 @@ workflow  container{
     param([string]$apiBaseURL,[string]$accessToken)
     
         Write-Host "`nInitializing Cosmos DB..." -ForegroundColor Green
-        $APIURL=[string]::Format("{0}/api/templates/generate",$apiBaseURL)
+        $APIURL=[string]::Format("{0}/",$apiBaseURL)
         $result=Invoke-RestMethod -Uri $APIURL -Method Post -ContentType "application/json" -Headers @{ "Authorization" = "Bearer $accessToken" }
         if($result -eq "true")
         {
