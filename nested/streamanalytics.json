@@ -30,9 +30,9 @@
                 "sku": {
                     "name": "standard"
                 },
-                "OutputStartMode": "JobStartTime",
-                "EventsOutOfOrderMaxDelayInSeconds": 10,
-                "EventsOutOfOrderPolicy": "adjust",
+                
+                
+                
                 "Inputs": [
                     {
                         "Name": "IoTHubStream",
