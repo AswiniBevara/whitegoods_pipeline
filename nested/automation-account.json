@@ -8,8 +8,8 @@
         "deviceManagementUri":{
             "type": "string"
         },
-        "datapacketUri":{
-            "type": "string"
+        "documentDbSettings": {
+            "type": "object"
         }
     },
     "variables": {},
@@ -91,8 +91,10 @@
                             "deviceManagementUri": "[parameters('deviceManagementUri')]",
                             "azureAccountName": "[parameters('automationSettings').azureAccountName]",
                             "azurePassword": "[parameters('automationSettings').azurePassword]",
-                            "objectId": "[parameters('automationSettings').objectId]",
-                            "datapacketUri":"[parameters('datapacketUri')]"
+                            "cosmosDBAccountKey": "[listkeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('documentDbSettings').cosmosDbAccountName), '2015-04-08').primaryMasterKey]",
+                            "cosmosDbAccountName": "[parameters('documentDbSettings').cosmosDbAccountName]",
+                            "cosmosDbName": "[parameters('documentDbSettings').cosmosDbName]",
+                            "objectId": "[parameters('automationSettings').objectId]"
                         }
                     },
                     "dependsOn": [
