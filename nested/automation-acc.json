@@ -8,9 +8,6 @@
         "apiVersions": {
             "type": "object"
         },
-        "datapacketUri": {
-            "type": "string"
-        },
         "deviceManagementUri": {
             "type": "string"
         }
@@ -75,7 +72,6 @@
                             "tenantId": "[parameters('automationSettings').tenantId]",
                             "clientId": "[parameters('automationSettings').clientId]",
                             "clientSecret": "[parameters('automationSettings').clientSecret]",
-                            "datapacketUri": "[parameters('datapacketUri')]",
                             "deviceManagementUri": "[parameters('deviceManagementUri')]",
                             "azureAccountName": "[parameters('automationSettings').azureAccountName]",
                             "azurePassword": "[parameters('automationSettings').azurePassword]",
