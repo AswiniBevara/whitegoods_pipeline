@@ -131,6 +131,7 @@
             "location": "[variables('location')]",
             "cosmosDbAccountName": "[concat('cosmosdb', variables('suffix'))]",
             "kind": "GlobalDocumentDB",
+            "cosmosDbName": "MSIoT",
             "databaseAccountOfferType": "Standard"
         },
         "webSiteSettings": {
