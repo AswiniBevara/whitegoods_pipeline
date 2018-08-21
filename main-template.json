@@ -179,7 +179,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/adreplyurl.ps1?token=AYpAeHnOj7V5xenM1mRlCWolXpFiv44zks5bhR7HwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/cosmosdb.ps1?token=AT3nZpGkOoVNl_Z3MkTTZWQUMyulJfkWks5bhU3hwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
