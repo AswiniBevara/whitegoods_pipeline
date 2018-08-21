@@ -8,7 +8,7 @@
         "apiVersions": {
             "type": "object"
         },
-        "datapacketUri": {
+        "cosmosDbinitUri": {
             "type": "string"
         },
         "deviceManagementUri": {
@@ -75,7 +75,7 @@
                             "tenantId": "[parameters('automationSettings').tenantId]",
                             "clientId": "[parameters('automationSettings').clientId]",
                             "clientSecret": "[parameters('automationSettings').clientSecret]",
-                            "datapacketUri": "[parameters('datapacketUri')]",
+                            "cosmosDbinitUri": "[parameters('cosmosDbinitUri')]",
                             "deviceManagementUri": "[parameters('deviceManagementUri')]",
                             "azureAccountName": "[parameters('automationSettings').azureAccountName]",
                             "azurePassword": "[parameters('automationSettings').azurePassword]",
