@@ -96,6 +96,6 @@ workflow  container{
             # Call API to initialize cosmos DB with default starter IoT templates
             # This templates will be loaded in the data packet designer
             ##$cosmosDBInitResult=CosmosDbInit $datapacketUri $accessToken  
-            Start-Sleep -s 20
+            Start-Sleep -s 30
     }
 }
