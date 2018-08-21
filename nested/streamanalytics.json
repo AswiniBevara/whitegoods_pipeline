@@ -30,7 +30,6 @@
                     "name": "[parameters('streamAnalytics').sku]"
                 },
                 "eventsOutOfOrderPolicy": "Adjust",
-                "outputStartMode": "JobStartTime",
                 "eventsOutOfOrderMaxDelayInSeconds": 10,
                 "inputs": [
                     {

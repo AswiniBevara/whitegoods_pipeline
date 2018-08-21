@@ -156,12 +156,8 @@
         "documentDbSettings": {
             "location": "[parameters('geo-paired-region')]",
             "cosmosDbAccountName": "[concat('cosmosdb',variables('suffix'))]",
-            "cosmosDbName": "MSIoT",
             "databaseAccountOfferType": "Standard",
-            "readRegionLocation": "[variables('readRegionLocation')]",
-            "cosmosDbColTemplateName": "Templates",
-            "cosmosDbColMessagesName": "Messages",
-            "cosmosDbColGroupsName": "Groups"
+            "readRegionLocation": "[variables('readRegionLocation')]"
         },
         "notificationHub": {
             "location": "[parameters('geo-paired-region')]",
@@ -475,9 +471,6 @@
                     },
                     "deviceManagementUri": {
                         "value": "[concat('https://',variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -502,9 +495,6 @@
                     },
                     "deviceManagementUri": {
                         "value": "[concat('http://',variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
@@ -529,9 +519,6 @@
                     },
                     "deviceManagementUri": {
                         "value": "[concat('http://',variables('trafficManagerSettings').trafficManagerName,'.trafficmanager.net')]"
-                    },
-                    "documentDbSettings": {
-                        "value": "[variables('documentDbSettings')]"
                     }
                 }
             }
