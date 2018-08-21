@@ -308,7 +308,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT7l1c0KAj12IajzHSQR9TOcFj_8EVegks5bg9FXwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AYpAeAlX203IiWdmfFmek2kobvn9I792ks5bhSEMwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -333,7 +333,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT7l1YgFDYmx1Wkyh7Wq3qL2u4MPSjvEks5bg9CJwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AYpAeLlkNiWFJJBnTuQFpLyBufJv44Rcks5bhSKjwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
