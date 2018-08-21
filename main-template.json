@@ -179,7 +179,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZpQAV3wKPIWiXZ1_pjrN4FfUNYaSks5bg9wlwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/adreplyurl.ps1?token=AYpAeHnOj7V5xenM1mRlCWolXpFiv44zks5bhR7HwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -199,7 +199,7 @@
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "deploymentApiVersion": "2016-02-01",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/core/"
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/corebasic/"
     },
     "resources": [
         {
@@ -210,7 +210,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json?token=AT7l1RI7xcD_8UQ4sUU6Wvgl15M9pzNaks5bg9FTwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json?token=AYpAeKiyz3NkEEpQq8ebGkcPWKuT7c9xks5bhR36wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -233,7 +233,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json?token=AT7l1Tsyj0lFhwBIPPyEvZFuMKoU9iNGks5bg9FNwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json?token=AYpAeB_WWPzZ0xy4p9JeSCrYcfayPEXIks5bhR31wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -243,9 +243,7 @@
                     "apiVersions": {
                         "value": "[variables('apiVersions')]"
                     },
-                    "datapacketUri": {
-                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
-                    },
+                    
                     "deviceManagementUri": {
                         "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
                     }
@@ -262,7 +260,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT7l1Vsq5MTSnsNSwwqIxfFqsTNULhotks5bg9FawA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AYpAeCdsyEN9-LT7iVWoHfZh8fW6uiJ5ks5bhR3-wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -289,7 +287,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT7l1VPIybZeyi98UKuMt0r9iN8uUCoFks5bg9FQwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AYpAeKp7Jokuwrbc0NJ9-e0Plu5_dMYAks5bhR35wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -381,10 +379,7 @@
             "type": "string",
             "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
         },
-        "dataPacketDesignerUrl": {
-            "type": "string",
-            "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
-        },
+       
         "deviceManagementPortalUrl": {
             "type": "string",
             "value": "[concat('https://', variables('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
