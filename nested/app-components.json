@@ -94,10 +94,7 @@
                     "properties": {
                         "packageUri": "[parameters('webSiteSettings').cosmosDbinituri]",
                         "dbType": "None",
-                        "connectionString": "",
-                        "setParameters": {
-                            "IIS Web Application Name": "[parameters('webSiteSettings').cosmosDbinitWebapp]"
-                        }
+                        "connectionString": ""
                     }
                 },
                 {
