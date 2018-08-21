@@ -44,7 +44,7 @@
         },
         {
             "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
-            "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
+            "name": "[parameters('webSiteSettings').cosmosDbinitWebapp]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('webSiteSettings').location]",
             "tags": {
@@ -55,7 +55,7 @@
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]"
             ],
             "properties": {
-                "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
+                "name": "[parameters('webSiteSettings').cosmosDbinitWebapp]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('webSiteSettings').webAppHostingPlanName)]"
             },
             "resources": [
@@ -64,7 +64,7 @@
                     "name": "web",
                     "type": "config",
                     "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]"
+                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').cosmosDbinitWebapp)]"
                     ],
                     "tags": {
                         "displayName": "WebAppConfig"
@@ -85,18 +85,18 @@
                     "location": "[parameters('webSiteSettings').location]",
                     "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]"
+                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').cosmosDbinitWebapp)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').cosmosDbinitWebapp, '/config/web')]"
                     ],
                     "tags": {
                         "displayName": "WebPackageDeploy"
                     },
                     "properties": {
-                        "packageUri": "[parameters('webSiteSettings').dataPacketPackageuri]",
+                        "packageUri": "[parameters('webSiteSettings').cosmosDbinituri]",
                         "dbType": "None",
                         "connectionString": "",
                         "setParameters": {
-                            "IIS Web Application Name": "[parameters('webSiteSettings').dataPacketWebSiteName]"
+                            "IIS Web Application Name": "[parameters('webSiteSettings').cosmosDbinitWebapp]"
                         }
                     }
                 },
@@ -105,24 +105,18 @@
                     "name": "Appsettings",
                     "type": "config",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/Extensions/MSDeploy')]"
+                        "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').cosmosDbinitWebapp)]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').cosmosDbinitWebapp, '/config/web')]",
+                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').cosmosDbinitWebapp, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
-                        "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
-                        "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
-                        "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
-                        "AzureAd:CallbackPath": "/signin-oidc",
-                        "IotHub:HostName": "[parameters('iotHubEndPoint')]",
-                        "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubEndPoint'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
-                        "CosmosDb:Endpoint": "[parameters('cosmosDBAccountEndPoint')]",
-                        "CosmosDb:AuthKey": "[parameters('cosmosDBAccountKey')]",
-                        "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
-                        "CosmosDb:Collections:Templates": "[parameters('webSiteSettings').cosmosDbColTemplateName]",
-                        "CosmosDb:Collections:Messages": "[parameters('webSiteSettings').cosmosDbColMessagesName]",
-                        "CosmosDb:Collections:Groups": "[parameters('webSiteSettings').cosmosDbColGroupsName]",
-                        "CosmosDb:TemplatesBase": "https://msiotsolutiondev.blob.core.windows.net/cosmosdbtemplates/"
+                        "endpoint": "[parameters('cosmosDBAccountEndPoint')]",
+                        "authKey": "[parameters('cosmosDBAccountKey')]",
+                        "database": "MSIoT",
+                        "collection1": "Templates",
+                        "collection2": "Messages",
+                        "collection3": "Groups",
+                        "Throughput": "400"
                     }
                 }
             ]
@@ -138,9 +132,9 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/appsettings')]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/extensions/MSDeploy')]"
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').cosmosDbinitWebapp)]",
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').cosmosDbinitWebapp, '/config/appsettings')]",
+                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').cosmosDbinitWebapp, '/extensions/MSDeploy')]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]",
@@ -215,9 +209,9 @@
         }
     ],
     "outputs": {
-        "dataPacketDesignerUrl": {
+        "cosmosDbinitUrl": {
             "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+            "value": "[concat('https://', parameters('webSiteSettings').cosmosDbinitWebapp,'.azurewebsites.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
