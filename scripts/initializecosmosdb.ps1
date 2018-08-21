@@ -27,7 +27,11 @@ workflow  container{
 
         [Parameter(Mandatory=$true)]
         [string]
-        $objectId
+        $objectId,
+
+        [Parameter(Mandatory=$true)]
+        [string]
+        $datapacketUri
     )
 
     InlineScript{
@@ -39,6 +43,7 @@ workflow  container{
         $azureAccountName = $Using:azureAccountName
         $azurePassword = $Using:azurePassword   
         $objectId = $Using:objectId
+        $datapacketUri=$Using:datapacketUri
 
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
     $password = ConvertTo-SecureString $azurePassword -AsPlainText -Force
@@ -53,5 +58,12 @@ workflow  container{
     $replyURLList = @($deviceManagementUriOIDC);  
     Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
     Set-AzureADApplication -ObjectId $objectId -HomePage $deviceManagementUri -ReplyUrls $replyURLList -Verbose
+
+    Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
+    $datapacketUriOIDC="https://"+$datapacketUri+"/signin-oidc"      
+    $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
+    $replyURLList = @($datapacketUriOIDC,$deviceManagementUriOIDC);  
+    Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
+    Set-AzureADApplication -ObjectId $objectId -HomePage $datapacketUri -ReplyUrls $replyURLList -Verbose
 }
 }

@@ -7,6 +7,9 @@
         },
         "deviceManagementUri":{
             "type": "string"
+        },
+        "datapacketUri":{
+            "type": "string"
         }
     },
     "variables": {},
@@ -88,7 +91,8 @@
                             "deviceManagementUri": "[parameters('deviceManagementUri')]",
                             "azureAccountName": "[parameters('automationSettings').azureAccountName]",
                             "azurePassword": "[parameters('automationSettings').azurePassword]",
-                            "objectId": "[parameters('automationSettings').objectId]"
+                            "objectId": "[parameters('automationSettings').objectId]",
+                            "datapacketUri":"[parameters('datapacketUri')]"
                         }
                     },
                     "dependsOn": [
