@@ -38,9 +38,6 @@ workflow  container{
         $deviceManagementUri = $Using:deviceManagementUri
         $azureAccountName = $Using:azureAccountName
         $azurePassword = $Using:azurePassword
-        $cosmosDBAccountKey = $Using:cosmosDBAccountKey
-        $cosmosDbAccountName = $Using:cosmosDbAccountName
-        $cosmosDbName = $Using:cosmosDbName
         $objectId = $Using:objectId
         Set-ExecutionPolicy -ExecutionPolicy RemoteSigned  -Force
         $password = ConvertTo-SecureString $azurePassword -AsPlainText -Force
@@ -48,9 +45,7 @@ workflow  container{
         Login-AzureRmAccount -Credential $psCred 
   
         # Update Azure AD applications reply urls
-        Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore
-         
-                 
+        Connect-AzureAd -TenantId $tenantId -Credential $psCred -InformationAction Ignore                
         $deviceManagementUriOIDC=$deviceManagementUri+"/signin-oidc"   
         $replyURLList = @($deviceManagementUriOIDC);  
         Write-Host '', 'Configuring and setting the Azure AD reply URLs' -ForegroundColor Green
