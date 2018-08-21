@@ -178,7 +178,9 @@
             "automationLocation": "eastus2",
             "automationSku": "Free",
             "runbookName": "container",
-            "moduleName": "AzureADPreview",
+            "moduleName": "cosmosdb",
+            "moduleName1": "AzureADPreview",
+            "cosmosdbModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/cosmos.zip",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
             "runbookUri": "[concat(variables('baseUrl'),'scripts/cosmosdb.ps1?token=AYpAeBLAMEUYNh19pWpJoX1OHs6fqvIaks5bhVGUwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
@@ -234,7 +236,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json?token=AYpAeIpYpWteNy430ATQeR2tFcs0QS8Dks5bhVGSwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json?token=AYpAeO-AynWBeXtuVTMTQLBNvHU48wuDks5bhVcbwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
