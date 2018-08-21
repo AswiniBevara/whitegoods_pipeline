@@ -44,91 +44,6 @@
         },
         {
             "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
-            "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
-            "type": "Microsoft.Web/sites",
-            "location": "[parameters('webSiteSettings').location]",
-            "tags": {
-                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]": "Resource",
-                "displayName": "Website"
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]"
-            ],
-            "properties": {
-                "name": "[parameters('webSiteSettings').dataPacketWebSiteName]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('webSiteSettings').webAppHostingPlanName)]"
-            },
-            "resources": [
-                {
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
-                    "name": "web",
-                    "type": "config",
-                    "dependsOn": [
-                        "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]"
-                    ],
-                    "tags": {
-                        "displayName": "WebAppConfig"
-                    },
-                    "properties": {
-                        "phpVersion": "5.6",
-                        "netFrameworkVersion": "v4.6",
-                        "use32BitWorkerProcess": false,
-                        "webSocketsEnabled": true,
-                        "alwaysOn": true,
-                        "remoteDebuggingEnabled": true,
-                        "remoteDebuggingVersion": "VS2015"
-                    }
-                },
-                {
-                    "name": "MSDeploy",
-                    "type": "extensions",
-                    "location": "[parameters('webSiteSettings').location]",
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]"
-                    ],
-                    "tags": {
-                        "displayName": "WebPackageDeploy"
-                    },
-                    "properties": {
-                        "packageUri": "[parameters('webSiteSettings').dataPacketPackageuri]",
-                        "dbType": "None",
-                        "connectionString": "",
-                        "setParameters": {
-                            "IIS Web Application Name": "[parameters('webSiteSettings').dataPacketWebSiteName]"
-                        }
-                    }
-                },
-                {
-                    "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
-                    "name": "Appsettings",
-                    "type": "config",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', parameters('webSiteSettings').dataPacketWebSiteName)]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/web')]",
-                        "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/Extensions/MSDeploy')]"
-                    ],
-                    "properties": {
-                        "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
-                        "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
-                        "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
-                        "AzureAd:CallbackPath": "/signin-oidc",
-                        "IotHub:HostName": "[parameters('iotHubEndPoint')]",
-                        "IotHub:ConnectionString": "[concat('HostName=', parameters('iotHubEndPoint'), ';SharedAccessKeyName=', parameters('webSiteSettings').iotHubKeyName, ';SharedAccessKey=', parameters('iotHubPrimaryKey'))]",
-                        "CosmosDb:Endpoint": "[parameters('cosmosDBAccountEndPoint')]",
-                        "CosmosDb:AuthKey": "[parameters('cosmosDBAccountKey')]",
-                        "CosmosDb:Database": "[parameters('webSiteSettings').cosmosDbName]",
-                        "CosmosDb:Collections:Templates": "[parameters('webSiteSettings').cosmosDbColTemplateName]",
-                        "CosmosDb:Collections:Messages": "[parameters('webSiteSettings').cosmosDbColMessagesName]",
-                        "CosmosDb:Collections:Groups": "[parameters('webSiteSettings').cosmosDbColGroupsName]",
-                        "CosmosDb:TemplatesBase": "https://msiotsolutiondev.blob.core.windows.net/cosmosdbtemplates/"
-                    }
-                }
-            ]
-        },
-        {
-            "apiVersion": "[parameters('apiVersions').webAppApiVersion]",
             "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('webSiteSettings').location]",
@@ -137,10 +52,7 @@
                 "displayName": "Website"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName)]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/config/appsettings')]",
-                "[concat('Microsoft.Web/sites/', parameters('webSiteSettings').dataPacketWebSiteName, '/extensions/MSDeploy')]"
+                "[resourceId('Microsoft.Web/serverfarms/', parameters('webSiteSettings').webAppHostingPlanName)]"
             ],
             "properties": {
                 "name": "[parameters('webSiteSettings').deviceManagementPortalWebSiteName]",
@@ -215,10 +127,7 @@
         }
     ],
     "outputs": {
-        "dataPacketDesignerUrl": {
-            "type": "string",
-            "value": "[concat('https://', parameters('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
-        },
+       
         "deviceManagementPortalUrl": {
             "type": "string",
             "value": "[concat('https://', parameters('webSiteSettings').deviceManagementPortalWebSiteName,'.azurewebsites.net')]"
