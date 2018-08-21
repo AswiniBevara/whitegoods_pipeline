@@ -138,13 +138,13 @@
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
-            "dataPacketPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DataPacket.zip",
+            "cosmosDbinituri": "https://projectiot.blob.core.windows.net/whitegoods/cosmosdbinitializer.zip",
             "deviceManagementPortalPackageuri": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
             "webAppSkuName": "B1",
             "iotHubName": "[variables('iotHubSettings').iotHubName]",
             "cosmosDbAccountName": "[variables('documentDbSettings').cosmosDbAccountName]",
-            "dataPacketWebSiteName": "[concat('datapacket', variables('suffix'))]",
+            "cosmosDbinitWebapp": "[concat('cosmosinit', variables('suffix'))]",
             "deviceManagementPortalWebSiteName": "[concat('devicemanagement', variables('suffix'))]",
             "iotHubKeyName": "iothubowner",
             "cosmosDbName": "MSIoT",
@@ -179,7 +179,7 @@
             "runbookName": "container",
             "moduleName": "AzureADPreview",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZpQAV3wKPIWiXZ1_pjrN4FfUNYaSks5bg9wlwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AYpAePbr6Ds1-X2vEQpJ2i4UovxeJKIGks5bhToSwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -199,7 +199,7 @@
         "location": "[resourceGroup().location]",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "deploymentApiVersion": "2016-02-01",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/core/"
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods/corewebapi/"
     },
     "resources": [
         {
@@ -210,7 +210,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json?token=AT7l1RI7xcD_8UQ4sUU6Wvgl15M9pzNaks5bg9FTwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub.json?token=AYpAeBJqeHWJ5umDyBis0L0Mz7OAiyt3ks5bhTHUwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -233,7 +233,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json?token=AT7l1Tsyj0lFhwBIPPyEvZFuMKoU9iNGks5bg9FNwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-acc.json?token=AYpAeGbLJGjNRgadW9JSeTWZk5Chy8-Uks5bhTjuwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -243,8 +243,8 @@
                     "apiVersions": {
                         "value": "[variables('apiVersions')]"
                     },
-                    "datapacketUri": {
-                        "value": "[concat(variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+                    "cosmosDbinitUri": {
+                        "value": "[concat(variables('webSiteSettings').cosmosDbinitWebapp,'.azurewebsites.net')]"
                     },
                     "deviceManagementUri": {
                         "value": "[reference('AppComponents').outputs.deviceManagementPortalUrl.value]"
@@ -262,7 +262,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AT7l1Vsq5MTSnsNSwwqIxfFqsTNULhotks5bg9FawA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics.json?token=AYpAeA2LjtG_vR5l3Q3eFESwJ2JdxJ5Gks5bhThRwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -289,7 +289,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AT7l1VPIybZeyi98UKuMt0r9iN8uUCoFks5bg9FQwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb.json?token=AYpAeB7dGQAMqTqK4T0EIfVceXQFqNtOks5bhTHRwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -310,7 +310,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AT7l1c0KAj12IajzHSQR9TOcFj_8EVegks5bg9FXwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AYpAeAEHoKq0idqJu6mnh1J4mo2Vrygrks5bhTHYwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -335,7 +335,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT7l1YgFDYmx1Wkyh7Wq3qL2u4MPSjvEks5bg9CJwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AYpAeJ9xiJD3KXVZudkzEDhxSJXPXdBMks5bhTgKwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -381,9 +381,9 @@
             "type": "string",
             "value": "[reference('DocumentDB').outputs.cosmosDBAccountKey.value]"
         },
-        "dataPacketDesignerUrl": {
+        "cosmosDbinitUrl": {
             "type": "string",
-            "value": "[concat('https://', variables('webSiteSettings').dataPacketWebSiteName,'.azurewebsites.net')]"
+            "value": "[concat('https://', variables('webSiteSettings').cosmosDbinitWebapp,'.azurewebsites.net')]"
         },
         "deviceManagementPortalUrl": {
             "type": "string",
