@@ -409,12 +409,12 @@ Resource Manager provides a consistent management layer to perform tasks through
 
 Resource manager provides the following feature:
 
-•	Deploy, manage, and monitor all the resources for your solution as a group, rather than handling these resources individually.
-•	Repeatedly deploy your solution through the development lifecycle and your resources are deployed in a consistent state.
-•	Manage your infrastructure through declarative templates rather than scripts.
-•	Define the dependencies between resources so they're deployed in the correct order.
-•	Apply access control to all services in your resource group because Role-Based Access Control (RBAC) is natively integrated into the management platform.
-•	Apply tags to resources to logically organize all the resources in your subscription.
+* Deploy, manage, and monitor all the resources for your solution as a group, rather than handling these resources individually.
+* Repeatedly deploy your solution through the development lifecycle and your resources are deployed in a consistent state.
+* Manage your infrastructure through declarative templates rather than scripts.
+* Define the dependencies between resources so they're deployed in the correct order.
+* Apply access control to all services in your resource group because Role-Based Access Control (RBAC) is natively integrated into the management platform.
+* Apply tags to resources to logically organize all the resources in your subscription.
 
 ### 8.1. ARM Template Deployment Using Azure Portal
 
