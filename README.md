@@ -42,7 +42,7 @@
     - [8.2 ARM Template Deployment Using Azure CLI](#82-arm-arm-template-deployment-using-azure-cli)
         - [8.2.1 Create Resource Group for oilandgas Solution](#821-create-resource-group-for-oilandgas-solution)
         - [8.2.2 Execute the Template Deployment](#822-execute-the-template-dDeployment)
-- [9 Post Deployment Steps: Getting started with Azure Sphere](#9-post-deployment-steps:-getting-started-with-azure-sphere)
+- [9 Post Deployment Steps: Getting started with Azure Sphere](#9-post-deployment-steps-getting-started-with-azure-sphere)
     - [9.1 Set Up your Machine for Development Machine](#91-set-up-your-machine-for-development-machine)
         - [9.1.1 Connect the RDB](#911-connect-the-rdb)
         - [9.1.2 Install the TAP Driver](#912-install-the-tap-driver)
@@ -821,3 +821,4 @@ To use an IoT Hub in an Azure Sphere application, you identify the IoT Hub that 
 Download **Mt3620AzureIoTHub4.zip** and extract it.
 
 Click on open Mt3620AzureIoTHub4.sln in your local system.
+
