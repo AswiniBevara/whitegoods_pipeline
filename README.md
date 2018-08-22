@@ -85,7 +85,7 @@
              
 ## 1 About White Goods Solution
 
-In this Solution we are using Azure Sphere Device (MT3620) which is connected to Device Management Web Application. The Cloud to device message sending is done, whenever user select the appropriate blink rate feature on device management application depend upon that the azure sphere device’s led light will blink slowly or fast.
+In this Solution we are using **Azure Sphere Device (MT3620)** which is connected to Device Management Web Application. The Cloud to device message sending is done, whenever user select the appropriate blink rate feature on device management application depend upon that the azure sphere device’s led light will blink slowly or fast.
 
 Similarly, Device to cloud communication is done, whenever on Azure Sphere Button A is pressed the LED light blink rate will change and send the blink rate feature update message to Cloud i.e., Device Management application.
 
@@ -312,35 +312,35 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 #### 6.1.1 To register a new application using the Azure portal
 
-1. Sign in to the Azure portal.
+1. **Sign in** to the **Azure portal**.
 
-2. In the left-hand navigation pane, click the Azure Active Directory service, click App registrations, and click New application registration.
+2. In the left-hand navigation pane, **click** the **Azure Active Directory** service, click **App registrations** and click **New application registration**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/5.png)
 
 3. When the Create page appears, enter your application's registration information:
 
-* Name: Enter the application name
-* Application type:
+* **Name:** Enter the application name
+* **Application type:**
       - Select "Native" for client applications that are installed locally on a device. This setting is used for OAuth public native clients.
       - Select "Web app / API" for client applications and resource/API applications that are installed on a secure server. This setting is used for OAuth confidential web clients and public user-agent-based clients. The same application can also expose both a client and resource/API.
-* Sign-On URL: For "Web app / API" applications, provide the base URL of your app. For example, https://localhost might be the URL for a web app running on your local machine. Users would use this URL to sign in to a web client application.
+* **Sign-On URL:** For "Web app / API" applications, provide the base URL of your app. For example, https://localhost might be the URL for a web app running on your local machine. Users would use this URL to sign in to a web client application.
 
-4. When finished, click Create.
+4. When finished, click **Create**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/6.png)
 
 #### 6.1.2 To add application credentials, or permissions to access web APIs
 
-1. Click the Azure Active Directory service, click App registrations, and then find/click the application you want to configure.
+1. Click the **Azure Active Directory** service, click **App registrations** and then find/click the **application** you want to configure.
 
-2. You are taken to the application's main registration page, which opens the Settings page for the application. To add a secret key for your web application's credentials:
+2. You are taken to the application's main registration page, which opens the **Settings** page for the application. To add a secret key for your web application's credentials:
 
-3. Click the Keys section on the Settings page.
+3. **Click** the **Keys** section on the Settings page.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/7.png)
 
-4. Add a description for your key and Select duration then click Save. 
+4. Add a description for your key and Select duration then click **Save**. 
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/8.png)
 
@@ -350,9 +350,9 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 #### 6.1.3 To get Tenant ID
 
-1. Select Azure Active Directory.
+1. Select **Azure Active Directory**.
 
-2. To get the tenant ID, select Properties for your Azure AD tenant and Copy the Directory ID. This value is your tenant ID.
+2. To get the **tenant ID**, select **Properties** for your Azure AD tenant and **Copy** the **Directory ID**. This value is your **tenant ID**.
 
 3. Note down the Copied Directory ID which is highlighted in the below figure, this will be used while deploying the ARM template.
 
@@ -364,7 +364,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/11.png)
 
-2. Copy the Application ID and object ID. The application ID value is referred as the client ID.
+2. **Copy** the **Application ID and object ID**. The application ID value is referred as the client ID.
 
 3. Note down the Copied Application ID and object ID which is highlighted in the below figure, this will be used while deploying the ARM template.
 
@@ -378,9 +378,9 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/13.png)
 
-2. Click Generate some GUIDs! This will generate GUID in Results box. 
+2. Click **Generate some GUIDs!** This will generate GUID in Results box. 
 
-3. Copy and Note down the generated GUID which is highlighted in the below figure, this will be used while deploying the ARM template.
+3. **Copy** and **Note down** the generated **GUID** which is highlighted in the below figure, this will be used while deploying the ARM template.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/14.png)
 
@@ -420,7 +420,7 @@ Resource manager provides the following feature:
 
 ### 8.1. ARM Template Deployment Using Azure Portal
 
-1. Click the below Git hub repo URL.
+1. **Click** the below **Git hub repo URL**.
 
 **https://github.com/sysgain/whitegoods/tree/costing-models**
 
@@ -465,23 +465,23 @@ These parameter values enable you to customize the deployment by providing value
 
 **Parameters for Basic Solution:**
 
-7. If you want to deploy the Basic Solution you have to enter the below parameters.
+7. If you want to deploy the **Basic Solution** you have to enter the below parameters.
 
-Note: For basic solution, it is not necessary to give the values of OMS workspace region, app insights location, so keep the default values as it is.
+**Note:** For basic solution, it is not necessary to give the values of OMS workspace region, app insights location, so keep the default values as it is.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/23.jpg)
 
 **Parameters for Standard Solution:**
 
-8. If you want to deploy the standard solution you have to enter the below parameters.
+8. If you want to deploy the **standard solution** you have to enter the below parameters.
 
-Note: For standard solution, select the geo-paired region for your template deployment.
+**Note:** For standard solution, select the geo-paired region for your template deployment.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/24.png)
 
 **Parameters for Premium solution:**
 
-9. If you want to deploy the Premium solution you have to enter the below parameters.
+9. If you want to deploy the **Premium solution** you have to enter the below parameters.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/25.png)
 
@@ -500,7 +500,7 @@ Note: For standard solution, select the geo-paired region for your template depl
 •	1 Stream analytics job
 •	Traffic manager
 
-12. Once the solution is deployed successfully navigate to the resource group, select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
+12. Once the solution is deployed successfully navigate to the **resource group**, select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/26.png)
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/27.png)
@@ -527,11 +527,11 @@ Azure Cloud Shell is an interactive, browser-accessible shell for managing Azure
 
 Deployment can proceed within the Azure Portal via Windows PowerShell.  
 
-1. Customize main-template.parameters.json file.
+1. Customize **main-template.parameters.json** file.
 
-2. Click on Windows PowerShell, run the following commands.
+2. **Click** on **Windows PowerShell**, run the following commands.
 
- **az login**
+    **az login**
 
 3. It will be showing device login URL and code to authenticate the device login.
 
@@ -539,7 +539,7 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/32.png)
 
-4. Past the code and click Continue.
+4. Past the code and click **Continue**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/33.png)
 
@@ -618,7 +618,7 @@ The RDB connects to a PC through a USB micro-connector. When plugged in, the RDB
 
 The first time you plug in the board, the drivers should be automatically downloaded and installed. Installation can be slow; if the drivers are not installed automatically, right-click on the device name in Device Manager and select Update driver.
 
-Click on search Device Manager in Windows Search Box to verify installation, open Device Manager and look for three COM ports:
+**Click** on **search Device Manager** in Windows Search Box to verify installation, open Device Manager and look for three COM ports:
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/41.png)
 
@@ -630,31 +630,31 @@ The development board communicates with the PC over serial line internet protoco
 
 To install TAP and enable SLIP Communication
 
-1. Install TAP-Windows, which came with your Azure Sphere software development kit (SDK). 
+1. **Install TAP-Windows**, which came with your Azure Sphere software development kit (SDK). 
 
 2. In the installation options, choose TAP Virtual Ethernet Adapter and TAP Utilities, but not TAP SDK.
 
-3. Download the tap-windows-9.21.2.exe file from below link and Click on install tap-windows-9.21.2.exe 
+3. **Download** the **tap-windows-9.21.2.exe** file from below link and **Click** on **install tap-windows-9.21.2.exe**. 
 
 **url: https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/43.png)
 
-4. Click on Next.
+4. Click on **Next**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/44.png)
 
-5. Click I Agree.
+5. Click **I Agree**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/45.png)
 
-6. Choose TAP Virtual Ethernet Adapter and TAP Utilities, but not TAP SDK and click Next.
+6. Choose TAP Virtual Ethernet Adapter and TAP Utilities, but not TAP SDK and click **Next**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/46.png)
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/47.png)
 
-7.	If you are asked to authorize installation of the driver, select Install.
+7.	If you are asked to authorize installation of the driver, select **Install**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/48.png)
 
@@ -668,27 +668,27 @@ To install TAP and enable SLIP Communication
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/50.png)
 
-3.	And click to open the View Network Connections. Find the TAP-Windows Adapter V9.
+3.	And **click to open** the View Network Connections. Find the TAP-Windows Adapter V9.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/51.png)
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/52.png)
 
-4.	Select TAP-Windows Adapter v9 and rename it to sl0 (lower case S, lower case L, the number zero):
+4.	Select **TAP-Windows Adapter v9** and **rename** it to **sl0** (lower case S, lower case L, the number zero):
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/53.png)
 
-5.	Open Properties for sl0 and disable all services except Internet Protocol Version 4 (TCP/IPv4):
+5.	**Open Properties** for sl0 and disable all services except Internet Protocol Version 4 (TCP/IPv4):
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/54.png)
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/55.png)
 
-6.	Select Properties for TCP/IPv4 and configure it to use the IP address 192.168.35.1, subnet mask 255.255.255.0 and click OK.
+6.	Select Properties for TCP/IPv4 and configure it to use the **IP address 192.168.35.1**, **subnet mask 255.255.255.0** and **click OK**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/56.png)
 
-7.	Now you can see the sl0 is enabled.
+7.	Now you can see the **sl0** is **enabled**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/57.png)
 
@@ -714,13 +714,13 @@ Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere softwar
 
 #### 9.3.1 To install the Visual Studio Tools Preview for Azure Sphere
 
-1. Download VS_Tools_Preview_for_Azure_Sphere.exe from below link and run it.
+1. **Download VS_Tools_Preview_for_Azure_Sphere.exe** from below link and **run** it.
 
 **Url: : https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/58.png)
 
-2. To install the developer tools. Agree to the license terms and select Install.
+2. To install the developer tools. **Agree** to the license terms and **select Install**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/59.png)
 
@@ -730,7 +730,7 @@ Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere softwar
 
 4. In the VSIX Installer window, confirm the Visual Studio version(s) for which to install the tools.
 
-5. Accept the elevation prompt.
+5. **Accept** the **elevation prompt**.
 
 6. After installation starts, find the VSIX Installer window and bring it to the front. The installation process displays two installation windows: The Visual Studio Tools Preview for Azure Sphere window and the VSIX Installer window. The former reports progress and errors from the overall installation, and the latter reports information about the Visual Studio extension only. If the VSIX window becomes obscured during installation, you might not see error reports or requests for action.
 
@@ -746,7 +746,7 @@ Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere softwar
 
 #### 9.4.1 To Check the Software Version on your Device
 
-1. Open an Azure Sphere Developer Command Prompt. To find the Azure Sphere Developer Command Prompt, click the Start button and type Azure Sphere. 
+1. Open an **Azure Sphere Developer** Command Prompt. To find the Azure Sphere Developer Command Prompt, **click** the **Start** button and type Azure Sphere. 
 
 2. Issue the following command: 
 
@@ -776,7 +776,7 @@ Refer the cutil login command in the Command-line Utilities  for more informatio
 
 2. Open an Azure Sphere Developer Command Prompt. To find the Azure Sphere Developer Command Prompt, click the Start button and type Azure Sphere.
 
-3. Run the cutil cloud utility with the device command as follows:
+3. **Run** the **cutil cloud utility** with the device command as follows:
 
 **cutil device claim --attached**
 
@@ -802,11 +802,11 @@ You must configure the device for Wi-Fi before it can communicate with the Azure
 
 1.	If your device is not connected to your PC, connect it now.
 
-2.	Open an Azure Sphere Developer Command Prompt and issue a command in the following form:
+2.	**Open** an **Azure Sphere Developer Command Prompt** and issue a command in the following form:
 
 **dutil wifi add –s SYSG-SEEC3 -k XXXXXXXXX**
 
-3.	The -s flag specifies the network SSID, and the -k flag specifies the WPA2 key. Network SSIDs are case-sensitive and can include only ASCII characters. To add an open Wi-Fi access point, omit the -k flag.
+3.	The **-s flag** specifies the network SSID, and the **-k flag** specifies the WPA2 key. Network SSIDs are case-sensitive and can include only ASCII characters. To add an open Wi-Fi access point, omit the -k flag.
 
 4.	You should see:
 
@@ -830,15 +830,15 @@ Click on open **Mt3620AzureIoTHub4.sln** in your local system.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/66.png)
 
-In Solution Explorer, right-click References and then select Add Connected Service.
+In Solution Explorer, **right-click References** and then select **Add Connected Service**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/67.png)
 
-It will open Connected Services window, click on find more services.
+It will open Connected Services window, **click** on **find more services**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/68.png)
 
-In the search box search Azure IoT Hub Sample of Device Simulation and click on Download and Install.
+In the search box search **Azure IoT Hub Sample** of Device Simulation and **click on Download and Install**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/69.png)
 
@@ -846,7 +846,7 @@ Installing connected service for azure IoT hub.
 
 ![alt text](hhttps://github.com/sysgain/whitegoods/raw/master/Images/70.png)
 
-After modification completed, click on Close.
+After modification completed, click on **Close**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/71.png)
 
@@ -862,13 +862,13 @@ Select Azure IoT Hub (Azure Sphere) from the list of connected services.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/75.png)
 
-Log into Microsoft Azure.
+**Log in** to Microsoft Azure.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/76.png)
 
 Enter the user credentials.
 
-Note: You must have a Microsoft Azure subscription. If your organization does not already have them, follow these instructions to set up a free trial subscription to Microsoft Azure. After you set up the subscription. Log into the Azure Portal and follow these instructions to login.
+**Note:** You must have a Microsoft Azure subscription. If your organization does not already have them, follow these instructions to set up a free trial subscription to Microsoft Azure. After you set up the subscription. Log into the Azure Portal and follow these instructions to login.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/77.png)
 
@@ -878,13 +878,13 @@ Note: You must have a Microsoft Azure subscription. If your organization does no
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/80.png)
 
-Select Hardcode shared access key in application's code, and then click Next.
+Select **Hardcode shared access key** in application's code, and then **click Next**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/81.png)
 
 In the list of hubs, select deployed IoT Hub from your resource group.
 
-Here we are selecting IoTHubWGck4qt and click Next.
+Here we are selecting **IoTHubWGck4qt** and **click Next**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/82.png)
 
@@ -892,23 +892,23 @@ If your device does not appear in the list, open the New Device tab. In the Devi
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/83.png)
 
-Copy the device primary connection string and then click finish.
+**Copy** the **device primary connection string** and then **click finish**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/84.png)
 
 ### 9.9 Run the Blink Applications 
 
-In Blink app Solution Explorer, select azure_iot_hub.c in your solution and update the IoT Hub connection string which was copied from above step and save it.
+In Blink app Solution Explorer, select **azure_iot_hub.c** in your solution and update the IoT Hub connection string which was copied from above step and **save** it.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/85.png)
 
-Now open the app_manifest.json file and update the IoT Hub Host name.
+Now **open** the **app_manifest.json** file and update the IoT Hub Host name.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/86.png)
 
 Now you can build the application and use the Azure IoT Hub. In this walkthrough, we will use existing IoT Hub tools to monitor and communicate with your device.
 
-Now click on Remote GDB Debugger and click on Yes to build the Blink App.
+Now **click on Remote GDB Debugger** and click on **Yes** to build the Blink App.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/87.png)
 
