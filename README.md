@@ -107,7 +107,7 @@ Similarly, Device to cloud communication is done, whenever on Azure Sphere Butto
 
 Below is the architecture diagram that shows data flow in between azure components.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/4.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/4.jpg)
 
 ## 3 Azure Services
 
