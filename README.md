@@ -62,6 +62,7 @@
     - [9.9 Run the Blink Applications](#99-run-the-blink-applications)
 - [10 Verify data in IoT Hub Device Twin](#10-verify-data-in-iot-hub-device-twin)
 - [11 Verify Device Management application](#11-verify-device-management-application)
+    - [11.1 Validating Blink App code with Azure Sphere](#121-validating-blin-app-code-with-azure-sphere)
 - [12 Monitoring Components](#12-monitoring-components)
     - [12.1 Application Insights](#121-application-insights)
     - [12.2 OMS Log Analytics](#12.2-oms-log-analytics)
@@ -978,9 +979,7 @@ Under features section of the device, select Blink Rate1 as active.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b1.png)
 
-Azure Sphere device starts blinking.
-
-Blue light blinks at button 1 like below.
+After selecting blink rate1 feature we can see LED light blinking slowly on Azure Sphere device like below.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b2.png)
 
@@ -988,11 +987,11 @@ For video reference on Blink Rate1 go through the below link.
 
 **https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate1.mp4** 
 
-select Blink Rate2 as active.
+Deselect Blink Rate1 and select Blink Rate2 as active.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b3.png)
 
-Blue light blinks at button 2 like below. Blink Rate increases slightly.
+When you select blink rate2 the LED light will blink 2-3 times in a second on Azure Sphere device like below.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b4.png)
 
@@ -1000,11 +999,11 @@ For video reference on Blink Rate2 go through the below link.
 
 **https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate2.mp4** 
 
-Select Blink Rate 3 as active.
-
-Blue light blinks at button 3 like below. Blink Rate increases fast.
+Deselect Blink Rate2 and select Blink Rate 3 as active.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b5.png)
+
+when you select blinkrate3 the LED Light will continuously blink on Azure Sphere device like below.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b6.png)
 
