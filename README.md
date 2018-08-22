@@ -93,21 +93,21 @@ Similarly, Device to cloud communication is done, whenever on Azure Sphere Butto
 
 ### 2.1 Basic Architecture Diagram
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/basic.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/1.png)
 
 ### 2.2	Standard Architecture Diagram
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/standard.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/2.png)
 
 ### 2.3 Premium Architecture Diagram
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/premium.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/3.png)
 
 ### 2.4 Data work Flow Diagram
 
 Below is the architecture diagram that shows data flow in between azure components.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/4.png)
 
 ## 3 Azure Services
 
@@ -170,7 +170,6 @@ Runbooks in Azure Automation are based on Windows PowerShell or Windows PowerShe
 
 Azure run books are used to create collections in Document DB. And will be used to update reply URLs in Active Directory Application.
  
-
 ### 3.10 Cosmos DB  
 
 Azure Cosmos DB is a Microsoft cloud database that supports multiple ways of storing and processing data. As such, it is classified as a multi-model database. In multi-model databases, various database engines are natively supported and accessible via common APIs.
@@ -315,7 +314,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 2. In the left-hand navigation pane, click the Azure Active Directory service, click App registrations, and click New application registration.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/5.png)
 
 3. When the Create page appears, enter your application's registration information:
 
@@ -327,7 +326,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 4. When finished, click Create.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/6.png)
 
 #### 6.1.2 To add application credentials, or permissions to access web APIs
 
@@ -337,15 +336,15 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 3. Click the Keys section on the Settings page.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/7.png)
 
 4. Add a description for your key and Select duration then click Save. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/8.png)
 
 5. The right-most column will contain the key value, after you save the configuration changes. Be sure to copy the key for use in your client application code, as it is not accessible once you leave this page.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/9.png)
 
 #### 6.1.3 To get Tenant ID
 
@@ -355,19 +354,19 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 3. Note down the Copied Directory ID which is highlighted in the below figure, this will be used while deploying the ARM template.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/10.png)
 
 #### 6.1.4 To get application ID and authentication key
 
 1. From App registrations in Azure Active Directory, select your application.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/11.png)
 
 2. Copy the Application ID and object ID. The application ID value is referred as the client ID.
 
 3. Note down the Copied Application ID and object ID which is highlighted in the below figure, this will be used while deploying the ARM template.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/12.png)
 
 #### 6.1.5 Creating session ID
 
@@ -375,13 +374,13 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
     **https://www.guidgenerator.com/**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/13.png)
 
 2. Click Generate some GUIDs! This will generate GUID in Results box. 
 
 3. Copy and Note down the generated GUID which is highlighted in the below figure, this will be used while deploying the ARM template.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/dataflow.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/14.png)
 
 ## 7 ARM Template Input Parameters
 
@@ -425,15 +424,15 @@ Resource manager provides the following feature:
 
 2. Select **main-template.json** from **master** branch as shown in the following figure.
  
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/t1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/15.png)
 
 3. Select **Raw** from the top right corner.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/t2.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/16.png)
 
 4. **Copy** the raw template and **paste** in your azure portal for template deployment.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/t3.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/17.png)
 
 To deploy a template for Azure Resource Manager, follow the below steps.
 
@@ -443,20 +442,20 @@ To deploy a template for Azure Resource Manager, follow the below steps.
 
 3.	Click **Create** button and click **Build your own Template in the editor** as shown in the following figure.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/8.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/18.png)
 
 4.	The **Edit template** page is displayed as shown in the following figure. 
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/9.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/19.png)
 
 5.	**Replace / paste** the template and click **Save** button.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/10.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/20.png)
 
 6.	The **Custom deployment** page is displayed as shown in the following.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b1.png)
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/21.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/22.png)
 
 #### 8.1.1 Inputs
 
@@ -468,7 +467,7 @@ These parameter values enable you to customize the deployment by providing value
 
 Note: For basic solution, it is not necessary to give the values of OMS workspace region, app insights location, so keep the default values as it is.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b2.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/23.png)
 
 **Parameters for Standard Solution:**
 
@@ -476,13 +475,13 @@ Note: For basic solution, it is not necessary to give the values of OMS workspac
 
 Note: For standard solution, select the geo-paired region for your template deployment.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b3.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/24.png)
 
 **Parameters for Premium solution:**
 
 9. If you want to deploy the Premium solution you have to enter the below parameters.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/b5.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/25.png)
 
 10. Once all the parameters are entered, select the **terms and conditions** check box and click **Purchase**.
 
@@ -501,22 +500,22 @@ Note: For standard solution, select the geo-paired region for your template depl
 
 12. Once the solution is deployed successfully navigate to the resource group, select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/17.png)
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/17.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/26.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/27.png)
 
 #### 8.1.2 Outputs
 
 13. Go to **Resource group** -> click **deployments**. 
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/21.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/28.png)
 
 14. Click **Microsoft Template**.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/22.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/29.png)
 
 15. Click **outputs**.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/22.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/30.png)
 
 ### 8.2 ARM Template Deployment Using Azure CLI
 
@@ -534,13 +533,15 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 
 3. It will be showing device login URL and code to authenticate the device login.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c1.png)
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/31.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/32.png)
 
 4. Past the code and click Continue.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c1.png)
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/33.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/34.png)
 
 5. Paste your **main-template.parameters.json** in editor. 
 
@@ -569,9 +570,9 @@ Use the **az group create** command to create a **Resource Group** in your r
 
 Ex: **az group create -n <****> -l <***>** 
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c4.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/35.png)
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c5.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/36.png)
 
 #### 8.2.2 Execute the template deployment 
 
@@ -587,15 +588,17 @@ Use the **az group deployment create** command to deploy the ARM template.
 
 Ex: **az group deployment create --template-file './main-template.json' --parameters '@./main-template.parameters.json' -g oilandgas-iot -n deploy >> outputs.txt** 
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c6.png)
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c6.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/37.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/38.png)
 
 Deployment may take between 15-20 minutes depending on deployment size. 
 
 After successful deployment you can see the deployment outputs as follows.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/39.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/40.png)
 
 ## 9. Post Deployment steps: Getting started with Azure Sphere
 
@@ -615,8 +618,9 @@ The first time you plug in the board, the drivers should be automatically downlo
 
 Click on search Device Manager in Windows Search Box to verify installation, open Device Manager and look for three COM ports:
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/41.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/42.png)
 
 #### 9.1.2 Install the TAP Driver
 
@@ -632,27 +636,27 @@ To install TAP and enable SLIP Communication
 
 **url: https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/43.png)
 
 4. Click on Next.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/44.png)
 
 5. Click I Agree.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/45.png)
 
 6. Choose TAP Virtual Ethernet Adapter and TAP Utilities, but not TAP SDK and click Next.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/46.png)
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/47.png)
 
 7.	If you are asked to authorize installation of the driver, select Install.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/48.png)
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/49.png)
 
 #### 9.1.3 Configure TAP Networking
 
@@ -660,31 +664,31 @@ To install TAP and enable SLIP Communication
 
 2.	In Control Panel, search View Network Connections in the search box.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/50.png)
 
 3.	And click to open the View Network Connections. Find the TAP-Windows Adapter V9.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/51.png)
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/52.png)
 
 4.	Select TAP-Windows Adapter v9 and rename it to sl0 (lower case S, lower case L, the number zero):
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/53.png)
 
 5.	Open Properties for sl0 and disable all services except Internet Protocol Version 4 (TCP/IPv4):
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/54.png)
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/55.png)
 
 6.	Select Properties for TCP/IPv4 and configure it to use the IP address 192.168.35.1, subnet mask 255.255.255.0 and click OK.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/56.png)
 
 7.	Now you can see the sl0 is enabled.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/57.png)
 
 ### 9.2 Install Visual Studio 
 
@@ -712,13 +716,13 @@ Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere softwar
 
 **Url: : https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/58.png)
 
 2. To install the developer tools. Agree to the license terms and select Install.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/59.png)
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/60.png)
 
 3. If you have just installed Visual Studio for the first time, you might see the message, "No product to install SDK on." If this occurs, restart your PC and return to this step.
 
@@ -728,13 +732,13 @@ Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere softwar
 
 6. After installation starts, find the VSIX Installer window and bring it to the front. The installation process displays two installation windows: The Visual Studio Tools Preview for Azure Sphere window and the VSIX Installer window. The former reports progress and errors from the overall installation, and the latter reports information about the Visual Studio extension only. If the VSIX window becomes obscured during installation, you might not see error reports or requests for action.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/61.png)
 
 7.	When setup completes, select Close in both the VSIX Installer window and the Visual Studio Tools Preview for Azure Sphere setup window.
 
 8.	If the installer returns errors, try uninstalling and then reinstalling the tools. To uninstall the tools, use Add and Remove Programs in Control Panel.
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/62.png)
 
 ### 9.4 Update Device Software
 
@@ -748,7 +752,7 @@ Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere softwar
 
 **SDK version: 4.0.0+107652** 
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/63.png)
 
 3.	The number that follows the + should be 107652 or greater. If you see a smaller number, you must update the software by following the instructions in this document. 
 
@@ -786,7 +790,7 @@ Use the following command to add your device to the group:
 
 **Cutil device setdg –attached –devicegroupid  63bbe6ea-14be-4d1a-a6e7-03591d882b42**
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/64.png)
 
 ### 9.7 Configure Wi-Fi
 
@@ -804,7 +808,7 @@ You must configure the device for Wi-Fi before it can communicate with the Azure
 
 4.	You should see:
 
-![alt text](https://github.com/sysgain/Oil-Gas/raw/master/images/c7.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/65.png)
 
 ### 9.8 Connect to IoT Hub
 
@@ -820,8 +824,101 @@ To use an IoT Hub in an Azure Sphere application, you identify the IoT Hub that 
 
 Download **Mt3620AzureIoTHub4.zip** and extract it.
 
-Click on open Mt3620AzureIoTHub4.sln in your local system.
+Click on open **Mt3620AzureIoTHub4.sln** in your local system.
 
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/66.png)
+
+In Solution Explorer, right-click References and then select Add Connected Service.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/67.png)
+
+It will open Connected Services window, click on find more services.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/68.png)
+
+In the search box search Azure IoT Hub Sample of Device Simulation and click on Download and Install.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/69.png)
+
+Installing connected service for azure IoT hub.
+
+![alt text](hhttps://github.com/sysgain/whitegoods/raw/master/Images/70.png)
+
+After modification completed, click on Close.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/71.png)
+
+Once the Azure IoT Hub Sample of Device Simulation complete close and re-open the visual studio for existing solution. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/72.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/73.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/74.png)
+
+Select Azure IoT Hub (Azure Sphere) from the list of connected services.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/75.png)
+
+Log into Microsoft Azure.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/76.png)
+
+Enter the user credentials.
+
+Note: You must have a Microsoft Azure subscription. If your organization does not already have them, follow these instructions to set up a free trial subscription to Microsoft Azure. After you set up the subscription. Log into the Azure Portal and follow these instructions to login.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/77.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/78.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/79.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/80.png)
+
+Select Hardcode shared access key in application's code, and then click Next.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/81.png)
+
+In the list of hubs, select deployed IoT Hub from your resource group.
+
+Here we are selecting IoTHubWGck4qt and click Next.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/82.png)
+
+If your device does not appear in the list, open the New Device tab. In the Device ID field, type a string that you will use to identify your device in the IoT Hub, and click Create. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/83.png)
+
+Copy the device primary connection string and then click finish.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/84.png)
+
+### 9.9 Run the Blink Applications 
+
+In Blink app Solution Explorer, select azure_iot_hub.c in your solution and update the IoT Hub connection string which was copied from above step and save it.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/85.png)
+
+Now open the app_manifest.json file and update the IoT Hub Host name.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/86.png)
+
+Now you can build the application and use the Azure IoT Hub. In this walkthrough, we will use existing IoT Hub tools to monitor and communicate with your device.
+
+Now click on Remote GDB Debugger and click on Yes to build the Blink App.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/87.png)
+
+The output in the below screen shot shows that the build has been completed successfully and the Wi-Fi has been connected.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/88.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/89.png)
+
+Once the application is running the output also shows the IoT Hub connected Status and Report Status of the device as below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/90.png)
 
 ## 10 Verify data in IoT Hub Device Twin
 
