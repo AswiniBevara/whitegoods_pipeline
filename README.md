@@ -822,3 +822,475 @@ Download **Mt3620AzureIoTHub4.zip** and extract it.
 
 Click on open Mt3620AzureIoTHub4.sln in your local system.
 
+
+## 10 Verify data in IoT Hub Device Twin
+
+Go to **Resource Group** -> Click on **IoT Hub**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/100.png)
+
+Click on **IoT devices** in left side menu and click **vivektest1**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/101.png)
+
+Here you can see the **Device Details** page. Click on **Device Twin**
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/102.png)
+
+Here you can see the **device twin** data.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/103.png)
+
+## 11 Verify Device Management application 
+
+Go to **Resource Group** -> click **Device Management**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/104.png)
+
+After running the blink App the connected Status of the device will get reflected in the device management web app.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/105.png)
+
+Click on **connected**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/106.png)
+
+The features of the blink app show disabled. Similarly the same status can be seen by Clicking on **View JSON**. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/107.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/108.png)
+
+Click on **Activate** button on any of the blink app feature like **blinkrate1**. Once it is activated the same will be reflected in IoT Hub’s device twin.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/109.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/110.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/111.png)
+
+After selecting blink rate1 feature we can see LED light blink slowly on Azure Sphere device and similarly if you select blink rate2 the LED light will blink 2-3 times in a second on Azure Sphere device.
+
+The LED Light will continuously blink if you select blinkrate3.
+
+Similarly, if you select blinkrate2 or blinkrate3 features of blink app appropriate features will get reflected in IoT Hub’s device twin.
+
+## 12 Monitoring Components
+
+### 12.1 Application Insights
+
+Go to **Azure Portal**, select your **Resource Group** and select **Application Insights** as shown below. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/112.png)
+
+On **Overview** page, Summary details are displayed as shown in the following figure.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/113.png)
+
+Click on **Live Metric Stream**, which is available at left side menu to check the live requests of **Device Management Application**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/114.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/115.png)
+
+Go back to the **Application Insights Overview** page in **Azure Portal** to view metrics of the application.
+
+Then click **Metrics Explorer** on the left side of the page as shown below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/116.png)
+
+Click **Edit** as shown in the following figure.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/117.png)
+
+You can select any of the listed **Metrics** to view application logs.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/118.png)
+
+If you want to **add new chart** click Add new chart as shown in the following figure and click **Edit** to add the specific metrics.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/119.png)
+
+Go back to **Application Insights**, in the **Overview** page click **Analytics** icon in the **Health** section as shown in the following figure.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/120.png)
+
+The **Application Insights** page is displayed and double click on **requests**. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/121.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/122.png)
+
+You can click **run** to see the specific requests of application as below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/123.png)
+
+Now click on **chart** then click **Yes** to see the graph.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/124.png)
+
+After click on chart you can see the **requests graph** like below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/125.png)
+
+Now do the same process for checking graph for custom metrics.
+
+Double click on **custom metrics**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/126.png)
+
+You can click **run** to see the specific custom metrics of application as below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/127.png)
+
+Now click on **chart** then click **Yes** to see the graph. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/128.png)
+
+Similarly, you can run the other common Pre-defined queries by navigating back to the **Home Page**.
+
+### 12.2 OMS Log Analytics
+
+Open **Azure Portal** -> **Resource Group** -> Click the **OMS Workspace** in resource group to view **OMS Overview** Section. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/129.png)
+
+Click **Azure Resources** on left side menu to view available Azure Resources. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/130.png)
+
+Select your **Resource Group** name from the dropdown list.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/131.png)
+
+Access OMS portal from OMS Workspace from the left side menu. Click on **OMS Workspace** > **OMS Portal**. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/132.png)
+
+Once you click **OMS Workspace**, OMS Home Page is displayed. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/133.png)
+
+Click Search tab to search the IoT hub, Stream Analytics, Cosmos DB. 
+
+Click **Show legacy language converter**. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/134.png)
+
+Copy **IoT Hub** resource name, paste it in the **Converter** box and click **RUN**. 
+
+The IoT Hub information is displayed below the page as shown in the following figure. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/135.png)
+
+Copy **Cusmos DB** resource name, paste it in the **Converter** box and click **RUN**. 
+
+The cosmos db information is displayed in the below page as shown in the following figure. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/136.png)
+
+For **Stream Analytics logs**, first you need to enable the **Diagnostics logs**. 
+
+Go to **Azure Portal**, click **STREAM ANALYTICS JOB** as shown below. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/137.png)
+
+Click **Diagnostics logs** on the left pane and select **Add diagnostics setting** as shown in the following figure.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/138.png)
+
+In the **Diagnostics settings** page, enter the name in the **Name** field. 
+
+Select **Send to Log Analytics** checkbox. 
+
+Select the **Execution** and **Authoring** checkboxes under the **LOG** section. 
+
+Select **Allmetrics** checkbox under the **METRIC** section. 
+
+Select your workspace from the **OMS Workspaces** page as shown in the following figure.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/139.png)
+
+Click **Save**. 
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/140.png)
+
+Go to **OMS Portal** and Click Search tab for **Stream Analytics logs**.
+
+Copy **Stream Analytics Job** resource name, paste it in the **Converter** box and click **RUN**. 
+
+The Stream Analytics Job information is displayed below the page as shown in the following figure.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/141.png) 
+
+## 13 Performing DR Strategies
+
+### 13.1 Standard Solution Type
+
+In this scenario, there is again a primary and a secondary Azure region. All the traffic goes to the active deployment on the primary region. The secondary region is better prepared for disaster recovery because the database is running on both regions. 
+
+Only the primary region has a deployed cloud service application. Both regions are synchronized with the contents of the database. When a disaster occurs, there are fewer activation requirements. You redeploy azure resources in the secondary region.
+
+Redeployment approach, you should have already stored the service packages. However, you don’t incur most of the overhead that database restore operation requires, because the database is ready and running.  This saves a significant amount of time, making this an affordable DR pattern.
+
+Standard Solution requires redeployment of azure resources in secondary region when there is primary region is down.
+
+When user chooses Standard Solution type below azure resources will be deployed in primary region and SQL in both Regions.
+
+App service
+
+•	Application insights
+•	Automation account
+•	Azure cosmos DB
+•	IoT Hub
+•	Log analytics
+•	Notification Hub
+•	Stream analytics job
+•	Traffic manager profile.
+
+When there is primary region is down, and user needs to redeploy azure resources. When redeployment is completed below resources will be deployed.
+
+•	App service
+•	Application insights
+•	Notification hub
+•	Stream analytics Job
+
+##### 13.1.1 IoT Hub Manual Failover
+
+Go to **Resource Group** -> Click on **IoT Hub**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/142.png)
+
+Go to **Manual Failover (Preview)** from left side menu.
+
+Click on **Initiate failover** to initiate manual failover of IoT Hub.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/143.png)
+
+When failover process started, a pop up will be displayed on right top corner. Once Manual Failover process completed, Primary Location and secondary location will interchange.
+
+**Note**: This process will take around 15 mins. To initial failover again, user needs wait for 1 hour to run failover again.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/144.png)
+
+#### 13.1.2 Stop Stream Analytics Job in Primary Region
+
+Go to **Resource Group** and click on primary **Stream Analytics job**
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/145.png)
+
+Stop the Stream analytics job by click on **Stop** and click on **Yes** for confirmation.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/146.png)
+
+#### 13.1.3 Accessing Traffic manager 
+
+Go to **Resource Group** and click on **Traffic manager** resource.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/147.png)
+
+Now you can see the web app as the endpoint of the traffic manager.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/148.png)
+
+#### 13.1.4 Stopping the Web App
+
+Navigate to the **Web App** from resource group.
+
+click on **Stop** then click on **Yes** to stop the Web App.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/149.png)
+
+The Web App in the primary region has been stopped as failover.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/150.png)
+
+Verify the same in traffic manager.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/151.png)
+
+#### 13.1.5 Redeploy the Region 2 ARM Template
+
+Go to **Github** and select **re-deploy.json** file from the **master** branch.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/152.png)
+
+Click on **Raw**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/153.png)
+
+Take **copy** the Raw.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/154.png)
+
+Click on **Add** in existing resource group and re-deploy the ARM template.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/155.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/156.png)
+
+#### 13.1.6 Configure Region 2 web app to Traffic Manager
+
+Go to **Resource Group** -> **Traffic manager profile** -> **Endpoints**, click on **add**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/157.png)
+
+**Enter** the name for the **second End point** of traffic manager and select the second web app as the target resource.
+
+Click on **Ok**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/158.png)
+
+You can see the second region web app with online status under endpoint of traffic manager and **Copy** the **DNS Name**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/159.png)
+
+#### 13.1.7 Cosmos DB Geo replication
+
+Go to **Resource Group** -> click **Cosmos DB**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/160.png)
+
+Navigate to **Replicate data globally** under Settings section then click **Manual failover**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/161.png)
+
+**Select** the **Read Region** to become the **new write region**, check in the check box and click **ok**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/162.png)
+
+#### 13.1.8 Accessing Web App
+
+Go to **Resource Group** -> **Settings** -> **Deployments**, select **Microsoft Template**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/163.png)
+
+Select **output** and **copy** the **devicemanagement_trafficmanager** url.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/164.png)
+
+**paste** the copied URL in new browser to access the Web App using your credentials.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/165.png)
+
+You can see the **Device summary** as shown below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/166.png)
+
+### 13.2 Premium Solution Type
+
+Both the primary region and the secondary region have a full deployment. This deployment includes the cloud services and a synchronized database. However, only the primary region is actively handling network requests. The secondary region becomes active only when the primary region experiences a service disruption. In that case, all new network requests route to the secondary region. Azure Traffic Manager can manage this failover automatically.
+
+Failover occurs faster than the database-only variation because the services are already deployed. This topology provides a very low RTO. The secondary failover region must be ready to go immediately after failure of the primary region.
+
+For the fastest response time with this model, you must have similar scale (number of role instances) in the primary and secondary regions. 
+
+When user chooses premium as solution type below azure resource will be deployed in both regions.
+
+•	2 app services
+•	2 application insights
+•	1 automation account
+•	1 cosmos DB
+•	1 IoT Hub
+•	1 Log Analytics
+•	2 Notification Hubs
+•	2 Stream analytics job
+•	1 Traffic manager
+
+#### 13.2.1 IoT Hub Manual Failover
+
+Go to **Resource Group** and Click on **IoT Hub**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/167.png)
+
+Go to **Manual Failover(Preview)** from left side menu.
+
+Click on **Initiate failover** to initiate manual failover of IoT Hub.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/168.png)
+
+You can check the status of the failover.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/169.png)
+
+When failover process started, a pop up will be displayed on right top corner. Once Manual Failover process completed, Primary Location and secondary location will interchange.
+
+**Note**: This process will take around 15 mins. To initial failover again, user needs wait for 1 hour to run failover again.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/170.png)
+
+#### 13.2.2 Stop Stream Analytics Job in Primary Region
+
+Go to **Resource Group** and click on primary **Stream Analytics job**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/171.png)
+
+Stop the Stream analytics job by click on **Stop** and click on **Yes** for confirmation.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/172.png)
+
+You can see the stream analytics job has been stopped.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/173.png)
+
+#### 13.2.3 Accessing the Traffic manager 
+
+Go to **Resource Group** and click on **Traffic manager** resource.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/174.png)
+
+Now you can see the web app as the endpoint of the traffic manager.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/175.png)
+
+#### 13.2.4 Stopping the Web App
+
+Navigate to the **Web App** from the resource group.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/176.png)
+
+Select the **primary Web App** click on **Stop** then click on **Yes** to stop the Web App.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/177.png)
+
+The Web App in the primary region has been stopped as failover.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/178.png)
+
+Verify the Status of primary web app in traffic manager.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/179.png)
+
+#### 13.2.5 Cosmos DB Geo replication
+
+Go to **Resource Group** -> click **Cosmos DB**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/180.png)
+
+Navigate to **Replicate data globally** under Settings section then click **Manual failover**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/181.png)
+
+**Select** the **Read Region** to become the **new write region**, check in the check box and click **ok**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/182.png)
+
+#### 13.2.6 Accessing Web App
+
+Go to **Resource Group** -> **Settings** -> **Deployments**, select **Microsoft Template**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/183.png)
+
+Select **output** and **copy** the **devicemanagement_trafficmanager** url.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/184.png)
+
+**paste** the copied URL in new browser to access the Web App using your credentials.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/185.png)
+
+You can see the **Device summary** as shown below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/186.png)
+
+
