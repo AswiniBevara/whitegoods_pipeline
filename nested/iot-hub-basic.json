@@ -150,19 +150,6 @@
                     }
                 }
             ]
-        },
-        {
-            "name": "[concat(parameters('iotHubSettings').iotHubName, '/events/',parameters('iotHubSettings').d2cConsumerGroupName,copyIndex(1))]",
-            "apiVersion": "2016-02-03",
-            "type": "Microsoft.Devices/iotHubs/eventhubEndpoints/ConsumerGroups",
-            "dependsOn": [
-                "[concat('Microsoft.Devices/iothubs/', parameters('iotHubSettings').iotHubName)]"
-            ],
-            "copy": {
-                "name": "consumergroupcopy",
-                "mode": "Serial",
-                "count": 1
-            }
         }
     ],
     "outputs": {
