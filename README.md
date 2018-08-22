@@ -467,7 +467,7 @@ These parameter values enable you to customize the deployment by providing value
 
 Note: For basic solution, it is not necessary to give the values of OMS workspace region, app insights location, so keep the default values as it is.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/23.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/23.jpg)
 
 **Parameters for Standard Solution:**
 
