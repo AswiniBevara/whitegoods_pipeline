@@ -153,7 +153,7 @@
             "d2cConsumerGroupName": "consumergrp_"
         },
         "documentDbSettings": {
-             "location": "[parameters('geo-paired-region')]",
+            "location": "[parameters('geo-paired-region')]",
             "cosmosDbAccountName": "[concat('cosmosdb',variables('suffix'))]",
             "cosmosDbName": "MSIoT",
             "databaseAccountOfferType": "Standard",
@@ -187,7 +187,7 @@
             "moduleName1": "AzureADPreview",
             "cosmosdbModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/cosmos.zip",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZkURhmmDG2PXK-UEyel67zAFM6aXks5bhi8BwA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZt74We4HFn7lK6v-dDalU_ULh80fks5bhkINwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -275,7 +275,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-basic.json?token=AT3nZliB3u5nzjfnrFjFU_SQVGHSksmXks5bhjgHwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-basic.json?token=AT3nZtcKEPtH76IhIo-eSiogbfBwFZGPks5bhkG9wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -299,7 +299,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZpiFtQ6MivNNtCaVaPbSnQe_D1N8ks5bhOphwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZsAcKaDOUYtzpZKx8WOWalP0F37pks5bhkHlwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -465,7 +465,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZjer09XjRtBAUmoGpIsGkYzLPgBaks5bhUM0wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZicKGZIhfHkcomFMXCuvL25YSEGyks5bhkGFwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -492,7 +492,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZjer09XjRtBAUmoGpIsGkYzLPgBaks5bhUM0wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZicKGZIhfHkcomFMXCuvL25YSEGyks5bhkGFwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -519,7 +519,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZjer09XjRtBAUmoGpIsGkYzLPgBaks5bhUM0wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/automation-account.json?token=AT3nZicKGZIhfHkcomFMXCuvL25YSEGyks5bhkGFwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
