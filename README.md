@@ -194,16 +194,16 @@ Application Insights is an extensible Application Performance Management (APM) s
 
 Application Insights monitor below:
 
-•	Request rates, response times, and failure rates
-•	Dependency rates, response times, and failure rates
-•	Exceptions 
-•	Page views and load performance
-•	AJAX calls
-•	User and session counts
-•	Performance counters
-•	Host diagnostics from Docker or Azure
-•	Diagnostic trace logs
-•	Custom events and metrics
+* Request rates, response times, and failure rates
+* Dependency rates, response times, and failure rates
+* Exceptions 
+* Page views and load performance
+* AJAX calls
+* User and session counts
+* Performance counters
+* Host diagnostics from Docker or Azure
+* Diagnostic trace logs
+* Custom events and metrics
 
 ## 4 Solution Deployment Type & Cost
 
@@ -489,16 +489,16 @@ These parameter values enable you to customize the deployment by providing value
 
 11. After the successful deployment of the ARM template, the following **resources** are created in a **Resource Group**.
 
-•	4 app services
-•	1 application Insights
-•	1 automation account
-•	1 run book
-•	1 azure cosmos DB
-•	1 IoT Hub
-•	1 log analytics
-•	1 Notification Hub
-•	1 Stream analytics job
-•	Traffic manager
+* 4 app services
+* 1 application Insights
+* 1 automation account
+* 1 run book
+* 1 azure cosmos DB
+* 1 IoT Hub
+* 1 log analytics
+* 1 Notification Hub
+* 1 Stream analytics job
+* Traffic manager
 
 12. Once the solution is deployed successfully navigate to the **resource group**, select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
 
@@ -608,9 +608,9 @@ After successful deployment you can see the deployment outputs as follows.
 
 To connect to a reference development board (RDB), your development machine requires the following: 
 
-•	Windows 10 Anniversary Update or later 
-•	Support for the Visual Studio 2017 System Requirements 
-•	A USB Port
+* Windows 10 Anniversary Update or later 
+* Support for the Visual Studio 2017 System Requirements 
+* A USB Port
 
 #### 9.1.1 Connect the RDB
 
@@ -704,11 +704,11 @@ To install Visual Studio, click Download Visual Studio, select the edition to in
 
 The Visual Studio Tools Preview for Azure Sphere includes: 
 
-•	A custom Azure Sphere Developer Command Prompt, which is available in the Start menu under Azure Sphere 
-•	The GDB debugger for use with the Azure Sphere development board 
-•	Device, cloud, and image utilities 
-•	Libraries for application development 
-•	Visual Studio extensions to support Azure Sphere development 
+* A custom Azure Sphere Developer Command Prompt, which is available in the Start menu under Azure Sphere 
+* The GDB debugger for use with the Azure Sphere development board 
+* Device, cloud, and image utilities 
+* Libraries for application development 
+* Visual Studio extensions to support Azure Sphere development 
 
 Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere software development kit (SDK).
 
@@ -736,9 +736,9 @@ Azure_Sphere_VS_Dev_Tools_Preview.exe installs the complete Azure Sphere softwar
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/61.png)
 
-7.	When setup completes, select Close in both the VSIX Installer window and the Visual Studio Tools Preview for Azure Sphere setup window.
+7. When setup completes, select **Close** in both the VSIX Installer window and the Visual Studio Tools Preview for Azure Sphere setup window.
 
-8.	If the installer returns errors, try uninstalling and then reinstalling the tools. To uninstall the tools, use Add and Remove Programs in Control Panel.
+8. If the installer returns errors, try uninstalling and then reinstalling the tools. To uninstall the tools, use **Add and Remove Programs in Control Panel**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/62.png)
 
