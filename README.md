@@ -968,11 +968,49 @@ Click on **Activate** button on any of the blink app feature like **blinkrate1**
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/111.png)
 
-After selecting blink rate1 feature we can see LED light blink slowly on Azure Sphere device and similarly if you select blink rate2 the LED light will blink 2-3 times in a second on Azure Sphere device.
+### 11.1 Validating Blink App code with Azure Sphere
 
-The LED Light will continuously blink if you select blinkrate3.
+Make sure Blink App code is dumped in to the Azure Sphere device.
 
-Similarly, if you select blinkrate2 or blinkrate3 features of blink app appropriate features will get reflected in IoT Hub’s device twin.
+To validate the blink rate, go to **resource group** -> go to **device management web app**. Select the device to which Azure Sphere Device is associated.
+
+Under features section of the device, select Blink Rate1 as active.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b1.png)
+
+Azure Sphere device starts blinking.
+
+Blue light blinks at button 1 like below.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b2.png)
+
+For video reference on Blink Rate1 go through the below link.
+
+**https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate1.mp4** 
+
+select Blink Rate2 as active.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b3.png)
+
+Blue light blinks at button 2 like below. Blink Rate increases slightly.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b4.png)
+
+For video reference on Blink Rate2 go through the below link.
+
+**https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate2.mp4** 
+
+Select Blink Rate 3 as active.
+
+Blue light blinks at button 3 like below. Blink Rate increases fast.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b5.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b6.png)
+
+For video reference on Blink Rate3 go through the below link.
+
+**https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate3.mp4**
 
 ## 12 Monitoring Components
 
@@ -1391,5 +1429,3 @@ Select **output** and **copy** the **devicemanagement_trafficmanager** url.
 You can see the **Device summary** as shown below.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/186.png)
-
-
