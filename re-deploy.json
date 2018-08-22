@@ -106,7 +106,7 @@
         },
         "streamAnalytics": {
             "locationDr": "[variables('locationDr')]",
-            "streamAnalyticsjobnameDr": "[concat('StreamAnalyticsDr', variables('suffix'))]",
+            "streamAnalyticsjobnameDr": "[concat('RecoveryStreamAnalytics', variables('suffix'))]",
             "sku": "Standard",
             "suiteType": "RemoteMonitoring",
             "telemetryCGName": "telemetrycg"
@@ -154,7 +154,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AT3nZoGYSDDHHYAlUUYXfmgME5fcCj8wks5bf7SewA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AT3nZsag5EJEk9zIO0C7J239hZoqm9HYks5bf7LowA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -172,7 +172,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AT3nZltSZKA6cHKhrQXH85SwokQFXfStks5bf7SzwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AT3nZq9gne0Wk0VbqGF1uvdTm_7vl2S3ks5bf7MtwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -201,7 +201,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZgJinKnTs-UGATnkjFyLOHUqqR2hks5bf7TEwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/appcomponents-r2.json?token=AT3nZjpLxcnC90znLkOg0fOUjVZiGloNks5bf7HjwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -237,7 +237,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights-r2.json?token=AT3nZhGR-ZVD8InUygolR-u_FcxrjUXCks5bf7TYwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-insights-r2.json?token=AT3nZtLx2BTMRpYkdgeqy9kZ9Kc49Cyfks5bf7GnwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -264,10 +264,6 @@
         "iothubHostName": {
             "type": "string",
             "value": "[concat(variables('iotHubSettings').iotHubName,'.azure-devices.net')]"
-        },
-        "omsWorkspaceURI": {
-            "type": "string",
-            "value": "[concat('https://',variables('omsSettings').omsWorkspaceName,'.portal.mms.microsoft.com')]"
         }
     }
 }

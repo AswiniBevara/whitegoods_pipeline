@@ -299,7 +299,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZk8ppdV7IZu_OKAPPALFc3GekCJkks5bf7KnwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AT3nZikgA0jiiSX2m6croJDG0__Yen4Lks5bhksOwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -852,10 +852,6 @@
         "iothubHostName": {
             "type": "string",
             "value": "[concat(variables('iotHubSettings').iotHubName,'.azure-devices.net')]"
-        },
-        "omsWorkspaceURI": {
-            "type": "string",
-            "value": "[concat('https://',variables('omsSettings').omsWorkspaceName,'.portal.mms.microsoft.com')]"
         }
     }
 }
