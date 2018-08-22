@@ -188,7 +188,7 @@
             "moduleName1": "AzureADPreview",
             "cosmosdbModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/cosmos.zip",
             "azureAdPreviewModuleUri": "https://projectiot.blob.core.windows.net/whitegoods/AzureADPreview.zip",
-            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZjzRz5_vxj2lOQZtmCzAu_fsUVaxks5bhVaewA%3D%3D')]",
+            "runbookUri": "[concat(variables('baseUrl'),'scripts/initializecosmosdb.ps1?token=AT3nZkURhmmDG2PXK-UEyel67zAFM6aXks5bhi8BwA%3D%3D')]",
             "sessionId": "[parameters('sessionId')]",
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
@@ -216,7 +216,7 @@
             "tenantId": "[parameters('tenantId')]",
             "clientId": "[parameters('clientId')]",
             "clientSecret": "[parameters('clientSecret')]",
-            "deviceManagementPortalPackageuriWm": "https://projectiot.blob.core.windows.net/whitegoods/DeviceManagement.zip",
+            "deviceManagementPortalPackageuriWm": "https://projectiot.blob.core.windows.net/whitegoods/appinsights/DeviceManagementAI0822.zip",
             "webAppHostingPlanName": "[concat('AppPlanWG', variables('suffix'))]",
             "webAppHostingPlanNameDr": "[concat('AppPlanWGDr', variables('suffix'))]",
             "webAppSkuName1": "B1",
@@ -671,7 +671,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZgTKzpvkVeeY0saukJYBtN18yeCQks5bhTN7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/app-components.json?token=AT3nZjVVuPQakCU_Gvq4LGyw-x3KvJX0ks5bhZOUwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -689,9 +689,6 @@
                     },
                     "omsSettings": {
                         "value": "[variables('omsSettings')]"
-                    },
-                    "appInsights": {
-                        "value": "[variables('appInsights')]"
                     }
                 }
             }

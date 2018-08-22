@@ -16,6 +16,9 @@
         },
         "omsSettings": {
             "type": "object"
+        },
+        "appInsights": {
+            "type": "object"
         }
     },
     "variables": {},
@@ -99,6 +102,7 @@
                         "[concat('Microsoft.Web/Sites/', parameters('webSiteSettings').deviceManagementPortalWebSiteName, '/Extensions/MSDeploy')]"
                     ],
                     "properties": {
+                        "ApplicationInsights:InstrumentationKey": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsights').appInsightResourceNameDr), '2014-04-01').InstrumentationKey]",
                         "AzureAd:ClientId": "[parameters('webSiteSettings').clientId]",
                         "AzureAd:ClientSecret": "[parameters('webSiteSettings').clientSecret]",
                         "AzureAd:TenantId": "[parameters('webSiteSettings').tenantId]",
