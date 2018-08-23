@@ -276,7 +276,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-basic.json?token=AT3nZtcKEPtH76IhIo-eSiogbfBwFZGPks5bhkG9wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-basic.json?token=AT3nZji5b-fiosHz7c4k0FGRvykCdSyMks5bh7YLwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
