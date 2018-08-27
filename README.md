@@ -233,7 +233,7 @@ Each Azure region is paired with another region within the same geography, toget
 
 To deploy the Basic , Standard or Premium Solution please refer below **Deployment Guide Documentation** URL.
 
-**https://github.com/sysgain/whitegoods/blob/master/Documentation/DeploymentGuide.md#441-to-check-the-software-version-on-your-device**
+**https://github.com/sysgain/whitegoods/blob/master/Documentation/DeploymentGuide.md**
 
 ## 7 User Guide for the Solution
 
