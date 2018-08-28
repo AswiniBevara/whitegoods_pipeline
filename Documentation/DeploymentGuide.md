@@ -372,7 +372,7 @@ To install TAP and enable SLIP Communication
 
 **url: https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/43.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/t1.png)
 
 4. Click **Next**.
 
@@ -400,7 +400,7 @@ To install TAP and enable SLIP Communication
 
 2.	Go to **Control Panel**, search **View Network Connections** in the search box.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/50.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/t2.png)
 
 3. Click to open the **View Network Connections**.
 
