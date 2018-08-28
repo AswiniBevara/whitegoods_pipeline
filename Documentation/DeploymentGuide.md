@@ -376,7 +376,7 @@ To install TAP and enable SLIP Communication
 
 4. Click **Next**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/44.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p3.png)
 
 5. Click **I Agree**.
 
