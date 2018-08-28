@@ -404,7 +404,7 @@ To install TAP and enable SLIP Communication
 
 3. Click to open the **View Network Connections**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/51.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p4.png)
 
 4. Find the TAP-Windows Adapter V9.
 
