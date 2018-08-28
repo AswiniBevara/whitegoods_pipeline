@@ -237,7 +237,9 @@ To deploy the Basic , Standard or Premium Solution please refer below **Deployme
 
 ## 7 User Guide for the Solution
 
-For Running Blink Application and verifying the Device Management Web application, please refer **User Guide Documentation**.
+For Running Blink Application and verifying the Device Management Web application, please refer below **User Guide Documentation** URL.
+
+**https://github.com/sysgain/whitegoods/blob/master/Documentation/UserGuide.md**
 
 ## 8 Administrator Guide for the Solution
 
