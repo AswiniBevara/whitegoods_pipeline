@@ -14,13 +14,31 @@
 
 Once the solution is deployed successfully, navigate to the resource group and select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
 
-Go to Resource Group -> Click on the deployed App Service.
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u1.png)
 
-Now you can see the app service overview page, copy the URL and browse it in new web browser.
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u2.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u3.png)
+
+Go to **Resource Group** -> Click on the deployed **App Service**.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u4.png)
+
+Now you can see the app service **overview** page, copy the **URL** and browse it in new web browser.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u5.png)
 
 To access the Device Management portal, login with your credentials.
 
-Now you can view the Device Management Portal Dashboard.
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u6.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u7.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u8.png)
+
+Now you can view the **Device Management Portal** Dashboard.
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u9.png)
 
 ## 2 Connect to IoT Hub
 
