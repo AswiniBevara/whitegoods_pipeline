@@ -573,23 +573,23 @@ In Solution Explorer, **right-click References** and then select **Add Connected
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/67.png)
 
-It will open Connected Services window, **click** on **find more services**.
+After the Connected Services window appears, **click** on **find more services**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/68.png)
 
-In the search box search **Azure IoT Hub Sample** of Device Simulation and **click on Download and Install**.
+In the search box at right side menu, search for **Azure IoT Hub Sample of Device Simulation** and click on **Download** and **Install**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/69.png)
 
-Installing connected service for azure IoT hub.
+Close the Visual Studio to start the Installation of **Azure IoT Hub sample of Device Simulation**.
 
-![alt text](hhttps://github.com/sysgain/whitegoods/raw/master/Images/70.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/70.png)
 
-After modification completed, click on **Close**.
+After you see the below screen with **Modifications Complete**, click on **Close**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/71.png)
 
-Once the Azure IoT Hub Sample of Device Simulation complete close and re-open the visual studio for existing solution. 
+Re-open the Visual Studio and open the Blink application downloaded earlier. 
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/72.png)
 
@@ -597,7 +597,7 @@ Once the Azure IoT Hub Sample of Device Simulation complete close and re-open th
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/74.png)
 
-Select Azure IoT Hub (Azure Sphere) from the list of connected services.
+Select **Azure IoT Hub (Azure Sphere)** from the list of **connected services**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/75.png)
 
@@ -623,15 +623,14 @@ Select **Hardcode shared access key** in application's code, and then **click Ne
 
 In the list of hubs, select deployed IoT Hub from your resource group.
 
-Here we are selecting **IoTHubWGck4qt** and **click Next**.
+click **Next**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/82.png)
 
-If your device does not appear in the list, open the New Device tab. In the Device ID field, type a string that you will use to identify your device in the IoT Hub, and click Create. 
+Open the **New Device tab**, in the Device ID field type device name that need to be created and click on **Create**. 
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/83.png)
 
-**Copy** the **device primary connection string** and then **click finish**.
+**Copy** the **device primary connection string**, which we will use later while running the Blink Application and click on **cancel**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/84.png)
-
