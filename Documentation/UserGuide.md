@@ -72,7 +72,7 @@ In the search box at right side menu, search for **Azure IoT Hub Sample of Devic
 
 Close the Visual Studio to start the Installation of **Azure IoT Hub sample of Device Simulation**.
 
-![alt text](hhttps://github.com/sysgain/whitegoods/raw/master/Images/70.png)
+![alt text](hhttps://github.com/sysgain/whitegoods/raw/master/Images/u10.png)
 
 After you see the below screen with **Modifications Complete**, click on **Close**.
 
