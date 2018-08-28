@@ -408,11 +408,11 @@ To install TAP and enable SLIP Communication
 
 4. Find the TAP-Windows Adapter V9.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/52.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p5.png)
 
 5. Select **TAP-Windows Adapter v9** and rename it to **sl0** (lower case S, lower case L, the number zero):
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/53.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p6.png)
 
 6. **Open Properties** for **sl0** and disable all services except **Internet Protocol Version 4 (TCP/IPv4)**:
 
@@ -426,7 +426,7 @@ To install TAP and enable SLIP Communication
 
 7.	Now you can see the **sl0** is **enabled**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/57.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p7.png)
 
 ### 4.2 Install Visual Studio 
 
