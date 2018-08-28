@@ -45,7 +45,7 @@ Create an application in Azure Active Directory.
 
 Any application that wants to use the capabilities of Azure AD must first be registered in an Azure AD tenant. This registration process involves giving Azure AD details about your application, such as the URL where it’s located, the URL to send replies after a user is authenticated, the URI that identifies the app, and so on.
 
-#### 6.1.1 To register a new application using the Azure portal
+#### 1.1.1 To register a new application using the Azure portal
 
 1. **Sign in** to the **Azure portal**.
 
