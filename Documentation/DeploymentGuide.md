@@ -310,7 +310,7 @@ Use the **az group create** command to create a **Resource Group** in your r
 
 **Description:** To create a resource group, use **az group create** command, It uses the name parameter to specify the name for resource group (-n) and location parameter to specify the location (-l). 
 
-**Syntax**: **az group create -n < resource group name> -l <location >**  
+**Syntax**: **az group create -n < resource group name> -l < location >**  
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/35.png)
 
