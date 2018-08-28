@@ -275,7 +275,7 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 
 3. It shows the device login URL and code to authenticate the device login after running the command.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/31.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/i1.png)
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/32.png)
 
