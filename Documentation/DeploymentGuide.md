@@ -238,24 +238,24 @@ These parameter values enable you to customize the deployment by providing value
 
 The above resources deployed for **Basic Solution**.
 
-Expect IoT Hub, Cosmos DB, OMS Log Analytics, Automation Account and Run Book, the rest of the resources are created additionally along with Traffic manager as disaster recovery for Standard and Premium Solution deployment.
+12. Expect IoT Hub, Cosmos DB, OMS Log Analytics, Automation Account and Run Book, the rest of the resources are created additionally along with Traffic manager as disaster recovery for Standard and Premium Solution deployment.
 
-12. Once the solution is deployed successfully navigate to the **resource group**, select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
+13. Once the solution is deployed successfully navigate to the **resource group**, select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/26.png)
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/27.png)
 
 #### 3.1.2 Outputs
 
-13. Go to **Resource group** -> click **deployments**. 
+14. Go to **Resource group** -> click **deployments**. 
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/28.png)
 
-14. Click **Microsoft Template**.
+15. Click **Microsoft Template**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/29.png)
 
-15. Click **outputs**.
+16. Click **outputs**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/30.png)
 
