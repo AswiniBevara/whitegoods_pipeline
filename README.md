@@ -162,7 +162,7 @@ Below are the Costing details of each deployment type which explains SKU and Cos
 | -------------              | -------------       | --------------------                       | ------------                                                                                                             
 | **App Service Plan**       | Basic Tier; 1 B1 (1 Core(s), 1.75 GB RAM, 10 GB Storage)      | PAYG         | $54.75 
 | **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50    | PAYG  | $25.86 
-| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day                      | PAYG                       | $25.00    
+| **IoT HUB**        | S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day                      | PAYG                       | $25.00    
 | **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US. After finishing 5GB, $2.30 per GB.      | PAYG                          | $2.30  
 | **Azure Automation Account**        | Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.     | PAYG       | $0.00   
 | **Notification Hub**       | Free                          | PAYG                      | $0.00 
@@ -174,9 +174,9 @@ Below are the Costing details of each deployment type which explains SKU and Cos
 
 | **Resource Name**           | **Size**           | **Resource costing model**                 | **Azure Cost/month**                                                                                                                
 | -------------              | -------------       | --------------------                       | ------------                                                                                                             
-| **App Service Plan**       | Standard Tier: S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS     | PAYG         | $146.00  
+| **App Service Plan**       | Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS     | PAYG         | $146.00  
 | **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50   | PAYG  | $25.86
-| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day          | PAYG                       | $25.00    
+| **IoT HUB**        | S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day          | PAYG                       | $25.00    
 | **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US. After finishing 5GB, $2.30 per GB.     | PAYG                          | $2.30   
 | **Azure Automation Account**        | 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.    | PAYG                       | $0.00   
 | **Notification Hub**       | 2*Free                          | PAYG                      | $0.00 
@@ -191,7 +191,7 @@ Below are the Costing details of each deployment type which explains SKU and Cos
 | -------------              | -------------       | --------------------                       | ------------                                                                                                             
 | **App Service Plan**       | Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS      | PAYG         | $146.0  
 | **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50     | PAYG  | $25.86 
-| **IoT HUB**        | Standard Tier : S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day        | PAYG                       | $25.00    
+| **IoT HUB**        | S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day        | PAYG                       | $25.00    
 | **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US. After finishing 5GB, $2.30 per GB.        | PAYG                   | $2.30  
 | **Azure Automation Account**        | 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.     | PAYG        | $0.00   
 | **Notification Hub**       | 2*Free                          | PAYG                      | $0.00 
@@ -243,4 +243,6 @@ For Running Blink Application and verifying the Device Management Web applicatio
 
 ## 8 Administrator Guide for the Solution
 
-To configure and validate the Standard and Premium Solution, please refer the **Administrator Guide**.
+To configure and validate the Standard and Premium Solution, please refer the below **Administrator Guide** URL.
+
+**https://github.com/sysgain/whitegoods/blob/master/Documentation/AdminGuide.md**
