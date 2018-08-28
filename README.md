@@ -53,7 +53,7 @@ The Azure Sphere Solution Accelerator ecosystem enables your company to setup co
 
 Below is the architecture diagram that shows data flow in between azure components.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c4.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c4.png)
 
 ## 3 Azure Services
 
