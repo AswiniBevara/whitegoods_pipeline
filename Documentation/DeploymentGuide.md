@@ -458,9 +458,9 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 2. To install the developer tools. **Agree** to the license terms and **select Install**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/59.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p8.png)
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/60.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p9.png)
 
 3. If you have just installed Visual Studio for the first time, you might see the message, "No product to install SDK on." If this occurs, restart your PC and return to this step.
 
