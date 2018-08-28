@@ -100,7 +100,7 @@ Enter the user credentials.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/77.png)
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p11.png)
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/79.png)
 
