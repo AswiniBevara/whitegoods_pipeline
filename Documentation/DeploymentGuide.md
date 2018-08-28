@@ -190,8 +190,8 @@ To deploy a template for Azure Resource Manager, follow the below steps.
 
 6.	The **Custom deployment** page is displayed as shown in the following.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/21.png)
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/22.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p2.png)
 
 #### 3.1.1 Inputs
 
