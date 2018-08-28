@@ -454,7 +454,7 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 **Url: : https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/58.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/v1.png)
 
 2. To install the developer tools. **Agree** to the license terms and **select Install**.
 
@@ -474,9 +474,9 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 7. When setup completes, select **Close** in both the VSIX Installer window and the Visual Studio Tools Preview for Azure Sphere setup window.
 
-8. If the installer returns errors, try uninstalling and then reinstalling the tools. To uninstall the tools, use **Add and Remove Programs in Control Panel**.
-
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/62.png)
+
+8. If the installer returns errors, try uninstalling and then reinstalling the tools. To uninstall the tools, use **Add and Remove Programs in Control Panel**.
 
 ### 4.4 Update Device Software
 
