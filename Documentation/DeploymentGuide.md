@@ -328,9 +328,7 @@ Use the **az group deployment create** command to deploy the ARM template.
 
 **Syntax**:  **az group deployment create --template-file './<main-template.json filename>' --parameters '@./<main-template.parameters.json filename>' -g < provide resource group name that created in the section 3.2.1> -n deploy >> <provide the outputs filename>** 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/37.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/38.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/i2.png)
 
 Deployment may take between 15-20 minutes depending on deployment size. 
 
