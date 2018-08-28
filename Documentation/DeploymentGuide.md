@@ -603,7 +603,7 @@ Select **Azure IoT Hub (Azure Sphere)** from the list of **connected services**.
 
 **Log in** to Microsoft Azure.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/76.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p10.png)
 
 Enter the user credentials.
 
@@ -611,7 +611,7 @@ Enter the user credentials.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/77.png)
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/78.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p1.png)
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/79.png)
 
@@ -619,7 +619,7 @@ Enter the user credentials.
 
 Select **Hardcode shared access key** in application's code, and then **click Next**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/81.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p12.png)
 
 In the list of hubs, select deployed IoT Hub from your resource group.
 
@@ -633,4 +633,4 @@ Open the **New Device tab**, in the Device ID field type device name that need t
 
 **Copy** the **device primary connection string**, which we will use later while running the Blink Application and click on **cancel**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/84.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p13.png)
