@@ -115,7 +115,7 @@ Click on **Raw**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/153.png)
 
-Take **copy** the Raw.
+ Copy the **re-deploy.json** template.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/154.png)
 
