@@ -33,7 +33,7 @@
     - [4.6 Add to Device Group](#46-add-to-device-group)
     - [4.7 Configure Wi-Fi](#47-configure-wi-fi)
         - [4.7.1 To Set up Wi-Fi on your Device](#471-to-set-up-wi-fi-on-your-device)
-    - [9.8 Connect to IoT Hub](#98-connect-to-iot-hub)
+    - [4.8 Connect to IoT Hub](#98-connect-to-iot-hub)
         - [4.8.1 Set Up Microsoft Azure Credentials](#481-set-up-microsoft-azure-credentials)
         - [4.8.2 Add your Device to the IoT Hub](#482-add-your-device-to-the-iot-hub)
     
