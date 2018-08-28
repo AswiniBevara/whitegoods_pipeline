@@ -39,21 +39,21 @@ The Azure Sphere Solution Accelerator ecosystem enables your company to setup co
 
 ### 2.1 Basic Architecture Diagram
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c1.png)
 
 ### 2.2	Standard Architecture Diagram
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/2.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c2.png)
 
 ### 2.3 Premium Architecture Diagram
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/3.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c3.png)
 
 ### 2.4 Data work Flow Diagram
 
 Below is the architecture diagram that shows data flow in between azure components.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/4.jpg)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c4.jpg)
 
 ## 3 Azure Services
 
