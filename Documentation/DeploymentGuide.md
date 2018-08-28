@@ -124,7 +124,7 @@ In the parameters section of the template, specify the values as inputs when dep
 
 | **Parameter Name**  | **Description**     | **Allowed Values**    | **Default Values**                                                                                                               
 | -------------        | -------------      | -----------------    | ------------ 
-| **Solution Type**          | choose your solution type to deploy.     | Basic, Standard, Premium    | Core Solution
+| **Solution Type**          | choose your solution type to deploy.     | Basic, Standard, Premium    | 
 | **geo-paired-region**   | If solution type is chosen as standard and premium, enter location for geo-paired-region,for more information about the geo-paired-region navigate to section 5 in the Readme.md(https://github.com/sysgain/whitegoods/blob/master/README.md) | EastUS2, CentralUS,WestUS2, WestCentralUS, CanadaCentral, CanadaEast, AustraliaEast, AustraliaSouthEast, CentralIndia, SouthIndia, EastAsia, SouthEastAsia,JapanWest, JapanEast, KoreaCentral, KoreaSouth, UKSouth, UKWest  | 
 | **omsWorkspaceRegion**   | Choose location for OMS Log Analytics to deploy. For more information, see https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview.   | australiasoutheast, canadacentral, centralindia, eastus, japaneast, southeastasia, uksouth, westeurope    | eastus
 | **appInsightsLocation**   | specify the region for application insights.  | eastus, northeurope, southcentralus, southeastasia, westeurope,westus2    | eastus
@@ -152,7 +152,7 @@ Resource manager provides the following feature:
 * Apply access control to all services in your resource group because Role-Based Access Control (RBAC) is natively integrated into the management platform.
 * Apply tags to resources to logically organize all the resources in your subscription.
 
-### 8.1. ARM Template Deployment Using Azure Portal
+### 3.1. ARM Template Deployment Using Azure Portal
 
 1. **Click** the below **Git hub repo URL**.
 
@@ -193,7 +193,7 @@ To deploy a template for Azure Resource Manager, follow the below steps.
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/21.png)
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/22.png)
 
-#### 8.1.1 Inputs
+#### 3.1.1 Inputs
 
 These parameter values enable you to customize the deployment by providing values. There parameters allow to choose the solution type, region and credentials to authenticate SQL Database and Virtual Machines.
 
@@ -245,7 +245,7 @@ Expect IoT Hub, Cosmos DB, OMS Log Analytics, Automation Account and Run Book, t
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/26.png)
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/27.png)
 
-#### 8.1.2 Outputs
+#### 3.1.2 Outputs
 
 13. Go to **Resource group** -> click **deployments**. 
 
@@ -259,7 +259,7 @@ Expect IoT Hub, Cosmos DB, OMS Log Analytics, Automation Account and Run Book, t
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/30.png)
 
-### 8.2 ARM Template Deployment Using Azure CLI
+### 3.2 ARM Template Deployment Using Azure CLI
 
 AAzure CLI is used to deploy your resources to Azure. The Resource Manager template you deploy, can either be a local file on your machine, or an external file that is in a repository like GitHub.  
 
