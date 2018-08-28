@@ -240,7 +240,7 @@ The above resources deployed for **Basic Solution**.
 
 12. Expect IoT Hub, Cosmos DB, OMS Log Analytics, Automation Account and Run Book, the rest of the resources are created additionally along with Traffic manager as disaster recovery for Standard and Premium Solution deployment.
 
-13. Once the solution is deployed successfully navigate to the **resource group**, select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
+13. Once the solution is deployed successfully, navigate to the resource group to view the list of resources that are created as shown below.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/26.png)
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/27.png)
