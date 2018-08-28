@@ -2,6 +2,8 @@
 
 # White Goods Solution
 
+## Getting Started Manual
+
 **Table of Contents** 
 
 - [1 About WhiteGoods Solution](#1-about-whitegoods-solution)
