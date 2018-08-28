@@ -194,9 +194,9 @@ Click on **Activate** button on any of the blink app feature like **blinkrate1**
 
 Once it is activated the same will be reflected in IoT Hub’s device twin.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/110.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/d1.png)
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/111.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/110.png)
 
 ### 6 Validating Blink App code with Azure Sphere
 
@@ -205,6 +205,8 @@ To validate the blink rate, go to **resource group** -> go to **device managemen
 Under features section of the device, select Blink Rate1 as active.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b1.png)
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/111.png)
 
 After selecting blink rate1 feature we can see LED light blinking slowly on Azure Sphere device like below.
 
