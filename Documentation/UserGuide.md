@@ -7,16 +7,13 @@
 **Table of Contents** 
 
 - [1 Login to Device Management Application](#1-login-to-device-management-application)
-- [2 Connect to IoT Hub](#2-connect-to-iot-hub)
-    - [2.1 Set Up Microsoft Azure Credentials](#21-set-up-microsoft-azure-credentials)
-    - [2.2 Add your Device to the IoT Hub](#22-add-your-device-to-the-iot-hub)
-- [3 Run the Blink Applications](#3-run-the-blink-applications)
-- [4 Verify data in IoT Hub Device Twin](#4-verify-data-in-iot-hub-device-twin)
-- [5 Verify Device Management application](#5-verify-device-management-application)
-- [6 Validating Blink App code with Azure Sphere](#6-validating-blin-app-code-with-azure-sphere)
-- [7 Monitoring Components](#7-monitoring-components)
-    - [7.1 Application Insights](#71-application-insights)
-    - [7.2 OMS Log Analytics](#72-oms-log-analytics)
+- [2 Run the Blink Applications](#2-run-the-blink-applications)
+- [3 Verify data in IoT Hub Device Twin](#3-verify-data-in-iot-hub-device-twin)
+- [4 Verify Device Management application](#4-verify-device-management-application)
+- [5 Validating Blink App code with Azure Sphere](#5-validating-blin-app-code-with-azure-sphere)
+- [6 Monitoring Components](#6-monitoring-components)
+    - [6.1 Application Insights](#61-application-insights)
+    - [6.2 OMS Log Analytics](#62-oms-log-analytics)
 
 ## 1. Login to Device Management Application
 
@@ -48,91 +45,7 @@ Now you can view the **Device Management Portal** Dashboard.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u9.png)
 
-## 2 Connect to IoT Hub
-
-### 2.1 Set Up Microsoft Azure Credentials
-
-To run this sample, you must have a Microsoft Azure subscription and an IoT Hub. 
-
-After you set up the subscription, you can create a hub. Log into the Azure Portal and follow these instructions to set up your hub.
-
-### 2.2 Add your Device to the IoT Hub
-
-To use an IoT Hub in an Azure Sphere application, you identify the IoT Hub that you plan to use and then add your device to that hub. The connected service retrieves the IoT Hub connection string and records it in a file named azure_iot_hub.c. The connected service then adds azure_iot_hub.c and the header file azure_iot_hub.h to your application.
-
-Download **Mt3620AzureIoTHub4.zip** and extract it.
-
-Click on open **Mt3620AzureIoTHub4.sln** in your local system.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/66.png)
-
-In Solution Explorer, **right-click References** and then select **Add Connected Service**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/67.png)
-
-After the Connected Services window appears, **click** on **find more services**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/68.png)
-
-In the search box at right side menu, search for **Azure IoT Hub Sample of Device Simulation** and click on **Download** and **Install**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/69.png)
-
-Close the Visual Studio to start the Installation of **Azure IoT Hub sample of Device Simulation**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/70.png)
-
-After you see the below screen with **Modifications Complete**, click on **Close**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/71.png)
-
-Re-open the Visual Studio and open the Blink application downloaded earlier. 
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/72.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/73.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/74.png)
-
-Select **Azure IoT Hub (Azure Sphere)** from the list of **connected services**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/75.png)
-
-**Log in** to Microsoft Azure.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p10.png)
-
-Enter the user credentials.
-
-**Note:** You must have a Microsoft Azure subscription. If your organization does not already have them, follow these instructions to set up a free trial subscription to Microsoft Azure. After you set up the subscription. Log into the Azure Portal and follow these instructions to login.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/77.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p11.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/79.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/80.png)
-
-Select **Hardcode shared access key** in application's code, and then **click Next**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p12.png)
-
-In the list of hubs, select deployed IoT Hub from your resource group.
-
-click **Next**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/82.png)
-
-Open the **New Device tab**, in the Device ID field type device name that need to be created and click on **Create**. 
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/83.png)
-
-**Copy** the **device primary connection string**, which we will use later while running the Blink Application and click on **cancel**.
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p13.png)
-
-## 3 Run the Blink Applications 
+## 2 Run the Blink Applications 
 
 In Blink app Solution Explorer, select **azure_iot_hub.c** in your solution and update the IoT Hub connection string which was copied from above step and **save** it.
 
@@ -158,7 +71,7 @@ Once the application is running the output also shows the IoT Hub connected Stat
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/90.png)
 
-## 4 Verify data in IoT Hub Device Twin
+## 3 Verify data in IoT Hub Device Twin
 
 Go to **Resource Group** -> Click on **IoT Hub**.
 
@@ -176,7 +89,7 @@ Below is the Device Twin json file with Blink Application features as false.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/103.png)
 
-## 5 Verify Device Management application 
+## 4 Verify Device Management application 
 
 Go to **Resource Group** -> click **Device Management**.
 
@@ -206,7 +119,7 @@ Once it is activated the same will be reflected in IoT Hub’s device twin.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/110.png)
 
-### 6 Validating Blink App code with Azure Sphere
+## 5 Validating Blink App code with Azure Sphere
 
 To validate the blink rate, go to **resource group** -> go to **device management web app**. Select the device to which Azure Sphere Device is associated.
 
@@ -248,9 +161,9 @@ For video reference on Blink Rate3 go through the below link.
 
 **https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate3.mp4**
 
-## 7 Monitoring Components
+## 6 Monitoring Components
 
-### 7.1 Application Insights
+### 6.1 Application Insights
 
 Go to **Azure Portal**, select your **Resource Group** and select **Application Insights** as shown below. 
 
@@ -322,7 +235,7 @@ Now click on **chart** then click **Yes** to see the graph.
 
 Similarly, you can run the other common Pre-defined queries by navigating back to the **Home Page**.
 
-### 7.2 OMS Log Analytics
+### 6.2 OMS Log Analytics
 
 Open **Azure Portal** -> **Resource Group** -> Click the **OMS Workspace** in resource group to view **OMS Overview** Section. 
 
