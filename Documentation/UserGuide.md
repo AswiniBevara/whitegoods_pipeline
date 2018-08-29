@@ -135,13 +135,16 @@ To validate the blink rate, go to **resource group** -> go to **device managemen
 
 Under features section of the device, select Blink Rate1 as active.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b1.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/111.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/b1.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/111.png">
+</p>
 
 After selecting blink rate1 feature we can see LED light blinking slowly on Azure Sphere device like below.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b2.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/b2.png">
+</p>
 
 For video reference on Blink Rate1 go through the below link.
 
@@ -149,11 +152,15 @@ For video reference on Blink Rate1 go through the below link.
 
 Uncheck Blink Rate1 and select Blink Rate2 as active.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b3.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/b3.png">
+</p>
 
 When you select blink rate2 the LED light will blink a little faster on Azure Sphere device as shown in below screen shot.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b4.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/b4.png">
+</p>
 
 For video reference on Blink Rate2 go through the below link.
 
@@ -161,11 +168,15 @@ For video reference on Blink Rate2 go through the below link.
 
 Uncheck Blink Rate2 and select Blink Rate 3 as active.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b5.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/b5.png">
+</p>
 
 when you select Blink Rate3 the LED Light will continuously blink on Azure Sphere device as shown in below screenshot.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/b6.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/b6.png">
+</p>
 
 For video reference on Blink Rate3 go through the below link.
 
