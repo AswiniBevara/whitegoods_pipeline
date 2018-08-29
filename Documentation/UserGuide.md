@@ -204,7 +204,9 @@ Go back to the **Application Insights Overview** page in **Azure Portal**.
 
 Then click **Metrics Explorer** on the left side of the page as shown below.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/116.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/116.png">
+</p>
 
 Click **Edit** as shown in the following figure.
 
@@ -216,7 +218,9 @@ You can select any of the listed **Metrics** to view application logs.
 
 If you want to **add new chart** click Add new chart as shown in the following figure and click **Edit** to add the specific metrics.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/119.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/119.png">
+</p>
 
 Go back to **Application Insights**, in the **Overview** page click **Analytics** icon in the **Health** section as shown in the following figure.
 
@@ -260,7 +264,9 @@ Similarly, you can run the other common Pre-defined queries by navigating back t
 
 Open **Azure Portal** -> **Resource Group** -> Click the **OMS Workspace** in resource group to view **OMS Overview** Section. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/129.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/129.png">
+</p>
 
 Click **Azure Resources** on left side menu to view available Azure Resources. 
 
@@ -276,7 +282,9 @@ Go to overview blade and click on **OMS Portal** as shown below.
 
 Once you click **OMS Workspace**, OMS Home Page will take few seconds to load and displayed as below. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/133.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/133.png">
+</p>
 
 Click **Search tab** to search the IoT hub, Stream Analytics, Cosmos DB. 
 
@@ -300,7 +308,9 @@ For **Stream Analytics logs**, first you need to enable the **Diagnostics logs**
 
 Go to **Azure Portal**, click **STREAM ANALYTICS JOB** as shown below. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/137.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/137.png">
+</p>
 
 Click **Diagnostics logs** on the left pane and select **Add diagnostics setting** as shown in the following figure.
 
@@ -316,11 +326,15 @@ Select **Allmetrics** checkbox under the **METRIC** section.
 
 Configure your workspace from the **OMS Workspaces page** as shown in the following figure.  
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/139.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/139.png">
+</p>
 
 Click **Save**. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/140.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/140.png">
+</p>
 
 Go to **OMS Portal** and Click Search tab for **Stream Analytics logs**.
 
