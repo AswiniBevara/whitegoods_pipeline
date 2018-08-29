@@ -643,11 +643,15 @@ In the search box at right side menu, search for **Azure IoT Hub Sample of Devic
 
 Close the Visual Studio to start the Installation of **Azure IoT Hub sample of Device Simulation**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/70.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/70.png">
+</p>
 
 After you see the below screen with **Modifications Complete**, click on **Close**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/71.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/71.png">
+</p>
 
 Re-open the Visual Studio and open the Blink application downloaded earlier. 
 
@@ -663,23 +667,26 @@ Select **Azure IoT Hub (Azure Sphere)** from the list of **connected services**.
 
 **Log in** to Microsoft Azure.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p10.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p10.png">
+</p>
 
 Enter the user credentials.
 
 **Note:** You must have a Microsoft Azure subscription. If your organization does not already have them, follow these instructions to set up a free trial subscription to Microsoft Azure. After you set up the subscription. Log into the Azure Portal and follow these instructions to login.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/77.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p11.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/n1.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/80.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/77.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p11.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/n1.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/80.png">
+</p>
 
 Select **Hardcode shared access key** in application's code, and then **click Next**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p12.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p12.png">
+</p>
 
 In the list of hubs, select deployed IoT Hub from your resource group.
 
