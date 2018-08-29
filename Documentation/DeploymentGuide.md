@@ -2,6 +2,8 @@
 
 # White Goods Solution
 
+## Deployment Guide
+
 **Table of Contents** 
 
 - [1 Prerequisites for Deploying ARM Template](#1-prerequisites-for-deploying-arm-template)
