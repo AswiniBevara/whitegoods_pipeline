@@ -61,7 +61,9 @@ Refer **3.1 and 3.2** Section in **Deployment Guide** for Standard Solution Depl
 
 Go to **Resource Group** -> Click on **IoT Hub**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/142.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/142.png">
+</p>
 
 Go to **Manual Failover (Preview)** from left side menu.
 
