@@ -235,18 +235,12 @@ Each Azure region is paired with another region within the same geography, toget
 
 ## 6 Deployment Guide for the Solution
 
-To deploy the Basic , Standard or Premium Solution please refer below **Deployment Guide Documentation** URL.
-
-**https://github.com/sysgain/whitegoods/blob/master/Documentation/DeploymentGuide.md**
+To deploy the Basic , Standard or Premium Solution please refer below **[Deployment Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/DeploymentGuide.md)** URL.
 
 ## 7 User Guide for the Solution
 
-For Running Blink Application and verifying the Device Management Web application, please refer below **User Guide Documentation** URL.
-
-**https://github.com/sysgain/whitegoods/blob/master/Documentation/UserGuide.md**
+For Running Blink Application and verifying the Device Management Web application, please refer below **[User Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/UserGuide.md)** URL.
 
 ## 8 Administrator Guide for the Solution
 
-To configure and validate the Standard and Premium Solution, please refer the below **Administrator Guide** URL.
-
-**https://github.com/sysgain/whitegoods/blob/master/Documentation/AdminGuide.md**
+To configure and validate the Standard and Premium Solution, please refer the below **[Administrator Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/AdminGuide.md)** URL.
