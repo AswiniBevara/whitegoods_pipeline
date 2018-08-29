@@ -264,7 +264,9 @@ When failover process started, a pop up will be displayed on right top corner. O
 
 **Note**: This process will take around 15 mins. To initial failover again, user needs wait for 1 hour to run failover again.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/170.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/170.png">
+</p>
 
 #### 1.2.2 Stop Stream Analytics Job in Primary Region
 
@@ -316,11 +318,15 @@ Go to **Resource Group** -> click **Cosmos DB**.
 
 Navigate to **Replicate data globally** under Settings section then click **Manual failover**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/181.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/181.png">
+</p>
 
 **Select** the **Read Region** to become the **new write region**, check in the check box and click **ok**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/182.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/182.png">
+</p>
 
 #### 1.2.6 Accessing Web App
 
