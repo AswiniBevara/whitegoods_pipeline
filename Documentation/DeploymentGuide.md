@@ -499,13 +499,16 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 **Url: : https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/v1.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/v1.png">
+</p>
 
 2. To install the developer tools. **Agree** to the license terms and **select Install**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p8.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p9.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p8.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p9.png">
+</p>
 
 3. If you have just installed Visual Studio for the first time, you might see the message, "No product to install SDK on." If this occurs, restart your PC and return to this step.
 
@@ -515,11 +518,15 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 6. After installation starts, find the VSIX Installer window and bring it to the front. The installation process displays two installation windows: The Visual Studio Tools Preview for Azure Sphere window and the VSIX Installer window. The former reports progress and errors from the overall installation, and the latter reports information about the Visual Studio extension only. If the VSIX window becomes obscured during installation, you might not see error reports or requests for action.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/61.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/61.png">
+</p>
 
 7. When setup completes, select **Close** in both the VSIX Installer window and the Visual Studio Tools Preview for Azure Sphere setup window.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/62.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/62.png">
+</p>
 
 8. If the installer returns errors, try uninstalling and then reinstalling the tools. To uninstall the tools, use **Add and Remove Programs in Control Panel**.
 
@@ -529,13 +536,17 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 1. Open an **Azure Sphere Developer Command Prompt**. To find the **Azure Sphere Developer Command Prompt**, click the Windows Start button and search Azure Sphere Developer Command Prompt Preview.  
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/a1.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/a1.png">
+</p>
 
 2. Issue the following command: 
 
 **dutil device sdkversion** 
- 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/63.png)
+
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/63.png">
+</p>
 
 3. The number that follows the + should be 107652 or greater. If you see a smaller number, you must update the software by following the instructions from the below link.
 
@@ -576,7 +587,9 @@ Use the following command to add your device to the group:
 
 **Cutil device setdg –attached –devicegroupid  63bbe6ea-14be-4d1a-a6e7-03591d882b42**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/64.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/64.png">
+</p>
 
 ### 4.7 Configure Wi-Fi
 
@@ -594,7 +607,9 @@ You must configure the device for Wi-Fi before it can communicate with the Azure
 
 4.	You should see:
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/65.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/65.png">
+</p>
 
 ### 4.8 Connect to IoT Hub
 
