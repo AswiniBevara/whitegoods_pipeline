@@ -1,3 +1,11 @@
+# Microsoft
+
+# White Goods Solution
+
+## Admin Guide
+
+**Table of Contents** 
+
 - [1 Performing DR Strategies](#1-performing-dr-strategies)
     - [1.1 Standard Solution Type](#11-standard-solution-type)
         - [1.1.1 IoT Hub Manual Failover](#111-iot-hub-manual-failover)
