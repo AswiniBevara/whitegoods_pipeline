@@ -39,7 +39,9 @@ To access the Device Management portal, login with your credentials.
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u6.png">
+    
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u7.png">
+  
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u8.png">
 </p>
 
