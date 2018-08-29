@@ -335,7 +335,7 @@ Use the **az group create** command to create a **Resource Group** in your r
 **Syntax**: **az group create -n < resource group name> -l < location >**  
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/35.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/q1.png">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/36.png">
 </p>
 
