@@ -19,15 +19,17 @@
 
 Once the solution is deployed successfully, navigate to the resource group and select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u1.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u2.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u3.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u1.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u2.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u3.png">
+</p>
 
 Go to **Resource Group** -> Click on the deployed **App Service**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u4.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u4.png">
+  </p>
 
 Now you can see the app service **overview** page, copy the **URL** and browse it in new web browser.
 
@@ -35,11 +37,11 @@ Now you can see the app service **overview** page, copy the **URL** and browse i
 
 To access the Device Management portal, login with your credentials.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u6.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u7.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u8.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u6.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u7.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u8.png">
+</p>
 
 Now you can view the **Device Management Portal** Dashboard.
 
@@ -83,7 +85,9 @@ Click on **IoT devices** in left side menu and click **created device**.
 
 Here you can see the **Device Details** page. Click on **Device Twin**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/102.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/102.png">
+</p>
 
 Below is the Device Twin json file with Blink Application features as false.
 
@@ -97,7 +101,9 @@ Go to **Resource Group** -> click **Device Management**.
 
 After running the blink App the connected Status of the device will get reflected in the device management web app.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/105.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/105.png">
+</p>
 
 Click on **connected**.
 
@@ -105,19 +111,23 @@ Click on **connected**.
 
 The features of the blink app show disabled. Similarly the same status can be seen by Clicking on **View JSON**. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/107.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/108.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/107.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/108.png">
+</p>
 
 Click on **Activate** button on any of the blink app feature like **blinkrate1**. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/109.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/109.png">
+</p>
 
 Once it is activated the same will be reflected in IoT Hub’s device twin.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/d1.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/110.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/d1.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/110.png">
+</p>
 
 ## 5 Validating Blink App code with Azure Sphere
 
