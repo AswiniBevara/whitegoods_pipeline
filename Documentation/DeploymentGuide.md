@@ -617,7 +617,7 @@ Enter the user credentials.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/79.png)
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/n1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/80.png)
 
 Select **Hardcode shared access key** in application's code, and then **click Next**.
 
