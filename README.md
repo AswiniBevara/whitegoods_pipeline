@@ -53,8 +53,6 @@ The Azure Sphere Solution Accelerator ecosystem enables your company to setup co
 
 ### 2.4 Data work Flow Diagram
 
-Below is the architecture diagram that shows data flow in between azure components.
-
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/c4.png">
 </p>
@@ -75,7 +73,7 @@ Stream Analytics is an event processing engine that can ingest events in real-ti
 
 The Azure Sphere solution brings together the best of Microsoft’s expertise in cloud, software, and silicon—resulting in a unique approach to security that starts in the silicon and extends to the cloud. Azure Sphere contains three components that work together to keep devices protected and secured in today’s dynamic threat landscape: Azure Sphere certified MCUs, the Azure Sphere OS and the Azure Sphere Security Service.
 
-The first Azure Sphere chip will be the MediaTek MT3620, which represents years of close collaboration and testing between MediaTek and Microsoft. This new cross-over class of MCU includes built-in Microsoft security technology, built-in connectivity, and combines the versatility and power of a Cortex-A processor with the low overhead and real-time guarantees of a Cortex-M class processor.
+The first Azure Sphere chip will be the MediaTek **MT3620**, which represents years of close collaboration and testing between MediaTek and Microsoft. This new cross-over class of MCU includes built-in Microsoft security technology, built-in connectivity, and combines the versatility and power of a Cortex-A processor with the low overhead and real-time guarantees of a Cortex-M class processor.
 
 ### 3.4 Notification Hub
 
