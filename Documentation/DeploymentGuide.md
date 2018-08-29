@@ -106,7 +106,9 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 3. **Note down** the Copied **Application ID** and **object ID** which is highlighted in the below figure, this will be used while deploying the ARM template.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/12.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/12.png">
+</p>
 
 #### 1.1.5 Creating session ID
 
