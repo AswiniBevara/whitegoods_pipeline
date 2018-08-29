@@ -474,7 +474,10 @@ To install TAP and enable SLIP Communication
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/56.png">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/55.png">
+</p>
+
+<p align="center">
+ <img src="https://github.com/sysgain/whitegoods/raw/master/Images/55.png">
 </p>
 
 8.	Now you can see the **sl0** is **enabled**.
