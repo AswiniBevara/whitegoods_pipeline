@@ -19,7 +19,7 @@
         - [3.1.1 Inputs](#311-inputs)
         - [3.1.2 Outputs](#312-outputs)
     - [3.2 ARM Template Deployment Using Azure CLI](#32-arm-arm-template-deployment-using-azure-cli)
-        - [3.2.1 Create Resource Group for oilandgas Solution](#321-create-resource-group-for-oilandgas-solution)
+        - [3.2.1 Create Resource Group using Azure CLI](#321-create-resource-group-using-azure-cli)
         - [3.2.2 Execute the Template Deployment](#322-execute-the-template-dDeployment)
 - [4 Post Deployment Steps: Getting started with Azure Sphere](#4-post-deployment-steps-getting-started-with-azure-sphere)
     - [4.1 Set Up your Machine for Development Machine](#41-set-up-your-machine-for-development-machine)
