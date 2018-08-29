@@ -217,7 +217,9 @@ These parameter values enable you to customize the deployment by providing value
 
 **Note:** For **basic solution**, select the geo-paired region for your template deployment and choose the values of **OMS Workspace Region, App Insights Location** or keep the default values as it is. It is not necessary to choose **High availability region** of **App Insights Location Dr**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/23.jpg)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/23.jpg">
+</p>
 
 **Parameters for Standard Solution:**
 
@@ -225,7 +227,9 @@ These parameter values enable you to customize the deployment by providing value
 
 **Note:** For **standard solution**, select the geo-paired region for your template deployment and choose the values of **OMS Workspace Region, App Insights Location** and **High availability region** of **App Insights Location Dr** or keep the default values as it is.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/24.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/24.png">
+</p>
 
 **Parameters for Premium solution:**
 
@@ -233,7 +237,9 @@ These parameter values enable you to customize the deployment by providing value
 
 **Note**: For **Premium solution**, select the geo-paired region for your template deployment and choose the values of **OMS Workspace Region, App Insights Location** and **High availability region** of **App Insights Location Dr** or keep the default values as it is.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/25.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/25.png">
+</p>
 
 10. Once all the parameters are entered, select the **terms and conditions** check box and click **Purchase**.
 
@@ -289,7 +295,9 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 
 3. It shows the device login URL and code to authenticate the device login after running the command.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/i1.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/i1.png">
+</p>
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/32.png)
 
@@ -326,9 +334,10 @@ Use the **az group create** command to create a **Resource Group** in your r
 
 **Syntax**: **az group create -n < resource group name> -l < location >**  
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/35.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/36.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/35.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/36.png">
+</p>
 
 #### 3.2.2 Execute the template deployment 
 
@@ -370,9 +379,10 @@ The first time you plug in the board, the drivers should be automatically downlo
 
 **Click** on **search Device Manager** in Windows Search Box to verify installation, open Device Manager and look for three COM ports:
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/41.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/42.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/41.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/42.png">
+</p>
 
 #### 4.1.2 Install the TAP Driver
 
@@ -384,29 +394,37 @@ To install TAP and enable SLIP Communication
 
 2. Download below zip file and extract it **Download** the **tap-windows-9.21.2.exe** file from below link and **Click** on **install tap-windows-9.21.2.exe**. 
 
-**url: https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
+3. **url: https://projectiot.blob.core.windows.net/whitegoods/Documents/CustomerDropTP4.0.1.zip**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/t1.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/t1.png">
+</p>
 
 4. Click **Next**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p3.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p3.png">
+</p>
 
 5. Click **I Agree**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/45.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/45.png">
+</p>
 
 6. Choose **TAP Virtual Ethernet Adapter** and **TAP Utilities**, but not TAP SDK and click **Next**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/46.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/47.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/46.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/47.png">
+</p>
 
 7.	If you are asked to authorize installation of the driver, select **Install**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/48.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/49.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/48.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/49.png">
+</p>
 
 #### 4.1.3 Configure TAP Networking
 
@@ -414,33 +432,46 @@ To install TAP and enable SLIP Communication
 
 2.	Go to **Control Panel**, search **View Network Connections** in the search box.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/t2.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/t2.png">
+</p>
 
 3. Click to open the **View Network Connections**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p4.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p4.png"
+</p>
 
 4. Find the TAP-Windows Adapter V9.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p5.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p5.png">
+</p>
 
 5. Select **TAP-Windows Adapter v9** and rename it to **sl0** (lower case S, lower case L, the number zero):
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p6.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p6.png">
+</p>
 
 6. **Open Properties** for **sl0** and disable all services except **Internet Protocol Version 4 (TCP/IPv4)**:
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/54.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/55.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/54.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/55.png">
+</p>
 
 6.	Select Properties for TCP/IPv4 and configure it to use the **IP address 192.168.35.1**, **subnet mask 255.255.255.0** and **click OK**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/56.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/56.png">
+</p>
 
 7.	Now you can see the **sl0** is **enabled**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p7.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p7.png">
+</p>
 
 ### 4.2 Install Visual Studio 
 
