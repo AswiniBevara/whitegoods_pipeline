@@ -626,11 +626,8 @@ You must configure the device for Wi-Fi before it can communicate with the Azure
 2.	**Open** an **Azure Sphere Developer Command Prompt** and issue a command in the following form:
 
 ```
-
 dutil wifi add –s <xxxxxxx> -k <XXXXXXXXX>
-
 ```
-
 3.	The **-s flag** specifies the network SSID, and the **-k flag** specifies the WPA2 key. Network SSIDs are case-sensitive and can include only ASCII characters. To add an open Wi-Fi access point, omit the -k flag.
 
 4. You should see:
