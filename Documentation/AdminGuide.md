@@ -69,11 +69,15 @@ Go to **Manual Failover (Preview)** from left side menu.
 
 Click on **Initiate failover** to initiate manual failover of IoT Hub.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/143.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/143.png">
+</p>
 
 When failover process started, a pop up will be displayed on right top corner. 
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/144.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/144.png">
+</p>
 
 Once Manual Failover process completed, Primary Location and secondary location will interchange.
 
@@ -83,21 +87,29 @@ Once Manual Failover process completed, Primary Location and secondary location 
 
 Go to **Resource Group** and click on primary **Stream Analytics job**
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/145.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/145.png">
+</p>
 
 Stop the Stream analytics job by click on **Stop** and click on **Yes** for confirmation.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/146.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/146.png">
+</p>
 
 #### 1.1.3 Accessing Traffic manager 
 
 Go to **Resource Group** and click on **Traffic manager** resource.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/147.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/147.png">
+</p>
 
 Now you can see the web app as the endpoint of the traffic manager.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/148.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/148.png">
+</p>
 
 #### 1.1.4 Stopping the Web App
 
@@ -105,65 +117,92 @@ Navigate to the **Web App** from resource group.
 
 click on **Stop** then click on **Yes** to stop the Web App.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/149.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/149.png">
+</p>
 
 The Web App in the primary region has been stopped as failover.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/150.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/150.png">
+</p>
 
 Verify the same in traffic manager.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/151.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/151.png">
+</p>
 
 #### 1.1.5 Redeploy the Region 2 ARM Template
 
 Go to **Github** and select **re-deploy.json** file from the **master** branch.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/152.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/152.png">
+</p>
 
 Click on **Raw**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/153.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/153.png">
+</p>
 
  Copy the **re-deploy.json** template.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/154.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/154.png">
+</p>
 
 Click on **Add** in existing resource group and re-deploy the ARM template.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/155.png)
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/156.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/155.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/156.png">
+</p>
 
 #### 1.1.6 Configure Region 2 web app to Traffic Manager
 
 Go to **Resource Group** -> **Traffic manager profile** -> **Endpoints**, click on **add**.
 
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/155.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/156.png">
+</p>
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/157.png)
 
 **Enter** the name for the **second End point** of traffic manager and select the second web app as the target resource.
 
 Click on **Ok**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/158.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/158.png">
+</p>
 
 You can see the second region web app with online status under endpoint of traffic manager and **Copy** the **DNS Name**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/159.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/159.png">
+</p>
 
 #### 1.1.7 Cosmos DB Geo replication
 
 Go to **Resource Group** -> click **Cosmos DB**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/160.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/160.png">
+</p>
 
 Navigate to **Replicate data globally** under Settings section then click **Manual failover**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/161.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/161.png">
+</p>
 
 **Select** the **Read Region** to become the **new write region**, check in the check box and click **ok**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/162.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/162.png">
+</p>
 
 #### 1.1.8 Accessing Web App
 
