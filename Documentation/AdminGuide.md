@@ -2,7 +2,7 @@
 
 # White Goods Solution
 
-## Admin Guide
+## Administrator Guide
 
 **Table of Contents** 
 
