@@ -212,8 +212,6 @@ Each Azure region is paired with another region within the same geography, toget
 
 **IoT Hub Manual Failover Support Geo-Paired Regions**
 
-<center>
-
 | **S.No**           | **Geography**           | **Paired Regions**                                                                                                                     
 | -------------              | -------------       | -------------                                                                                                                    
 | **1**       | North America       | East US 2 - Central US
@@ -235,7 +233,6 @@ Each Azure region is paired with another region within the same geography, toget
 | **17**       | UK        | UK South - UK West 
 | **18**   | UK    | UK West - UK South  
 
-</center>
 
 ## 6 Deployment Guide for the Solution
 
