@@ -85,7 +85,7 @@
                 "westus2"
             ],
             "metadata": {
-                "description": "If solution type is choosen as premium, enter location for application insights for disaster recovery"
+                "description": "If solution type is choosen as Standard or premium, enter location for application insights for disaster recovery"
             }
         },
         "tenantId": {
