@@ -291,7 +291,10 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 
 2. Open Windows PowerShell and run the following command
 
-    **az login**
+```
+    az login
+    
+```
 
 3. It shows the device login URL and code to authenticate the device login after running the command.
 
@@ -332,7 +335,12 @@ Use the **az group create** command to create a **Resource Group** in your r
 
 **Description:** To create a resource group, use **az group create** command, It uses the name parameter to specify the name for resource group (-n) and location parameter to specify the location (-l). 
 
-**Syntax**: ***az group create -n < resource group name> -l < location >*** 
+**Syntax**:
+
+```
+az group create -n < resource group name> -l < location > 
+
+```
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/q1.png">
@@ -349,14 +357,13 @@ Use the **az group deployment create** command to deploy the ARM template.
 
 **main-template.parameters.json** –contains the input values that are required to provision respective SKU & Others details, for more details on the input parameter values navigate to Section 2 of this document. 
 
-```
-Syntax:  az group deployment create --template-file './<main-
-             template.json filename>' --parameters '@./<main-
-             template.parameters.json filename>' -g < provide resource group name
-             that created in the section 3.2.1> -n deploy >> <provide the outputs 
-             filename>
+**Syntax**
 
 ```
+az group deployment create --template-file './<main-template.json filename>' --parameters '@./<main-template.parameters.json filename>' -g < provide resource group name that created in the section 6.2.2> -n deploy >> <provide the outputs filename> 
+
+```
+
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/i2.png)
 
 Deployment may take between 15-20 minutes depending on deployment size. 
