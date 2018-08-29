@@ -115,14 +115,18 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 1. Use the below URL to generate GUID.
 
     **https://www.guidgenerator.com/**
-
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/13.png)
+    
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/13.png">
+</p>
 
 2. Click **Generate some GUIDs!** This will generate GUID in Results box. 
 
 3. **Copy** and **Note down** the generated **GUID** which is highlighted in the below figure, this will be used while deploying the ARM template.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/14.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/14.png">
+</p>
 
 ## 2 ARM Template Input Parameters
 
@@ -184,7 +188,9 @@ To deploy a template for Azure Resource Manager, follow the below steps.
 
 3.	Click **Create** button and click **Build your own Template in the editor** as shown in the following figure.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/18.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/18.png">
+</p>
 
 4.	The **Edit template** page is displayed as shown in the following figure. 
 
@@ -196,8 +202,10 @@ To deploy a template for Azure Resource Manager, follow the below steps.
 
 6.	The **Custom deployment** page is displayed as shown in the following.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p1.png)
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/p2.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p1.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p2.png">
+</p>
 
 #### 3.1.1 Inputs
 
