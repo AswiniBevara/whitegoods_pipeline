@@ -471,16 +471,16 @@ To install TAP and enable SLIP Communication
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/54.png">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/55.png">
 </p>
 
-6.	Select Properties for TCP/IPv4 and configure it to use the **IP address 192.168.35.1**, **subnet mask 255.255.255.0** and **click OK**.
+7.	Select Properties for TCP/IPv4 and configure it to use the **IP address 192.168.35.1**, **subnet mask 255.255.255.0** and **click OK**.
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/56.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/55.png">
 </p>
 
-7.	Now you can see the **sl0** is **enabled**.
+8.	Now you can see the **sl0** is **enabled**.
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p7.png">
@@ -555,7 +555,11 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 2. Issue the following command: 
 
-**dutil device sdkversion** 
+```
+
+dutil device sdkversion
+
+```
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/63.png">
@@ -586,7 +590,10 @@ Refer the cutil login command in the Command-line Utilities  for more informatio
 
 3. **Run** the **cutil cloud utility** with the device command as follows:
 
-**cutil device claim --attached**
+```
+cutil device claim --attached
+
+```
 
 4.	This command reads the Azure Sphere device ID from the board and associates it with your current tenant. If you are prompted to log in to Microsoft Azure, do so using your Azure Sphere credentials.
 
@@ -598,7 +605,11 @@ Before you configure Wi-Fi on your device, you must add it to the Microsoft-crea
 
 Use the following command to add your device to the group:
 
-**Cutil device setdg –attached –devicegroupid  63bbe6ea-14be-4d1a-a6e7-03591d882b42**
+```
+
+Cutil device setdg –attached –devicegroupid  63bbe6ea-14be-4d1a-a6e7-03591d882b42
+
+```
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/64.png">
@@ -614,11 +625,15 @@ You must configure the device for Wi-Fi before it can communicate with the Azure
 
 2.	**Open** an **Azure Sphere Developer Command Prompt** and issue a command in the following form:
 
-**dutil wifi add –s <xxxxxxx> -k <XXXXXXXXX>**
+```
+
+dutil wifi add –s <xxxxxxx> -k <XXXXXXXXX>
+
+```
 
 3.	The **-s flag** specifies the network SSID, and the **-k flag** specifies the WPA2 key. Network SSIDs are case-sensitive and can include only ASCII characters. To add an open Wi-Fi access point, omit the -k flag.
 
-4.	You should see:
+4. You should see:
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/65.png">
