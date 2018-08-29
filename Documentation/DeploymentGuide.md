@@ -64,7 +64,9 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 4. When finished, click **Create**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/6.png)
+<p align="center">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/6.png">
+</p>
 
 #### 1.1.2 To add application credentials, or permissions to access web APIs
 
