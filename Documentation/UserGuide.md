@@ -46,7 +46,7 @@ To access the Device Management portal, login with your credentials.
  </p>
  
 <p align="center">  
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u8.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/q.png">
 </p>
 
 Now you can view the **Device Management Portal** Dashboard.
