@@ -1,3 +1,11 @@
+# Microsoft
+
+# White Goods Solution
+
+## User Guide
+
+**Table of Contents** 
+
 - [1 Login to Device Management Application](#1-login-to-device-management-application)
 - [2 Connect to IoT Hub](#2-connect-to-iot-hub)
     - [2.1 Set Up Microsoft Azure Credentials](#21-set-up-microsoft-azure-credentials)
