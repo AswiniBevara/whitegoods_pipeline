@@ -29,7 +29,7 @@ Go to **Resource Group** -> Click on the deployed **App Service**.
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/u4.png">
-  </p>
+</p>
 
 Now you can see the app service **overview** page, copy the **URL** and browse it in new web browser.
 
