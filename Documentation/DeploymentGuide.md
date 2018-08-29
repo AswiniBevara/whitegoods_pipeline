@@ -292,8 +292,7 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 2. Open Windows PowerShell and run the following command
 
 ```
-    az login
-    
+    az login    
 ```
 
 3. It shows the device login URL and code to authenticate the device login after running the command.
@@ -339,7 +338,6 @@ Use the **az group create** command to create a **Resource Group** in your r
 
 ```
 az group create -n < resource group name> -l < location > 
-
 ```
 
 <p align="center">
@@ -361,7 +359,6 @@ Use the **az group deployment create** command to deploy the ARM template.
 
 ```
 az group deployment create --template-file './<main-template.json filename>' --parameters '@./<main-template.parameters.json filename>' -g < provide resource group name that created in the section 6.2.2> -n deploy >> <provide the outputs filename> 
-
 ```
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/i2.png)
@@ -556,9 +553,7 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 2. Issue the following command: 
 
 ```
-
 dutil device sdkversion
-
 ```
 
 <p align="center">
@@ -592,7 +587,6 @@ Refer the cutil login command in the Command-line Utilities  for more informatio
 
 ```
 cutil device claim --attached
-
 ```
 
 4.	This command reads the Azure Sphere device ID from the board and associates it with your current tenant. If you are prompted to log in to Microsoft Azure, do so using your Azure Sphere credentials.
@@ -606,9 +600,7 @@ Before you configure Wi-Fi on your device, you must add it to the Microsoft-crea
 Use the following command to add your device to the group:
 
 ```
-
 Cutil device setdg –attached –devicegroupid  63bbe6ea-14be-4d1a-a6e7-03591d882b42
-
 ```
 
 <p align="center">
