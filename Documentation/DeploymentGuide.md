@@ -678,6 +678,8 @@ Enter the user credentials.
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/77.png">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p11.png">
+</p>
+<p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/n1.png">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/80.png">
 </p>
