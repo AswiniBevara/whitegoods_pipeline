@@ -38,7 +38,7 @@
                 "UKWest"
             ],
             "metadata": {
-                "description": "If solution type is choosen as standard and premium, enter location for geo-paired-region, for more information about the geo-paired-region navigate to section 6 in the Readme.md(https://github.com/sysgain/Oil-Gas/blob/costing-models/README.md)"
+                "description": "For Basic solution select the geopaired region as deployment region.If solution type is choosen as standard and premium, enter location for geo-paired-region, for more information about the geo-paired-region navigate to section 5 in the Readme.md(https://github.com/sysgain/whitegoods/blob/master/README.md)"
             }
         },
         "omsWorkspaceRegion": {
