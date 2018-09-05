@@ -78,82 +78,232 @@ Core Architecture components:
 *	Azure Active Directory
 
 
-### 2.2	Standard Architecture Diagram
+### 2.2 Automated Solution	
+
+Automated IOT Solution is designed on the top of current core architecture. In addition, this solution also provides Monitoring and High availability.
+This solution is deployed through ARM template. This is a single click deployment which reduces manual effort when compared with the existing solution.
+In addition, this solution consists
+*	Application Insights to provide monitoring for Web Application. Application Insights store the logs of the Web API which will be helpful to trace the web API working.
+*	Log analytics to provide monitoring for Stream Analytics, IoT hub, Cosmos DB. Log analytics store the logs, which will be helpful to trace the working of these resources.
+*	Geo-replication to provide high availability for Cosmos DB. Geo-replication is used to set the recovery database as the primary database whenever primary database is failed.
+*	This solution also provides Disaster Recovery activities. IoT Hub manual failover is helpful to make the IoT Hub available in another region, when IoT Hub of one region is failed.
+*	Traffic Manager delivers high availability for critical web applications by monitoring the endpoints and providing automatic failover when an endpoint goes down.
+
+### 2.3 
+
+#### 2.3.1 Basic Architecture:
+
+Basic solution will have all core components, in addition this solution also consists monitoring components like Application Insights and OMS Log Analytics. 
+*	Application Insights provide monitoring for Web API.
+*	OMS Log Analytics provide monitoring for Stream Analytics, IoT hub, Cosmos DB.
+
+
+The below diagram depicts the dataflow between azure components:
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c1.png)
+
+Basic Architecture comprises of following components:
+*	1-Azure Sphere
+*	1-Web App
+*	1-Cosmos DB
+*	1-Application Insights
+*	1-Stream Analytics
+*	1-IoT HUB
+*	1-Log analytics
+*	1-Notification Hub
+*	1-Runbook 
+*	1-Azure Active Directory
+
+
+#### 2.3.2 Standard Architecture:
+
+Standard Architecture diagram will have two regions.
+1.	Primary Region(Deployment)
+2.	Secondary Region (Re – Deployment)
+We have IoT Hub manual failover, Cosmos DB geo replication and redeployment components. The effect of these components will occur when primary Region goes down.
+The main use of this solution is whenever disaster recovery occurs the redeployment components will deploy in another region, user need to manually add the Web application as an endpoint to the Traffic Manager and also start the Stream Analytics Job manually.
+
+The below diagram depicts the dataflow between azure components in standard solution:
+
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c2.png)
 
-### 2.3 Premium Architecture Diagram
+Standard Architecture comprises of following components:
+*	1-Web App
+*	1-RunBook
+*	1-Application Insights
+*	1-Cosmos DB
+*	1-IoT HUB
+*	1-Log analytics
+*	1-Notification Hub
+*	1-Stream Analytics
+*	1-Traffic Manager
+When there is a Region failover, user needs to redeploy ARM Template provided in GIT Repo. When redeployment Completed Successfully, below azure resources will be deployed. 
+Note:  Deployment process will take some time around 30mins to complete deployment Successfully.
+*	1-Web App
+*	1-Notification Hub
+*	1-Application Insights
+*	1-Stream Analytics job
+
+
+#### 2.3.3 Premium Architecture:
+
+Premium Architecture diagram also have two regions.
+1.	Primary Region
+2.	Secondary Region
+All the components get deployed at once.
+We have IoT Hub manual failover, Cosmos DB geo replication. Initially the Stream Analytics of the Secondary Region should be stopped before sending data to IoT Hub. The effect of these components will occur when primary Region goes down.
+Note: Make sure to run the stream Analytics job of the Secondary Region when the Primary Region goes down.
+The below diagram depicts the dataflow between azure components in premium solution:
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c3.png)
 
-### 2.4 Data work Flow Diagram
+Premium Architecture comprises of following components:
+*	2-Web App
+*	1-RunBook
+*	2-Application Insights
+*	1-Cosmos DB
+*	1-IoT HUB
+*	1-Log analytics
+*	2-Notification Hub
+*	2-Stream Analytics
+*	1-Traffic Manager
+In this type of solution all components will be deployed at initial deployment itself.
+This type of solution reduces downtime of solution when region is down. In this solution there is redeployment approach which reduces downtime of the solution.
+
+
+### 2.4 Conventional Data Work Flow 
 
 <p align="center">
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/c4.png">
 </p>
 
-## 3 Azure Services
+### 2.5 Azure Components Functionality
 
-### 3.1 IoT Hub
+Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers. It provides software as a service (SaaS), platform as a service (PaaS) and infrastructure as a service (IaaS) and supports many different programming languages, tools and frameworks, including both Microsoft-specific and third-party software and systems.
+Microsoft lists over 600 Azure services, of which some are as below:
+*	Compute
+*	Storage services
+*	Data management
+*	Management
+*	Machine learning
+*	IoT
 
-Azure IoT Hub is Microsoft’s Internet of Things connector to the cloud. It’s a fully managed cloud service that enables reliable and secure bi-directional communications between millions of IoT devices and a solution back end. Device-to-cloud telemetry data tells you about the state of your devices and assets. Cloud-to-device messages let you send commands and notifications to your connected devices. Device messages are sent in a durable way to accommodate intermittently connected devices.
 
-Azure Sphere device generates data and sends to IoT Hub.
+#### 2.5.1 IoT Hub
 
-### 3.2 Steam Analytics
+**Introduction:**
 
-Stream Analytics is an event processing engine that can ingest events in real-time, whether from one data stream or multiple streams. Events can come from sensors, applications, devices, operational   systems, websites, and a variety of other sources. Stream Analytics provides high-throughput, low-  latency processing, while supporting real-time stream computation operations.
+Azure IoT Hub is a fully managed service that enables reliable and secure bi-directional communications between millions of IoT devices and an application back end. 
+Azure IoT Hub offers reliable device-to-cloud and cloud-to-device hyper-scale messaging, enables secure communications using per-device security credentials and access control, and includes device libraries for the most popular languages and platforms. Before you can communicate with IoT Hub from a gateway you must create an IoT Hub instance in your Azure subscription and then provision your device in your IoT hub. Some samples in this repository require that you have a usable IoT Hub instance.
+The Azure IoT Hub offers several services for connecting IoT devices with Azure services, processing incoming messages or sending messages to the devices. From a device perspective, the functionalities of the Azure IoT Hub enable simple and safe connection of IoT devices with Azure services by facilitating bidirectional communication between the devices and the Azure IoT Hub.
 
-### 3.3 Azure Sphere
+**Implementation:**
+
+IoT Hub is the core component of IoT Hub Solution. Azure Sphere device generates data and sends to IoT Hub. Based on the user selection on Activating one of the Blink Application feature, the nodes in the IoT Hub’s Device Twin gets updated.
+
+
+#### 2.5.2 Steam Analytics
+
+**Introduction:**
+
+Stream Analytics is an event processing engine that can ingest events in real-time, whether from one data stream or multiple streams. Events can come from sensors, applications, devices, operational systems, websites, and a variety of other sources. Just about anything that can generate event data is fair game.
+Stream Analytics provides high-throughput, low-latency processing, while supporting real-time stream computation operations. With a Stream Analytics solution, organizations can gain immediate insights into real-time data as well as detect anomalies in the data, set up alerts to be triggered under specific conditions, and make the data available to other applications and services for presentation or further analysis. Stream Analytics can also incorporate historical or reference data into the real-time streams to further enrich the information and derive better analytics.
+To implement a streaming pipeline, developers create one or more jobs that define a stream’s inputs and outputs. The jobs also incorporate SQL-like queries that determine how the data should be transformed. In addition, developers can adjust a number of a job’s settings. For example, they can control when the job should start producing result output, how to handle events that do not arrive sequentially, and what to do when a partition lags other or does not contain data. Once a job is implemented, administrators can view the job’s status via the Azure portal.
+
+**Implementation:**
+
+Stream Analytics gets device telemetry data as input from IoT Hub and sends it to Cosmos DB’s messages collections. Stream analytics should always be in running state. 
+
+
+#### 2.5.3 Azure Sphere Device
+
+**Introduction:**
 
 The Azure Sphere solution brings together the best of Microsoft’s expertise in cloud, software, and silicon—resulting in a unique approach to security that starts in the silicon and extends to the cloud. Azure Sphere contains three components that work together to keep devices protected and secured in today’s dynamic threat landscape: Azure Sphere certified MCUs, the Azure Sphere OS and the Azure Sphere Security Service.
+The first Azure Sphere chip will be the MediaTek MT3620, which represents years of close collaboration and testing between MediaTek and Microsoft. This new cross-over class of MCU includes built-in Microsoft security technology, built-in connectivity, and combines the versatility and power of a Cortex-A processor with the low overhead and real-time guarantees of a Cortex-M class processor.
 
-The first Azure Sphere chip will be the MediaTek **MT3620**, which represents years of close collaboration and testing between MediaTek and Microsoft. This new cross-over class of MCU includes built-in Microsoft security technology, built-in connectivity, and combines the versatility and power of a Cortex-A processor with the low overhead and real-time guarantees of a Cortex-M class processor.
+**Implementation:**
 
-### 3.4 Notification Hub
+Installing Blink application on Azure sphere Device which establishes a connection with IoT Hub, creating a Device in IoT Hub and send Device status to IoT Hub’s Device Twin.
 
+#### 2.5.4 Notification Hub
+
+**Introduction:**
+
+Azure Notification Hubs provides a highly scalable, cross-platform push notification infrastructure that enables you to either broadcast push notifications to millions of users at once, or tailor notifications to individual users. You can use Notification Hubs with any connected mobile application—whether it’s built on Azure Virtual Machines, Cloud Services, Web Sites, or Mobile Services.
 Azure Notification Hubs are push notification software engines designed to alert users about new content for a given site, service or app. Azure Notification Hubs are part of Microsoft Azure’s public cloud service offerings.
+
+**Implementation:**
 
 Notification hub is used to send notifications to Mobile application whenever an event occurs beyond the defined metrics.
 
-### 3.5 Web Application  
+#### 2.5.5 Web Application 
+
+**Introduction:**
 
 A Web application (Web app) is an application program that is stored on a remote server and delivered over the Internet through a browser interface.
-In Solution we have two web applications in one app service plan.
+Azure Web Apps enables you to build and host web applications in the programming language of your choice without managing infrastructure. It offers auto-scaling and high availability, supports both Windows and Linux, and enables automated deployments from GitHub, Visual Studio Team Services, or any Git repo.
+Web Apps not only adds the power of Microsoft Azure to your application, such as security, load balancing, auto scaling, and automated management. You can also take advantage of its DevOps capabilities, such as continuous deployment from VSTS, GitHub, Docker Hub, and other sources, package management, staging environments, custom domain, and SSL certificates.
+In Solution we have a web application in one app service plan. 
 
-* Device management web application
+*	Device management web application
 
-### 3.6 Device management web application
+**Implementation:**
 
 Device management web application is a dashboard where you can view the Summary of Devices such Device count, status of device connection. It also provides the detailed insights of a device. We can view the Alert summary, Device Activation status and date, Shipment date.
 
-### 3.7 Azure Active Directory
-  
+
+#### 2.5.6 Azure Active Directory
+
+**Introduction:**
+
 Microsoft Azure Active Directory (Azure AD) is a cloud service that provides administrators with the ability to manage end user identities and access privileges. The service gives administrators the freedom to choose which information will stay in the cloud, who can manage or use the information, what services or applications can access the information and which end users can have access.
 
-Azure Active directory is used to authenticate users to login to Web Application. Azure active Directory enables secure authentications to web application.
+**Implementation:**
 
-### 3.8 Azure Run book
+Azure Active directory is used to authenticate users to login to Web Application. Azure active Directory enables secure authentications to web application
+
+
+#### 2.5.7 Azure Run book
+  
+**Introduction:**
 
 Azure Automation enables the users to automate the tasks, which are manual and repetitive in nature by using Runbooks. 
-
 Runbooks in Azure Automation are based on Windows PowerShell or Windows PowerShell Workflow. We can code and implement the logic, which we want to automate, using PowerShell.
 
-In this Solution Azure run books are used to create collections in Document DB. And will be used to update reply URLs in Active Directory Application.
- 
-### 3.9 Cosmos DB  
+**Implementation:**
+
+In this Solution Azure run books are used to create Database and collections in Document DB, it is also used to update reply URLs in Active Directory Application.
+
+
+#### 2.5.8 Cosmos DB  
+
+**Introduction:**
 
 Azure Cosmos DB is a Microsoft cloud database that supports multiple ways of storing and processing data. As such, it is classified as a multi-model database. In multi-model databases, various database engines are natively supported and accessible via common APIs.
 
+**Implementation:**
+
 In this Solution, Cosmos DB have Templates, Messages and Groups Collections. The Messages collections will get updated with the telemetry data of the Device.
 
-### 3.10 Log analytics
+ 
+#### 2.5.9 OMS Log analytics
 
-Log Analytics is a service in Operations Management Suite (OMS) that monitors your cloud and on-premises environments to maintain their availability and performance. It collects data generated by resources in your cloud and on-premises environments and from other monitoring tools to provide analysis across multiple sources.
+**Introduction:**
 
-OMS Log analytics are helpful to monitor SQL Database, Web Apps and Other Azure Components.
+The Microsoft Operations Management Suite (OMS), previously known as Azure Operational Insights, is a software as a service platform that allows an administrator to manage on-premises and cloud IT assets from one console.
+Microsoft OMS handles log analytics, IT automation, backup and recovery, and security and compliance tasks.
+Log analytics will collect and store your data from various log sources and allow you to query over them using a custom query language.
 
-### 3.11 Application Insights
+**Implementation:**
+
+Log analytics to provide monitoring for Stream Analytics, IoT hub, Cosmos DB. Log analytics store the logs, which will be helpful to trace the working of these resources. OMS log analytics provides in detailed insights using solutions.
+
+
+### 2.5.10 Application Insights
+
+**Introduction:**
 
 Application Insights is an extensible Application Performance Management (APM) service for web developers on multiple platforms. Use it to monitor live web application. It will automatically detect performance anomalies. It includes powerful analytics tools to help diagnose issues and to understand what users actually do with web application.
 
@@ -170,72 +320,90 @@ Application Insights monitor below:
 * Diagnostic trace logs
 * Custom events and metrics
 
-## 4 Solution Deployment Type & Cost
+**Implementation:**
 
-Deployment types will be helpful to deploy azure resources with minimum inputs from the user. User can choose different deployment based on requirement. Deployment types are helpful to deploy azure resources with minimal knowledge on Azure. We have three types of costing solutions in this project.  
+Application Insights to provide monitoring for Web Application. Application Insights store the logs of the Web API which will be helpful to trace the web API working.
 
-* Basic 
-* Standard
-* Premium
 
-**Basic**
+## 3. Solution Type & Cost Mechanism
 
-This deployment type deploys minimum azure resources with minimal available SKU. This solution deploys only required azure resources excluding high available components. 
+### 3.1 Solutions and Associated Costs
 
-**Standard**
+The Automated solutions provided by us covers in Section …. Will have the following Cost associated. The solutions are created considering users requirements & have Cost effective measures. User have control on what Type of azure resources need to be deploy with respect to SKU And Cost. These options will let user to choose whether user wants to deploy azure resources with minimal SKU and Production ready SKU. The Cost Models per solutions are explained in future sections:
 
-This deployment type deploys the minimum azure resources along with monitoring azure resources such as application Insights and OMS Log analytics.
-In case of Region failover, re-deploy ARM template will be deployed.
 
-**Premium**
+#### 3.1.1. Basic
 
-This Deployment type deploys minimum azure resources required to run the Solution which allows to monitor the solution also provides high availability for webapi and CosmosDB and including optional Components. 
+The Basic solution requires minimum azure components with minimal available SKU’s. This Solution provides (Core + Monitoring) features such as application Insights & OMS Log Analytics. The details on components used in this solution is listed in Section: 
 
-Below are the Costing details of each deployment type which explains SKU and Costing price details including optional components. 
+* The Estimated Monthly Azure cost is: **$190.51**
 
-### 4.1 Basic Costing Details
+Note: Refer below table for the optional component list & Features
+**Pricing Model for Basic Solution:**
+Prices are calculated by Considering Location as East US and Pricing Model as **“PAYG”**.
 
-| **Resource Name**           | **Size**           | **Resource costing model**                 | **Azure Cost/month**                                                                                                                
-| -------------              | -------------       | --------------------                       | ------------                                                                                                             
-| **App Service Plan**       | Basic Tier; 1 B1 (1 Core(s), 1.75 GB RAM, 10 GB Storage)      | PAYG         | $54.75 
-| **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50    | PAYG  | $25.86 
-| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day                      | PAYG                       | $25.00    
-| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US. After finishing 5GB, $2.30 per GB.      | PAYG                          | $2.30  
-| **Azure Automation Account**        | Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.     | PAYG       | $0.00   
-| **Notification Hub**       | Free                          | PAYG                      | $0.00 
-| **Application Insight**       | Basic, 1GB * $2.30 Region: East US first 5GB free per month       | PAYG                  | $2.30 
-| **Stream Analytics**   | Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US      | PAYG  | $80.30 
-|                     |                       | **Estimated monthly cost**          | **$190.51**
+| **Resource Name**           | **Size**           | **Azure Cost/month**                                                                                                                                 
+| -------------              | -------------       | --------------------                                                                                                                                  
+| **App Service Plan**       | Basic Tier; 1 B1 (1 Core(s), 1.75 GB RAM, 10 GB Storage)         | $54.75 
+| **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50    | $25.86 
+| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/da                      | $25.00    
+| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone). After finishing 5GB, $2.30 per GB.                          | $2.30  
+| **Azure Automation Account**        | Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month     | $0.00   
+| **Notification Hub**       | Free                          | $0.00 
+| **Application Insight**       | Basic, 1GB * $2.30 Region: East US first 5GB free per month          | $2.30 
+| **Stream Analytics**   | Standard Streaming Unit, 1 unit(s) 1 * $80.30    | $80.30 
+|                     |                       | **Estimated monthly cost**          | **190.51** 
 
-### 4.2 Standard Costing details
+#### 3.1.2. Standard
 
-| **Resource Name**           | **Size**           | **Resource costing model**                 | **Azure Cost/month**                                                                                                                
-| -------------              | -------------       | --------------------                       | ------------                                                                                                             
-| **App Service Plan**       | Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS     | PAYG         | $146.00  
-| **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50   | PAYG  | $25.86
-| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day          | PAYG                       | $25.00    
-| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US. After finishing 5GB, $2.30 per GB.     | PAYG                          | $2.30   
-| **Azure Automation Account**        | 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.    | PAYG                       | $0.00   
-| **Notification Hub**       | 2*Free                          | PAYG                      | $0.00 
-| **Application Insight**       | 2 * Basic, 1GB * $2.30 Region: East US first 5GB free per month       | PAYG                  | $4.60 
-| **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US         | PAYG  | $160.60  
-| **Traffic Manager**     | External endpoints 2*$0.54 Region: East US    | PAYG    | $1.08
-|                     |                       | **Estimated monthly cost**          | **$365.44**
-           
-### 4.3 Premium Costing details
+This Solution provides (Core + Monitoring +Hardening) features such as application Insights, OMS Log Analytics, High Availability, Security & Disaster recovery. The details on components used in this solution is listed in Section: 
 
-| **Resource Name**           | **Size**           | **Resource costing model**                 | **Azure Cost/month**                                                                                                                
-| -------------              | -------------       | --------------------                       | ------------                                                                                                             
-| **App Service Plan**       | Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS      | PAYG         | $146.0  
-| **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50     | PAYG  | $25.86 
-| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day        | PAYG                       | $25.00    
-| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US. After finishing 5GB, $2.30 per GB.        | PAYG                   | $2.30  
-| **Azure Automation Account**        | 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.     | PAYG        | $0.00   
-| **Notification Hub**       | 2*Free                          | PAYG                      | $0.00 
-| **Application Insight**       | 2 * Basic, 1GB * $2.30 Region: East US first 5GB free per month         | PAYG                  | $4.60 
-| **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US       | PAYG  | $160.60  
-| **Traffic Manager**     | External endpoints 2*$0.54 Region: East US    | PAYG    | $1.08
-|                     |                       | **Estimated monthly cost**          | **$365.44**
+* The Estimated Monthly Azure cost is: **$364.90**
+
+Note: Refer below table for the optional component list & Features
+**Pricing Model for Standard Solution:**
+Prices are calculated by Location as East US and Pricing Model as **“PAYG”**.
+
+| **Resource Name**           | **Size**           | **Azure Cost/month**                                                                                                                              
+| -------------              | -------------       | --------------------                                                                                                                                
+| **App Service Plan**       | Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS    | $146.00  
+| **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50   | $25.86
+| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day          | $25.00    
+| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) Region East US. After finishing 5GB, $2.30 per GB.     | $2.30   
+| **Azure Automation Account**        | 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.    | $0.00   
+| **Notification Hub**       | 2*Free                          | $0.00 
+| **Application Insight**       | 2 * Basic, 1GB * $2.30 Region: East US first 5GB free per month       | $4.60 
+| **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US         | $160.60  
+| **Traffic Manager**     | DNS Query $0.54 + Azure Endpoint $0.36     | $0.90
+|                     |                       | **Estimated monthly cost**          | **$364.90**
+
+
+#### 3.1.3. Premium
+
+This solution also provides (Core + Monitoring +Hardening), the difference between Standard & Premium solution is under Premium - Both the regions can be deployed at same time, and however this is not possible under standard solution. The de.tails on components used in this solution is listed in Section: 
+
+* The Estimated Monthly Azure cost is: **$364.90**
+
+**Pricing Model for Premium Solution:**
+Prices are calculated by Considering Location as East US and Pricing Model as **“PAYG”**.
+
+| **Resource Name**           | **Size**           | **Azure Cost/month**     
+
+| -------------              | -------------       | --------------------
+
+| **App Service Plan**       | Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS      | $146.0  
+| **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50     | $25.86 
+| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day        | $25.00    
+| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) . After finishing 5GB, $2.30 per GB.        | $2.30  
+| **Azure Automation Account**        | 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.     | $0.00   
+| **Notification Hub**       | 2*Free                          | $0.00 
+| **Application Insight**       | 2 * Basic, 1GB * $2.30 first 5GB free per month         | $4.60 
+| **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30        | $160.60  
+| **Traffic Manager**     | DNS Query $0.54 + Azure Endpoint $0.36     | $0.90
+|                     |                       | **Estimated monthly cost**          | **$364.90**
+
+
+
                      
 ## 5 What are paired regions? 
 
