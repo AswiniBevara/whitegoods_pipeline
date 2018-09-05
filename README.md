@@ -37,7 +37,7 @@
 - [7 Administrator Guide for the Solution](#7-administrator-guide-for-the-solution)
 - [8 User Guide for the Solution](#8-user-guide-for-the-solution)
    
-## 1 Introduction
+## 1. Introduction
 
 ### 1.1 Overview of White Goods Solution
 
@@ -58,7 +58,7 @@ The Rationale behind this IOT Solution for Whitegoods is to:
 *	This solution is helpful to monitor thousands of connected devices and access them remotely from Device Management Application.
 
 
-## 2 IoT Solutions 
+## 2. IoT Solutions 
 
 ### 2.1 Core Architecture (Current)
 
@@ -457,7 +457,7 @@ The below Table explains the $ impact for the solutions by resources.
 |------------------------	|---------	|----------	|---------	|
 | Estimated monthly cost 	| $190.51 	| $364.90  	| $364.90 	|
 
-## 4 What are paired regions? 
+## 4. What are paired regions? 
 
 Azure operates in multiple geographies around the world. An Azure geography is a defined area of the world that contains at least one Azure Region. An Azure region is an area within a geography, containing one or more datacenters. 
 
@@ -487,14 +487,14 @@ Each Azure region is paired with another region within the same geography, toget
 | **18**   | UK    | UK West - UK South  
 
 
-## 5 Deployment Guide for the Solution
+## 5. Deployment Guide for the Solution
 
 To deploy the Basic , Standard or Premium Solution please refer **[Deployment Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Deployment%20Guide%20Document.docx)**.
 
-## 6 User Guide for the Solution
+## 6. User Guide for the Solution
 
 For Running Blink Application and verifying the Device Management Web application, please refer **[User Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/User%20Documentation.docx)**.
 
-## 7 Administrator Guide for the Solution
+## 7. Administrator Guide for the Solution
 
 To configure and validate the Standard and Premium Solution, please refer the **[Administrator Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Admin%20Guide%20Document.docx)**.
