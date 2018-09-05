@@ -7,10 +7,10 @@
 **Table of Contents** 
 
  [1 Introduction](#1-Introduction)
-     [1.1 Overview of White Goods Solution](#11-Overview of White Goods Solution)
-     [1.2 Overview of IOT Solution](#12-Overview of IOT Solution)
+     [1.1 Overview of White Goods Solution](#11-Overview-of-White-Goods-Solution)
+     [1.2 Overview of IOT Solution](#12-Overview-of-IOT-Solution)
            [1.2.1 Highlights](#121-Highlights)
-           [1.2.2 Brief About the Solution](#122-Brief About the Solution)         
+           [1.2.2 Brief About the Solution](#122-Brief-About-the-Solution)         
 - [2 Solution Architecture Diagram and data work flow Diagram](#2-solution-architecture-diagram-and-data-work-flow-diagram)
     - [2.1 Basic Architecture Diagram](#21-basic-architecture-diagram)
     - [2.2 Standard Architecture Diagram](#22-standard-architecture-diagram)
@@ -58,11 +58,25 @@ The Rationale behind this IOT Solution for Whitegoods is to:
 *	This solution is helpful to monitor thousands of connected devices and access them remotely from Device Management Application.
 
 
-## 2 Solution Architecture Diagram and data work flow Diagram
+## 2 IoT Solutions 
 
-### 2.1 Basic Architecture Diagram
+### 2.1 Core Architecture (Current)
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c1.png)
+Below Diagram explains the Core architecture for White Goods solution
+
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/corearchitecture.png)
+
+Core Architecture components:
+*	4x4 Device
+*	IoT Hub
+*	Stream Analytics
+*	Data Packet Web Application
+*	Device Management
+*	Cosmos DB
+*	Notification Hub
+*	Run Book
+*	Azure Active Directory
+
 
 ### 2.2	Standard Architecture Diagram
 
