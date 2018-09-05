@@ -92,13 +92,13 @@
         "tenantId": {
             "type": "string",
             "metadata": {
-                "description": "TenantId of the created Azure active directory application. For instructions, see  https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-howto-tenant in the Microsoft documentation"
+                "description": "TenantId of the created Azure active directory application. For instructions, see  (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-howto-tenant) in the Microsoft documentation"
             }
         },
         "clientId": {
             "type": "string",
             "metadata": {
-                "description": "ApplicationID of the created Azure active directory application. For information, see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications in the Microsoft documentation."
+                "description": "ApplicationID of the created Azure active directory application. For information, see (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications) in the Microsoft documentation."
             }
         },
         "objectId": {
@@ -110,7 +110,7 @@
         "clientSecret": {
             "type": "securestring",
             "metadata": {
-                "description": "clientSecret of the created Azure active directory application.For instructions, see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key in the Microsoft documentation."
+                "description": "clientSecret of the created Azure active directory application.For instructions, see (https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) in the Microsoft documentation."
             }
         },
         "azureAccountName": {
