@@ -168,7 +168,9 @@ Premium Architecture comprises of following components:
 *	2-Notification Hub
 *	2-Stream Analytics
 *	1-Traffic Manager
+
 In this type of solution all components will be deployed at initial deployment itself.
+
 This type of solution reduces downtime of solution when region is down. In this solution there is redeployment approach which reduces downtime of the solution.
 
 
