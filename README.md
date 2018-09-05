@@ -10,8 +10,7 @@
     - [1.1 Overview of White Goods Solution](#11-Overview of White Goods Solution)
     - [1.2 Overview of IOT Solution](#12-Overview of IOT Solution)
           - [1.2.1 Highlights](#121-Highlights)
-          - [1.2.2 Brief About the Solution](#122-Brief About the Solution)
-          
+          - [1.2.2 Brief About the Solution](#122-Brief About the Solution)         
 - [2 Solution Architecture Diagram and data work flow Diagram](#2-solution-architecture-diagram-and-data-work-flow-diagram)
     - [2.1 Basic Architecture Diagram](#21-basic-architecture-diagram)
     - [2.2 Standard Architecture Diagram](#22-standard-architecture-diagram)
