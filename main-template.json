@@ -71,7 +71,7 @@
                 "westus2"
             ],
             "metadata": {
-                "description": "specify the region for application insights"
+                "description": "specify the region for application insights deployment"
             }
         },
         "appInsightsLocationDr": {
