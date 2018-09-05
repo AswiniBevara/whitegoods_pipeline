@@ -89,7 +89,7 @@ In addition, this solution consists
 *	This solution also provides Disaster Recovery activities. IoT Hub manual failover is helpful to make the IoT Hub available in another region, when IoT Hub of one region is failed.
 *	Traffic Manager delivers high availability for critical web applications by monitoring the endpoints and providing automatic failover when an endpoint goes down.
 
-### 2.3 
+### 2.3 Architectures
 
 #### 2.3.1 Basic Architecture:
 
@@ -303,7 +303,7 @@ Log analytics will collect and store your data from various log sources and allo
 Log analytics to provide monitoring for Stream Analytics, IoT hub, Cosmos DB. Log analytics store the logs, which will be helpful to trace the working of these resources. OMS log analytics provides in detailed insights using solutions.
 
 
-### 2.5.10 Application Insights
+#### 2.5.10 Application Insights
 
 **Introduction:**
 
