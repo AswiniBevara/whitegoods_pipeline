@@ -6,7 +6,12 @@
 
 **Table of Contents** 
 
-- [1 About WhiteGoods Solution](#1-about-whitegoods-solution)
+- [1 Introduction](#1-Introduction)
+    - [1.1 Overview of White Goods Solution](#11-Overview of White Goods Solution)
+    - [1.2 Overview of IOT Solution](#12-Overview of IOT Solution)
+          - [1.2.1 Highlights](#121-Highlights)
+          - [1.2.2 Brief About the Solution](#122-Brief About the Solution)
+          
 - [2 Solution Architecture Diagram and data work flow Diagram](#2-solution-architecture-diagram-and-data-work-flow-diagram)
     - [2.1 Basic Architecture Diagram](#21-basic-architecture-diagram)
     - [2.2 Standard Architecture Diagram](#22-standard-architecture-diagram)
@@ -33,9 +38,26 @@
 - [7 Administrator Guide for the Solution](#7-administrator-guide-for-the-solution)
 - [8 User Guide for the Solution](#8-user-guide-for-the-solution)
    
-## 1 About White Goods Solution
+## 1 Introduction
+
+### 1.1 Overview of White Goods Solution
 
 The Azure Sphere Solution Accelerator ecosystem enables your company to setup connected device products quickly, securely, and cost-effectively. Connect your product to the cloud, define collected data, and simulate device-to-cloud communication. Monitor your connected products, analyze trends, gain insights in channel management.
+
+### 1.2 Overview of IOT Solution
+
+#### 1.2.1 Highlights
+
+The Rationale behind this IOT Solution for Whitegoods is to: 
+*	Blink Application establishes a connection between IoT Hub and Azure Sphere Device
+*	Based on the user selection on Activating one of the Blink Application feature, the nodes in the IoT Hub’s Device Twin gets updated.
+*	Based on the status of the IoT Hub’s Device Twin, the Azure Sphere Device will activate the respective Blink Rate number (i.e. Blink Rate1, Blink Rate2 or Blink Rate3)
+
+#### 1.2.2 Brief About the Solution
+*	The Device Management Web Application manages the Azure sphere IoT devices and Azure Sphere Device contains the Blink Application code which communicates with IoT Hub. 
+*	A runbook which creates Database, Collections in Cosmos DB and update the reply URLs of the Application in Azure Active Directory to authenticate Device Management Web Application.
+*	This solution is helpful to monitor thousands of connected devices and access them remotely from Device Management Application.
+
 
 ## 2 Solution Architecture Diagram and data work flow Diagram
 
