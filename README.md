@@ -388,20 +388,18 @@ This solution also provides (Core + Monitoring +Hardening), the difference betwe
 
 Prices are calculated by Considering Location as East US and Pricing Model as **“PAYG”**.
 
-| **Resource Name**           | **Size**           | **Azure Cost/month**     
-
-| -------------              | -------------       | --------------------
-
-| **App Service Plan**       | Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS      | $146.0  
-| **Cosmos DB**   | Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50     | $25.86 
-| **IoT HUB**        | Standard Tier: S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day        | $25.00    
-| **Log Analytics**      | First 5GB of data storage is free. Per GB(Standalone) . After finishing 5GB, $2.30 per GB.        | $2.30  
-| **Azure Automation Account**        | 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month.     | $0.00   
-| **Notification Hub**       | 2*Free                          | $0.00 
-| **Application Insight**       | 2 * Basic, 1GB * $2.30 first 5GB free per month         | $4.60 
-| **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30        | $160.60  
-| **Traffic Manager**     | DNS Query $0.54 + Azure Endpoint $0.36     | $0.90
-|                     |                       | **Estimated monthly cost**          | **$364.90**
+| **Resource Name**            	| **Size**                                                                                                              	| **Azure Cost/Month** 	|
+|--------------------------	|-------------------------------------------------------------------------------------------------------------------	|------------------	|
+| App Service Plan         	| Standard Tier; S1: 2 (Core(s), 1.75 GB RAM, 50 GB Storage) x 730 Hours; Windows OS                                	| $146.00          	|
+| Cosmos DB                	| Standard, throughput 400 RU/s (Request Units per second) 4x100 Rus(Throughput)- $23.36 10 GB storage – $2.50      	| $25.86           	|
+| IoT-Hub                  	| S1, Unlimited devices, 1 Unit-$25.00/per month 400,000 messages/day                                               	| $25.00           	|
+| Log Analytics            	| First 5GB of data storage is free. Per GB(Standalone). After finishing 5GB, $2.30 per GB.                         	| $2.30            	|
+| Azure Automation Account 	| 2*Capability: Process Automation 500 minutes of process automation and 744 hours of watchers are free each month. 	| $0.00            	|
+| Notification Hub         	| 2 * Free                                                                                                          	| $0.00            	|
+| Application Insight      	| 2 * Basic, 1GB * $2.30 First 5GB free per month                                                                   	| $4.60            	|
+| Stream Analytics         	| 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30                                                                 	| $160.60          	|
+| Traffic Manager          	| DNS Query $0.54 + Azure Endpoint $0.36                                                                            	| $0.90            	|
+|                          	| **Estimated monthly cost**                                                                                            	| **$364.90**          	|
 
 
 ### 3.2 Cost Comparison: 
@@ -435,9 +433,29 @@ The below table explain the distinctive features available across solution types
 | Traffic Manager          	| DNS Query      	| -                                                                                                  	| 1 Million/ Month                                                                                   	| 1 Million/ Month                                                                                   	|
 |                          	| Endpoint       	| -                                                                                                  	| Azure EndPoint 1 per month                                                                         	| Azure EndPoint 1 per month                                                                         	|
 
+#### 3.2.2.  Dollar Impact: 
 
-                     
-## 5 What are paired regions? 
+The below Table explains the $ impact for the solutions by resources.
+
+| Resource Name            	| Basic  	| Standard 	| Premium 	|
+|--------------------------	|--------	|----------	|---------	|
+| App Service Plan         	| $54.75 	| $146.00  	| $146.00 	|
+| Cosmos DB                	| $25.86 	| $25.86   	| $25.86  	|
+| Stream Analytics         	| $80.30 	| $160.60  	| $160.60 	|
+| IoT-Hub                  	| $25.00 	| $25.00   	| $25.00  	|
+| Application Insights     	| $2.30  	| $2.30    	| $2.30   	|
+| Log Analytics            	| $2.30  	| $2.30    	| $2.30   	|
+| Notification Hub         	| $0.00  	| $0.00    	| $0.00   	|
+| Azure Automation Account 	| $0.00  	| $0.00    	| $0.00   	|
+| Traffic Manager          	| $0.00  	| $0.54    	| $0.54   	|     
+
+#### 3.2.3. Estimated Monthly Cost for each Solution:
+
+| Resource Name          	| Basic   	| Standard 	| Premium 	|
+|------------------------	|---------	|----------	|---------	|
+| Estimated monthly cost 	| $190.51 	| $364.90  	| $364.90 	|
+
+## 4 What are paired regions? 
 
 Azure operates in multiple geographies around the world. An Azure geography is a defined area of the world that contains at least one Azure Region. An Azure region is an area within a geography, containing one or more datacenters. 
 
@@ -467,14 +485,14 @@ Each Azure region is paired with another region within the same geography, toget
 | **18**   | UK    | UK West - UK South  
 
 
-## 6 Deployment Guide for the Solution
+## 5 Deployment Guide for the Solution
 
-To deploy the Basic , Standard or Premium Solution please refer **[Deployment Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/DeploymentGuide.md)**.
+To deploy the Basic , Standard or Premium Solution please refer **[Deployment Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Deployment%20Guide%20Document.docx)**.
 
-## 7 User Guide for the Solution
+## 6 User Guide for the Solution
 
-For Running Blink Application and verifying the Device Management Web application, please refer **[User Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/UserGuide.md)**.
+For Running Blink Application and verifying the Device Management Web application, please refer **[User Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/User%20Documentation.docx)**.
 
-## 8 Administrator Guide for the Solution
+## 7 Administrator Guide for the Solution
 
-To configure and validate the Standard and Premium Solution, please refer the **[Administrator Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/AdminGuide.md)**.
+To configure and validate the Standard and Premium Solution, please refer the **[Administrator Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Admin Guide Document.docx)**.
