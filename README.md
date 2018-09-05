@@ -352,7 +352,7 @@ Prices are calculated by Considering Location as East US and Pricing Model as **
 | **Notification Hub**       | Free                          | $0.00 
 | **Application Insight**       | Basic, 1GB * $2.30 Region: East US first 5GB free per month          | $2.30 
 | **Stream Analytics**   | Standard Streaming Unit, 1 unit(s) 1 * $80.30    | $80.30 
-|                     |                       | **Estimated monthly cost**          | **190.51** 
+|                     | **Estimated monthly cost**          | **190.51** 
 
 #### 3.1.2. Standard
 
@@ -375,7 +375,7 @@ Prices are calculated by Location as East US and Pricing Model as **“PAYG”**
 | **Application Insight**       | 2 * Basic, 1GB * $2.30 Region: East US first 5GB free per month       | $4.60 
 | **Stream Analytics**   | 2 * Standard Streaming Unit, 1 unit(s) 1 * $80.30 Region: East US         | $160.60  
 | **Traffic Manager**     | DNS Query $0.54 + Azure Endpoint $0.36     | $0.90
-|                     |                       | **Estimated monthly cost**          | **$364.90**
+|                     | **Estimated monthly cost**          | **$364.90**
 
 
 #### 3.1.3. Premium
@@ -385,6 +385,7 @@ This solution also provides (Core + Monitoring +Hardening), the difference betwe
 * The Estimated Monthly Azure cost is: **$364.90**
 
 **Pricing Model for Premium Solution:**
+
 Prices are calculated by Considering Location as East US and Pricing Model as **“PAYG”**.
 
 | **Resource Name**           | **Size**           | **Azure Cost/month**     
@@ -402,6 +403,37 @@ Prices are calculated by Considering Location as East US and Pricing Model as **
 | **Traffic Manager**     | DNS Query $0.54 + Azure Endpoint $0.36     | $0.90
 |                     |                       | **Estimated monthly cost**          | **$364.90**
 
+
+### 3.2 Cost Comparison: 
+
+In this section we will be comparing the cost for all the solution provided in terms of Features & $ Impact:
+
+#### 3.2.1.  In terms of features:
+
+The below table explain the distinctive features available across solution types.
+
+| **Resource Name**            	| **Parameter**      	| **Basic**                                                                                              	| **Standard**                                                                                           	| **Premium**                                                                                            	|
+|--------------------------	|----------------	|----------------------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------------------	|
+| App Service Plan         	| SKU            	| B1                                                                                                 	| S1                                                                                                 	| S1                                                                                                 	|
+|                          	| Cores          	| 1 Core                                                                                             	| 1 Core                                                                                             	| 1 Core                                                                                             	|
+|                          	| RAM            	| 1.75GB                                                                                             	| 1.75GB                                                                                             	| 1.75GB                                                                                             	|
+|                          	| Storage        	| 10GB                                                                                               	| 50GB                                                                                               	| 50GB                                                                                               	|
+|                          	| OS             	| Windows                                                                                            	| Windows                                                                                            	| Windows                                                                                            	|
+| IoT-Hub                  	| SKU            	| S1                                                                                                 	| S1                                                                                                 	| S1                                                                                                 	|
+|                          	| Devices        	| Unlimited devices                                                                                  	| Unlimited Devices                                                                                  	| Unlimited Devices                                                                                  	|
+|                          	| Messages       	| 400,000 messages/day                                                                               	| 4,00,000 msgs/day                                                                                  	| 4,00,000 msgs/day                                                                                  	|
+| Cosmos DB                	| SKU            	| Standard                                                                                           	| Standard                                                                                           	| Standard                                                                                           	|
+|                          	| Database       	| 1                                                                                                  	| 1                                                                                                  	| 1                                                                                                  	|
+|                          	| Storage        	| 10 GB                                                                                              	| 10 GB                                                                                              	| 10 GB                                                                                              	|
+|                          	| Purchase model 	| 4 x 100 RU/s                                                                                       	| 4 x 100 RU/s                                                                                       	| 4 x 100 RU/s                                                                                       	|
+| Stream Analytics         	| SKU            	| Standard                                                                                           	| Standard                                                                                           	| Standard                                                                                           	|
+|                          	| Streaming Unit 	| 1 Units                                                                                            	| 1 Units                                                                                            	| 1 Units                                                                                            	|
+| Application Insights     	| Logs collected 	| 6 GB, 5 GB of data is included for free.                                                           	| 6 GB, 5 GB of data is included for free.                                                           	| 6 GB, 5 GB of data is included for free.                                                           	|
+| Log Analytics            	| Logs ingested  	| 5 GB of data is included for free. An average Azure VM ingests 1 GB to 3 GB                        	| 5 GB of data is included for free. An average Azure VM ingests 1 GB to 3 GB                        	| 5 GB of data is included for free. An average Azure VM ingests 1 GB to 3 GB                        	|
+| Azure Automation Account 	| Capability     	| Process Automation 500 minutes of process automation and 744 hours of watchers are free each month 	| Process Automation 500 minutes of process automation and 744 hours of watchers are free each month 	| Process Automation 500 minutes of process automation and 744 hours of watchers are free each month 	|
+| Notification Hub         	| SKU            	| Free                                                                                               	| Free                                                                                               	| Free                                                                                               	|
+| Traffic Manager          	| DNS Query      	| -                                                                                                  	| 1 Million/ Month                                                                                   	| 1 Million/ Month                                                                                   	|
+|                          	| Endpoint       	| -                                                                                                  	| Azure EndPoint 1 per month                                                                         	| Azure EndPoint 1 per month                                                                         	|
 
 
                      
