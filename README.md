@@ -538,7 +538,7 @@ To deploy the Basic, Standard or Premium Solution please refer **[Deployment Gui
 
 ## 6. User Guide for the Solution
 
-For Running Blink Application and verifying the Device Management Web application, please refer **[User Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/User%20Documentation.docx)**.
+For Running Blink Application and verifying the Device Management Web application, please refer **[User Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/UserGuide.md)**.
 
 ## 7. Administrator Guide for the Solution
 
