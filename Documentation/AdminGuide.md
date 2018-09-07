@@ -170,10 +170,8 @@ Click on **Add** in existing resource group and re-deploy the ARM template.
 Go to **Resource Group** -> **Traffic manager profile** -> **Endpoints**, click on **add**.
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/155.png">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/156.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/157.png">
 </p>
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/157.png)
 
 **Enter** the name for the **second End point** of traffic manager and select the second web app as the target resource.
 
