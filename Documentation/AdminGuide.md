@@ -93,13 +93,13 @@ Once Manual Failover process completed, Primary Location and secondary location 
 Go to **Resource Group** and click on primary **Stream Analytics job**
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/145.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/S1.png">
 </p>
 
 Stop the Stream analytics job by click on **Stop** and click on **Yes** for confirmation.
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/146.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/S2.png">
 </p>
 
 #### 2.1.3 Accessing Traffic manager 
@@ -107,7 +107,7 @@ Stop the Stream analytics job by click on **Stop** and click on **Yes** for conf
 Go to **Resource Group** and click on **Traffic manager** resource.
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/147.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/S3.png">
 </p>
 
 Now you can see the web app as the endpoint of the traffic manager.
@@ -135,7 +135,7 @@ The Web App in the primary region has been stopped as failover.
 Verify the same in traffic manager.
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/151.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/S4.png">
 </p>
 
 #### 2.1.5 Redeploy the Region 2 ARM Template
@@ -184,7 +184,7 @@ Click on **Ok**.
 You can see the second region web app with online status under endpoint of traffic manager and **Copy** the **DNS Name**.
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/159.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/S5.png">
 </p>
 
 #### 2.1.7 Cosmos DB Geo replication
@@ -192,7 +192,7 @@ You can see the second region web app with online status under endpoint of traff
 Go to **Resource Group** -> click **Cosmos DB**.
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/160.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/S6.png">
 </p>
 
 Navigate to **Replicate data globally** under Settings section then click **Manual failover**.
@@ -251,7 +251,7 @@ When user chooses premium as solution type below azure resource will be deployed
 
 Go to **Resource Group** and Click on **IoT Hub**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/167.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/S7.png)
 
 Go to **Manual Failover(Preview)** from left side menu.
 
@@ -275,7 +275,7 @@ When failover process started, a pop up will be displayed on right top corner. O
 
 Go to **Resource Group** and click on primary **Stream Analytics job**.
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/171.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/S8.png)
 
 Stop the Stream analytics job by click on **Stop** and click on **Yes** for confirmation.
 
