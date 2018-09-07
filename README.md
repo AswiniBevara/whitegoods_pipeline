@@ -76,7 +76,7 @@ The Rationale behind this IOT Solution for Whitegoods is to:
 
 Below Diagram explains the Core architecture for White Goods solution
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/corearchitecture.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/A1.png)
 
 Core Architecture components:
 
@@ -119,7 +119,7 @@ Basic solution will have all core components, in addition this solution also con
 
 The below diagram depicts the dataflow between azure components:
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c1.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/D1.png)
 
 Basic Architecture comprises of following components:
 
@@ -147,7 +147,7 @@ The main use of this solution is whenever disaster recovery occurs the redeploym
 
 The below diagram depicts the dataflow between azure components in standard solution:
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c2.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/A2.png)
 
 Standard Architecture comprises of following components:
 
@@ -185,7 +185,7 @@ We have IoT Hub manual failover, Cosmos DB geo replication. Initially the Stream
 
 The below diagram depicts the dataflow between azure components in premium solution:
 
-![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c3.png)
+![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/A3.png)
 
 Premium Architecture comprises of following components:
 
@@ -206,7 +206,7 @@ This type of solution reduces downtime of solution when region is down. In this 
 ### 2.4 Conventional Data Work Flow 
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/c4.png">
+  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/D2.png">
 </p>
 
 ### 2.5 Azure Components Functionality
