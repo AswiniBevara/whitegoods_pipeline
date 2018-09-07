@@ -6,37 +6,42 @@
 
 **Table of Contents** 
 
-- [1 Performing DR Strategies](#1-performing-dr-strategies)
-    - [1.1 Standard Solution Type](#11-standard-solution-type)
-        - [1.1.1 IoT Hub Manual Failover](#111-iot-hub-manual-failover)
-        - [1.1.2 Stop Stream Analytics Job in Primary Region](#112-stop-stream-analytics-job-in-primary-region)
-        - [1.1.3 Accessing Traffic manager](#113-accessing-traffic-manager)
-        - [1.1.4 Stopping the Web App](#114-stopping-the-web-app)
-        - [1.1.5 Redeploy the Region 2 ARM Template](#115-redeploy-the-region-2-arm-template)
-        - [1.1.6 Configure Region 2 web app to Traffic Manager](#116-configure-region-2-web-app-to-traffic-manager)
-        - [1.1.7 Cosmos DB Geo replication](#117-cosmos-db-geo-replication)
-        - [1.1.8 Accessing Web App](#118-accessing-web-app)
-    - [1.2 Premium Solution Type](#12-premium-solution-type)
-        - [1.2.1 IoT Hub Manual Failover](#121-iot-hub-manual-failover)
-        - [1.2.2 Stop Stream Analytics Job in Primary Region](#122-stop-stream-analytics-job-in-primary-region)
-        - [1.2.3 Accessing Traffic manager](#123-accessing-traffic-manager)
-        - [1.2.4 Stopping the Web App](#124-stopping-the-web-app)
-        - [1.2.5 Cosmos DB Geo replication](#125-cosmos-db-geo-replication)
-        - [1.2.6 Accessing Web App](#126-accessing-web-app)
+- [1 Admin Guide](#1-admin-guide)
+- [2 Performing DR Strategies](#2-performing-dr-strategies)
+    - [2.1 Standard Solution Type](#21-standard-solution-type)
+        - [2.1.1 IoT Hub Manual Failover](#211-iot-hub-manual-failover)
+        - [2.1.2 Stop Stream Analytics Job in Primary Region](#212-stop-stream-analytics-job-in-primary-region)
+        - [2.1.3 Accessing Traffic manager](#213-accessing-traffic-manager)
+        - [2.1.4 Stopping the Web App](#214-stopping-the-web-app)
+        - [2.1.5 Redeploy the Region 2 ARM Template](#215-redeploy-the-region-2-arm-template)
+        - [2.1.6 Configure Region 2 web app to Traffic Manager](#216-configure-region-2-web-app-to-traffic-manager)
+        - [2.1.7 Cosmos DB Geo replication](#217-cosmos-db-geo-replication)
+        - [2.1.8 Accessing Web App](#218-accessing-web-app)
+    - [2.2 Premium Solution Type](#22-premium-solution-type)
+        - [2.2.1 IoT Hub Manual Failover](#221-iot-hub-manual-failover)
+        - [2.2.2 Stop Stream Analytics Job in Primary Region](#222-stop-stream-analytics-job-in-primary-region)
+        - [2.2.3 Accessing Traffic manager](#223-accessing-traffic-manager)
+        - [2.2.4 Stopping the Web App](#224-stopping-the-web-app)
+        - [2.2.5 Cosmos DB Geo replication](#225-cosmos-db-geo-replication)
+        - [2.2.6 Accessing Web App](#226-accessing-web-app)
 
-## 1 Performing DR Strategies
+## 1 Admin Guide 
 
-### 1.1 Standard Solution Type
+This document explains how to use the solution in addition to User Document. In this we are configuring, verifying and performing DR activities for Standard and Premium solutions.  
 
-In this scenario, there is again a primary and a secondary Azure region. All the traffic goes to the active deployment on the primary region. The secondary region is better prepared for disaster recovery because the database is running on both regions. 
+## 2 Performing DR Strategies
 
-Only the primary region has a deployed cloud service application. Both regions are synchronized with the contents of the database. When a disaster occurs, there are fewer activation requirements. You redeploy azure resources in the secondary region.
+### 2.1 Standard Solution Type
 
-Redeployment approach, you should have already stored the service packages. However, you don’t incur most of the overhead that database restore operation requires, because the database is ready and running.  This saves a significant amount of time, making this an affordable DR pattern.
+In this scenario, there is again a primary and a secondary Azure region. All the traffic goes to the active deployment on the primary region. The secondary region is better prepared for disaster recovery because the database is running on both regions.  
 
-Standard Solution requires redeployment of azure resources in secondary region when there is primary region is down.
+Only the primary region has a deployed cloud service application. Both regions are synchronized with the contents of the database. When a disaster occurs, there are fewer activation requirements. You redeploy azure resources in the secondary region. 
 
-When user chooses Standard Solution type below azure resources will be deployed in primary region and SQL in both Regions.
+Redeployment approach, you should have already stored the service packages. However, you don’t incur most of the overhead that database restore operation requires, because the database is ready and running.  This saves a significant amount of time, making this an affordable DR pattern. 
+
+Standard Solution requires redeployment of azure resources in secondary region when the primary region is down. 
+
+When user chooses Standard Solution type below azure resources will be deployed in primary region and Cosmos DB in both Regions. 
 
 * App service
 * Application insights
@@ -55,9 +60,9 @@ When Primary region is down, and user needs to redeploy azure resources to new r
 * Notification hub
 * Stream analytics Job
 
-Refer **3.1 and 3.2** Section in **Deployment Guide** for Standard Solution Deployment.
+'Refer **4.1 and 4.2** Section in **Deployment Guide** for Standard Solution Deployment.'
 
-#### 1.1.1 IoT Hub Manual Failover
+#### 2.1.1 IoT Hub Manual Failover
 
 Go to **Resource Group** -> Click on **IoT Hub**.
 
@@ -83,7 +88,7 @@ Once Manual Failover process completed, Primary Location and secondary location 
 
 **Note**: This process will take around 15 mins. To initial failover again, user needs wait for 1 hour to run failover again.
 
-#### 1.1.2 Stop Stream Analytics Job in Primary Region
+#### 2.1.2 Stop Stream Analytics Job in Primary Region
 
 Go to **Resource Group** and click on primary **Stream Analytics job**
 
@@ -97,7 +102,7 @@ Stop the Stream analytics job by click on **Stop** and click on **Yes** for conf
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/146.png">
 </p>
 
-#### 1.1.3 Accessing Traffic manager 
+#### 2.1.3 Accessing Traffic manager 
 
 Go to **Resource Group** and click on **Traffic manager** resource.
 
@@ -111,7 +116,7 @@ Now you can see the web app as the endpoint of the traffic manager.
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/148.png">
 </p>
 
-#### 1.1.4 Stopping the Web App
+#### 2.1.4 Stopping the Web App
 
 Navigate to the **Web App** from resource group.
 
@@ -133,7 +138,7 @@ Verify the same in traffic manager.
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/151.png">
 </p>
 
-#### 1.1.5 Redeploy the Region 2 ARM Template
+#### 2.1.5 Redeploy the Region 2 ARM Template
 
 Go to **Github** and select **re-deploy.json** file from the **master** branch.
 
@@ -160,7 +165,7 @@ Click on **Add** in existing resource group and re-deploy the ARM template.
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/156.png">
 </p>
 
-#### 1.1.6 Configure Region 2 web app to Traffic Manager
+#### 2.1.6 Configure Region 2 web app to Traffic Manager
 
 Go to **Resource Group** -> **Traffic manager profile** -> **Endpoints**, click on **add**.
 
@@ -184,7 +189,7 @@ You can see the second region web app with online status under endpoint of traff
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/159.png">
 </p>
 
-#### 1.1.7 Cosmos DB Geo replication
+#### 2.1.7 Cosmos DB Geo replication
 
 Go to **Resource Group** -> click **Cosmos DB**.
 
@@ -204,7 +209,7 @@ Navigate to **Replicate data globally** under Settings section then click **Manu
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/162.png">
 </p>
 
-#### 1.1.8 Accessing Web App
+#### 2.1.8 Accessing Web App
 
 Go to **Resource Group** -> **Settings** -> **Deployments**, select **Microsoft Template**.
 
@@ -222,7 +227,7 @@ You can see the **Device summary** as shown below.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/166.png)
 
-### 1.2 Premium Solution Type
+### 2.2 Premium Solution Type
 
 Both the primary region and the secondary region have a full deployment. This deployment includes the cloud services and a synchronized database. However, only the primary region is actively handling network requests. The secondary region becomes active only when the primary region experiences a service disruption. In that case, all new network requests route to the secondary region. Azure Traffic Manager can manage this failover automatically.
 
@@ -242,9 +247,9 @@ When user chooses premium as solution type below azure resource will be deployed
 * 2 Stream analytics job
 * 1 Traffic manager
 
-Refer **3.1 and 3.2** Section in **Deployment Guide** for Premium Solution Deployment.
+Refer **4.1 and 4.2** Section in **Deployment Guide** for Premium Solution Deployment.
 
-#### 1.2.1 IoT Hub Manual Failover
+#### 2.2.1 IoT Hub Manual Failover
 
 Go to **Resource Group** and Click on **IoT Hub**.
 
@@ -268,7 +273,7 @@ When failover process started, a pop up will be displayed on right top corner. O
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/170.png">
 </p>
 
-#### 1.2.2 Stop Stream Analytics Job in Primary Region
+#### 2.2.2 Stop Stream Analytics Job in Primary Region
 
 Go to **Resource Group** and click on primary **Stream Analytics job**.
 
@@ -282,7 +287,7 @@ You can see the stream analytics job has been stopped.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/173.png)
 
-#### 1.2.3 Accessing the Traffic manager 
+#### 2.2.3 Accessing the Traffic manager 
 
 Go to **Resource Group** and click on **Traffic manager** resource.
 
@@ -292,7 +297,7 @@ Now you can see the web app as the endpoint of the traffic manager.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/175.png)
 
-#### 1.2.4 Stopping the Web App
+#### 2.2.4 Stopping the Web App
 
 Navigate to the **Web App** from the resource group.
 
@@ -310,7 +315,7 @@ Verify the Status of primary web app in traffic manager.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/179.png)
 
-#### 1.2.5 Cosmos DB Geo replication
+#### 2.2.5 Cosmos DB Geo replication
 
 Go to **Resource Group** -> click **Cosmos DB**.
 
@@ -328,7 +333,7 @@ Navigate to **Replicate data globally** under Settings section then click **Manu
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/182.png">
 </p>
 
-#### 1.2.6 Accessing Web App
+#### 2.2.6 Accessing Web App
 
 Go to **Resource Group** -> **Settings** -> **Deployments**, select **Microsoft Template**.
 
