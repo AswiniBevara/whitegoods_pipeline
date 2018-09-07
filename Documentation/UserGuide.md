@@ -11,10 +11,10 @@
 - [3 Run the Blink Applications](#3-run-the-blink-applications)
 - [4 Verify data in IoT Hub Device Twin](#4-verify-data-in-iot-hub-device-twin)
 - [5 Verify Device Management application](#5-verify-device-management-application)
-- [6 Validating Blink App code with Azure Sphere](#6-validating-blin-app-code-with-azure-sphere)
-- [7 Monitoring Components](#7-monitoring-components)
-    - [7.1 Application Insights](#71-application-insights)
-    - [7.2 OMS Log Analytics](#72-oms-log-analytics)
+     - [5.1 Validating Blink App code with Azure Sphere](#51-validating-blin-app-code-with-azure-sphere)
+- [6 Monitoring Components](#6-monitoring-components)
+    - [6.1 Application Insights](#61-application-insights)
+    - [6.2 OMS Log Analytics](#62-oms-log-analytics)
 
 ## 1 User Guide
 
@@ -140,7 +140,7 @@ Once it is activated the same will be reflected in IoT Hub’s device twin.
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/110.png">
 </p>
 
-## 6 Validating Blink App code with Azure Sphere
+### 5.1 Validating Blink App code with Azure Sphere
 
 To validate the blink rate, go to **resource group** -> go to **device management web app**. Select the device to which Azure Sphere Device is associated.
 
@@ -193,9 +193,9 @@ For video reference on Blink Rate3 go through the below link.
 
 **https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate3.mp4**
 
-## 7 Monitoring Components
+## 6 Monitoring Components
 
-### 7.1 Application Insights
+### 6.1 Application Insights
 
 Go to **Azure Portal**, select your **Resource Group** and select **Application Insights** as shown below. 
 
@@ -271,7 +271,7 @@ Now click on **chart** then click **Yes** to see the graph.
 
 Similarly, you can run the other common Pre-defined queries by navigating back to the **Home Page**.
 
-### 7.2 OMS Log Analytics
+### 6.2 OMS Log Analytics
 
 Open **Azure Portal** -> **Resource Group** -> Click the **OMS Workspace** in resource group to view **OMS Overview** Section. 
 
