@@ -147,7 +147,7 @@ In the parameters section of the template, specify the values as inputs when dep
 | **Parameter Name**  | **Description**     | **Allowed Values**    | **Default Values**                                                                                                               
 | -------------        | -------------      | -----------------    | ------------ 
 | **Solution Type**          | choose your solution type to deploy.     | Basic, Standard, Premium    | 
-| **geo-paired-region**   | If solution type is chosen as standard and premium, enter location for geo-paired-region,for more information about the geo-paired-region navigate to section 5 in the Readme.md(https://github.com/sysgain/whitegoods/blob/master/README.md) | EastUS2, CentralUS,WestUS2, WestCentralUS, CanadaCentral, CanadaEast, AustraliaEast, AustraliaSouthEast, CentralIndia, SouthIndia, EastAsia, SouthEastAsia,JapanWest, JapanEast, KoreaCentral, KoreaSouth, UKSouth, UKWest  | 
+| **geo-paired-region**   | For Basic solution select the geopaired region as deployment region. If solution type is chosen as standard and premium, enter location for geo-paired-region,for more information about the geo-paired-region navigate to section 5 in the Readme.md(https://github.com/sysgain/whitegoods/blob/master/README.md) | EastUS2, CentralUS,WestUS2, WestCentralUS, CanadaCentral, CanadaEast, AustraliaEast, AustraliaSouthEast, CentralIndia, SouthIndia, EastAsia, SouthEastAsia,JapanWest, JapanEast, KoreaCentral, KoreaSouth, UKSouth, UKWest  | 
 | **omsWorkspaceRegion**   | Choose location for OMS Log Analytics to deploy. For more information, see https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview.   | australiasoutheast, canadacentral, centralindia, eastus, japaneast, southeastasia, uksouth, westeurope    | eastus
 | **appInsightsLocation**   | specify the region for application insights.  | eastus, northeurope, southcentralus, southeastasia, westeurope,westus2    | eastus
 | **appInsightsLocationDr**    | If solution type is chosen as premium, enter location for application insights for disaster recovery. | eastus, northeurope, southcentralus, southeastasia, westeurope, westus2    | westus2
@@ -293,13 +293,14 @@ The above resources deployed for **Basic Solution**.
 
 ### 4.2 ARM Template Deployment Using Azure CLI
 
-AAzure CLI is used to deploy your resources to Azure. The Resource Manager template you deploy, can either be a local file on your machine, or an external file that is in a repository like GitHub.  
-
+Azure CLI is used to deploy your resources to Azure. The Resource Manager template you deploy, can either be a local file on your machine, or an external file that is in a repository like GitHub. 
+  
 Azure Cloud Shell is an interactive, browser-accessible shell for managing Azure resources. Cloud Shell enables access to a browser-based command-line experience built with Azure management tasks in mind. 
 
-Deployment can proceed within the Azure Portal via Windows PowerShell.  
+Deployment can proceed within the Azure Portal via Windows PowerShell. 
 
-1. Download the master branch from the URL mentioned in section 3.1
+1. Clone the Master branch and save it locally, refer **section 4.1** of this document for Git hub URL
+
 
 2. Open Windows PowerShell and run the following command
 
@@ -321,7 +322,7 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/34.png)
 
-5. Download the main-template.parameters.json in your local system from the below  URL, paste it in  an editor , update the values and save it.
+5. Download the **main-template.parameters.json** in your local system from the below  URL, paste it in  an editor , update the values and save it.
 
 **https://github.com/sysgain/whitegoods/blob/master/main-template.parameters.json**
 
@@ -340,7 +341,7 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 * azurePassword
 * sessionId
 
-#### 4.2.1 Create Resource Group for White Goods Solution 
+#### 4.2.1 Create Resource Group using Azure CLI 
 
 Use the **az group create** command to create a **Resource Group** in your region.
 
