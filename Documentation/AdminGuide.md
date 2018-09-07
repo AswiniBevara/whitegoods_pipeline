@@ -60,7 +60,7 @@ When Primary region is down, and user needs to redeploy azure resources to new r
 * Notification hub
 * Stream analytics Job
 
-'Refer **4.1 and 4.2** Section in **Deployment Guide** for Standard Solution Deployment.'
+*Refer **4.1 and 4.2** Section in **Deployment Guide** for Standard Solution Deployment.*
 
 #### 2.1.1 IoT Hub Manual Failover
 
@@ -245,7 +245,7 @@ When user chooses premium as solution type below azure resource will be deployed
 * 2 Stream analytics job
 * 1 Traffic manager
 
-Refer **4.1 and 4.2** Section in **Deployment Guide** for Premium Solution Deployment.
+*Refer **4.1 and 4.2** Section in **Deployment Guide** for Premium Solution Deployment.*
 
 #### 2.2.1 IoT Hub Manual Failover
 
