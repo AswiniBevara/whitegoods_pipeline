@@ -534,7 +534,7 @@ Each Azure region is paired with another region within the same geography, toget
 
 ## 5. Deployment Guide for the Solution
 
-To deploy the Basic, Standard or Premium Solution please refer **[Deployment Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Deployment%20Guide%20Document.docx)**.
+To deploy the Basic, Standard or Premium Solution please refer **[Deployment Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/DeploymentGuide.md)**.
 
 ## 6. User Guide for the Solution
 
