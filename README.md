@@ -11,52 +11,64 @@
      - [1.2 Overview of IOT Solution](#12-overview-of-iot-solution)
           - [1.2.1 Highlights](#121-highlights)
           - [1.2.2 Brief About the Solution](#122-brief-about-the-solution)         
-- [2 Solution Architecture Diagram and data work flow Diagram](#2-solution-architecture-diagram-and-data-work-flow-diagram)
-    - [2.1 Basic Architecture Diagram](#21-basic-architecture-diagram)
-    - [2.2 Standard Architecture Diagram](#22-standard-architecture-diagram)
-    - [2.3 Premium Architecture Diagram](#23-premium-architecture-diagram)
-    - [2.4 Data work Flow Diagram](24#-data-work-flow-diagram)
-- [3 Azure Services](#3-azure-services)
-    - [3.1 IoT Hub](#31-iothub)
-    - [3.2 Stream Analytics](#32-stream-analytics)
-    - [3.3 Azure Sphere](#33-azure-sphere)
-    - [3.4 Notification Hub](#34-notification-hub)
-    - [3.5 Web Application](#35-web-application)
-    - [3.6 Device management web application](#36-device-management-web-application)
-    - [3.7 Azure Active Directory](#37-azure-active-directory)
-    - [3.8 Azure Run book](#38-azure-run-book)
-    - [3.9 Cosmos DB](#39-cosmos-db)
-    - [3.10 Log analytics](#310-log-analytics)
-    - [3.11 Application Insights](#311-application-insights)
-- [4 Solution Deployment Type & Cost](4#-solution-deployment-type-&-cost)
-    - [4.1 Basic Costing Details](#41-basic-costing-details)
-    - [4.2 Standard Costing details](#42-standard-costing-details)
-    - [4.3 Premium Costing details](#43-premium-costing-details)
-- [5 What are paired regions?](#5-what-are-paired-regions?)
-- [6 Deployment Guide for the Solution](#6-deployment-guide-for-the-solution) 
+- [2 IoT Solutions](#2-iot-solutions)
+    - [2.1 Core Architecture (Current)](#21-core-architecture-(Current))
+    - [2.2 Automated Solution](#22-automated-solutioq)
+    - [2.3 Architectures](#23-architectures)
+         - [2.3.1 Basic Architecture](#231-basic-architecture)
+         - [2.3.2 Standard Architecture](#232-standard-architecture)
+         - [2.3.3 Premium Architecture](#233-premium-architecture)
+    - [2.4 Conventional Data work Flow Diagram](24#-conventional-data-work-flow-diagram)
+    - [2.5 Azure Components Functionality](#25-azure-components-functionality)
+         - [2.5.1 IoT Hub](#251-iothub)
+         - [2.5.2 Stream Analytics](#252-stream-analytics)
+         - [2.5.3 Azure Sphere Device](#253-azure-sphere-device)
+         - [2.5.4 Notification Hub](#254-notification-hub)
+         - [2.5.5 Web Application](#255-web-application)
+         - [2.5.6 Azure Active Directory](#256-azure-active-directory)
+         - [2.5.7 Azure Run book](#257-azure-run-book)
+         - [2.5.8 Cosmos DB](#258-cosmos-db)
+         - [2.5.9 OMS Log analytics](#259-oms-log-analytics)
+         - [2.5.10 Application Insights](#2510-application-insights)
+- [3 Solution Type & Cost Mechanism](3#-solution-deployment-type-&-cost-mechanism)
+    - [3.1 Solutions and Associated Costs](#41-solutions-and-associated-costs)
+         - [3.1.1 Basic](#311-Basic)
+         - [3.1.2 Standard](#312-standard)
+         - [3.1.3 Premium](#313-premium)
+    - [3.2 Cost Comparison](#32-cost-comparison)
+         - [3.2.1 In terms of features](#321-In terms of features)
+         - [3.2.2 Dollar Impact](#322-dollar-impact) 
+         - [3.2.3 Estimated Monthly Cost for each Solution](#323-estimated-monthly-cost-for-each-solution)
+- [4 What are paired regions?](#4-what-are-paired-regions?)
+- [5 Deployment Guide for the Solution](#5-deployment-guide-for-the-solution) 
+- [6 User Guide for the Solution](#6-user-guide-for-the-solution)
 - [7 Administrator Guide for the Solution](#7-administrator-guide-for-the-solution)
-- [8 User Guide for the Solution](#8-user-guide-for-the-solution)
    
 ## 1. Introduction
 
 ### 1.1 Overview of White Goods Solution
 
-The Azure Sphere Solution Accelerator ecosystem enables your company to setup connected device products quickly, securely, and cost-effectively. Connect your product to the cloud, define collected data, and simulate device-to-cloud communication. Monitor your connected products, analyze trends, gain insights in channel management.
+The Azure Sphere Solution Accelerator ecosystem enables your company to setup connected device products quickly, securely,and cost-effectively. Connect your product to the cloud, define collected data, and simulate device-to-cloud communication. Monitor your connected products, analyze trends, gain insights in channel management.
 
 ### 1.2 Overview of IOT Solution
 
 #### 1.2.1 Highlights
 
 The Rationale behind this IOT Solution for Whitegoods is to: 
-*	Blink Application establishes a connection between IoT Hub and Azure Sphere Device
-*	Based on the user selection on Activating one of the Blink Application feature, the nodes in the IoT Hub’s Device Twin gets updated.
-*	Based on the status of the IoT Hub’s Device Twin, the Azure Sphere Device will activate the respective Blink Rate number (i.e. Blink Rate1, Blink Rate2 or Blink Rate3)
+
+1. **Blink Application establishes a connection between IoT Hub and Azure Sphere Device.***
+
+2. **Based on the user selection on Activating one of the Blink Application feature, the nodes in the IoT Hub’s Device Twin gets updated.**
+
+3. **Based on the status of the IoT Hub’s Device Twin, the Azure Sphere Device will activate the respective Blink Rate number (i.e. Blink Rate1, Blink Rate2 or Blink Rate3)**
 
 #### 1.2.2 Brief About the Solution
-*	The Device Management Web Application manages the Azure sphere IoT devices and Azure Sphere Device contains the Blink Application code which communicates with IoT Hub. 
-*	A runbook which creates Database, Collections in Cosmos DB and update the reply URLs of the Application in Azure Active Directory to authenticate Device Management Web Application.
-*	This solution is helpful to monitor thousands of connected devices and access them remotely from Device Management Application.
 
+* The Device Management Web Application manages the Azure sphere IoT devices and Azure Sphere Device contains the Blink Application code which communicates with IoT Hub.  
+
+* A runbook which creates Database, Collections in Cosmos DB and update the reply URLs of the Application in Azure Active Directory to authenticate Device Management Web Application.
+
+* This solution is helpful to monitor thousands of connected devices and access them remotely from Device Management Application.
 
 ## 2. IoT Solutions 
 
@@ -67,112 +79,129 @@ Below Diagram explains the Core architecture for White Goods solution
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/corearchitecture.png)
 
 Core Architecture components:
-*	4x4 Device
-*	IoT Hub
-*	Stream Analytics
-*	Data Packet Web Application
-*	Device Management
-*	Cosmos DB
-*	Notification Hub
-*	Run Book
-*	Azure Active Directory
 
+* 4x4 Device
+* IoT Hub
+* Stream Analytics
+* Data Packet Web Application
+* Device Management
+* Cosmos DB
+* Notification Hub
+* Run Book
+* Azure Active Directory
 
 ### 2.2 Automated Solution	
 
 Automated IOT Solution is designed on the top of current core architecture. In addition, this solution also provides Monitoring and High availability.
+
 This solution is deployed through ARM template. This is a single click deployment which reduces manual effort when compared with the existing solution.
+
 In addition, this solution consists
-*	Application Insights to provide monitoring for Web Application. Application Insights store the logs of the Web API which will be helpful to trace the web API working.
-*	Log analytics to provide monitoring for Stream Analytics, IoT hub, Cosmos DB. Log analytics store the logs, which will be helpful to trace the working of these resources.
-*	Geo-replication to provide high availability for Cosmos DB. Geo-replication is used to set the recovery database as the primary database whenever primary database is failed.
-*	This solution also provides Disaster Recovery activities. IoT Hub manual failover is helpful to make the IoT Hub available in another region, when IoT Hub of one region is failed.
-*	Traffic Manager delivers high availability for critical web applications by monitoring the endpoints and providing automatic failover when an endpoint goes down.
+
+* Application Insights to provide monitoring for Web Application. Application Insights store the logs of the Web API which will be helpful to trace the web API working.
+
+* Log analytics to provide monitoring for Stream Analytics, IoT hub, Cosmos DB. Log analytics store the logs, which will be helpful to trace the working of these resources.
+
+* Geo-replication to provide high availability for Cosmos DB. Geo-replication is used to set the recovery database as the primary database whenever primary database is failed.
+
+* This solution also provides Disaster Recovery activities. IoT Hub manual failover is helpful to make the IoT Hub available in another region, when IoT Hub of one region is failed.
+
+* Traffic Manager delivers high availability for critical web applications by monitoring the endpoints and providing automatic failover when an endpoint goes down.
 
 ### 2.3 Architectures
 
 #### 2.3.1 Basic Architecture:
 
 Basic solution will have all core components, in addition this solution also consists monitoring components like Application Insights and OMS Log Analytics. 
-*	Application Insights provide monitoring for Web API.
-*	OMS Log Analytics provide monitoring for Stream Analytics, IoT hub, Cosmos DB.
 
+* Application Insights provide monitoring for Web API.
+* OMS Log Analytics provide monitoring for Stream Analytics, IoT hub, Cosmos DB.
 
 The below diagram depicts the dataflow between azure components:
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c1.png)
 
 Basic Architecture comprises of following components:
-*	1-Azure Sphere
-*	1-Web App
-*	1-Cosmos DB
-*	1-Application Insights
-*	1-Stream Analytics
-*	1-IoT HUB
-*	1-Log analytics
-*	1-Notification Hub
-*	1-Runbook 
-*	1-Azure Active Directory
 
+* 1-Azure Sphere
+* 1-Web App
+* 1-Cosmos DB
+* 1-Application Insights
+* 1-Stream Analytics
+* 1-IoT HUB
+* 1-Log analytics
+* 1-Notification Hub
+* 1-Runbook 
+* 1-Azure Active Directory
 
 #### 2.3.2 Standard Architecture:
 
 Standard Architecture diagram will have two regions.
-1.	Primary Region(Deployment)
-2.	Secondary Region (Re – Deployment)
+
+1. Primary Region(Deployment)
+2. Secondary Region (Re – Deployment)
+
 We have IoT Hub manual failover, Cosmos DB geo replication and redeployment components. The effect of these components will occur when primary Region goes down.
+
 The main use of this solution is whenever disaster recovery occurs the redeployment components will deploy in another region, user need to manually add the Web application as an endpoint to the Traffic Manager and also start the Stream Analytics Job manually.
 
 The below diagram depicts the dataflow between azure components in standard solution:
 
-
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c2.png)
 
 Standard Architecture comprises of following components:
-*	1-Web App
-*	1-RunBook
-*	1-Application Insights
-*	1-Cosmos DB
-*	1-IoT HUB
-*	1-Log analytics
-*	1-Notification Hub
-*	1-Stream Analytics
-*	1-Traffic Manager
-When there is a Region failover, user needs to redeploy ARM Template provided in GIT Repo. When redeployment Completed Successfully, below azure resources will be deployed. 
-Note:  Deployment process will take some time around 30mins to complete deployment Successfully.
-*	1-Web App
-*	1-Notification Hub
-*	1-Application Insights
-*	1-Stream Analytics job
 
+* 1-Web App
+* 1-RunBook
+* 1-Application Insights
+* 1-Cosmos DB
+* 1-IoT HUB
+* 1-Log analytics
+* 1-Notification Hub
+* 1-Stream Analytics
+* 1-Traffic Manager
+
+When there is a Region failover, user needs to redeploy ARM Template provided in GIT Repo. When redeployment Completed Successfully, below azure resources will be deployed. 
+
+Note:  Deployment process will take some time around 30mins to complete deployment Successfully.
+
+* 1-Web App
+* 1-Notification Hub
+* 1-Application Insights
+* 1-Stream Analytics job
 
 #### 2.3.3 Premium Architecture:
 
 Premium Architecture diagram also have two regions.
-1.	Primary Region
-2.	Secondary Region
+
+1. Primary Region
+2. Secondary Region
+
 All the components get deployed at once.
+
 We have IoT Hub manual failover, Cosmos DB geo replication. Initially the Stream Analytics of the Secondary Region should be stopped before sending data to IoT Hub. The effect of these components will occur when primary Region goes down.
-Note: Make sure to run the stream Analytics job of the Secondary Region when the Primary Region goes down.
+
+**Note: Make sure to run the stream Analytics job of the Secondary Region when the Primary Region goes down.**
+
 The below diagram depicts the dataflow between azure components in premium solution:
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/c3.png)
 
 Premium Architecture comprises of following components:
-*	2-Web App
-*	1-RunBook
-*	2-Application Insights
-*	1-Cosmos DB
-*	1-IoT HUB
-*	1-Log analytics
-*	2-Notification Hub
-*	2-Stream Analytics
-*	1-Traffic Manager
+
+* 2-Web App
+* 1-RunBook
+* 2-Application Insights
+* 1-Cosmos DB
+* 1-IoT HUB
+* 1-Log analytics
+* 2-Notification Hub
+* 2-Stream Analytics
+* 1-Traffic Manager
 
 In this type of solution all components will be deployed at initial deployment itself.
 
 This type of solution reduces downtime of solution when region is down. In this solution there is redeployment approach which reduces downtime of the solution.
-
 
 ### 2.4 Conventional Data Work Flow 
 
@@ -183,46 +212,50 @@ This type of solution reduces downtime of solution when region is down. In this 
 ### 2.5 Azure Components Functionality
 
 Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through a global network of Microsoft-managed data centers. It provides software as a service (SaaS), platform as a service (PaaS) and infrastructure as a service (IaaS) and supports many different programming languages, tools and frameworks, including both Microsoft-specific and third-party software and systems.
-Microsoft lists over 600 Azure services, of which some are as below:
-*	Compute
-*	Storage services
-*	Data management
-*	Management
-*	Machine learning
-*	IoT
 
+Microsoft lists over 600 Azure services, of which some are as below:
+
+* Compute
+* Storage services
+* Data management
+* Management
+* Machine learning
+* IoT
 
 #### 2.5.1 IoT Hub
 
 **Introduction:**
 
 Azure IoT Hub is a fully managed service that enables reliable and secure bi-directional communications between millions of IoT devices and an application back end. 
+
 Azure IoT Hub offers reliable device-to-cloud and cloud-to-device hyper-scale messaging, enables secure communications using per-device security credentials and access control, and includes device libraries for the most popular languages and platforms. Before you can communicate with IoT Hub from a gateway you must create an IoT Hub instance in your Azure subscription and then provision your device in your IoT hub. Some samples in this repository require that you have a usable IoT Hub instance.
+
 The Azure IoT Hub offers several services for connecting IoT devices with Azure services, processing incoming messages or sending messages to the devices. From a device perspective, the functionalities of the Azure IoT Hub enable simple and safe connection of IoT devices with Azure services by facilitating bidirectional communication between the devices and the Azure IoT Hub.
 
 **Implementation:**
 
 IoT Hub is the core component of IoT Hub Solution. Azure Sphere device generates data and sends to IoT Hub. Based on the user selection on Activating one of the Blink Application feature, the nodes in the IoT Hub’s Device Twin gets updated.
 
-
 #### 2.5.2 Steam Analytics
 
 **Introduction:**
 
 Stream Analytics is an event processing engine that can ingest events in real-time, whether from one data stream or multiple streams. Events can come from sensors, applications, devices, operational systems, websites, and a variety of other sources. Just about anything that can generate event data is fair game.
+
 Stream Analytics provides high-throughput, low-latency processing, while supporting real-time stream computation operations. With a Stream Analytics solution, organizations can gain immediate insights into real-time data as well as detect anomalies in the data, set up alerts to be triggered under specific conditions, and make the data available to other applications and services for presentation or further analysis. Stream Analytics can also incorporate historical or reference data into the real-time streams to further enrich the information and derive better analytics.
+
 To implement a streaming pipeline, developers create one or more jobs that define a stream’s inputs and outputs. The jobs also incorporate SQL-like queries that determine how the data should be transformed. In addition, developers can adjust a number of a job’s settings. For example, they can control when the job should start producing result output, how to handle events that do not arrive sequentially, and what to do when a partition lags other or does not contain data. Once a job is implemented, administrators can view the job’s status via the Azure portal.
 
 **Implementation:**
 
 Stream Analytics gets device telemetry data as input from IoT Hub and sends it to Cosmos DB’s messages collections. Stream analytics should always be in running state. 
 
-
 #### 2.5.3 Azure Sphere Device
 
 **Introduction:**
 
 The Azure Sphere solution brings together the best of Microsoft’s expertise in cloud, software, and silicon—resulting in a unique approach to security that starts in the silicon and extends to the cloud. Azure Sphere contains three components that work together to keep devices protected and secured in today’s dynamic threat landscape: Azure Sphere certified MCUs, the Azure Sphere OS and the Azure Sphere Security Service.
+
 The first Azure Sphere chip will be the MediaTek MT3620, which represents years of close collaboration and testing between MediaTek and Microsoft. This new cross-over class of MCU includes built-in Microsoft security technology, built-in connectivity, and combines the versatility and power of a Cortex-A processor with the low overhead and real-time guarantees of a Cortex-M class processor.
 
 **Implementation:**
@@ -234,7 +267,8 @@ Installing Blink application on Azure sphere Device which establishes a connecti
 **Introduction:**
 
 Azure Notification Hubs provides a highly scalable, cross-platform push notification infrastructure that enables you to either broadcast push notifications to millions of users at once, or tailor notifications to individual users. You can use Notification Hubs with any connected mobile application—whether it’s built on Azure Virtual Machines, Cloud Services, Web Sites, or Mobile Services.
-Azure Notification Hubs are push notification software engines designed to alert users about new content for a given site, service or app. Azure Notification Hubs are part of Microsoft Azure’s public cloud service offerings.
+
+Azure Notification Hubs are push notification software engines designed to alert users about new content for a given site,service or app. Azure Notification Hubs are part of Microsoft Azure’s public cloud service offerings.
 
 **Implementation:**
 
@@ -245,16 +279,18 @@ Notification hub is used to send notifications to Mobile application whenever an
 **Introduction:**
 
 A Web application (Web app) is an application program that is stored on a remote server and delivered over the Internet through a browser interface.
+
 Azure Web Apps enables you to build and host web applications in the programming language of your choice without managing infrastructure. It offers auto-scaling and high availability, supports both Windows and Linux, and enables automated deployments from GitHub, Visual Studio Team Services, or any Git repo.
-Web Apps not only adds the power of Microsoft Azure to your application, such as security, load balancing, auto scaling, and automated management. You can also take advantage of its DevOps capabilities, such as continuous deployment from VSTS, GitHub, Docker Hub, and other sources, package management, staging environments, custom domain, and SSL certificates.
+
+Web Apps not only adds the power of Microsoft Azure to your application, such as security, load balancing, auto scaling, and automated management. You can also take advantage of its DevOps capabilities, such as continuous deployment from VSTS,GitHub, Docker Hub, and other sources, package management, staging environments, custom domain, and SSL certificates.
+
 In Solution we have a web application in one app service plan. 
 
-*	Device management web application
+* Device management web application
 
 **Implementation:**
 
 Device management web application is a dashboard where you can view the Summary of Devices such Device count, status of device connection. It also provides the detailed insights of a device. We can view the Alert summary, Device Activation status and date, Shipment date.
-
 
 #### 2.5.6 Azure Active Directory
 
@@ -265,7 +301,6 @@ Microsoft Azure Active Directory (Azure AD) is a cloud service that provides adm
 **Implementation:**
 
 Azure Active directory is used to authenticate users to login to Web Application. Azure active Directory enables secure authentications to web application
-
 
 #### 2.5.7 Azure Run book
   
@@ -278,7 +313,6 @@ Runbooks in Azure Automation are based on Windows PowerShell or Windows PowerShe
 
 In this Solution Azure run books are used to create Database and collections in Document DB, it is also used to update reply URLs in Active Directory Application.
 
-
 #### 2.5.8 Cosmos DB  
 
 **Introduction:**
@@ -288,20 +322,20 @@ Azure Cosmos DB is a Microsoft cloud database that supports multiple ways of sto
 **Implementation:**
 
 In this Solution, Cosmos DB have Templates, Messages and Groups Collections. The Messages collections will get updated with the telemetry data of the Device.
-
  
 #### 2.5.9 OMS Log analytics
 
 **Introduction:**
 
 The Microsoft Operations Management Suite (OMS), previously known as Azure Operational Insights, is a software as a service platform that allows an administrator to manage on-premises and cloud IT assets from one console.
+
 Microsoft OMS handles log analytics, IT automation, backup and recovery, and security and compliance tasks.
+
 Log analytics will collect and store your data from various log sources and allow you to query over them using a custom query language.
 
 **Implementation:**
 
 Log analytics to provide monitoring for Stream Analytics, IoT hub, Cosmos DB. Log analytics store the logs, which will be helpful to trace the working of these resources. OMS log analytics provides in detailed insights using solutions.
-
 
 #### 2.5.10 Application Insights
 
@@ -326,7 +360,6 @@ Application Insights monitor below:
 
 Application Insights to provide monitoring for Web Application. Application Insights store the logs of the Web API which will be helpful to trace the web API working.
 
-
 ## 3. Solution Type & Cost Mechanism
 
 ### 3.1 Solutions and Associated Costs
@@ -340,8 +373,10 @@ The Basic solution requires minimum azure components with minimal available SKU�
 
 * The Estimated Monthly Azure cost is: **$190.51**
 
-Note: Refer below table for the optional component list & Features
+'Note: Refer below table for the optional component list & Features'
+
 **Pricing Model for Basic Solution:**
+
 Prices are calculated by Considering Location as East US and Pricing Model as **“PAYG”**.
 
 | **Resource Name**           | **Size**           | **Azure Cost/month**                                                                                                                                 
@@ -362,8 +397,10 @@ This Solution provides (Core + Monitoring +Hardening) features such as applicati
 
 * The Estimated Monthly Azure cost is: **$364.90**
 
-Note: Refer below table for the optional component list & Features
+'Note: Refer below table for the optional component list & Features.'
+
 **Pricing Model for Standard Solution:**
+
 Prices are calculated by Location as East US and Pricing Model as **“PAYG”**.
 
 | **Resource Name**           | **Size**           | **Azure Cost/month**                                                                                                                              
@@ -379,10 +416,11 @@ Prices are calculated by Location as East US and Pricing Model as **“PAYG”**
 | **Traffic Manager**     | DNS Query $0.54 + Azure Endpoint $0.36     | $0.90
 |                     | **Estimated monthly cost**          | **$364.90**
 
+**Note: When we redeploy the solution, there will not be any extra cost, since primary region is already paid.** 
 
 #### 3.1.3. Premium
 
-This solution also provides (Core + Monitoring +Hardening), the difference between Standard & Premium solution is under Premium - Both the regions can be deployed at same time, and however this is not possible under standard solution. The de.tails on components used in this solution is listed in Section: 
+This solution also provides (Core + Monitoring +Hardening), the difference between Standard & Premium solution is under Premium - Both the regions can be deployed at same time, and however this is not possible under standard solution. The details on components used in this solution is listed in Section: 
 
 * The Estimated Monthly Azure cost is: **$364.90**
 
@@ -408,7 +446,7 @@ Prices are calculated by Considering Location as East US and Pricing Model as **
 
 In this section we will be comparing the cost for all the solution provided in terms of Features & $ Impact:
 
-#### 3.2.1.  In terms of features:
+#### 3.2.1 In terms of features:
 
 The below table explain the distinctive features available across solution types.
 
@@ -435,7 +473,7 @@ The below table explain the distinctive features available across solution types
 | Traffic Manager          	| DNS Query      	| -                                                                                                  	| 1 Million/ Month                                                                                   	| 1 Million/ Month                                                                                   	|
 |                          	| Endpoint       	| -                                                                                                  	| Azure EndPoint 1 per month                                                                         	| Azure EndPoint 1 per month                                                                         	|
 
-#### 3.2.2.  Dollar Impact: 
+#### 3.2.2 Dollar Impact: 
 
 The below Table explains the $ impact for the solutions by resources.
 
@@ -486,10 +524,9 @@ Each Azure region is paired with another region within the same geography, toget
 | **17**       | UK        | UK South - UK West 
 | **18**   | UK    | UK West - UK South  
 
-
 ## 5. Deployment Guide for the Solution
 
-To deploy the Basic , Standard or Premium Solution please refer **[Deployment Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Deployment%20Guide%20Document.docx)**.
+To deploy the Basic, Standard or Premium Solution please refer **[Deployment Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Deployment%20Guide%20Document.docx)**.
 
 ## 6. User Guide for the Solution
 
