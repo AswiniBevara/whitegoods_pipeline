@@ -540,4 +540,4 @@ For Running Blink Application and verifying the Device Management Web applicatio
 
 ## 7. Administrator Guide for the Solution
 
-To configure and validate the Standard and Premium Solution, please refer the **[Administrator Guide Documentation](https://projectiot.blob.core.windows.net/whitegoods/Documents/Admin%20Guide%20Document.docx)**.
+To configure and validate the Standard and Premium Solution, please refer the **[Administrator Guide Documentation](https://github.com/sysgain/whitegoods/blob/master/Documentation/AdminGuide.md)**.
