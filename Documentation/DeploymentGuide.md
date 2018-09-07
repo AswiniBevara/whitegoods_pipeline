@@ -6,48 +6,58 @@
 
 **Table of Contents** 
 
-- [1 Prerequisites for Deploying ARM Template](#1-prerequisites-for-deploying-arm-template)
-    - [1.1 Integrating applications with Azure Active Directory](#11-integrating-applications-with-azure-active-directory)
-        - [1.1.1 To register a new application using the Azure portal](#111-to-register-a-new-application-using-the-azure-portal)
-        - [1.1.2 To add application credentials or permissions to access web APIs](#112-to-add-application-credentials-or-permissions-to-access-web-apis)
-        - [1.1.3 To get Tenant ID](#113-to-get-tenant-id)
-        - [1.1.4 To get application ID and authentication key](#114-to-get-application-id-and-authentication-key)
-        - [1.1.5 Creating session ID](#115-creating-sessionid)  
-- [2 ARM Template Input Parameters](#2-arm-template-input-parameters)
-- [3 Getting Started](#3-getting-started)
-    - [3.1 ARM Template Deployment Using Azure Portal](#31-arm-template-deployment-using-azure-portal)
-        - [3.1.1 Inputs](#311-inputs)
-        - [3.1.2 Outputs](#312-outputs)
-    - [3.2 ARM Template Deployment Using Azure CLI](#32-arm-arm-template-deployment-using-azure-cli)
-        - [3.2.1 Create Resource Group using Azure CLI](#321-create-resource-group-using-azure-cli)
-        - [3.2.2 Execute the Template Deployment](#322-execute-the-template-dDeployment)
-- [4 Post Deployment Steps: Getting started with Azure Sphere](#4-post-deployment-steps-getting-started-with-azure-sphere)
-    - [4.1 Set Up your Machine for Development Machine](#41-set-up-your-machine-for-development-machine)
-        - [4.1.1 Connect the RDB](#411-connect-the-rdb)
-        - [4.1.2 Install the TAP Driver](#412-install-the-tap-driver)
-        - [4.1.3 Configure TAP Networking](#413-configure-tap-networking)
-    - [4.2 Install Visual Studio](#42-install-visual-studio)
-    - [4.3 Install the Visual Studio Tools Preview for Azure Sphere](#43-install-the-visual-studio-tools-preview-for-azure-sphere)
-        - [4.3.1 To install the Visual Studio Tools Preview for Azure Sphere](#431-to-install-the-visual-studio-tools-preview-for-azure-sphere)
-    - [4.4 Update Device Software](#44-update-device-software)
-        - [4.4.1 To Check the Software Version on your Device](#441-to-check-the-software-version-on-your-device)
-    - [4.5 Claim your Device](#45-claim-your-device)
-    - [4.6 Add to Device Group](#46-add-to-device-group)
-    - [4.7 Configure Wi-Fi](#47-configure-wi-fi)
-        - [4.7.1 To Set up Wi-Fi on your Device](#471-to-set-up-wi-fi-on-your-device)
-    - [4.8 Connect to IoT Hub](#98-connect-to-iot-hub)
-        - [4.8.1 Set Up Microsoft Azure Credentials](#481-set-up-microsoft-azure-credentials)
-        - [4.8.2 Add your Device to the IoT Hub](#482-add-your-device-to-the-iot-hub)
-    
-## 1 Prerequisites for Deploying ARM Template
+- [1 Deployment Guide](#1-deployment-guide)
+- [2 Prerequisites for Deploying ARM Template](#2-prerequisites-for-deploying-arm-template)
+    - [2.1 Integrating applications with Azure Active Directory](#21-integrating-applications-with-azure-active-directory)
+         - [2.1.1 To register a new application using the Azure portal](#211-to-register-a-new-application-using-the-azure-portal)
+         - [2.1.2 To add application credentials or permissions to access web APIs](#212-to-add-application-credentials-or-permissions-to-access-web-apis)
+         - [2.1.3 To get Tenant ID](#213-to-get-tenant-id)
+         - [2.1.4 To get application ID and authentication key](#214-to-get-application-id-and-authentication-key)
+         - [2.1.5 Creating session ID](#215-creating-sessionid)  
+- [3 ARM Template Input Parameters](#3-arm-template-input-parameters)
+- [4 Getting Started](#4-getting-started)
+     - [4.1 ARM Template Deployment Using Azure Portal](#41-arm-template-deployment-using-azure-portal)
+         - [4.1.1 Inputs](#411-inputs)
+         - [4.1.2 Outputs](#412-outputs)
+    - [4.2 ARM Template Deployment Using Azure CLI](#42-arm-arm-template-deployment-using-azure-cli)
+         - [4.2.1 Create Resource Group using Azure CLI](#421-create-resource-group-using-azure-cli)
+         - [4.2.2 Execute the Template Deployment](#422-execute-the-template-dDeployment)
+- [5 Post Deployment Steps: Getting started with Azure Sphere](#5-post-deployment-steps-getting-started-with-azure-sphere)
+    - [5.1 Set Up your Machine for Development Machine](#51-set-up-your-machine-for-development-machine)
+         - [5.1.1 Connect the RDB](#511-connect-the-rdb)
+         - [5.1.2 Install the TAP Driver](#512-install-the-tap-driver)
+         - [5.1.3 Configure TAP Networking](#513-configure-tap-networking)
+    - [5.2 Install Visual Studio](#52-install-visual-studio)
+    - [5.3 Install the Visual Studio Tools Preview for Azure Sphere](#53-install-the-visual-studio-tools-preview-for-azure-sphere)
+         - [5.3.1 To install the Visual Studio Tools Preview for Azure Sphere](#531-to-install-the-visual-studio-tools-preview-for-azure-sphere)
+    - [5.4 Update Device Software](#54-update-device-software)
+         - [5.4.1 To Check the Software Version on your Device](#541-to-check-the-software-version-on-your-device)
+    - [5.5 Claim your Device](#55-claim-your-device)
+    - [5.6 Add to Device Group](#56-add-to-device-group)
+    - [5.7 Configure Wi-Fi](#57-configure-wi-fi)
+         - [5.7.1 To Set up Wi-Fi on your Device](#571-to-set-up-wi-fi-on-your-device)
+    - [5.8 Connect to IoT Hub](#58-connect-to-iot-hub)
+         - [5.8.1 Set Up Microsoft Azure Credentials](#581-set-up-microsoft-azure-credentials)
+         - [5.8.2 Add your Device to the IoT Hub](#582-add-your-device-to-the-iot-hub)
+
+## 1 Deployment Guide 
+
+This Document explains about how to deploy White Goods solution using ARM Template. In this Document explained about two ways of deploying solution.
+
+* Using Azure portal
+* Using Azure CLI
+
+This document explains about input parameters, output parameters and points to be noted while deploying ARM Template.
+
+## 2 Prerequisites for Deploying ARM Template
 
 Create an application in Azure Active Directory.
 
-### 1.1 Integrating applications with Azure Active Directory
+### 2.1 Integrating applications with Azure Active Directory
 
 Any application that wants to use the capabilities of Azure AD must first be registered in an Azure AD tenant. This registration process involves giving Azure AD details about your application, such as the URL where it’s located, the URL to send replies after a user is authenticated, the URI that identifies the app, and so on.
 
-#### 1.1.1 To register a new application using the Azure portal
+#### 2.1.1 To register a new application using the Azure portal
 
 1. **Sign in** to the **Azure portal**.
 
@@ -58,8 +68,10 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 3. When the Create page appears, enter your application's registration information:
 
 * **Name:** Enter the application name
+
 * **Application type:**
       - Select "**Web app / API**" for client applications and resource/API applications that are installed on a secure server. This setting is used for OAuth confidential web clients and public user-agent-based clients. The same application can also expose both a client and resource/API.
+
 * **Sign-On URL:** For "**Web app/API**" applications, provide the base URL of your app. For example, **https://localhost** might be the URL for a web app running on your local machine. Users would use this URL to sign in to a web client application.
 
 4. When finished, click **Create**.
@@ -68,7 +80,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/6.png">
 </p>
 
-#### 1.1.2 To add application credentials, or permissions to access web APIs
+#### 2.1.2 To add application credentials, or permissions to access web APIs
 
 1. Click the **Azure Active Directory** service, click **App registrations** and then find/click the **application** you want to configure.
 
@@ -86,7 +98,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/9.png)
 
-#### 1.1.3 To get Tenant ID
+#### 2.1.3 To get Tenant ID
 
 1. Select **Azure Active Directory**.
 
@@ -96,7 +108,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/10.png)
 
-#### 1.1.4 To get application ID and authentication key
+#### 2.1.4 To get application ID and authentication key
 
 1. From **App registrations** in Azure Active Directory, **select** your **application**.
 
@@ -110,7 +122,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/12.png">
 </p>
 
-#### 1.1.5 Creating session ID
+#### 2.1.5 Creating session ID
 
 1. Use the below URL to generate GUID.
 
@@ -128,7 +140,7 @@ Any application that wants to use the capabilities of Azure AD must first be reg
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/14.png">
 </p>
 
-## 2 ARM Template Input Parameters
+## 3 ARM Template Input Parameters
 
 In the parameters section of the template, specify the values as inputs when deploying the ARM Template. These parameter values enable you to customize the deployment by providing values that are tailored for your environment (such as dev, Staging and production). 
 
@@ -147,7 +159,7 @@ In the parameters section of the template, specify the values as inputs when dep
 | **azurePassword** | azure portal login password.       |  | 
 | **sessionId** | Refer 1.1.5 section for getting the session ID.  |   |  
   
-## 3 Getting started
+## 4 Getting started
 
 Azure Resource Manager allows you to provision your applications using a declarative template. In a single template, you can deploy multiple services along with their dependencies. The template consists of JSON and expressions that you can use to construct values for your deployment. You use the same template to repeatedly deploy your application during every stage of the application lifecycle.
 
@@ -162,7 +174,7 @@ Resource manager provides the following feature:
 * Apply access control to all services in your resource group because Role-Based Access Control (RBAC) is natively integrated into the management platform.
 * Apply tags to resources to logically organize all the resources in your subscription.
 
-### 3.1. ARM Template Deployment Using Azure Portal
+### 4.1. ARM Template Deployment Using Azure Portal
 
 1. **Click** the below **Git hub repo URL**.
 
@@ -207,7 +219,7 @@ To deploy a template for Azure Resource Manager, follow the below steps.
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p2.png">
 </p>
 
-#### 3.1.1 Inputs
+#### 4.1.1 Inputs
 
 These parameter values enable you to customize the deployment by providing values. There parameters allow to choose the solution type, region and credentials to authenticate SQL Database and Virtual Machines.
 
@@ -265,7 +277,7 @@ The above resources deployed for **Basic Solution**.
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/26.png)
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/27.png)
 
-#### 3.1.2 Outputs
+#### 4.1.2 Outputs
 
 14. Go to **Resource group** -> click **deployments**. 
 
@@ -279,7 +291,7 @@ The above resources deployed for **Basic Solution**.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/30.png)
 
-### 3.2 ARM Template Deployment Using Azure CLI
+### 4.2 ARM Template Deployment Using Azure CLI
 
 AAzure CLI is used to deploy your resources to Azure. The Resource Manager template you deploy, can either be a local file on your machine, or an external file that is in a repository like GitHub.  
 
@@ -328,7 +340,7 @@ Deployment can proceed within the Azure Portal via Windows PowerShell. 
 * azurePassword
 * sessionId
 
-#### 3.2.1 Create Resource Group for White Goods Solution 
+#### 4.2.1 Create Resource Group for White Goods Solution 
 
 Use the **az group create** command to create a **Resource Group** in your region.
 
@@ -345,7 +357,7 @@ az group create -n < resource group name> -l < location >
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/36.png">
 </p>
 
-#### 3.2.2 Execute the template deployment 
+#### 4.2.2 Execute the template deployment 
 
 Use the **az group deployment create** command to deploy the ARM template.
 
@@ -371,9 +383,9 @@ After successful deployment you can see the deployment outputs as follows.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/40.png)
 
-## 4 Post Deployment steps: Getting started with Azure Sphere
+## 5 Post Deployment steps: Getting started with Azure Sphere
 
-### 4.1 Set Up your Machine for Development Machine
+### 5.1 Set Up your Machine for Development Machine
 
 To connect to a reference development board (RDB), your development machine requires the following: 
 
@@ -381,7 +393,7 @@ To connect to a reference development board (RDB), your development machine requ
 * Support for the Visual Studio 2017 System Requirements 
 * A USB Port
 
-#### 4.1.1 Connect the RDB
+#### 5.1.1 Connect the RDB
 
 The RDB connects to a PC through a USB micro-connector. When plugged in, the RDB exposes three COM ports. 
 
@@ -394,7 +406,7 @@ The first time you plug in the board, the drivers should be automatically downlo
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/42.png">
 </p>
 
-#### 4.1.2 Install the TAP Driver
+#### 5.1.2 Install the TAP Driver
 
 The development board communicates with the PC over serial line internet protocol (SLIP). Tap-Windows provides a network interface driver for SLIP.
 
@@ -436,7 +448,7 @@ To install TAP and enable SLIP Communication
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/49.png">
 </p>
 
-#### 4.1.3 Configure TAP Networking
+#### 5.1.3 Configure TAP Networking
 
 1.	After you install the driver, configure TAP networking for the board.
 
@@ -486,7 +498,7 @@ To install TAP and enable SLIP Communication
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/p7.png">
 </p>
 
-### 4.2 Install Visual Studio 
+### 5.2 Install Visual Studio 
 
 The Visual Studio Tools for Azure Sphere require Visual Studio Enterprise, Professional, or Community 2017 version 15.3 or later. To verify which version is installed, start the Visual Studio Installer and make sure that the version number is 15.3.0 or later.
 
@@ -494,7 +506,7 @@ If you have installed an earlier version of Visual Studio 2017 15.3.0 (preview 4
 
 To install Visual Studio, click **Download Visual Studio**, select the edition to install, and then run the installer. You can choose to install any workloads, or none. The Visual Studio Tools for Azure Sphere installation procedure automatically installs the workloads that the SDK requires.
 
-### 4.3 Install the Visual Studio Tools Preview for Azure Sphere
+### 5.3 Install the Visual Studio Tools Preview for Azure Sphere
 
 The Visual Studio Tools Preview for Azure Sphere includes: 
 
@@ -506,7 +518,7 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 **Azure_Sphere_VS_Dev_Tools_Preview.exe** installs the complete Azure Sphere software development kit (SDK).
 
-#### 4.3.1 To install the Visual Studio Tools Preview for Azure Sphere
+#### 5.3.1 To install the Visual Studio Tools Preview for Azure Sphere
 
 1. Download below file and extract it, run **VS_Tools_Preview_for_Azure_Sphere.exe** it. 
 
@@ -543,9 +555,9 @@ The Visual Studio Tools Preview for Azure Sphere includes:
 
 8. If the installer returns errors, try uninstalling and then reinstalling the tools. To uninstall the tools, use **Add and Remove Programs in Control Panel**.
 
-### 4.4 Update Device Software
+### 5.4 Update Device Software
 
-#### 4.4.1 To Check the Software Version on your Device
+#### 5.4.1 To Check the Software Version on your Device
 
 1. Open an **Azure Sphere Developer Command Prompt**. To find the **Azure Sphere Developer Command Prompt**, click the Windows Start button and search Azure Sphere Developer Command Prompt Preview.  
 
@@ -568,7 +580,7 @@ dutil device sdkversion
 URL: **https://projectiot.blob.core.windows.net/whitegoods/Documents/DeviceUpdateToTP4.0.1.docx**
  
 
-### 4.5 Claim your Device
+### 5.5 Claim your Device
 
 After you install Visual Studio and the SDK, you must claim your device. Claim your device only once. 
 
@@ -594,7 +606,7 @@ cutil device claim --attached
 
 4.	This command reads the Azure Sphere device ID from the board and associates it with your current tenant. If you are prompted to log in to Microsoft Azure, do so using your Azure Sphere credentials.
 
-### 4.6 Add to Device Group
+### 5.6 Add to Device Group
 
 Before you configure Wi-Fi on your device, you must add it to the Microsoft-created System Software device group. The group is named System Software and has the following device group ID:
 
@@ -610,11 +622,11 @@ Cutil device setdg –attached –devicegroupid  63bbe6ea-14be-4d1a-a6e7-03591d8
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/64.png">
 </p>
 
-### 4.7 Configure Wi-Fi
+### 5.7 Configure Wi-Fi
 
 You must configure the device for Wi-Fi before it can communicate with the Azure IoT Hub or receive over-the-air (OTA) updates.
 
-#### 4.7.1 To Set up Wi-Fi on your Device
+#### 5.7.1 To Set up Wi-Fi on your Device
 
 1.	If your device is not connected to your PC, connect it now.
 
@@ -631,15 +643,15 @@ dutil wifi add –s <xxxxxxx> -k <XXXXXXXXX>
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/65.png">
 </p>
 
-### 4.8 Connect to IoT Hub
+### 5.8 Connect to IoT Hub
 
-#### 4.8.1 Set Up Microsoft Azure Credentials
+#### 5.8.1 Set Up Microsoft Azure Credentials
 
 To run this sample, you must have a Microsoft Azure subscription and an IoT Hub. 
 
 After you set up the subscription, you can create a hub. Log into the Azure Portal and follow these instructions to set up your hub.
 
-#### 4.8.2 Add your Device to the IoT Hub
+#### 5.8.2 Add your Device to the IoT Hub
 
 To use an IoT Hub in an Azure Sphere application, you identify the IoT Hub that you plan to use and then add your device to that hub. The connected service retrieves the IoT Hub connection string and records it in a file named azure_iot_hub.c. The connected service then adds azure_iot_hub.c and the header file azure_iot_hub.h to your application.
 
