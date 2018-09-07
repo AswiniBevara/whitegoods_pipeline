@@ -6,16 +6,21 @@
 
 **Table of Contents** 
 
-- [1 Login to Device Management Application](#1-login-to-device-management-application)
-- [2 Run the Blink Applications](#2-run-the-blink-applications)
-- [3 Verify data in IoT Hub Device Twin](#3-verify-data-in-iot-hub-device-twin)
-- [4 Verify Device Management application](#4-verify-device-management-application)
-- [5 Validating Blink App code with Azure Sphere](#5-validating-blin-app-code-with-azure-sphere)
-- [6 Monitoring Components](#6-monitoring-components)
-    - [6.1 Application Insights](#61-application-insights)
-    - [6.2 OMS Log Analytics](#62-oms-log-analytics)
+- [1 User Guide](#1-user-guide)
+- [2 Login to Device Management Application](#2-login-to-device-management-application)
+- [3 Run the Blink Applications](#3-run-the-blink-applications)
+- [4 Verify data in IoT Hub Device Twin](#4-verify-data-in-iot-hub-device-twin)
+- [5 Verify Device Management application](#5-verify-device-management-application)
+- [6 Validating Blink App code with Azure Sphere](#6-validating-blin-app-code-with-azure-sphere)
+- [7 Monitoring Components](#7-monitoring-components)
+    - [7.1 Application Insights](#71-application-insights)
+    - [7.2 OMS Log Analytics](#72-oms-log-analytics)
 
-## 1. Login to Device Management Application
+## 1 User Guide
+
+This Document explains about how to use the solution. In this we are configuring and validating the Blink Application with Device Management Application and also monitoring the resources of the solution.  
+
+## 2 Login to Device Management Application
 
 Once the solution is deployed successfully, navigate to the resource group and select the created resource group to view the list of resources that are created in the Resource Group as shown in the following figure.
 
@@ -53,7 +58,7 @@ Now you can view the **Device Management Portal** Dashboard.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/u9.png)
 
-## 2 Run the Blink Applications 
+## 3 Run the Blink Applications 
 
 In Blink app Solution Explorer, select **azure_iot_hub.c** in your solution and update the IoT Hub connection string which was copied from above step and **save** it.
 
@@ -79,7 +84,7 @@ Once the application is running the output also shows the IoT Hub connected Stat
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/90.png)
 
-## 3 Verify data in IoT Hub Device Twin
+## 4 Verify data in IoT Hub Device Twin
 
 Go to **Resource Group** -> Click on **IoT Hub**.
 
@@ -99,7 +104,7 @@ Below is the Device Twin json file with Blink Application features as false.
 
 ![alt text](https://github.com/sysgain/whitegoods/raw/master/Images/103.png)
 
-## 4 Verify Device Management application 
+## 5 Verify Device Management application 
 
 Go to **Resource Group** -> click **Device Management**.
 
@@ -135,7 +140,7 @@ Once it is activated the same will be reflected in IoT Hub’s device twin.
   <img src="https://github.com/sysgain/whitegoods/raw/master/Images/110.png">
 </p>
 
-## 5 Validating Blink App code with Azure Sphere
+## 6 Validating Blink App code with Azure Sphere
 
 To validate the blink rate, go to **resource group** -> go to **device management web app**. Select the device to which Azure Sphere Device is associated.
 
@@ -188,9 +193,9 @@ For video reference on Blink Rate3 go through the below link.
 
 **https://projectiot.blob.core.windows.net/whitegoods/BlinkRateVideos/BlinkRate3.mp4**
 
-## 6 Monitoring Components
+## 7 Monitoring Components
 
-### 6.1 Application Insights
+### 7.1 Application Insights
 
 Go to **Azure Portal**, select your **Resource Group** and select **Application Insights** as shown below. 
 
@@ -266,7 +271,7 @@ Now click on **chart** then click **Yes** to see the graph.
 
 Similarly, you can run the other common Pre-defined queries by navigating back to the **Home Page**.
 
-### 6.2 OMS Log Analytics
+### 7.2 OMS Log Analytics
 
 Open **Azure Portal** -> **Resource Group** -> Click the **OMS Workspace** in resource group to view **OMS Overview** Section. 
 
