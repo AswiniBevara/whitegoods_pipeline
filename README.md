@@ -48,7 +48,7 @@
 
 ### 1.1 Overview of White Goods Solution
 
-In White Goods solution we are monitoring the Household Appliances like Washing machine, Dishwasher, Refrigerators, Coffee Maker etc. By using this solution User will access the Multiple Devices remotely and can get the acknowledgement from the Devices status whether its turned On or Off. It also provides the device location and helps user for predictive maintenance of the Devices.
+In White Goods solution we are monitoring the Household Appliances(Devices) like Washing machine, Dishwasher, Refrigerators, Coffee Maker etc. By using this solution User will access the multiple devices remotely and can get the acknowledgement from the Devices whether its turned On or Off. It also provides the device location and helps user for predictive maintenance of the Devices.
 
 The Azure Sphere Solution Accelerator ecosystem enables your company to setup connected device products quickly, securely,and cost-effectively. Connect your product to the cloud, define collected data, and simulate device-to-cloud communication. Monitor your connected products, analyze trends, gain insights in channel management.
 
