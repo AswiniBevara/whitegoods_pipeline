@@ -1,0 +1,12 @@
+{
+  "EntryPoint": "/bin/app",
+  "SchemaVersion": 1,
+  "SdkVersion": "4.0",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedConnections": [ "IoTHubWGi43fz.azure-devices.net", "IoTHubWGck4qt.azure-devices.net" ],
+    "Gpio": [ 8, 9, 10, 15, 16, 17, 18, 19, 20, 12, 13 ],
+    "Uart": [],
+    "WifiConfig": true
+  }
+}

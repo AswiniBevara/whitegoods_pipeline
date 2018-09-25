@@ -1,0 +1,37 @@
+﻿  main.c: In function 'SendMessageToIotHub':
+main.c(264,24): warning :  unused variable 'message' [-Wunused-variable]
+main.c(264,24): warning :    const unsigned char *message = "{\"deviceId\":\"mt3620dj\",\"messageId\":\"3\",\"text\":\" Hello from new device\"}";
+main.c(264,24): warning :                         ^~~~~~~
+main.c(264,24): warning : main.c: In function 'main':
+main.c(635,25): warning :  unused variable 'color' [-Wunused-variable]
+main.c(635,25): warning :   LedBlinkUtility_Colors color =
+main.c(635,25): warning :                          ^~~~~
+  Azure Sphere Image Utilities Command Line Interface version 2.0.1.49631
+  Copyright (C) Microsoft Corporation. All rights reserved.
+   
+  verbose: Detected input is a directory, creating image. 
+  verbose: Azure Sphere application image written. 
+  verbose: Appending metadata. 
+  verbose: Wrote metadata:
+    Section: Identity
+      Image Type:        Applications
+  
+      Component UID:     3bc8ad44-6bd0-4192-9346-b4cba27aed96
+  
+      Image UID:         f56f8676-0720-4e76-ae25-77b8aad3ef43
+  
+    Section: Signature
+      Signing Type:      ECDsa256
+  
+      Cert:              3f52dc69f12b0f7cb12cba0c6f2ad1da97e6c779
+  
+    Section: Debug
+      Name:              Mt3620AzureIoTHub4
+  
+      Built On (UTC):    8/1/2018 7:21:18 PM
+  
+      Built On (Local):  8/1/2018 12:21:18 PM
+  
+   
+  verbose: Packaging completed successfully. 
+  verbose: Output file is at: C:\Users\dheerajlocal\source\repos\Mt3620AzureIoTHub4\Mt3620AzureIoTHub4\bin\ARM\Debug\Mt3620AzureIoTHub4.imagepackage 
