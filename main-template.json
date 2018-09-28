@@ -38,8 +38,7 @@
                 "UKWest"
             ],
             "metadata": {
-                "description": "For Basic solution select the geopaired region as deployment region.If solution type is choosen as standard and premium, enter location for geo-paired-region, for more information about the geo-paired-region navigate to section 4 in the Getting Started Document
-(https://projectiot.blob.core.windows.net/whitegoods/Documents/GettingStartedDocumentV1.docx)"
+                "description": "For Basic solution select the geopaired region as deployment region.If solution type is choosen as standard and premium, enter location for geo-paired-region, for more information about the geo-paired-region navigate to section 4 in the Getting Started Document(https://projectiot.blob.core.windows.net/whitegoods/Documents/GettingStartedDocumentV1.docx)"
             }
         },
         "omsWorkspaceRegion": {
