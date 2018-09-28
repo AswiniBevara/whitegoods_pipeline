@@ -224,7 +224,7 @@
             "deviceManagementPortalWebSiteNameDr": "[concat('recoverydeviceManagement', variables('suffix'))]"
         },
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
-        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods_pipeline/master",
+        "baseUrl": "https://raw.githubusercontent.com/sysgain/whitegoods_pipeline/master/",
         "EastUS2": "CentralUS",
         "CentralUS": "EastUS2",
         "WestUS2": "West Central US",
