@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "solution-type": {
-            "value": "Basic"
+            "value": "Standard"
         },
         "geo-paired-region": {
             "value":  "EastUS2"
