@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "solution-type": {
-            "value": "Standard"
+            "value": "Basic"
         },
         "geo-paired-region": {
             "value":  "EastUS2"
@@ -18,16 +18,16 @@
             "value": "westus2"
         },
         "tenantId": {
-            "value": "ac12acb5-a79a-4ca7-87eb-c5e6ebbbcd38"
+            "value": "dcf9e4d3-f44a-4c28-be12-8245c0d35668"
         },
         "clientId": {
-            "value": "964e2c51-b3a4-49ca-90d9-fb3ee131015f"
+            "value": "ecbf6fdf-4129-467b-822e-72e38acee840"
         },
         "objectId": {
-            "value": "8467df15-459d-430f-a79c-56048f753f05"
+            "value": "79439758-9435-42b8-a225-efbd16bfb6cc"
         },
         "clientSecret": {
-            "value": "WSZDOR18WS35OYrhEHBauelmTUvxMtdkfhVW8runR5c="
+            "value": "G46H2F2dYH9hYtAUOLLAQ39DBxO1K9Cf0FZe2TZxL4U="
         },
         "azureAccountName": {
             "value": "nvtuluva@sysgaininc.onmicrosoft.com"
@@ -36,7 +36,7 @@
             "value": "vivanya@2219"
         },
         "sessionId": {
-            "value": "acb011c6-2259-459d-b740-1aae5181eda0"
+            "value": "3a0e1819-dfaf-4adc-b255-c642dddb04ca"
         }
     }
 }
