@@ -79,7 +79,7 @@ The Rationale behind this IOT Solution for Whitegoods is to:
 Below Diagram explains the Core architecture for White Goods solution
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/A1.png">
+  <img src="https://github.com/sysgain/whitegoods_pipeline/raw/master/Images/A1.png">
 </p>
 
 Core Architecture components:
@@ -124,7 +124,7 @@ Basic solution will have all core components, in addition this solution also con
 The below diagram depicts the dataflow between azure components:
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/D1.png">
+  <img src="https://github.com/sysgain/whitegoods_pipeline/raw/master/Images/D1.png">
 </p>
 
 Basic Architecture comprises of following components:
@@ -154,7 +154,7 @@ The main use of this solution is whenever disaster recovery occurs the redeploym
 The below diagram depicts the dataflow between azure components in standard solution:
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/A2.png">
+  <img src="https://github.com/sysgain/whitegoods_pipeline/raw/master/Images/A2.png">
 </p>
 
 Standard Architecture comprises of following components:
