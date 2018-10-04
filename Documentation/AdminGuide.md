@@ -67,7 +67,7 @@ When Primary region is down, and user needs to redeploy azure resources to new r
 Go to **Resource Group** -> Click on **IoT Hub**.
 
 <p align="center">
-  <img src="https://github.com/sysgain/whitegoods/raw/master/Images/142.png">
+  <img src="https://github.com/sysgain/whitegoods_pipeline/raw/master/Images/142.png">
 </p>
 
 Go to **Manual Failover (Preview)** from left side menu.
