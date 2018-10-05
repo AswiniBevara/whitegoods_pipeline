@@ -369,7 +369,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AoeRZ6vCty5yUlX2twpM4CReIAv_9tqhks5bwEaWwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AoeRZ3o5YN-woIttlXgLmNgWgL2Ca6ofks5bwEnVwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
