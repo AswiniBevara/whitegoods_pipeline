@@ -801,7 +801,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager-cold.json?token=AhgGzNy8dVt_QU0DXz9VuqVvNrigJl5gks5bty0dwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/traffic-manager-cold.json?token=AYpAtifc3ufGmNFa1Mhpd2IPQwkSlmGOks5bwMe6wA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
