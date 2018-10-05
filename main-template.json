@@ -407,7 +407,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AhgGzFnplNUYA7U0dzSBdOQXHE7R3Faiks5btyxywA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notificationhub-r2.json?token=AhgGzFH65rKfwNR9ttWt2GVFWDhioFDDks5bwIrkwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
