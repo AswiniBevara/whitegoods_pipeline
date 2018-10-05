@@ -369,7 +369,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AoeRZ3o5YN-woIttlXgLmNgWgL2Ca6ofks5bwEnVwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AhgGzCNxQU95nIWjk0J51a5OI_xGs0fhks5bwE9MwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -388,7 +388,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AhgGzFCPge2tZ46QqcTtcpB9bymHNg42ks5bvuY7wA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/notification-hub.json?token=AhgGzCNxQU95nIWjk0J51a5OI_xGs0fhks5bwE9MwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
