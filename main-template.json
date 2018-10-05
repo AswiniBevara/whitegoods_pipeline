@@ -299,7 +299,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AhgGzHkJ5xlvuStOWd5EjeTSyb3kFEGTks5btyvmwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/iot-hub-ha-wm.json?token=AhgGzBrAzl_1l01r0PjTfVlPtpcFeDZ7ks5bwI-NwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -347,7 +347,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AhgGzHNFBy0Q1z5ywVIB2-wfDMY6jYtuks5btytmwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/documentdb-ha-wm.json?token=AhgGzI2ywY2akkCefBi0CKN6GAlHJM5zks5bwI-LwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -645,7 +645,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AhgGzHvgSzxNXieXTAidm_CURss46w0Uks5btyzcwA%3D%3D')]",
+                    "uri": "[concat(variables('baseUrl'), 'nested/streamanalytics-r2.json?token=AhgGzMo5KPipVybH0LvZd9_hbPRH9Lnxks5bwI-GwA%3D%3D')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
