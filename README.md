@@ -6,6 +6,7 @@
 
 **Table of Contents** 
 
+
  - [1 Introduction](#1-introduction)
      - [1.1 Overview of White Goods Solution](#11-overview-of-white-goods-solution)
      - [1.2 Overview of IOT Solution](#12-overview-of-iot-solution)
