@@ -1,7 +1,5 @@
 # Microsoft
 
-
-
 # White Goods Solution
 
 ## Getting Started Manual
